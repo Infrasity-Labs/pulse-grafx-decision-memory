@@ -1,0 +1,26 @@
+=== start 2026-10-29T06:46:22Z ===
+  Data home: <repo>/.work/pulse-home
+  Source: DATA_DIR
+Terms-of-Use pre-accepted via --accept-terms (version 0.2.0).
+Starting Okto Pulse Community...
+  App:  http://127.0.0.1:8100  (API + Frontend)
+  MCP:  http://127.0.0.1:8101/mcp
+  Press Ctrl+C to stop.
+
+<repo>/.venv/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+INFO:     Started server process [71694]
+INFO:     Waiting for application startup.
+INFO:     Started server process [71694]
+INFO:     Waiting for application startup.
+INFO:     Uvicorn running on http://127.0.0.1:8101 (Press CTRL+C to quit)
+INFO:     kg.native_runtime_budget effective={'board_buffer_pool_mb': 64, 'global_buffer_pool_mb': 64, 'read_participants': 2} process_envelope={'buffer_pool_per_board_mb': 192, 'global_buffer_pool_mb': 192, 'total_process_bound_available': False}
+W1029 12:16:30.274000 71694 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+INFO:     kg.tick.scheduler_started interval_minutes=1440
+INFO:     Uvicorn running on http://127.0.0.1:8100 (Press CTRL+C to quit)
+INFO:     API Server initialized successfully - http://127.0.0.1:8100/api/v1
+INFO:     UI Server initialized successfully - http://127.0.0.1:8100
+INFO:     MCP Server initialized successfully - http://127.0.0.1:8101/mcp
+INFO:     Startup complete - The application is ready

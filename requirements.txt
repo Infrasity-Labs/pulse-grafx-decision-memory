@@ -1,0 +1,4 @@
+# Pinned and verified on 2026-10-29 with Python 3.12 on macOS arm64.
+# okto-pulse 0.4.2 requires okto-grafx[accel]==0.0.8 exactly, so Grafx comes with it.
+okto-pulse==0.4.2
+okto-grafx[accel]==0.0.8

@@ -1,0 +1,28 @@
+# board store layout, decision board, written after step 9 (commits.dat and commits.dir are the commit history files)
+# lock files omitted, board id replaced by <board_id>
+
+boards/<board_id>/grafx
+boards/<board_id>/grafx/generation-1
+boards/<board_id>/grafx/generation-1/bootstrap
+boards/<board_id>/grafx/generation-1/catalog.dat
+boards/<board_id>/grafx/generation-1/commits.dat
+boards/<board_id>/grafx/generation-1/commits.dir
+boards/<board_id>/grafx/generation-1/control
+boards/<board_id>/grafx/generation-1/grafx.meta
+boards/<board_id>/grafx/generation-1/heap.dat
+boards/<board_id>/grafx/generation-1/wal
+boards/<board_id>/graph_backend_binding.json
+
+index/ files: 408
+wal/ files: 1
+
+sizes:
+  bootstrap             0 KiB
+  catalog.dat          64 KiB
+  commits.dat          16 KiB
+  commits.dir          16 KiB
+  control              50 KiB
+  grafx.meta            8 KiB
+  heap.dat            168 KiB
+  index            206744 KiB
+  wal                2021 KiB

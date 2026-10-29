@@ -1,0 +1,4 @@
+pulse up pid 69689 ready_after_s=13 api=8100 mcp=8101
+real 13.88
+user 6.27
+sys 0.61

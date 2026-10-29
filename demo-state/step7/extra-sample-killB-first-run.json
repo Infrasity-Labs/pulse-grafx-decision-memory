@@ -1,0 +1,20 @@
+{
+  "workers": 3,
+  "retries_on_busy": 22,
+  "random_delay_s_after_first_ack": 8.56,
+  "acknowledged_commits": 12,
+  "commits_started": 13,
+  "present_after_restart": 13,
+  "acknowledged_and_present": 12,
+  "acknowledged_missing": [],
+  "unacknowledged_but_present": [
+    "burst-w3-0002"
+  ],
+  "in_flight_at_kill": [
+    "burst-w3-0002"
+  ],
+  "in_flight_present": [
+    "burst-w3-0002"
+  ],
+  "note": "Extra sample. First Kill B run on this machine, taken before the write probe was added to the script. Same procedure, 3 workers. Kept because one in-flight commit survived the kill. Not the scoreboard run."
+}

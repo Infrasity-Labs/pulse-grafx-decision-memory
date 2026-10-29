@@ -1,0 +1,8 @@
+{
+  "note": "Measured on 2026-10-29 during the first run of this demo on one machine (macOS arm64, Python 3.12.13).",
+  "pip_install_okto_pulse_seconds": 62.7,
+  "venv_size_du_sh": "1.3G",
+  "disk_used_by_install_gib_df_delta": 1.42,
+  "okto_pulse_init_seconds": 12.4,
+  "okto_pulse_serve_ready_seconds": 13.9
+}

@@ -1,0 +1,3281 @@
+{
+  "ok": true,
+  "data": {
+    "schema_version": "0.8.0",
+    "stable_node_types": [
+      {
+        "name": "Decision",
+        "stable": true
+      },
+      {
+        "name": "Criterion",
+        "stable": true
+      },
+      {
+        "name": "Constraint",
+        "stable": true
+      },
+      {
+        "name": "Assumption",
+        "stable": true
+      },
+      {
+        "name": "Requirement",
+        "stable": true
+      },
+      {
+        "name": "Entity",
+        "stable": true
+      },
+      {
+        "name": "APIContract",
+        "stable": true
+      },
+      {
+        "name": "TestScenario",
+        "stable": true
+      },
+      {
+        "name": "Bug",
+        "stable": true
+      },
+      {
+        "name": "Learning",
+        "stable": true
+      },
+      {
+        "name": "Alternative",
+        "stable": true
+      }
+    ],
+    "stable_rel_types": [
+      {
+        "name": "supersedes",
+        "from": "Decision",
+        "to": "Decision"
+      },
+      {
+        "name": "contradicts",
+        "from": "Decision",
+        "to": "Decision"
+      },
+      {
+        "name": "derives_from",
+        "from": "Decision",
+        "to": "Requirement"
+      },
+      {
+        "name": "relates_to",
+        "from": "Decision",
+        "to": "Alternative"
+      },
+      {
+        "name": "mentions",
+        "from": "Decision",
+        "to": "Entity"
+      },
+      {
+        "name": "depends_on",
+        "from": "Decision",
+        "to": "Decision"
+      },
+      {
+        "name": "violates",
+        "from": "Bug",
+        "to": "Constraint"
+      },
+      {
+        "name": "implements",
+        "from": "APIContract",
+        "to": "Requirement"
+      },
+      {
+        "name": "tests",
+        "from": "TestScenario",
+        "to": "Criterion"
+      },
+      {
+        "name": "validates",
+        "from": "Learning",
+        "to": "Bug"
+      },
+      {
+        "name": "precedes",
+        "from": "Entity",
+        "to": "Entity"
+      },
+      {
+        "name": "precedes",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Entity",
+            "to": "Bug"
+          },
+          {
+            "from": "Bug",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "Bug"
+          }
+        ]
+      },
+      {
+        "name": "implements",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "APIContract",
+            "to": "Constraint"
+          }
+        ]
+      },
+      {
+        "name": "supports",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Entity",
+            "to": "Requirement"
+          },
+          {
+            "from": "Entity",
+            "to": "Constraint"
+          },
+          {
+            "from": "Entity",
+            "to": "Criterion"
+          },
+          {
+            "from": "Entity",
+            "to": "APIContract"
+          },
+          {
+            "from": "Entity",
+            "to": "Decision"
+          },
+          {
+            "from": "Entity",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "Requirement"
+          },
+          {
+            "from": "Bug",
+            "to": "Constraint"
+          },
+          {
+            "from": "Bug",
+            "to": "Criterion"
+          },
+          {
+            "from": "Bug",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Bug",
+            "to": "APIContract"
+          },
+          {
+            "from": "Bug",
+            "to": "Decision"
+          }
+        ]
+      },
+      {
+        "name": "derives_from",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Constraint",
+            "to": "Requirement"
+          },
+          {
+            "from": "Requirement",
+            "to": "Requirement"
+          },
+          {
+            "from": "Decision",
+            "to": "Constraint"
+          },
+          {
+            "from": "Constraint",
+            "to": "Constraint"
+          },
+          {
+            "from": "Requirement",
+            "to": "Constraint"
+          }
+        ]
+      },
+      {
+        "name": "violates",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Bug",
+            "to": "Requirement"
+          },
+          {
+            "from": "Bug",
+            "to": "Criterion"
+          }
+        ]
+      },
+      {
+        "name": "overlaps",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Entity",
+            "to": "Entity"
+          }
+        ]
+      },
+      {
+        "name": "supersedes",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Decision",
+            "to": "Decision"
+          },
+          {
+            "from": "Criterion",
+            "to": "Criterion"
+          },
+          {
+            "from": "Constraint",
+            "to": "Constraint"
+          },
+          {
+            "from": "Assumption",
+            "to": "Assumption"
+          },
+          {
+            "from": "Requirement",
+            "to": "Requirement"
+          },
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "APIContract",
+            "to": "APIContract"
+          },
+          {
+            "from": "TestScenario",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Bug",
+            "to": "Bug"
+          },
+          {
+            "from": "Learning",
+            "to": "Learning"
+          },
+          {
+            "from": "Alternative",
+            "to": "Alternative"
+          }
+        ]
+      },
+      {
+        "name": "relates_to",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Decision",
+            "to": "Entity"
+          },
+          {
+            "from": "Decision",
+            "to": "Bug"
+          },
+          {
+            "from": "Learning",
+            "to": "Entity"
+          },
+          {
+            "from": "Learning",
+            "to": "Decision"
+          },
+          {
+            "from": "Learning",
+            "to": "Requirement"
+          },
+          {
+            "from": "Learning",
+            "to": "Constraint"
+          },
+          {
+            "from": "Learning",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Learning",
+            "to": "APIContract"
+          },
+          {
+            "from": "Learning",
+            "to": "Criterion"
+          },
+          {
+            "from": "Alternative",
+            "to": "Entity"
+          },
+          {
+            "from": "Alternative",
+            "to": "Decision"
+          },
+          {
+            "from": "Alternative",
+            "to": "Requirement"
+          },
+          {
+            "from": "Alternative",
+            "to": "Constraint"
+          },
+          {
+            "from": "Alternative",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Alternative",
+            "to": "APIContract"
+          },
+          {
+            "from": "Alternative",
+            "to": "Criterion"
+          },
+          {
+            "from": "Assumption",
+            "to": "Entity"
+          },
+          {
+            "from": "Assumption",
+            "to": "Decision"
+          },
+          {
+            "from": "Assumption",
+            "to": "Requirement"
+          },
+          {
+            "from": "Assumption",
+            "to": "Constraint"
+          },
+          {
+            "from": "Assumption",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Assumption",
+            "to": "APIContract"
+          },
+          {
+            "from": "Assumption",
+            "to": "Criterion"
+          }
+        ]
+      },
+      {
+        "name": "belongs_to",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Entity",
+            "to": "Bug"
+          },
+          {
+            "from": "Requirement",
+            "to": "Entity"
+          },
+          {
+            "from": "Constraint",
+            "to": "Entity"
+          },
+          {
+            "from": "Criterion",
+            "to": "Entity"
+          },
+          {
+            "from": "TestScenario",
+            "to": "Entity"
+          },
+          {
+            "from": "APIContract",
+            "to": "Entity"
+          },
+          {
+            "from": "Decision",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "Entity"
+          },
+          {
+            "from": "Alternative",
+            "to": "Entity"
+          },
+          {
+            "from": "Assumption",
+            "to": "Entity"
+          },
+          {
+            "from": "Learning",
+            "to": "Entity"
+          }
+        ]
+      },
+      {
+        "name": "originates_from",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Bug",
+            "to": "Entity"
+          }
+        ]
+      },
+      {
+        "name": "covered_by",
+        "from": "multiple",
+        "to": "multiple",
+        "multi": true,
+        "pairs": [
+          {
+            "from": "Bug",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "TestScenario"
+          }
+        ]
+      }
+    ],
+    "vector_indexes": [
+      {
+        "node_type": "Decision",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "decision_embedding_idx"
+      },
+      {
+        "node_type": "Criterion",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "criterion_embedding_idx"
+      },
+      {
+        "node_type": "Constraint",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "constraint_embedding_idx"
+      },
+      {
+        "node_type": "Requirement",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "requirement_embedding_idx"
+      },
+      {
+        "node_type": "Entity",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "entity_embedding_idx"
+      },
+      {
+        "node_type": "APIContract",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "apicontract_embedding_idx"
+      },
+      {
+        "node_type": "TestScenario",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "testscenario_embedding_idx"
+      },
+      {
+        "node_type": "Bug",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "bug_embedding_idx"
+      },
+      {
+        "node_type": "Learning",
+        "attribute": "embedding",
+        "dimension": 384,
+        "similarity_metric": "cosine",
+        "index_name": "learning_embedding_idx"
+      }
+    ],
+    "label_properties": {
+      "Decision": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Criterion": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Constraint": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Assumption": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": false
+      },
+      "Requirement": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Entity": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "APIContract": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "TestScenario": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Bug": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Learning": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": true
+      },
+      "Alternative": {
+        "stable_properties": [
+          "id",
+          "title",
+          "content",
+          "context",
+          "justification",
+          "source_artifact_ref",
+          "graph_layer",
+          "maturity_status",
+          "source_session_id",
+          "created_at",
+          "created_by_agent",
+          "source_confidence",
+          "relevance_score",
+          "pre_cancellation_relevance_score",
+          "query_hits",
+          "last_queried_at",
+          "last_recomputed_at",
+          "priority_boost",
+          "superseded_by",
+          "superseded_at",
+          "revocation_reason",
+          "human_curated",
+          "generation",
+          "source_span_start",
+          "source_span_end",
+          "source_span_quote",
+          "extraction_model_id",
+          "extraction_prompt_hash",
+          "source_content_hash",
+          "attestation_count",
+          "kind_of",
+          "last_attested_at",
+          "severity",
+          "source_status",
+          "source_created_at",
+          "source_updated_at",
+          "resolved_at",
+          "investigation_receipt_id",
+          "source_ref",
+          "attestor_actor_id",
+          "declared_revision",
+          "workspace_state_id",
+          "code_path",
+          "symbol_qualified_name",
+          "symbol_kind",
+          "selector_kind",
+          "selector_fingerprint",
+          "resolution_state"
+        ],
+        "has_vector_index": false
+      }
+    },
+    "query_contract": {
+      "version": "1.0",
+      "typed_artifact_kinds": [
+        "spec",
+        "card"
+      ],
+      "node_types": [
+        "Decision",
+        "Criterion",
+        "Constraint",
+        "Assumption",
+        "Requirement",
+        "Entity",
+        "APIContract",
+        "TestScenario",
+        "Bug",
+        "Learning",
+        "Alternative"
+      ],
+      "edge_types": [
+        "supersedes",
+        "contradicts",
+        "derives_from",
+        "relates_to",
+        "mentions",
+        "depends_on",
+        "violates",
+        "implements",
+        "tests",
+        "validates",
+        "precedes",
+        "supports",
+        "overlaps",
+        "belongs_to",
+        "originates_from",
+        "covered_by"
+      ],
+      "edge_endpoints": {
+        "supersedes": [
+          {
+            "from": "Decision",
+            "to": "Decision"
+          },
+          {
+            "from": "Criterion",
+            "to": "Criterion"
+          },
+          {
+            "from": "Constraint",
+            "to": "Constraint"
+          },
+          {
+            "from": "Assumption",
+            "to": "Assumption"
+          },
+          {
+            "from": "Requirement",
+            "to": "Requirement"
+          },
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "APIContract",
+            "to": "APIContract"
+          },
+          {
+            "from": "TestScenario",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Bug",
+            "to": "Bug"
+          },
+          {
+            "from": "Learning",
+            "to": "Learning"
+          },
+          {
+            "from": "Alternative",
+            "to": "Alternative"
+          }
+        ],
+        "contradicts": [
+          {
+            "from": "Decision",
+            "to": "Decision"
+          }
+        ],
+        "derives_from": [
+          {
+            "from": "Decision",
+            "to": "Requirement"
+          },
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Constraint",
+            "to": "Requirement"
+          },
+          {
+            "from": "Requirement",
+            "to": "Requirement"
+          },
+          {
+            "from": "Decision",
+            "to": "Constraint"
+          },
+          {
+            "from": "Constraint",
+            "to": "Constraint"
+          },
+          {
+            "from": "Requirement",
+            "to": "Constraint"
+          }
+        ],
+        "relates_to": [
+          {
+            "from": "Decision",
+            "to": "Alternative"
+          },
+          {
+            "from": "Decision",
+            "to": "Entity"
+          },
+          {
+            "from": "Decision",
+            "to": "Bug"
+          },
+          {
+            "from": "Learning",
+            "to": "Entity"
+          },
+          {
+            "from": "Learning",
+            "to": "Decision"
+          },
+          {
+            "from": "Learning",
+            "to": "Requirement"
+          },
+          {
+            "from": "Learning",
+            "to": "Constraint"
+          },
+          {
+            "from": "Learning",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Learning",
+            "to": "APIContract"
+          },
+          {
+            "from": "Learning",
+            "to": "Criterion"
+          },
+          {
+            "from": "Alternative",
+            "to": "Entity"
+          },
+          {
+            "from": "Alternative",
+            "to": "Decision"
+          },
+          {
+            "from": "Alternative",
+            "to": "Requirement"
+          },
+          {
+            "from": "Alternative",
+            "to": "Constraint"
+          },
+          {
+            "from": "Alternative",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Alternative",
+            "to": "APIContract"
+          },
+          {
+            "from": "Alternative",
+            "to": "Criterion"
+          },
+          {
+            "from": "Assumption",
+            "to": "Entity"
+          },
+          {
+            "from": "Assumption",
+            "to": "Decision"
+          },
+          {
+            "from": "Assumption",
+            "to": "Requirement"
+          },
+          {
+            "from": "Assumption",
+            "to": "Constraint"
+          },
+          {
+            "from": "Assumption",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Assumption",
+            "to": "APIContract"
+          },
+          {
+            "from": "Assumption",
+            "to": "Criterion"
+          }
+        ],
+        "mentions": [
+          {
+            "from": "Decision",
+            "to": "Entity"
+          }
+        ],
+        "depends_on": [
+          {
+            "from": "Decision",
+            "to": "Decision"
+          }
+        ],
+        "violates": [
+          {
+            "from": "Bug",
+            "to": "Constraint"
+          },
+          {
+            "from": "Bug",
+            "to": "Requirement"
+          },
+          {
+            "from": "Bug",
+            "to": "Criterion"
+          }
+        ],
+        "implements": [
+          {
+            "from": "APIContract",
+            "to": "Requirement"
+          },
+          {
+            "from": "APIContract",
+            "to": "Constraint"
+          }
+        ],
+        "tests": [
+          {
+            "from": "TestScenario",
+            "to": "Criterion"
+          }
+        ],
+        "validates": [
+          {
+            "from": "Learning",
+            "to": "Bug"
+          }
+        ],
+        "precedes": [
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Entity",
+            "to": "Bug"
+          },
+          {
+            "from": "Bug",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "Bug"
+          }
+        ],
+        "supports": [
+          {
+            "from": "Entity",
+            "to": "Requirement"
+          },
+          {
+            "from": "Entity",
+            "to": "Constraint"
+          },
+          {
+            "from": "Entity",
+            "to": "Criterion"
+          },
+          {
+            "from": "Entity",
+            "to": "APIContract"
+          },
+          {
+            "from": "Entity",
+            "to": "Decision"
+          },
+          {
+            "from": "Entity",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "Requirement"
+          },
+          {
+            "from": "Bug",
+            "to": "Constraint"
+          },
+          {
+            "from": "Bug",
+            "to": "Criterion"
+          },
+          {
+            "from": "Bug",
+            "to": "TestScenario"
+          },
+          {
+            "from": "Bug",
+            "to": "APIContract"
+          },
+          {
+            "from": "Bug",
+            "to": "Decision"
+          }
+        ],
+        "overlaps": [
+          {
+            "from": "Entity",
+            "to": "Entity"
+          }
+        ],
+        "belongs_to": [
+          {
+            "from": "Entity",
+            "to": "Entity"
+          },
+          {
+            "from": "Entity",
+            "to": "Bug"
+          },
+          {
+            "from": "Requirement",
+            "to": "Entity"
+          },
+          {
+            "from": "Constraint",
+            "to": "Entity"
+          },
+          {
+            "from": "Criterion",
+            "to": "Entity"
+          },
+          {
+            "from": "TestScenario",
+            "to": "Entity"
+          },
+          {
+            "from": "APIContract",
+            "to": "Entity"
+          },
+          {
+            "from": "Decision",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "Entity"
+          },
+          {
+            "from": "Alternative",
+            "to": "Entity"
+          },
+          {
+            "from": "Assumption",
+            "to": "Entity"
+          },
+          {
+            "from": "Learning",
+            "to": "Entity"
+          }
+        ],
+        "originates_from": [
+          {
+            "from": "Bug",
+            "to": "Entity"
+          }
+        ],
+        "covered_by": [
+          {
+            "from": "Bug",
+            "to": "Entity"
+          },
+          {
+            "from": "Bug",
+            "to": "TestScenario"
+          }
+        ]
+      },
+      "graph_layers": [
+        "canonical",
+        "working",
+        "all"
+      ],
+      "related_context": {
+        "directions": [
+          "both",
+          "incoming",
+          "outgoing"
+        ],
+        "max_depths": [
+          1,
+          2
+        ]
+      },
+      "similarity": {
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "cognitive_outcome_types": [
+        "relation_created",
+        "candidate_created",
+        "formal_decision_promoted",
+        "existing_decision_linked",
+        "contradiction_dismissed",
+        "no_action_required"
+      ],
+      "cypher_read_subset": {
+        "root_operations": [
+          "MATCH",
+          "OPTIONAL",
+          "UNWIND",
+          "WITH",
+          "RETURN"
+        ],
+        "clauses": [
+          "MATCH",
+          "WHERE",
+          "RETURN",
+          "WITH",
+          "ORDER",
+          "BY",
+          "LIMIT",
+          "UNWIND",
+          "OPTIONAL",
+          "UNION",
+          "AS",
+          "AND",
+          "OR",
+          "NOT",
+          "IN",
+          "IS",
+          "NULL",
+          "TRUE",
+          "FALSE",
+          "CONTAINS",
+          "STARTS",
+          "ENDS",
+          "DISTINCT",
+          "COUNT",
+          "COLLECT",
+          "SUM",
+          "AVG",
+          "MIN",
+          "MAX",
+          "CASE",
+          "WHEN",
+          "THEN",
+          "ELSE",
+          "END",
+          "DESC",
+          "ASC"
+        ],
+        "unsupported_error": "unsupported_operation",
+        "write_error": "unsafe_cypher"
+      }
+    }
+  },
+  "envelope": {
+    "outcome": "success",
+    "data": {
+      "schema_version": "0.8.0",
+      "stable_node_types": [
+        {
+          "name": "Decision",
+          "stable": true
+        },
+        {
+          "name": "Criterion",
+          "stable": true
+        },
+        {
+          "name": "Constraint",
+          "stable": true
+        },
+        {
+          "name": "Assumption",
+          "stable": true
+        },
+        {
+          "name": "Requirement",
+          "stable": true
+        },
+        {
+          "name": "Entity",
+          "stable": true
+        },
+        {
+          "name": "APIContract",
+          "stable": true
+        },
+        {
+          "name": "TestScenario",
+          "stable": true
+        },
+        {
+          "name": "Bug",
+          "stable": true
+        },
+        {
+          "name": "Learning",
+          "stable": true
+        },
+        {
+          "name": "Alternative",
+          "stable": true
+        }
+      ],
+      "stable_rel_types": [
+        {
+          "name": "supersedes",
+          "from": "Decision",
+          "to": "Decision"
+        },
+        {
+          "name": "contradicts",
+          "from": "Decision",
+          "to": "Decision"
+        },
+        {
+          "name": "derives_from",
+          "from": "Decision",
+          "to": "Requirement"
+        },
+        {
+          "name": "relates_to",
+          "from": "Decision",
+          "to": "Alternative"
+        },
+        {
+          "name": "mentions",
+          "from": "Decision",
+          "to": "Entity"
+        },
+        {
+          "name": "depends_on",
+          "from": "Decision",
+          "to": "Decision"
+        },
+        {
+          "name": "violates",
+          "from": "Bug",
+          "to": "Constraint"
+        },
+        {
+          "name": "implements",
+          "from": "APIContract",
+          "to": "Requirement"
+        },
+        {
+          "name": "tests",
+          "from": "TestScenario",
+          "to": "Criterion"
+        },
+        {
+          "name": "validates",
+          "from": "Learning",
+          "to": "Bug"
+        },
+        {
+          "name": "precedes",
+          "from": "Entity",
+          "to": "Entity"
+        },
+        {
+          "name": "precedes",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Entity",
+              "to": "Bug"
+            },
+            {
+              "from": "Bug",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "Bug"
+            }
+          ]
+        },
+        {
+          "name": "implements",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "APIContract",
+              "to": "Constraint"
+            }
+          ]
+        },
+        {
+          "name": "supports",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Entity",
+              "to": "Requirement"
+            },
+            {
+              "from": "Entity",
+              "to": "Constraint"
+            },
+            {
+              "from": "Entity",
+              "to": "Criterion"
+            },
+            {
+              "from": "Entity",
+              "to": "APIContract"
+            },
+            {
+              "from": "Entity",
+              "to": "Decision"
+            },
+            {
+              "from": "Entity",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "Requirement"
+            },
+            {
+              "from": "Bug",
+              "to": "Constraint"
+            },
+            {
+              "from": "Bug",
+              "to": "Criterion"
+            },
+            {
+              "from": "Bug",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Bug",
+              "to": "APIContract"
+            },
+            {
+              "from": "Bug",
+              "to": "Decision"
+            }
+          ]
+        },
+        {
+          "name": "derives_from",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Constraint",
+              "to": "Requirement"
+            },
+            {
+              "from": "Requirement",
+              "to": "Requirement"
+            },
+            {
+              "from": "Decision",
+              "to": "Constraint"
+            },
+            {
+              "from": "Constraint",
+              "to": "Constraint"
+            },
+            {
+              "from": "Requirement",
+              "to": "Constraint"
+            }
+          ]
+        },
+        {
+          "name": "violates",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Bug",
+              "to": "Requirement"
+            },
+            {
+              "from": "Bug",
+              "to": "Criterion"
+            }
+          ]
+        },
+        {
+          "name": "overlaps",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Entity",
+              "to": "Entity"
+            }
+          ]
+        },
+        {
+          "name": "supersedes",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Decision",
+              "to": "Decision"
+            },
+            {
+              "from": "Criterion",
+              "to": "Criterion"
+            },
+            {
+              "from": "Constraint",
+              "to": "Constraint"
+            },
+            {
+              "from": "Assumption",
+              "to": "Assumption"
+            },
+            {
+              "from": "Requirement",
+              "to": "Requirement"
+            },
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "APIContract",
+              "to": "APIContract"
+            },
+            {
+              "from": "TestScenario",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Bug",
+              "to": "Bug"
+            },
+            {
+              "from": "Learning",
+              "to": "Learning"
+            },
+            {
+              "from": "Alternative",
+              "to": "Alternative"
+            }
+          ]
+        },
+        {
+          "name": "relates_to",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Decision",
+              "to": "Entity"
+            },
+            {
+              "from": "Decision",
+              "to": "Bug"
+            },
+            {
+              "from": "Learning",
+              "to": "Entity"
+            },
+            {
+              "from": "Learning",
+              "to": "Decision"
+            },
+            {
+              "from": "Learning",
+              "to": "Requirement"
+            },
+            {
+              "from": "Learning",
+              "to": "Constraint"
+            },
+            {
+              "from": "Learning",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Learning",
+              "to": "APIContract"
+            },
+            {
+              "from": "Learning",
+              "to": "Criterion"
+            },
+            {
+              "from": "Alternative",
+              "to": "Entity"
+            },
+            {
+              "from": "Alternative",
+              "to": "Decision"
+            },
+            {
+              "from": "Alternative",
+              "to": "Requirement"
+            },
+            {
+              "from": "Alternative",
+              "to": "Constraint"
+            },
+            {
+              "from": "Alternative",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Alternative",
+              "to": "APIContract"
+            },
+            {
+              "from": "Alternative",
+              "to": "Criterion"
+            },
+            {
+              "from": "Assumption",
+              "to": "Entity"
+            },
+            {
+              "from": "Assumption",
+              "to": "Decision"
+            },
+            {
+              "from": "Assumption",
+              "to": "Requirement"
+            },
+            {
+              "from": "Assumption",
+              "to": "Constraint"
+            },
+            {
+              "from": "Assumption",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Assumption",
+              "to": "APIContract"
+            },
+            {
+              "from": "Assumption",
+              "to": "Criterion"
+            }
+          ]
+        },
+        {
+          "name": "belongs_to",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Entity",
+              "to": "Bug"
+            },
+            {
+              "from": "Requirement",
+              "to": "Entity"
+            },
+            {
+              "from": "Constraint",
+              "to": "Entity"
+            },
+            {
+              "from": "Criterion",
+              "to": "Entity"
+            },
+            {
+              "from": "TestScenario",
+              "to": "Entity"
+            },
+            {
+              "from": "APIContract",
+              "to": "Entity"
+            },
+            {
+              "from": "Decision",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "Entity"
+            },
+            {
+              "from": "Alternative",
+              "to": "Entity"
+            },
+            {
+              "from": "Assumption",
+              "to": "Entity"
+            },
+            {
+              "from": "Learning",
+              "to": "Entity"
+            }
+          ]
+        },
+        {
+          "name": "originates_from",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Bug",
+              "to": "Entity"
+            }
+          ]
+        },
+        {
+          "name": "covered_by",
+          "from": "multiple",
+          "to": "multiple",
+          "multi": true,
+          "pairs": [
+            {
+              "from": "Bug",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "TestScenario"
+            }
+          ]
+        }
+      ],
+      "vector_indexes": [
+        {
+          "node_type": "Decision",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "decision_embedding_idx"
+        },
+        {
+          "node_type": "Criterion",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "criterion_embedding_idx"
+        },
+        {
+          "node_type": "Constraint",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "constraint_embedding_idx"
+        },
+        {
+          "node_type": "Requirement",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "requirement_embedding_idx"
+        },
+        {
+          "node_type": "Entity",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "entity_embedding_idx"
+        },
+        {
+          "node_type": "APIContract",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "apicontract_embedding_idx"
+        },
+        {
+          "node_type": "TestScenario",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "testscenario_embedding_idx"
+        },
+        {
+          "node_type": "Bug",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "bug_embedding_idx"
+        },
+        {
+          "node_type": "Learning",
+          "attribute": "embedding",
+          "dimension": 384,
+          "similarity_metric": "cosine",
+          "index_name": "learning_embedding_idx"
+        }
+      ],
+      "label_properties": {
+        "Decision": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Criterion": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Constraint": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Assumption": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": false
+        },
+        "Requirement": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Entity": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "APIContract": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "TestScenario": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Bug": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Learning": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": true
+        },
+        "Alternative": {
+          "stable_properties": [
+            "id",
+            "title",
+            "content",
+            "context",
+            "justification",
+            "source_artifact_ref",
+            "graph_layer",
+            "maturity_status",
+            "source_session_id",
+            "created_at",
+            "created_by_agent",
+            "source_confidence",
+            "relevance_score",
+            "pre_cancellation_relevance_score",
+            "query_hits",
+            "last_queried_at",
+            "last_recomputed_at",
+            "priority_boost",
+            "superseded_by",
+            "superseded_at",
+            "revocation_reason",
+            "human_curated",
+            "generation",
+            "source_span_start",
+            "source_span_end",
+            "source_span_quote",
+            "extraction_model_id",
+            "extraction_prompt_hash",
+            "source_content_hash",
+            "attestation_count",
+            "kind_of",
+            "last_attested_at",
+            "severity",
+            "source_status",
+            "source_created_at",
+            "source_updated_at",
+            "resolved_at",
+            "investigation_receipt_id",
+            "source_ref",
+            "attestor_actor_id",
+            "declared_revision",
+            "workspace_state_id",
+            "code_path",
+            "symbol_qualified_name",
+            "symbol_kind",
+            "selector_kind",
+            "selector_fingerprint",
+            "resolution_state"
+          ],
+          "has_vector_index": false
+        }
+      },
+      "query_contract": {
+        "version": "1.0",
+        "typed_artifact_kinds": [
+          "spec",
+          "card"
+        ],
+        "node_types": [
+          "Decision",
+          "Criterion",
+          "Constraint",
+          "Assumption",
+          "Requirement",
+          "Entity",
+          "APIContract",
+          "TestScenario",
+          "Bug",
+          "Learning",
+          "Alternative"
+        ],
+        "edge_types": [
+          "supersedes",
+          "contradicts",
+          "derives_from",
+          "relates_to",
+          "mentions",
+          "depends_on",
+          "violates",
+          "implements",
+          "tests",
+          "validates",
+          "precedes",
+          "supports",
+          "overlaps",
+          "belongs_to",
+          "originates_from",
+          "covered_by"
+        ],
+        "edge_endpoints": {
+          "supersedes": [
+            {
+              "from": "Decision",
+              "to": "Decision"
+            },
+            {
+              "from": "Criterion",
+              "to": "Criterion"
+            },
+            {
+              "from": "Constraint",
+              "to": "Constraint"
+            },
+            {
+              "from": "Assumption",
+              "to": "Assumption"
+            },
+            {
+              "from": "Requirement",
+              "to": "Requirement"
+            },
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "APIContract",
+              "to": "APIContract"
+            },
+            {
+              "from": "TestScenario",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Bug",
+              "to": "Bug"
+            },
+            {
+              "from": "Learning",
+              "to": "Learning"
+            },
+            {
+              "from": "Alternative",
+              "to": "Alternative"
+            }
+          ],
+          "contradicts": [
+            {
+              "from": "Decision",
+              "to": "Decision"
+            }
+          ],
+          "derives_from": [
+            {
+              "from": "Decision",
+              "to": "Requirement"
+            },
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Constraint",
+              "to": "Requirement"
+            },
+            {
+              "from": "Requirement",
+              "to": "Requirement"
+            },
+            {
+              "from": "Decision",
+              "to": "Constraint"
+            },
+            {
+              "from": "Constraint",
+              "to": "Constraint"
+            },
+            {
+              "from": "Requirement",
+              "to": "Constraint"
+            }
+          ],
+          "relates_to": [
+            {
+              "from": "Decision",
+              "to": "Alternative"
+            },
+            {
+              "from": "Decision",
+              "to": "Entity"
+            },
+            {
+              "from": "Decision",
+              "to": "Bug"
+            },
+            {
+              "from": "Learning",
+              "to": "Entity"
+            },
+            {
+              "from": "Learning",
+              "to": "Decision"
+            },
+            {
+              "from": "Learning",
+              "to": "Requirement"
+            },
+            {
+              "from": "Learning",
+              "to": "Constraint"
+            },
+            {
+              "from": "Learning",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Learning",
+              "to": "APIContract"
+            },
+            {
+              "from": "Learning",
+              "to": "Criterion"
+            },
+            {
+              "from": "Alternative",
+              "to": "Entity"
+            },
+            {
+              "from": "Alternative",
+              "to": "Decision"
+            },
+            {
+              "from": "Alternative",
+              "to": "Requirement"
+            },
+            {
+              "from": "Alternative",
+              "to": "Constraint"
+            },
+            {
+              "from": "Alternative",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Alternative",
+              "to": "APIContract"
+            },
+            {
+              "from": "Alternative",
+              "to": "Criterion"
+            },
+            {
+              "from": "Assumption",
+              "to": "Entity"
+            },
+            {
+              "from": "Assumption",
+              "to": "Decision"
+            },
+            {
+              "from": "Assumption",
+              "to": "Requirement"
+            },
+            {
+              "from": "Assumption",
+              "to": "Constraint"
+            },
+            {
+              "from": "Assumption",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Assumption",
+              "to": "APIContract"
+            },
+            {
+              "from": "Assumption",
+              "to": "Criterion"
+            }
+          ],
+          "mentions": [
+            {
+              "from": "Decision",
+              "to": "Entity"
+            }
+          ],
+          "depends_on": [
+            {
+              "from": "Decision",
+              "to": "Decision"
+            }
+          ],
+          "violates": [
+            {
+              "from": "Bug",
+              "to": "Constraint"
+            },
+            {
+              "from": "Bug",
+              "to": "Requirement"
+            },
+            {
+              "from": "Bug",
+              "to": "Criterion"
+            }
+          ],
+          "implements": [
+            {
+              "from": "APIContract",
+              "to": "Requirement"
+            },
+            {
+              "from": "APIContract",
+              "to": "Constraint"
+            }
+          ],
+          "tests": [
+            {
+              "from": "TestScenario",
+              "to": "Criterion"
+            }
+          ],
+          "validates": [
+            {
+              "from": "Learning",
+              "to": "Bug"
+            }
+          ],
+          "precedes": [
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Entity",
+              "to": "Bug"
+            },
+            {
+              "from": "Bug",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "Bug"
+            }
+          ],
+          "supports": [
+            {
+              "from": "Entity",
+              "to": "Requirement"
+            },
+            {
+              "from": "Entity",
+              "to": "Constraint"
+            },
+            {
+              "from": "Entity",
+              "to": "Criterion"
+            },
+            {
+              "from": "Entity",
+              "to": "APIContract"
+            },
+            {
+              "from": "Entity",
+              "to": "Decision"
+            },
+            {
+              "from": "Entity",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "Requirement"
+            },
+            {
+              "from": "Bug",
+              "to": "Constraint"
+            },
+            {
+              "from": "Bug",
+              "to": "Criterion"
+            },
+            {
+              "from": "Bug",
+              "to": "TestScenario"
+            },
+            {
+              "from": "Bug",
+              "to": "APIContract"
+            },
+            {
+              "from": "Bug",
+              "to": "Decision"
+            }
+          ],
+          "overlaps": [
+            {
+              "from": "Entity",
+              "to": "Entity"
+            }
+          ],
+          "belongs_to": [
+            {
+              "from": "Entity",
+              "to": "Entity"
+            },
+            {
+              "from": "Entity",
+              "to": "Bug"
+            },
+            {
+              "from": "Requirement",
+              "to": "Entity"
+            },
+            {
+              "from": "Constraint",
+              "to": "Entity"
+            },
+            {
+              "from": "Criterion",
+              "to": "Entity"
+            },
+            {
+              "from": "TestScenario",
+              "to": "Entity"
+            },
+            {
+              "from": "APIContract",
+              "to": "Entity"
+            },
+            {
+              "from": "Decision",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "Entity"
+            },
+            {
+              "from": "Alternative",
+              "to": "Entity"
+            },
+            {
+              "from": "Assumption",
+              "to": "Entity"
+            },
+            {
+              "from": "Learning",
+              "to": "Entity"
+            }
+          ],
+          "originates_from": [
+            {
+              "from": "Bug",
+              "to": "Entity"
+            }
+          ],
+          "covered_by": [
+            {
+              "from": "Bug",
+              "to": "Entity"
+            },
+            {
+              "from": "Bug",
+              "to": "TestScenario"
+            }
+          ]
+        },
+        "graph_layers": [
+          "canonical",
+          "working",
+          "all"
+        ],
+        "related_context": {
+          "directions": [
+            "both",
+            "incoming",
+            "outgoing"
+          ],
+          "max_depths": [
+            1,
+            2
+          ]
+        },
+        "similarity": {
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "cognitive_outcome_types": [
+          "relation_created",
+          "candidate_created",
+          "formal_decision_promoted",
+          "existing_decision_linked",
+          "contradiction_dismissed",
+          "no_action_required"
+        ],
+        "cypher_read_subset": {
+          "root_operations": [
+            "MATCH",
+            "OPTIONAL",
+            "UNWIND",
+            "WITH",
+            "RETURN"
+          ],
+          "clauses": [
+            "MATCH",
+            "WHERE",
+            "RETURN",
+            "WITH",
+            "ORDER",
+            "BY",
+            "LIMIT",
+            "UNWIND",
+            "OPTIONAL",
+            "UNION",
+            "AS",
+            "AND",
+            "OR",
+            "NOT",
+            "IN",
+            "IS",
+            "NULL",
+            "TRUE",
+            "FALSE",
+            "CONTAINS",
+            "STARTS",
+            "ENDS",
+            "DISTINCT",
+            "COUNT",
+            "COLLECT",
+            "SUM",
+            "AVG",
+            "MIN",
+            "MAX",
+            "CASE",
+            "WHEN",
+            "THEN",
+            "ELSE",
+            "END",
+            "DESC",
+            "ASC"
+          ],
+          "unsupported_error": "unsupported_operation",
+          "write_error": "unsafe_cypher"
+        }
+      }
+    },
+    "error_code": null,
+    "message": null,
+    "retryable": false,
+    "next_action": null,
+    "meta": {
+      "contract": "okto-pulse.mcp-tool-outcome",
+      "contract_version": "2.0",
+      "tool": "okto_pulse_kg_schema_info"
+    }
+  }
+}

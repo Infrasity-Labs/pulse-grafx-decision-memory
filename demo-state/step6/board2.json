@@ -1,0 +1,161 @@
+{
+  "board_id": "a0fc2197-7e84-40a6-8483-2f1354a6b344",
+  "anchor_spec_id": "87a829b5-96f4-450a-9f95-93b521d03836",
+  "health_after_create": [
+    {
+      "t_s": 0,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 6,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 11,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 16,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 21,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 26,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 31,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 37,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "available",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 42,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "available",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 47,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "available",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 52,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "available",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 57,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "available",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 63,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "available",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 68,
+      "graph_state": "healthy",
+      "overall_state": "healthy",
+      "metric_status": "available",
+      "queue_depth": 0
+    }
+  ],
+  "commit": {
+    "outcome": "success",
+    "data": {
+      "session_id": "kgses_152639fba67b421d",
+      "status": "committed",
+      "nodes_added": 3,
+      "nodes_updated": 0,
+      "nodes_superseded": 0,
+      "edges_added": 0,
+      "nodes_merged": 0,
+      "nodes_noop": 0,
+      "processed_candidates": 3,
+      "merge_audit_items": [],
+      "connectivity": {
+        "passed": true,
+        "violations": [],
+        "allowlisted_roots": [
+          "health-endpoint",
+          "iso-dates",
+          "page-size-cap"
+        ],
+        "materializable_edges": [],
+        "outcome": "allowlisted",
+        "advisories": [],
+        "checked_nodes": 3,
+        "enforced": true,
+        "kg_health_state": "healthy"
+      },
+      "committed_at": "2026-10-29T06:34:10.404364Z"
+    },
+    "error_code": null,
+    "message": null,
+    "retryable": false,
+    "next_action": null,
+    "meta": {
+      "contract": "okto-pulse.mcp-tool-outcome",
+      "contract_version": "2.0",
+      "tool": "okto_pulse_kg_commit_consolidation"
+    }
+  },
+  "decision_nodes": [
+    [
+      "decision_f27dbe33e3fb775da1eea1a3",
+      "Every service exposes GET /healthz that returns status ok",
+      "final_report:87a829b5-96f4-450a-9f95-93b521d03836:decision:health-endpoint"
+    ],
+    [
+      "decision_913079be8b6c98cbebc8d6cb",
+      "API dates are ISO 8601 strings in UTC",
+      "final_report:87a829b5-96f4-450a-9f95-93b521d03836:decision:iso-dates"
+    ],
+    [
+      "decision_12cc54e0eb93efd4854c4cba",
+      "List endpoints cap the page size at 100 items",
+      "final_report:87a829b5-96f4-450a-9f95-93b521d03836:decision:page-size-cap"
+    ]
+  ]
+}

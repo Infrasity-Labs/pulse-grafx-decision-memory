@@ -1,0 +1,22 @@
+{
+  "note": "From the first Recorder attempt (a prompt omitted candidate_id on edge candidates, so steps 1 to 5 were re-run from a fresh data home). Kept because the commit reported a health state. That attempt committed right after the board was created.",
+  "kg_health_state_in_commit_response": "recovery_needed_graph_readable",
+  "edge_candidate_errors": [
+    {
+      "code": "invalid_candidate",
+      "message": "validation failed: candidate.candidate_id: Field required"
+    },
+    {
+      "code": "invalid_candidate",
+      "message": "validation failed: candidate.candidate_id: Field required"
+    },
+    {
+      "code": "invalid_candidate",
+      "message": "validation failed: candidate.candidate_id: Field required"
+    },
+    {
+      "code": "invalid_candidate",
+      "message": "validation failed: candidate.candidate_id: Field required"
+    }
+  ]
+}

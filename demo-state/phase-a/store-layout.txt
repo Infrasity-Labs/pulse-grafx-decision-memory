@@ -1,0 +1,52 @@
+# Board store layout, Pulse 0.4.2 + Grafx 0.0.8, fresh init, machine-local paths removed
+# data home = <DATA_DIR>
+## boards/<board_id>/ (depth 3, lock files omitted, index/ summarised)
+boards
+boards/<board_id>
+boards/<board_id>/grafx
+boards/<board_id>/grafx/generation-1
+boards/<board_id>/graph_backend_binding.json
+
+index/ files: 408
+wal/ files: 1
+
+## global/
+global
+global/grafx
+global/grafx/generation-1
+global/grafx/generation-1/bootstrap
+global/grafx/generation-1/catalog.dat
+global/grafx/generation-1/control
+global/grafx/generation-1/grafx.meta
+global/grafx/generation-1/heap.dat
+global/grafx/generation-1/index
+global/grafx/generation-1/wal
+global/graph_backend_binding.json
+
+## sizes (du -sh)
+4.0K	boards/<board_id>/grafx/generation-1/bootstrap
+64K	boards/<board_id>/grafx/generation-1/catalog.dat
+48K	boards/<board_id>/grafx/generation-1/control
+8.0K	boards/<board_id>/grafx/generation-1/grafx.meta
+16K	boards/<board_id>/grafx/generation-1/heap.dat
+202M	boards/<board_id>/grafx/generation-1/index
+2.1M	boards/<board_id>/grafx/generation-1/wal
+4.0K	global/grafx/generation-1/bootstrap
+16K	global/grafx/generation-1/catalog.dat
+48K	global/grafx/generation-1/control
+8.0K	global/grafx/generation-1/grafx.meta
+8.0K	global/grafx/generation-1/heap.dat
+23M	global/grafx/generation-1/index
+40K	global/grafx/generation-1/wal
+
+## graph_backend_binding.json (board)
+{
+  "backend": "grafx",
+  "binding_format": "okto-pulse-community-graph-binding/1",
+  "binding_sha256": "00d01bcdd927912ec7911051e1b2a6910cca8543065aedccb00820244157fab6",
+  "generation": "generation-1",
+  "page_size": 8192,
+  "physical_path": "boards/<board_id>/grafx/generation-1",
+  "scope": "board",
+  "scope_id": "<board_id>"
+}

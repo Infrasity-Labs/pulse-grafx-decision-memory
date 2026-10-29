@@ -1,0 +1,30 @@
+{"ev": "start", "i": 1, "slug": "burst-w2-0001", "t": 1793256443.629946}
+{"ev": "ack", "i": 1, "slug": "burst-w2-0001", "committed_at": "2026-10-29T06:47:24.005683Z", "t": 1793256444.84676}
+{"ev": "start", "i": 2, "slug": "burst-w2-0002", "t": 1793256444.913321}
+{"ev": "ack", "i": 2, "slug": "burst-w2-0002", "committed_at": "2026-10-29T06:47:25.118370Z", "t": 1793256445.4904718}
+{"ev": "retry", "i": 3, "slug": "burst-w2-0003", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793256445.760479}
+{"ev": "retry", "i": 3, "slug": "burst-w2-0003", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 2, "t": 1793256446.5296519}
+{"ev": "start", "i": 3, "slug": "burst-w2-0003", "t": 1793256447.358913}
+{"ev": "ack", "i": 3, "slug": "burst-w2-0003", "committed_at": "2026-10-29T06:47:27.597866Z", "t": 1793256447.9652128}
+{"ev": "start", "i": 4, "slug": "burst-w2-0004", "t": 1793256448.0273962}
+{"ev": "ack", "i": 4, "slug": "burst-w2-0004", "committed_at": "2026-10-29T06:47:28.233214Z", "t": 1793256448.662724}
+{"ev": "start", "i": 5, "slug": "burst-w2-0005", "t": 1793256448.795229}
+{"ev": "ack", "i": 5, "slug": "burst-w2-0005", "committed_at": "2026-10-29T06:47:29.093661Z", "t": 1793256449.697773}
+{"ev": "retry", "i": 6, "slug": "burst-w2-0006", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793256449.9579148}
+{"ev": "start", "i": 6, "slug": "burst-w2-0006", "t": 1793256450.6829069}
+{"ev": "ack", "i": 6, "slug": "burst-w2-0006", "committed_at": "2026-10-29T06:47:31.292121Z", "t": 1793256452.104908}
+{"ev": "start", "i": 7, "slug": "burst-w2-0007", "t": 1793256452.2048461}
+{"ev": "ack", "i": 7, "slug": "burst-w2-0007", "committed_at": "2026-10-29T06:47:32.599979Z", "t": 1793256453.121411}
+{"ev": "start", "i": 8, "slug": "burst-w2-0008", "t": 1793256453.22108}
+{"ev": "ack", "i": 8, "slug": "burst-w2-0008", "committed_at": "2026-10-29T06:47:33.686298Z", "t": 1793256454.205579}
+{"ev": "retry", "i": 9, "slug": "burst-w2-0009", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793256454.473386}
+{"ev": "start", "i": 9, "slug": "burst-w2-0009", "t": 1793256455.2141051}
+{"ev": "ack", "i": 9, "slug": "burst-w2-0009", "committed_at": "2026-10-29T06:47:35.445910Z", "t": 1793256455.8271759}
+{"ev": "retry", "i": 10, "slug": "burst-w2-0010", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793256456.092716}
+{"ev": "retry", "i": 10, "slug": "burst-w2-0010", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 2, "t": 1793256456.8624341}
+{"ev": "retry", "i": 10, "slug": "burst-w2-0010", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 3, "t": 1793256457.6286862}
+{"ev": "start", "i": 10, "slug": "burst-w2-0010", "t": 1793256458.4273899}
+{"ev": "ack", "i": 10, "slug": "burst-w2-0010", "committed_at": "2026-10-29T06:47:38.696821Z", "t": 1793256459.0771918}
+{"ev": "start", "i": 11, "slug": "burst-w2-0011", "t": 1793256459.1411772}
+{"ev": "ack", "i": 11, "slug": "burst-w2-0011", "committed_at": "2026-10-29T06:47:39.697934Z", "t": 1793256460.072049}
+{"ev": "start", "i": 12, "slug": "burst-w2-0012", "t": 1793256460.139362}

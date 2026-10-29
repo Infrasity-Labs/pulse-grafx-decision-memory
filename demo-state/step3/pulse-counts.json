@@ -1,0 +1,36 @@
+{
+  "nodes_by_type": [
+    [
+      "BoardMeta",
+      1
+    ],
+    [
+      "Decision",
+      12
+    ],
+    [
+      "Entity",
+      2
+    ]
+  ],
+  "edges_by_type": [
+    [
+      "depends_on__Decision__Decision",
+      3
+    ],
+    [
+      "belongs_to__Entity__Entity",
+      1
+    ]
+  ],
+  "nodes_by_type_canonical_only": [
+    [
+      "Decision",
+      12
+    ],
+    [
+      "Entity",
+      1
+    ]
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "second_board_id": "a0fc2197-7e84-40a6-8483-2f1354a6b344",
+  "queries": [
+    {
+      "query": "What is the largest number of items a list endpoint may return in one page?",
+      "expected_slug": "page-size-cap",
+      "attempts": 2,
+      "seconds_until_result_or_timeout": 5.5,
+      "result_all_boards": {
+        "outcome": "success",
+        "data": {
+          "results": [
+            {
+              "board_id": "a0fc2197-7e84-40a6-8483-2f1354a6b344",
+              "id": "decision_12cc54e0eb93efd4854c4cba",
+              "title": "List endpoints cap the page size at 100 items",
+              "similarity": 0.6963012039348028,
+              "graph_layer": "canonical"
+            },
+            {
+              "board_id": "8d5c16c0-fc18-4266-9f8c-ec1903c80a18",
+              "id": "decision_c7b3b3fe413ed1dfeb98d2f4",
+              "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+              "similarity": 0.37530219821529126,
+              "graph_layer": "canonical"
+            }
+          ],
+          "count": 2,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      },
+      "top_board_is_second_board": true,
+      "top_title": "List endpoints cap the page size at 100 items",
+      "expected_title": "List endpoints cap the page size at 100 items",
+      "top_is_expected": true,
+      "result_restricted_to_first_board": {
+        "outcome": "success",
+        "data": {
+          "results": [
+            {
+              "board_id": "8d5c16c0-fc18-4266-9f8c-ec1903c80a18",
+              "id": "decision_c7b3b3fe413ed1dfeb98d2f4",
+              "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+              "similarity": 0.37530219821529126,
+              "graph_layer": "canonical"
+            }
+          ],
+          "count": 1,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      }
+    },
+    {
+      "query": "How can a monitor check that a service is alive?",
+      "expected_slug": "health-endpoint",
+      "attempts": 1,
+      "seconds_until_result_or_timeout": 0.3,
+      "result_all_boards": {
+        "outcome": "success",
+        "data": {
+          "results": [
+            {
+              "board_id": "a0fc2197-7e84-40a6-8483-2f1354a6b344",
+              "id": "decision_f27dbe33e3fb775da1eea1a3",
+              "title": "Every service exposes GET /healthz that returns status ok",
+              "similarity": 0.31243689207052594,
+              "graph_layer": "canonical"
+            }
+          ],
+          "count": 1,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      },
+      "top_board_is_second_board": true,
+      "top_title": "Every service exposes GET /healthz that returns status ok",
+      "expected_title": "Every service exposes GET /healthz that returns status ok",
+      "top_is_expected": true,
+      "result_restricted_to_first_board": {
+        "outcome": "success",
+        "data": {
+          "results": [],
+          "count": 0,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      }
+    }
+  ],
+  "recaller_first_board_only_view": {
+    "outcome": "success",
+    "data": {
+      "results": [
+        {
+          "board_id": "8d5c16c0-fc18-4266-9f8c-ec1903c80a18",
+          "id": "decision_c7b3b3fe413ed1dfeb98d2f4",
+          "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+          "similarity": 0.37530219821529126,
+          "graph_layer": "canonical"
+        }
+      ],
+      "count": 1,
+      "applied_graph_layer": "canonical"
+    },
+    "error_code": null,
+    "message": null,
+    "retryable": false,
+    "next_action": null,
+    "meta": {
+      "contract": "okto-pulse.mcp-tool-outcome",
+      "contract_version": "2.0",
+      "tool": "okto_pulse_kg_query_global"
+    }
+  },
+  "first_board_health_discovery_state": "healthy",
+  "first_board_global_outbox": 0
+}

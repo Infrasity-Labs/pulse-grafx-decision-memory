@@ -1,0 +1,52 @@
+{
+  "command": "capabilities",
+  "commands": [
+    "capabilities",
+    "catalogs",
+    "control downgrade",
+    "indexes",
+    "ledger export",
+    "ledger inspect",
+    "ledger list",
+    "metrics",
+    "quarantine inspect",
+    "quarantine inventory",
+    "quarantine list",
+    "quarantine read",
+    "query",
+    "recovery",
+    "schema",
+    "search hybrid",
+    "search text",
+    "search vector",
+    "status",
+    "verify",
+    "workspace resolve"
+  ],
+  "exit_code": 0,
+  "path": "",
+  "result": "ok",
+  "schema_version": 1,
+  "scope": "build_cli_contracts_not_store_activation",
+  "search": {
+    "hybrid": "rrf",
+    "max_k": 1000,
+    "partial_results": false,
+    "text": "bm25",
+    "vector": "space_metric",
+    "vector_owner_selection": {
+      "table": "optional_if_unique",
+      "table_kind": [
+        "node",
+        "rel"
+      ]
+    }
+  },
+  "transactions": {
+    "concurrent_readers": true,
+    "concurrent_writers": true,
+    "isolation": "snapshot_occ",
+    "scope": "single_store"
+  },
+  "version": "0.0.8"
+}

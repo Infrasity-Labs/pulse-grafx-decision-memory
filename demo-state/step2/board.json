@@ -1,0 +1,110 @@
+{
+  "board_id": "8d5c16c0-fc18-4266-9f8c-ec1903c80a18",
+  "board_name": "RealWorld API Decisions",
+  "anchor_spec_id": "966a4578-acae-4179-a83d-60f67721a15f",
+  "anchor_spec_status": "draft",
+  "agents": [
+    {
+      "role": "MAINTAINER",
+      "agent_id": "d07f169c-1c30-4bed-b4a1-ec5c1a314582",
+      "name": "Maintainer (demo)",
+      "preset": "Full Control",
+      "preset_id": "2b351c58-0011-4347-83eb-4510cb2b8721",
+      "board_grant_status": "ok"
+    },
+    {
+      "role": "RECORDER",
+      "agent_id": "facea429-906c-419d-bd80-d21a384ed451",
+      "name": "Recorder (demo)",
+      "preset": "Spec",
+      "preset_id": "195d24a0-89da-4e19-8aff-8c16dc79f9ee",
+      "board_grant_status": "ok"
+    },
+    {
+      "role": "RECALLER",
+      "agent_id": "6631fadc-1587-49fc-ae08-bac31e4acf6b",
+      "name": "Recaller (demo)",
+      "preset": "Reporter",
+      "preset_id": "f2bfa243-7e9d-4992-9872-fb005cdcc687",
+      "board_grant_status": "ok"
+    },
+    {
+      "role": "REVIEWER",
+      "agent_id": "a2fef30a-3ab6-473d-8f01-27eeddb94894",
+      "name": "Reviewer (demo)",
+      "preset": "Validator",
+      "preset_id": "7033e8ff-af65-4423-ae6d-56379753c9d9",
+      "board_grant_status": "ok"
+    }
+  ],
+  "grafx_folder_exists": true,
+  "grafx_folder_entries": [
+    "generation-1"
+  ],
+  "presets_available": [
+    "Executor",
+    "Full Control",
+    "QA",
+    "Reporter",
+    "Spec",
+    "Validator"
+  ],
+  "health_after_create": [
+    {
+      "t_s": 1,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 6,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 11,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 16,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 21,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 26,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 32,
+      "graph_state": "at_risk",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 37,
+      "graph_state": "healthy",
+      "overall_state": "healthy",
+      "metric_status": "available",
+      "queue_depth": 0
+    }
+  ]
+}

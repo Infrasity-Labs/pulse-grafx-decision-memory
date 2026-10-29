@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test tooling
+        run: pip install -r requirements-dev.txt
+      - name: Install okto-pulse metadata only (no dependencies)
+        run: pip install --no-deps "$(grep '^okto-pulse==' requirements.txt)"
+      - name: Compile check
+        run: python -m compileall -q scripts run_demo.py tests
+      - name: Secret, em dash and machine path scan
+        run: python scripts/scan_repo.py
+      - name: JSON and link checks
+        run: python scripts/check_links.py --external
+      - name: Unit tests on recorded outputs
+        run: python -m pytest tests -q
+      - name: Dry run of all ten steps
+        run: python run_demo.py --dry-run
