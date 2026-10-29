@@ -1,4 +1,4 @@
-# pulse-grafx-decision-memory-demo
+# Pulse + Grafx Decision Memory Demo
 
 ![Decision memory. Decisions go in once. They survive a crash, and you can read them straight from the file.](docs/hero.svg)
 
