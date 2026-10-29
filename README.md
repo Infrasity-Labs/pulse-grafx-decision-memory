@@ -59,7 +59,7 @@ Three Claude Code sessions use Okto Pulse over MCP. Pulse keeps each board graph
 ![Architecture: three Claude Code sessions use Okto Pulse over MCP; Pulse keeps each board graph in an Okto Grafx store on disk; outside tools read the stopped store](docs/architecture.svg)
 
 ```mermaid
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Helvetica, Arial, sans-serif","fontSize":"15px","primaryColor":"#ffffff","primaryTextColor":"#111827","primaryBorderColor":"#374151","lineColor":"#6b7280","secondaryColor":"#f3f4f6","secondaryTextColor":"#111827","secondaryBorderColor":"#6b7280","tertiaryColor":"#f9fafb","tertiaryTextColor":"#111827","tertiaryBorderColor":"#9ca3af","mainBkg":"#ffffff","nodeBorder":"#374151","nodeTextColor":"#111827","clusterBkg":"#f9fafb","clusterBorder":"#9ca3af","titleColor":"#111827","edgeLabelBackground":"#ffffff","textColor":"#6b7280","noteBkgColor":"#f3f4f6","noteTextColor":"#111827","noteBorderColor":"#6b7280","actorBkg":"#ffffff","actorBorder":"#374151","actorTextColor":"#111827","actorLineColor":"#9ca3af","signalColor":"#6b7280","signalTextColor":"#6b7280","labelBoxBkgColor":"#f3f4f6","labelBoxBorderColor":"#6b7280","labelTextColor":"#111827","loopTextColor":"#6b7280","sequenceNumberColor":"#ffffff","pie1":"#2563eb","pie2":"#6b7280","pie3":"#16a34a","pie4":"#d97706","pie5":"#dc2626","pie6":"#0891b2","pie7":"#4b5563","pie8":"#93c5fd","pie9":"#9ca3af","pieTitleTextSize":"20px","pieTitleTextColor":"#6b7280","pieSectionTextColor":"#ffffff","pieLegendTextColor":"#6b7280","pieStrokeColor":"#ffffff","pieStrokeWidth":"2px","pieOuterStrokeColor":"#d1d5db","pieOuterStrokeWidth":"2px","pieOpacity":"0.95"}}}%%
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Helvetica, Arial, sans-serif","fontSize":"15px","primaryColor":"#17152b","primaryTextColor":"#f5f3ff","primaryBorderColor":"#7c6cf0","lineColor":"#a79de8","secondaryColor":"#1d1a38","secondaryTextColor":"#f5f3ff","secondaryBorderColor":"#8b7cf6","tertiaryColor":"#100f1e","tertiaryTextColor":"#f5f3ff","tertiaryBorderColor":"#4a4380","mainBkg":"#17152b","nodeBorder":"#7c6cf0","nodeTextColor":"#f5f3ff","clusterBkg":"#100f1e","clusterBorder":"#4a4380","titleColor":"#c4b5fd","edgeLabelBackground":"#0d0c18","textColor":"#b3add9","noteBkgColor":"#1d1a38","noteTextColor":"#f5f3ff","noteBorderColor":"#8b7cf6","actorBkg":"#17152b","actorBorder":"#7c6cf0","actorTextColor":"#f5f3ff","actorLineColor":"#4a4380","signalColor":"#a79de8","signalTextColor":"#b3add9","labelBoxBkgColor":"#1d1a38","labelBoxBorderColor":"#4a4380","labelTextColor":"#f5f3ff","loopTextColor":"#b3add9","sequenceNumberColor":"#0a0b10","pie1":"#8b7cf6","pie2":"#c4b5fd","pie3":"#6d5ae0","pie4":"#a78bfa","pie5":"#5b3fd1","pie6":"#d8ccff","pie7":"#7c6cf0","pie8":"#9b8ce8","pie9":"#4a3aa8","pieTitleTextSize":"20px","pieTitleTextColor":"#b3add9","pieSectionTextColor":"#0a0b10","pieLegendTextColor":"#b3add9","pieStrokeColor":"#0d0c18","pieStrokeWidth":"2px","pieOuterStrokeColor":"#4a4380","pieOuterStrokeWidth":"2px","pieOpacity":"0.95"}}}%%
 flowchart TD
     subgraph SETUP["Setup"]
         direction LR
@@ -171,18 +171,53 @@ pip install -r requirements-dev.txt && python -m pytest tests -q
 
 ## The Ten Steps
 
-| # | What happens | Output |
-|---|---|---|
-| 1 | Install the pinned Pulse, confirm it pulls Grafx 0.0.8, init, start, check the embedding model | [`step1`](demo-state/step1/) |
-| 2 | Board, four identities from Pulse presets, anchor spec | [`step2`](demo-state/step2/) |
-| 3 | Recorder commits twelve decisions, each with a file and line that exist | [`step3`](demo-state/step3/) |
-| 4 | Recaller answers ten fixed questions with no history | [`step4`](demo-state/step4/) |
-| 5 | Maintainer reverses a decision, Reviewer records it | [`step5`](demo-state/step5/) |
-| 6 | Second board, Global Discovery from the first | [`step6`](demo-state/step6/) |
-| 7 | SIGKILL the server twice (open session, then a commit burst) | [`step7`](demo-state/step7/) |
-| 8 | Stop Pulse, read the stores with `oktografx` and a read-only reader | [`step8`](demo-state/step8/) |
-| 9 | Back up and restore a copy, then `verify` | [`step9`](demo-state/step9/) |
-| 10 | Build the scoreboard | [`closeout-result.json`](demo-state/closeout-result.json) |
+Each step is one command. Steps 3 to 5 hand a prompt to a Claude Code session; the rest are scripts. Placeholders such as `{{BOARD_ID}}` in a prompt are filled in at run time.
+
+| # | What happens | Run | Prompt |
+|---|---|---|---|
+| 1 | Install the pinned Pulse, confirm it pulls Grafx 0.0.8, start it, check the embedding model | `scripts/start_pulse.sh` | none |
+| 2 | Create the board, four identities from Pulse presets and the anchor spec | `scripts/setup_board.py` | none |
+| 3 | **Recorder** commits twelve decisions, each with a file and line that exist | `scripts/step03_recorder.py` | [`step3-recorder.md`](docs/prompts/step3-recorder.md) |
+| 4 | **Recaller** answers ten fixed questions with no history | `scripts/step04_recaller.py` | [`step4-recaller.md`](docs/prompts/step4-recaller.md) |
+| 5 | **Maintainer** reverses a decision, **Reviewer** records it | `scripts/step05_reversal.py` | [`step5-reviewer.md`](docs/prompts/step5-reviewer.md) |
+| 6 | Second board, Global Discovery from the first | `scripts/step06_second_board.py` | none |
+| 7 | SIGKILL the server twice: an open session, then a commit burst | `scripts/step07_crash.py` | none |
+| 8 | Stop Pulse, read the stores with `oktografx` and a read-only reader | `scripts/step08_direct_read.py` | none |
+| 9 | Back up and restore a copy, then `verify` | `scripts/step09_backup_restore.py` | none |
+| 10 | Build the scoreboard from the recorded outputs | `scripts/build_closeout.py` | none |
+
+### The Agent Prompts
+
+The three prompts are the only instructions the sessions get. Open one to see how it starts, or read the full file.
+
+<details>
+<summary><b>Step 3: Recorder</b> · <a href="docs/prompts/step3-recorder.md">full prompt</a></summary>
+
+> You are the Recorder. Read the codebase in `../../app` and record exactly twelve design decisions in the Pulse board knowledge graph, in ONE consolidation session.
+
+The prompt fixes twelve topic slugs (`auth-header-scheme`, `token-expiry`, `password-hashing`, and nine more), then tells the session to open one consolidation, add a `Decision` node per topic with a file and line, and commit once.
+
+</details>
+
+<details>
+<summary><b>Step 4: Recaller</b> · <a href="docs/prompts/step4-recaller.md">full prompt</a></summary>
+
+> You are the Recaller. You start with no history and no access to the code. Answer ten questions about a codebase using only the Pulse board knowledge graph.
+
+The ten questions are fixed in `scripts/questions.py`. At the end the session tries to open a write session, and Pulse refuses it because the identity is read only.
+
+</details>
+
+<details>
+<summary><b>Step 5: Reviewer</b> · <a href="docs/prompts/step5-reviewer.md">full prompt</a></summary>
+
+> You are the Reviewer. The Maintainer has reversed one design decision. Record the change in the Pulse board knowledge graph and report what the graph returns. Report tool results exactly as returned, including empty ones.
+
+The session reads the Maintainer's note, records the new decision as superseding the old one with a `contradicts` edge, then reports the supersedence chain and the decision history.
+
+</details>
+
+The recorded output of each step is in [`demo-state/`](demo-state/), and the run as a whole is in [`closeout-result.json`](demo-state/closeout-result.json).
 
 ## Where to Find Artifacts
 

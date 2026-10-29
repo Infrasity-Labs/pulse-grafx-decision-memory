@@ -1,80 +1,84 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560" role="img" aria-label="Architecture: three Claude Code sessions use Okto Pulse over MCP; Pulse keeps each board graph in an Okto Grafx store on disk; outside tools read the stopped store">
   <defs>
-    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0b10"/><stop offset="1" stop-color="#0d0c18"/></linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="60"/></filter>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8b7cf6"/></marker>
   </defs>
-  <rect width="1000" height="560" fill="#ffffff"/>
-  <rect x="0.5" y="0.5" width="999" height="559" fill="none" stroke="#d1d5db"/>
-  <g font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif" font-size="14" fill="#111827">
+  <rect width="1000" height="560" fill="url(#bg)"/>
+  <ellipse cx="930" cy="40" rx="260" ry="150" fill="#5b3fd1" opacity="0.4" filter="url(#soft)"/>
+  <ellipse cx="60" cy="560" rx="240" ry="110" fill="#7a5cf0" opacity="0.32" filter="url(#soft)"/>
+  <rect x="0.5" y="0.5" width="999" height="559" fill="none" stroke="#3a3566"/>
+  <g font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif" font-size="14" fill="#f5f3ff">
     <text x="30" y="36" font-size="18" font-weight="500">Who talks to what</text>
 
     <!-- sessions -->
-    <g fill="#ffffff" stroke="#2563eb">
+    <g fill="#17152b" stroke="#8b7cf6">
       <rect x="30" y="60" width="200" height="64" rx="8"/>
       <rect x="30" y="148" width="200" height="64" rx="8"/>
       <rect x="30" y="236" width="200" height="64" rx="8"/>
     </g>
     <text x="130" y="88" text-anchor="middle" font-weight="500">Recorder session</text>
-    <text x="130" y="108" text-anchor="middle" font-size="12" fill="#6b7280">Spec preset, own key</text>
+    <text x="130" y="108" text-anchor="middle" font-size="12" fill="#9b95c4">Spec preset, own key</text>
     <text x="130" y="176" text-anchor="middle" font-weight="500">Recaller session</text>
-    <text x="130" y="196" text-anchor="middle" font-size="12" fill="#6b7280">Reporter preset, read only</text>
+    <text x="130" y="196" text-anchor="middle" font-size="12" fill="#9b95c4">Reporter preset, read only</text>
     <text x="130" y="264" text-anchor="middle" font-weight="500">Reviewer session</text>
-    <text x="130" y="284" text-anchor="middle" font-size="12" fill="#6b7280">Validator preset, own key</text>
+    <text x="130" y="284" text-anchor="middle" font-size="12" fill="#9b95c4">Validator preset, own key</text>
 
     <!-- pulse -->
-    <rect x="330" y="60" width="300" height="240" rx="10" fill="#f3f4f6" stroke="#2563eb" stroke-width="1.5"/>
-    <text x="480" y="90" text-anchor="middle" font-weight="500" font-size="16" fill="#1d4ed8">okto-pulse serve (0.4.2)</text>
-    <g font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#374151" text-anchor="middle">
+    <rect x="330" y="60" width="300" height="240" rx="10" fill="#1d1a38" stroke="#8b7cf6" stroke-width="1.5"/>
+    <text x="480" y="90" text-anchor="middle" font-weight="500" font-size="16" fill="#c4b5fd">okto-pulse serve (0.4.2)</text>
+    <g font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#d9d4f5" text-anchor="middle">
       <text x="480" y="118">MCP  127.0.0.1:8101</text>
       <text x="480" y="140">API + web UI  127.0.0.1:8100</text>
     </g>
-    <g font-size="13" fill="#4b5563" text-anchor="middle">
+    <g font-size="13" fill="#b3add9" text-anchor="middle">
       <text x="480" y="172">SQLite: boards, agents, specs, queue</text>
       <text x="480" y="194">consolidation sessions (in memory)</text>
       <text x="480" y="216">embeddings: all-MiniLM-L6-v2, local</text>
     </g>
-    <text x="480" y="248" text-anchor="middle" font-size="12" fill="#2563eb">Pulse opens, recovers and replaces</text>
-    <text x="480" y="266" text-anchor="middle" font-size="12" fill="#2563eb">the Grafx stores. Nothing else writes.</text>
+    <text x="480" y="248" text-anchor="middle" font-size="12" fill="#8b7cf6">Pulse opens, recovers and replaces</text>
+    <text x="480" y="266" text-anchor="middle" font-size="12" fill="#8b7cf6">the Grafx stores. Nothing else writes.</text>
 
     <!-- grafx stores -->
-    <rect x="706" y="40" width="288" height="250" rx="14" fill="none" stroke="#2563eb" stroke-dasharray="3 5"/>
-    <text x="850" y="282" text-anchor="middle" font-size="11" fill="#2563eb">Grafx stores on disk under the Pulse data home</text>
-    <rect x="730" y="60" width="240" height="106" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-    <text x="850" y="86" text-anchor="middle" font-weight="500" fill="#2563eb">Okto Grafx (0.0.8)</text>
-    <g font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="11" fill="#4b5563" text-anchor="middle">
+    <rect x="706" y="40" width="288" height="250" rx="14" fill="none" stroke="#8b7cf6" stroke-dasharray="3 5"/>
+    <text x="850" y="282" text-anchor="middle" font-size="11" fill="#8b7cf6">Grafx stores on disk under the Pulse data home</text>
+    <rect x="730" y="60" width="240" height="106" rx="10" fill="#221e45" stroke="#8b7cf6" stroke-width="1.5"/>
+    <text x="850" y="86" text-anchor="middle" font-weight="500" fill="#8b7cf6">Okto Grafx (0.0.8)</text>
+    <g font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="11" fill="#b3add9" text-anchor="middle">
       <text x="850" y="110">boards/&lt;id&gt;/grafx/generation-1</text>
       <text x="850" y="130">one store per board</text>
       <text x="850" y="150">catalog, heap, wal, index</text>
     </g>
-    <rect x="730" y="190" width="240" height="64" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
-    <text x="850" y="216" text-anchor="middle" font-weight="500" fill="#2563eb">Global Discovery</text>
-    <text x="850" y="238" text-anchor="middle" font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="11" fill="#4b5563">global/grafx/generation-1</text>
+    <rect x="730" y="190" width="240" height="64" rx="10" fill="#221e45" stroke="#8b7cf6" stroke-width="1.5"/>
+    <text x="850" y="216" text-anchor="middle" font-weight="500" fill="#8b7cf6">Global Discovery</text>
+    <text x="850" y="238" text-anchor="middle" font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="11" fill="#b3add9">global/grafx/generation-1</text>
 
     <!-- arrows -->
-    <g stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a)">
+    <g stroke="#8b7cf6" stroke-width="2" fill="none" marker-end="url(#a)">
       <line x1="232" y1="92" x2="328" y2="110"/>
       <line x1="232" y1="180" x2="328" y2="180"/>
       <line x1="232" y1="268" x2="328" y2="250"/>
       <line x1="632" y1="120" x2="728" y2="104"/>
       <line x1="632" y1="220" x2="728" y2="222"/>
     </g>
-    <text x="280" y="84" font-size="11" fill="#6b7280" text-anchor="middle">MCP</text>
+    <text x="280" y="84" font-size="11" fill="#9b95c4" text-anchor="middle">MCP</text>
 
     <!-- maintainer + outside readers -->
-    <rect x="30" y="360" width="200" height="64" rx="8" fill="#ffffff" stroke="#6b7280"/>
+    <rect x="30" y="360" width="200" height="64" rx="8" fill="#17152b" stroke="#9b95c4"/>
     <text x="130" y="388" text-anchor="middle" font-weight="500">Maintainer terminal</text>
-    <text x="130" y="408" text-anchor="middle" font-size="11" fill="#6b7280">scripts, SIGKILL, stop, MCP, REST</text>
-    <rect x="330" y="360" width="300" height="150" rx="10" fill="#ffffff" stroke="#2563eb" stroke-dasharray="6 4" stroke-width="1.5"/>
+    <text x="130" y="408" text-anchor="middle" font-size="11" fill="#9b95c4">scripts, SIGKILL, stop, MCP, REST</text>
+    <rect x="330" y="360" width="300" height="150" rx="10" fill="#17152b" stroke="#8b7cf6" stroke-dasharray="6 4" stroke-width="1.5"/>
     <text x="480" y="388" text-anchor="middle" font-weight="500">Outside tools, Pulse stopped</text>
-    <g font-size="13" fill="#4b5563" text-anchor="middle">
+    <g font-size="13" fill="#b3add9" text-anchor="middle">
       <text x="480" y="414">oktografx schema, indexes, verify</text>
       <text x="480" y="436">read-only Python reader</text>
       <text x="480" y="458">backup and restore on a copy</text>
     </g>
-    <text x="480" y="486" text-anchor="middle" font-size="12" fill="#dc2626">never writes into a Pulse-owned store</text>
-    <g stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#a)">
+    <text x="480" y="486" text-anchor="middle" font-size="12" fill="#f0829b">never writes into a Pulse-owned store</text>
+    <g stroke="#8b7cf6" stroke-width="2" fill="none" marker-end="url(#a)">
       <line x1="232" y1="392" x2="328" y2="420"/>
       <path d="M 632 440 C 780 440, 850 380, 850 294" stroke-dasharray="6 4"/>
     </g>
-    <text x="740" y="468" font-size="11" fill="#6b7280">reads the files, Pulse stopped</text>
+    <text x="740" y="468" font-size="11" fill="#9b95c4">reads the files, Pulse stopped</text>
   </g>
 </svg>
