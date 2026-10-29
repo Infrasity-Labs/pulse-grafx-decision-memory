@@ -1,30 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280" role="img" aria-label="Decision memory with Okto Pulse and Okto Grafx. Decisions go in once. They survive a crash, and you can read them straight from the file.">
-  <rect width="1280" height="280" fill="#ffffff"/>
-  <rect x="0.5" y="0.5" width="1279" height="279" fill="none" stroke="#d1d5db"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-label="pulse-grafx-decision-memory-demo. Decisions go in once. They survive a crash.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0b10"/>
+      <stop offset="1" stop-color="#0d0c18"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+    <clipPath id="clip"><rect width="1280" height="360"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1280" height="360" fill="url(#bg)"/>
+    <ellipse cx="1090" cy="40" rx="300" ry="170" fill="#5b3fd1" opacity="0.55" filter="url(#soft)"/>
+    <ellipse cx="1220" cy="260" rx="220" ry="130" fill="#3b2a8f" opacity="0.5" filter="url(#soft)"/>
+    <ellipse cx="170" cy="400" rx="260" ry="120" fill="#7a5cf0" opacity="0.5" filter="url(#soft)"/>
+  </g>
+  <rect x="0.5" y="0.5" width="1279" height="359" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
 
-  <g font-family="'IBM Plex Sans', Helvetica, Arial, sans-serif">
-    <text x="64" y="82" font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="14" letter-spacing="2" fill="#2563eb">OKTO PULSE + OKTO GRAFX</text>
-    <text x="64" y="152" font-size="64" font-weight="600" fill="#111827" letter-spacing="-1">Decision memory</text>
-    <text x="64" y="196" font-size="22" fill="#4b5563">Decisions go in once. They survive a crash,</text>
-    <text x="64" y="226" font-size="22" fill="#4b5563">and you can read them straight from the file.</text>
-  </g>
-
-  <!-- minimal decision graph -->
-  <g fill="none" stroke-width="2.5" stroke-linecap="round">
-    <path d="M880 140 L1010 80" stroke="#2563eb"/>
-    <path d="M1010 80 L1140 140" stroke="#2563eb"/>
-    <path d="M880 140 L1010 200" stroke="#9ca3af"/>
-    <path d="M1140 140 L1010 200" stroke="#9ca3af"/>
-    <path d="M1010 80 L1010 200" stroke="#dc2626" stroke-dasharray="7 6"/>
-  </g>
-  <g fill="#ffffff" stroke-width="3">
-    <circle cx="880" cy="140" r="20" stroke="#111827"/>
-    <circle cx="1010" cy="80" r="20" stroke="#2563eb"/>
-    <circle cx="1140" cy="140" r="20" stroke="#111827"/>
-    <circle cx="1010" cy="200" r="20" stroke="#111827"/>
-  </g>
-  <g font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#6b7280">
-    <line x1="880" y1="244" x2="906" y2="244" stroke="#2563eb" stroke-width="3"/><text x="914" y="248">supersedes</text>
-    <line x1="1014" y1="244" x2="1040" y2="244" stroke="#dc2626" stroke-width="3" stroke-dasharray="6 4"/><text x="1048" y="248">contradicts</text>
-  </g>
+  <text x="96" y="168" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" fill="#f5f3ff">pulse-grafx-decision-memory-demo</text>
+  <text x="96" y="218" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#c4bde6">decisions go in once. they survive a crash.</text>
+  <text x="96" y="296" font-family="'IBM Plex Mono', Menlo, Consolas, monospace" font-size="15" letter-spacing="3" fill="#8c86b0">OKTO PULSE + OKTO GRAFX</text>
 </svg>
