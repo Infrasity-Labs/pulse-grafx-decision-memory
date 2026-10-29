@@ -135,14 +135,14 @@ It is never run, so Postgres is not needed. The Recorder only reads it, and ever
 
 Pulse enforces roles through permission presets, not instructions an agent could ignore.
 
-| Who | Does | Pulse preset |
-| --- | ---- | ------------ |
-| Recorder | Reads the code, records twelve decisions in one consolidation | `Spec` |
-| Recaller | No history, no file access, answers ten questions from the graph | `Reporter` (read only) |
-| Reviewer | Records a reversed decision, reads contradictions and the supersedence chain | `Validator` |
-| Maintainer | Scripts, SIGKILL, stopping the server | `Full Control` |
+| Role | Does | Pulse preset | Prompt |
+| ---- | ---- | ------------ | ------ |
+| Recorder | Reads the code, records twelve decisions in one consolidation | `Spec` | [`step3-recorder.md`](docs/prompts/step3-recorder.md) |
+| Recaller | No history, no file access, answers ten questions from the graph | `Reporter` (read only) | [`step4-recaller.md`](docs/prompts/step4-recaller.md) |
+| Reviewer | Records a reversed decision, reads contradictions and the supersedence chain | `Validator` | [`step5-reviewer.md`](docs/prompts/step5-reviewer.md) |
+| Maintainer | Scripts, SIGKILL, stopping the server | `Full Control` | none, scripts only |
 
-Each session is a separate headless `claude -p` process with its own MCP config and no saved history. The Recaller really is read only: at the end of its run it tries to open a write session and Pulse refuses with `permission_denied`.
+The prompts are the only instructions the sessions get. Placeholders such as `{{BOARD_ID}}` are filled in at run time. Each session is a separate headless `claude -p` process with its own MCP config and no saved history. The Recaller really is read only: at the end of its run it tries to open a write session and Pulse refuses with `permission_denied`.
 
 ## Prerequisites
 
@@ -171,53 +171,20 @@ pip install -r requirements-dev.txt && python -m pytest tests -q
 
 ## The Ten Steps
 
-Each step is one command. Steps 3 to 5 hand a prompt to a Claude Code session; the rest are scripts. Placeholders such as `{{BOARD_ID}}` in a prompt are filled in at run time.
+Every command is in [`scripts/`](scripts/). `python run_demo.py --list` prints the same sequence, and the commands, prompts and what to check for each step are in the [walkthrough](docs/walkthrough.md).
 
-| # | What happens | Run | Prompt |
-|---|---|---|---|
-| 1 | Install the pinned Pulse, confirm it pulls Grafx 0.0.8, start it, check the embedding model | `scripts/start_pulse.sh` | none |
-| 2 | Create the board, four identities from Pulse presets and the anchor spec | `scripts/setup_board.py` | none |
-| 3 | **Recorder** commits twelve decisions, each with a file and line that exist | `scripts/step03_recorder.py` | [`step3-recorder.md`](docs/prompts/step3-recorder.md) |
-| 4 | **Recaller** answers ten fixed questions with no history | `scripts/step04_recaller.py` | [`step4-recaller.md`](docs/prompts/step4-recaller.md) |
-| 5 | **Maintainer** reverses a decision, **Reviewer** records it | `scripts/step05_reversal.py` | [`step5-reviewer.md`](docs/prompts/step5-reviewer.md) |
-| 6 | Second board, Global Discovery from the first | `scripts/step06_second_board.py` | none |
-| 7 | SIGKILL the server twice: an open session, then a commit burst | `scripts/step07_crash.py` | none |
-| 8 | Stop Pulse, read the stores with `oktografx` and a read-only reader | `scripts/step08_direct_read.py` | none |
-| 9 | Back up and restore a copy, then `verify` | `scripts/step09_backup_restore.py` | none |
-| 10 | Build the scoreboard from the recorded outputs | `scripts/build_closeout.py` | none |
-
-### The Agent Prompts
-
-The three prompts are the only instructions the sessions get. Open one to see how it starts, or read the full file.
-
-<details>
-<summary><b>Step 3: Recorder</b> · <a href="docs/prompts/step3-recorder.md">full prompt</a></summary>
-
-> You are the Recorder. Read the codebase in `../../app` and record exactly twelve design decisions in the Pulse board knowledge graph, in ONE consolidation session.
-
-The prompt fixes twelve topic slugs (`auth-header-scheme`, `token-expiry`, `password-hashing`, and nine more), then tells the session to open one consolidation, add a `Decision` node per topic with a file and line, and commit once.
-
-</details>
-
-<details>
-<summary><b>Step 4: Recaller</b> · <a href="docs/prompts/step4-recaller.md">full prompt</a></summary>
-
-> You are the Recaller. You start with no history and no access to the code. Answer ten questions about a codebase using only the Pulse board knowledge graph.
-
-The ten questions are fixed in `scripts/questions.py`. At the end the session tries to open a write session, and Pulse refuses it because the identity is read only.
-
-</details>
-
-<details>
-<summary><b>Step 5: Reviewer</b> · <a href="docs/prompts/step5-reviewer.md">full prompt</a></summary>
-
-> You are the Reviewer. The Maintainer has reversed one design decision. Record the change in the Pulse board knowledge graph and report what the graph returns. Report tool results exactly as returned, including empty ones.
-
-The session reads the Maintainer's note, records the new decision as superseding the old one with a `contradicts` edge, then reports the supersedence chain and the decision history.
-
-</details>
-
-The recorded output of each step is in [`demo-state/`](demo-state/), and the run as a whole is in [`closeout-result.json`](demo-state/closeout-result.json).
+| # | Step | Actor | Command |
+|---|------|-------|---------|
+| 1 | Install the pinned Pulse, confirm it pulls Grafx 0.0.8, start it, check the embedding model | Maintainer | `start_pulse.sh` |
+| 2 | Create the board, four identities from Pulse presets and the anchor spec | Maintainer | `setup_board.py` |
+| 3 | Commit twelve decisions, each with a file and line that exist | Recorder | `step03_recorder.py` |
+| 4 | Answer ten fixed questions with no history | Recaller | `step04_recaller.py` |
+| 5 | Reverse a decision, then record it as superseding the old one | Maintainer, Reviewer | `step05_reversal.py` |
+| 6 | Create a second board and find a convention from the first through Global Discovery | Maintainer | `step06_second_board.py` |
+| 7 | SIGKILL the server twice: an open session, then a commit burst | Maintainer | `step07_crash.py` |
+| 8 | Stop Pulse and read the stores with `oktografx` and a read-only reader | Maintainer | `step08_direct_read.py` |
+| 9 | Back up and restore a copy, then run `verify` | Maintainer | `step09_backup_restore.py` |
+| 10 | Build the scoreboard from the recorded outputs | Maintainer | `build_closeout.py` |
 
 ## Where to Find Artifacts
 
