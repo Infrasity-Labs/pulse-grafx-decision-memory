@@ -1,43 +1,62 @@
-<p align="center">
-  <img src="docs/hero.svg" alt="Decision memory. Decisions go in once. They survive a crash, and you can read them straight from the file." width="100%">
-</p>
+# pulse-grafx-decision-memory-demo
 
-<p align="center">
-  <a href="https://pypi.org/project/okto-pulse/"><img alt="okto-pulse 0.4.2" src="https://img.shields.io/badge/okto--pulse-0.4.2-41d7ee?labelColor=0b0d14"></a>
-  <a href="https://pypi.org/project/okto-grafx/"><img alt="okto-grafx 0.0.8" src="https://img.shields.io/badge/okto--grafx-0.0.8-9d83ff?labelColor=0b0d14"></a>
-  <img alt="Python 3.11, 3.12, 3.13" src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-7b91f6?labelColor=0b0d14">
-  <img alt="Demo code license: MIT" src="https://img.shields.io/badge/demo%20code-MIT-b181ef?labelColor=0b0d14">
-  <img alt="Verified 2026-10-29" src="https://img.shields.io/badge/verified-2026--10--29-60c7f1?labelColor=0b0d14">
-</p>
+![Decision memory. Decisions go in once. They survive a crash, and you can read them straight from the file.](docs/hero.svg)
 
-<h1 align="center">pulse-grafx-decision-memory-demo</h1>
+Three Claude Code sessions. One shared memory. A decision graph that survives a SIGKILL.
 
-<p align="center">
-  Three Claude Code sessions share one memory: the knowledge graph on an <a href="https://github.com/OktoLabsAI/okto-pulse">Okto Pulse</a> board, stored in <a href="https://github.com/OktoLabsAI/okto-grafx">Okto Grafx</a>.<br>
-  Then the server is killed, restarted, stopped, and the graph is read straight from disk.
-</p>
+A team plans changes to a blogging API. Every decision is recorded once on an Okto Pulse board, stored in Okto Grafx, then recalled by a session with no history, reversed, crashed, and read straight from disk.
 
----
+[About Okto Pulse and Grafx](#about-okto-pulse-and-grafx) · [The Problem](#the-problem) · [How It Works](#how-it-works) · [Pulse in Action](#pulse-in-action) · [Architecture](#architecture) · [Repository Structure](#repository-structure) · [Roles](#roles) · [Prerequisites](#prerequisites) · [Quickstart](#quickstart) · [The Ten Steps](#the-ten-steps) · [Where to Find Artifacts](#where-to-find-artifacts) · [Limits](#limits) · [Contributing & Licensing](#contributing--licensing) · [Conclusion](#conclusion)
 
-## Results
+## About Okto Pulse and Grafx
 
-One real run on one machine. The numbers are generated from [`demo-state/closeout-result.json`](demo-state/closeout-result.json).
+[Okto Pulse](https://github.com/OktoLabsAI/okto-pulse) is a local-first SDLC workbench for teams using AI coding agents. Agents talk to it over MCP, and people see the same board in a web UI. [Okto Grafx](https://github.com/OktoLabsAI/okto-grafx) is the graph store underneath: each board keeps its knowledge graph in a Grafx store on disk.
 
-<!-- glance:start -->
-<table>
-<tr><td align="center" width="33%"><h2>12 / 12</h2><sub>decisions committed in one consolidation, each with a file and line that exist</sub></td><td align="center" width="33%"><h2>10 / 10</h2><sub>questions answered with the right decision by a session that had no history</sub></td><td align="center" width="33%"><h2>20 / 20</h2><sub>acknowledged commits still in the graph after a SIGKILL and restart</sub></td></tr>
-<tr><td align="center" width="33%"><h2>absent</h2><sub>the unfinished consolidation after the same kind of kill (Kill A)</sub></td><td align="center" width="33%"><h2>match</h2><sub>node and edge counts read straight from the stopped store, against Pulse's own</sub></td><td align="center" width="33%"><h2>clean</h2><sub><code>verify</code> on the restored copy (0 findings)</sub></td></tr>
-</table>
-<!-- glance:end -->
+In plain terms, a decision is not a line in a chat that disappears. It becomes a node with a file and a line behind it, linked to the decisions it supersedes, contradicts or depends on.
 
-Full tables: [scoreboard](docs/SCOREBOARD.md) · surprises and limits: [findings](docs/FINDINGS.md)
+## The Problem
 
-> [!IMPORTANT]
-> Pre-alpha Grafx and a 0.x Pulse, one run on one machine, a SIGKILL crash only (macOS, not power loss, not Windows), reads taken with Pulse stopped, backup run in a Linux container because Grafx 0.0.8 refuses it on macOS. Both products are source-available, not open source. [All limits](docs/FINDINGS.md#limits).
+Coding agents forget. A new session starts blank, and a decision made last week is either re-argued or silently broken. This repo tests three things directly, on a real run, instead of describing them:
 
-## How it works
+- **Recall without history.** Can a fresh session answer "what did we decide about X" from the graph alone, with no chat history and no file access?
+- **Reversal.** When a decision is reversed, does the graph keep the old one, mark it superseded, and record the contradiction, instead of overwriting it?
+- **Durability.** After the server is killed, are the acknowledged decisions still there, and can they be read from the file with Pulse stopped?
+
+The recorded outputs of the real run, not claims, are in [`docs/SCOREBOARD.md`](docs/SCOREBOARD.md). Surprises and limits are in [`docs/FINDINGS.md`](docs/FINDINGS.md).
+
+## How It Works
 
 A team plans changes to a blogging API (a plain copy of [`fastapi-realworld-example-app`](https://github.com/nsidnev/fastapi-realworld-example-app), never run). Three sessions share only the board graph. Nobody remembers anybody else.
+
+1. **Record.** The Recorder reads the code and commits twelve decisions in one consolidation, each with a file and line that exist.
+2. **Recall.** The Recaller starts with no history and answers ten fixed questions from the graph.
+3. **Reverse.** The Maintainer reverses a decision. The Reviewer records the new one as superseding the old, with an explicit `contradicts` edge.
+4. **Discover.** A second board finds a convention on the first through Global Discovery.
+5. **Crash.** The server is killed with SIGKILL twice: once with an open session, once in the middle of a commit burst.
+6. **Read the file.** Pulse is stopped, and the stores are read directly with `oktografx` and a read-only reader.
+7. **Restore.** The store is backed up and restored on a copy, then checked with `verify`.
+
+## Pulse in Action
+
+Real captures from this run.
+
+**Step 3**: the decision board in Pulse's graph view, "Powered by Okto Grafx":
+
+![Knowledge graph view of the decision board](demo-state/screenshots/step3-knowledge-graph-decision-board.png)
+
+**Step 5**: the reversal, a new decision with an explicit `contradicts` edge:
+
+![The new decision with the contradicts edge](demo-state/screenshots/step5-reversal-contradicts-edge-and-new-decision.png)
+
+**Step 6**: Global Discovery finds a convention on another board:
+
+![Global Discovery result from another board](demo-state/screenshots/step6-global-discovery-finds-other-board.png)
+
+## Architecture
+
+Three Claude Code sessions use Okto Pulse over MCP. Pulse keeps each board graph in an Okto Grafx store on disk, and outside tools read the stopped store.
+
+![Architecture: three Claude Code sessions use Okto Pulse over MCP; Pulse keeps each board graph in an Okto Grafx store on disk; outside tools read the stopped store](docs/architecture.svg)
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"IBM Plex Sans, Helvetica, Arial, sans-serif","fontSize":"15px","primaryColor":"#0b0d14","primaryTextColor":"#f3f3fa","primaryBorderColor":"#41d7ee","lineColor":"#9d83ff","secondaryColor":"#141123","secondaryTextColor":"#f3f3fa","secondaryBorderColor":"#9d83ff","tertiaryColor":"#0f1018","tertiaryTextColor":"#f3f3fa","tertiaryBorderColor":"#5d40a9","mainBkg":"#0b0d14","nodeBorder":"#41d7ee","nodeTextColor":"#f3f3fa","clusterBkg":"#0d0c16","clusterBorder":"#5d40a9","titleColor":"#c0a3ee","edgeLabelBackground":"#0b0d14","textColor":"#7f8399","noteBkgColor":"#141123","noteTextColor":"#f3f3fa","noteBorderColor":"#9d83ff","actorBkg":"#0b0d14","actorBorder":"#41d7ee","actorTextColor":"#f3f3fa","actorLineColor":"#5d40a9","signalColor":"#9d83ff","signalTextColor":"#7f8399","labelBoxBkgColor":"#141123","labelBoxBorderColor":"#5d40a9","labelTextColor":"#f3f3fa","loopTextColor":"#7f8399","sequenceNumberColor":"#06070b","pie1":"#41d7ee","pie2":"#7b91f6","pie3":"#9d83ff","pie4":"#b181ef","pie5":"#16cce8","pie6":"#2f83f5","pie7":"#6250f2","pie8":"#c0a3ee","pie9":"#60c7f1","pieTitleTextSize":"20px","pieTitleTextColor":"#7f8399","pieSectionTextColor":"#06070b","pieLegendTextColor":"#7f8399","pieStrokeColor":"#06070b","pieStrokeWidth":"2px","pieOuterStrokeColor":"#5d40a9","pieOuterStrokeWidth":"2px","pieOpacity":"0.95"}}}%%
@@ -57,32 +76,55 @@ flowchart TD
     SETUP --> MEMORY --> DURABILITY --> S10(["10 Scoreboard"])
 ```
 
+**Reading the flow**
+
+1. **Setup**: install the pinned versions, create the board, four identities and the anchor spec.
+2. **Memory**: record twelve decisions, recall them with no history, reverse one, then find another board's convention.
+3. **Durability**: kill the server, stop it, read the store directly, back up and restore a copy.
+4. **Scoreboard**: every number comes from the recorded outputs of the steps above. See [`docs/SCOREBOARD.md`](docs/SCOREBOARD.md).
+
+More diagrams (sequence, reversal, crash and backup): [`docs/how-it-works.md`](docs/how-it-works.md).
+
+## Repository Structure
+
+| Path | Purpose |
+| ---- | ------- |
+| `README.md` | This document |
+| `app/` | Plain copy of `nsidnev/fastapi-realworld-example-app`, read only |
+| `agents/` | `CLAUDE.md` per role and MCP config examples with key placeholders |
+| `scripts/` | Start, stop, kill, one script per step, reader, checkers, key scanner |
+| `demo-state/` | Every recorded output: `step1/` to `step9/`, `notes/`, `screenshots/`, `closeout-result.json` |
+| `docs/` | Walkthrough, scoreboard, findings, VERIFIED.md, prompts, diagrams |
+| `tests/` | Tests that read the recorded outputs |
+| `run_demo.py` | Replay any steps: `--steps`, `--start`, `--dry-run` |
+| `requirements.txt` | Pinned `okto-pulse` and `okto-grafx` |
+| `LICENSE` | Demo code license (MIT) |
+
+## Roles
+
+Pulse enforces roles through permission presets, not instructions an agent could ignore.
+
 | Who | Does | Pulse preset |
-|---|---|---|
+| --- | ---- | ------------ |
 | Recorder | Reads the code, records twelve decisions in one consolidation | `Spec` |
 | Recaller | No history, no file access, answers ten questions from the graph | `Reporter` (read only) |
 | Reviewer | Records a reversed decision, reads contradictions and the supersedence chain | `Validator` |
 | Maintainer | Scripts, SIGKILL, stopping the server | `Full Control` |
 
-More: [how it works](docs/how-it-works.md) (sequence, reversal, crash and backup diagrams, repo layout, prerequisites).
+Each session is a separate headless `claude -p` process with its own MCP config and no saved history. The Recaller really is read only: at the end of its run it tries to open a write session and Pulse refuses with `permission_denied`.
 
-<p align="center">
-  <img src="docs/architecture.svg" alt="Architecture: three Claude Code sessions use Okto Pulse over MCP; Pulse keeps each board graph in an Okto Grafx store on disk; outside tools read the stopped store" width="85%">
-</p>
+## Prerequisites
 
-## In action
-
-<table>
-  <tr>
-    <td width="33%"><img src="demo-state/screenshots/step3-knowledge-graph-decision-board.png" alt="Knowledge graph view of the decision board"><br><sub><b>Step 3.</b> The decision board in Pulse's graph view, "Powered by Okto Grafx".</sub></td>
-    <td width="33%"><img src="demo-state/screenshots/step5-reversal-contradicts-edge-and-new-decision.png" alt="The new decision with the contradicts edge"><br><sub><b>Step 5.</b> The reversal: new decision, explicit <code>contradicts</code> edge.</sub></td>
-    <td width="33%"><img src="demo-state/screenshots/step6-global-discovery-finds-other-board.png" alt="Global Discovery result from another board"><br><sub><b>Step 6.</b> Global Discovery finds a convention on another board.</sub></td>
-  </tr>
-</table>
+| Requirement | Notes |
+| ----------- | ----- |
+| Mac or Linux | Step 7 uses SIGKILL. Windows is not covered. |
+| Python 3.11 to 3.13 | Grafx does not list 3.14. |
+| [Claude Code](https://docs.claude.com/en/docs/claude-code), logged in | No other model key is needed. |
+| Network to PyPI, GitHub, Hugging Face | Pulse downloads its embedding model on first start. |
+| Ports 8100 and 8101 free | |
+| Docker (macOS only) | Grafx 0.0.8 refuses backups on macOS, so step 9 runs in a Linux container. |
 
 ## Quickstart
-
-Needs Mac or Linux, Python 3.11 to 3.13, [Claude Code](https://docs.claude.com/en/docs/claude-code) logged in, network access, and ports 8100 and 8101 free.
 
 ```bash
 python run_demo.py --dry-run        # prints every command and prompt, runs nothing
@@ -90,9 +132,13 @@ python run_demo.py --steps 1 2 3    # install, start, board, Recorder
 python run_demo.py --start 4        # or run everything from step 4 on
 ```
 
-A real run uses a throwaway Pulse data home at `.work/pulse-home` and never touches `~/.okto-pulse`. Checks without a Pulse install: `pip install -r requirements-dev.txt && python -m pytest tests -q`.
+A real run uses a throwaway Pulse data home at `.work/pulse-home` and never touches `~/.okto-pulse`. Checks without a Pulse install:
 
-## The ten steps
+```bash
+pip install -r requirements-dev.txt && python -m pytest tests -q
+```
+
+## The Ten Steps
 
 | # | What happens | Output |
 |---|---|---|
@@ -107,8 +153,24 @@ A real run uses a throwaway Pulse data home at `.work/pulse-home` and never touc
 | 9 | Back up and restore a copy, then `verify` | [`step9`](demo-state/step9/) |
 | 10 | Build the scoreboard | [`closeout-result.json`](demo-state/closeout-result.json) |
 
-Commands and what to look at: [walkthrough](docs/walkthrough.md). Prompts: [`docs/prompts/`](docs/prompts/). What was checked and when: [VERIFIED.md](docs/VERIFIED.md).
+## Where to Find Artifacts
 
-## Licenses
+- `demo-state/closeout-result.json`: the machine-readable result of the run. Everything in the scoreboard is generated from it.
+- `docs/SCOREBOARD.md`: results, recall question by question, time per step.
+- `docs/FINDINGS.md`: what behaved differently from the docs, and the full limits.
+- `docs/walkthrough.md`: commands and what to look at, step by step.
+- `docs/prompts/`: the actual prompt for each agent step.
+- `docs/VERIFIED.md`: what was checked and when.
 
-Demo code: [MIT](LICENSE). `app/` keeps its own [MIT license](app/LICENSE). Okto Pulse: [Elastic License 2.0](https://github.com/OktoLabsAI/okto-pulse/blob/main/LICENSE). Okto Grafx: [Elastic License 2.0 with SaaS/Branding Addendum](https://github.com/OktoLabsAI/okto-grafx/blob/main/LICENSE). Linked, not copied.
+## Limits
+
+> [!IMPORTANT]
+> Pre-alpha Grafx and a 0.x Pulse, one run on one machine, a SIGKILL crash only (macOS, not power loss, not Windows), reads taken with Pulse stopped, backup run in a Linux container because Grafx 0.0.8 refuses it on macOS. Both products are source-available, not open source. [All limits](docs/FINDINGS.md#limits).
+
+## Contributing & Licensing
+
+To reproduce the run, fork this repo and follow the [walkthrough](docs/walkthrough.md). Demo code: [MIT](LICENSE). `app/` keeps its own [MIT license](app/LICENSE). Okto Pulse: [Elastic License 2.0](https://github.com/OktoLabsAI/okto-pulse/blob/main/LICENSE). Okto Grafx: [Elastic License 2.0 with SaaS/Branding Addendum](https://github.com/OktoLabsAI/okto-grafx/blob/main/LICENSE). Linked, not copied.
+
+## Conclusion
+
+Built on Okto Pulse and Okto Grafx, products of OktoLabs. Decisions kept as a graph on disk, not a chat transcript each session has to remember.

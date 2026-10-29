@@ -1,7 +1,6 @@
 """Render the generated README blocks from the recorded outputs, so the README holds no hand-typed measurements.
 
 Blocks (each sits between <!-- NAME:start --> and <!-- NAME:end -->):
-  glance      README.md        big-number summary from demo-state/closeout-result.json
   scoreboard  docs/SCOREBOARD.md  the full scoreboard table
   timings     docs/SCOREBOARD.md  a Mermaid pie of seconds per step
   recall      docs/SCOREBOARD.md  the ten recall questions, from demo-state/step4/recall-results.json
@@ -75,22 +74,6 @@ def render_scoreboard(c: dict) -> str:
     return "\n".join(out)
 
 
-def render_glance(c: dict) -> str:
-    d, r, kb, ka = c["decisions"], c["recall"], c["kill_b"], c["kill_a"]
-    nc = c["node_counts"]["decision_board"]
-    vr = c["verify"]["restored_copy"][c["backup_restore_exercised_on"]]
-    cells = [
-        (f"{d['citations_checked_and_valid']} / {d['expected']}", "decisions committed in one consolidation, each with a file and line that exist"),
-        (f"{r['agent_choice_correct']} / {r['questions']}", "questions answered with the right decision by a session that had no history"),
-        (f"{kb['acknowledged_and_present_after_restart']} / {kb['acknowledged_before_kill']}", "acknowledged commits still in the graph after a SIGKILL and restart"),
-        ("absent" if ka["uncommitted_consolidation_absent_after_restart"] else "present", "the unfinished consolidation after the same kind of kill (Kill A)"),
-        ("match" if nc["nodes_match"] and nc["edges_match"] else "differ", "node and edge counts read straight from the stopped store, against Pulse's own"),
-        (vr["verdict"], f"<code>verify</code> on the restored copy ({vr['findings']} findings)"),
-    ]
-    row = lambda items: "<tr>" + "".join(f'<td align="center" width="33%"><h2>{a}</h2><sub>{b}</sub></td>' for a, b in items) + "</tr>"  # noqa: E731
-    return "<table>\n" + row(cells[:3]) + "\n" + row(cells[3:]) + "\n</table>"
-
-
 def render_timings(c: dict) -> str:
     t = c["step_seconds"]
     lines = ["```mermaid", MERMAID_INIT, "pie showData title Seconds per step on this machine"]
@@ -112,13 +95,13 @@ def render_recall(rec: dict) -> str:
     return "\n".join(rows)
 
 
-BLOCK_FILES = {"glance": "README.md", "scoreboard": "docs/SCOREBOARD.md", "timings": "docs/SCOREBOARD.md", "recall": "docs/SCOREBOARD.md"}
+BLOCK_FILES = {"scoreboard": "docs/SCOREBOARD.md", "timings": "docs/SCOREBOARD.md", "recall": "docs/SCOREBOARD.md"}
 
 
 def blocks() -> dict[str, str]:
     c = json.loads((ROOT / "demo-state" / "closeout-result.json").read_text())
     rec = json.loads((ROOT / "demo-state" / "step4" / "recall-results.json").read_text())
-    return {"glance": render_glance(c), "scoreboard": render_scoreboard(c), "timings": render_timings(c), "recall": render_recall(rec)}
+    return {"scoreboard": render_scoreboard(c), "timings": render_timings(c), "recall": render_recall(rec)}
 
 
 def replace_block(text: str, name: str, body: str) -> tuple[str, bool]:
