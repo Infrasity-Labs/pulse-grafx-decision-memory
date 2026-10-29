@@ -2,7 +2,7 @@
 
 Date: 2026-10-29. Machine: macOS (Darwin 25.3.0) on arm64. One machine, one full run, plus the extra samples named below.
 
-Everything here was run. Anything not run is under [Not verified](#not-verified). Run results are in [`demo-state/closeout-result.json`](../demo-state/closeout-result.json) and the README scoreboard. This page does not repeat them.
+Everything here was run. Anything not run is under [Not verified](#not-verified). Run results are in [`demo-state/closeout-result.json`](../demo-state/closeout-result.json) and [SCOREBOARD.md](SCOREBOARD.md). This page does not repeat them.
 
 ## Versions
 

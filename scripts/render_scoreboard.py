@@ -1,14 +1,14 @@
 """Render the generated README blocks from the recorded outputs, so the README holds no hand-typed measurements.
 
-Blocks (each sits between <!-- NAME:start --> and <!-- NAME:end --> in README.md):
-  glance      big-number summary from demo-state/closeout-result.json
-  scoreboard  the full scoreboard table and the per-step time table
-  timings     a Mermaid pie of seconds per step
-  recall      the ten recall questions, from demo-state/step4/recall-results.json
+Blocks (each sits between <!-- NAME:start --> and <!-- NAME:end -->):
+  glance      README.md        big-number summary from demo-state/closeout-result.json
+  scoreboard  docs/SCOREBOARD.md  the full scoreboard table
+  timings     docs/SCOREBOARD.md  a Mermaid pie of seconds per step
+  recall      docs/SCOREBOARD.md  the ten recall questions, from demo-state/step4/recall-results.json
 
   python scripts/render_scoreboard.py            print every block
-  python scripts/render_scoreboard.py --write    replace the blocks in README.md
-  python scripts/render_scoreboard.py --check    exit 1 if README.md differs from the rendered blocks
+  python scripts/render_scoreboard.py --write    replace the blocks in their files
+  python scripts/render_scoreboard.py --check    exit 1 if a file differs from the rendered blocks
 """
 from __future__ import annotations
 
@@ -112,6 +112,9 @@ def render_recall(rec: dict) -> str:
     return "\n".join(rows)
 
 
+BLOCK_FILES = {"glance": "README.md", "scoreboard": "docs/SCOREBOARD.md", "timings": "docs/SCOREBOARD.md", "recall": "docs/SCOREBOARD.md"}
+
+
 def blocks() -> dict[str, str]:
     c = json.loads((ROOT / "demo-state" / "closeout-result.json").read_text())
     rec = json.loads((ROOT / "demo-state" / "step4" / "recall-results.json").read_text())
@@ -121,7 +124,7 @@ def blocks() -> dict[str, str]:
 def replace_block(text: str, name: str, body: str) -> tuple[str, bool]:
     start, end = f"<!-- {name}:start -->", f"<!-- {name}:end -->"
     if start not in text or end not in text:
-        raise SystemExit(f"README.md has no {name} markers")
+        raise SystemExit(f"no {name} markers in the target file")
     head, rest = text.split(start, 1)
     current, tail = rest.split(end, 1)
     return f"{head}{start}\n{body}\n{end}{tail}", current.strip() == body.strip()
@@ -138,17 +141,19 @@ def main() -> int:
         for name, body in bl.items():
             print(f"<!-- {name} -->\n{body}\n")
         return 0
-    text = (ROOT / "README.md").read_text()
+    texts = {f: (ROOT / f).read_text() for f in set(BLOCK_FILES.values())}
     stale = []
     for name, body in bl.items():
-        text, same = replace_block(text, name, body)
+        f = BLOCK_FILES[name]
+        texts[f], same = replace_block(texts[f], name, body)
         if not same:
             stale.append(name)
     if a.check:
-        print("README blocks match the recorded outputs" if not stale else f"README blocks differ from the recorded outputs: {', '.join(stale)}. Run: python scripts/render_scoreboard.py --write")
+        print("generated blocks match the recorded outputs" if not stale else f"blocks differ from the recorded outputs: {', '.join(stale)}. Run: python scripts/render_scoreboard.py --write")
         return 1 if stale else 0
-    (ROOT / "README.md").write_text(text)
-    print("README blocks updated")
+    for f, t in texts.items():
+        (ROOT / f).write_text(t)
+    print("generated blocks updated")
     return 0
 
 

@@ -126,7 +126,7 @@ On macOS, Grafx 0.0.8 refuses the backup (`unsupported_operation`, no atomic no-
 python scripts/render_scoreboard.py --write
 ```
 
-`build_closeout.py` reads the recorded outputs of steps 1 to 9. A missing output is an error. `render_scoreboard.py --write` copies the scoreboard into the README between its markers.
+`build_closeout.py` reads the recorded outputs of steps 1 to 9. A missing output is an error. `render_scoreboard.py --write` copies the generated blocks into `README.md` and `docs/SCOREBOARD.md` between their markers.
 
 ## Checks
 
