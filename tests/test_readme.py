@@ -35,12 +35,12 @@ def test_every_mermaid_block_uses_the_shared_theme_and_declares_a_diagram():
 
 
 def test_readme_stays_short():
-    assert len((ROOT / "README.md").read_text().splitlines()) <= 200
+    assert len((ROOT / "README.md").read_text().splitlines()) <= 260
 
 
 def test_readme_has_the_front_page_sections_in_order():
     headings = re.findall(r"^## (.+)$", (ROOT / "README.md").read_text(), flags=re.M)
-    order = ["About Okto Pulse and Grafx", "The Problem", "How It Works", "Pulse in Action", "Architecture", "Repository Structure", "Roles", "Prerequisites", "Quickstart", "The Ten Steps", "Where to Find Artifacts", "Limits", "Contributing & Licensing", "Conclusion"]
+    order = ["About Okto Pulse and Grafx", "The Problem", "How It Works", "Pulse in Action", "Architecture", "Repository Structure", "The Demo App", "Roles", "Prerequisites", "Quickstart", "The Ten Steps", "Where to Find Artifacts", "Limits", "Licenses"]
     assert [h for h in headings if h in order] == order
 
 

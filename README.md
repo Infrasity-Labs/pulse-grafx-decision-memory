@@ -6,7 +6,7 @@ Three Claude Code sessions. One shared memory. A decision graph that survives a 
 
 A team plans changes to a blogging API. Every decision is recorded once on an Okto Pulse board, stored in Okto Grafx, then recalled by a session with no history, reversed, crashed, and read straight from disk.
 
-[About Okto Pulse and Grafx](#about-okto-pulse-and-grafx) · [The Problem](#the-problem) · [How It Works](#how-it-works) · [Pulse in Action](#pulse-in-action) · [Architecture](#architecture) · [Repository Structure](#repository-structure) · [Roles](#roles) · [Prerequisites](#prerequisites) · [Quickstart](#quickstart) · [The Ten Steps](#the-ten-steps) · [Where to Find Artifacts](#where-to-find-artifacts) · [Limits](#limits) · [Contributing & Licensing](#contributing--licensing) · [Conclusion](#conclusion)
+[About](#about-okto-pulse-and-grafx) · [The Problem](#the-problem) · [How It Works](#how-it-works) · [Pulse in Action](#pulse-in-action) · [Architecture](#architecture) · [Repository Structure](#repository-structure) · [The Demo App](#the-demo-app) · [Roles](#roles) · [Prerequisites](#prerequisites) · [Quickstart](#quickstart) · [The Ten Steps](#the-ten-steps) · [Where to Find Artifacts](#where-to-find-artifacts) · [Limits](#limits) · [Licenses](#licenses)
 
 ## About Okto Pulse and Grafx
 
@@ -59,7 +59,7 @@ Three Claude Code sessions use Okto Pulse over MCP. Pulse keeps each board graph
 ![Architecture: three Claude Code sessions use Okto Pulse over MCP; Pulse keeps each board graph in an Okto Grafx store on disk; outside tools read the stopped store](docs/architecture.svg)
 
 ```mermaid
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"IBM Plex Sans, Helvetica, Arial, sans-serif","fontSize":"15px","primaryColor":"#0b0d14","primaryTextColor":"#f3f3fa","primaryBorderColor":"#41d7ee","lineColor":"#9d83ff","secondaryColor":"#141123","secondaryTextColor":"#f3f3fa","secondaryBorderColor":"#9d83ff","tertiaryColor":"#0f1018","tertiaryTextColor":"#f3f3fa","tertiaryBorderColor":"#5d40a9","mainBkg":"#0b0d14","nodeBorder":"#41d7ee","nodeTextColor":"#f3f3fa","clusterBkg":"#0d0c16","clusterBorder":"#5d40a9","titleColor":"#c0a3ee","edgeLabelBackground":"#0b0d14","textColor":"#7f8399","noteBkgColor":"#141123","noteTextColor":"#f3f3fa","noteBorderColor":"#9d83ff","actorBkg":"#0b0d14","actorBorder":"#41d7ee","actorTextColor":"#f3f3fa","actorLineColor":"#5d40a9","signalColor":"#9d83ff","signalTextColor":"#7f8399","labelBoxBkgColor":"#141123","labelBoxBorderColor":"#5d40a9","labelTextColor":"#f3f3fa","loopTextColor":"#7f8399","sequenceNumberColor":"#06070b","pie1":"#41d7ee","pie2":"#7b91f6","pie3":"#9d83ff","pie4":"#b181ef","pie5":"#16cce8","pie6":"#2f83f5","pie7":"#6250f2","pie8":"#c0a3ee","pie9":"#60c7f1","pieTitleTextSize":"20px","pieTitleTextColor":"#7f8399","pieSectionTextColor":"#06070b","pieLegendTextColor":"#7f8399","pieStrokeColor":"#06070b","pieStrokeWidth":"2px","pieOuterStrokeColor":"#5d40a9","pieOuterStrokeWidth":"2px","pieOpacity":"0.95"}}}%%
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Helvetica, Arial, sans-serif","fontSize":"15px","primaryColor":"#ffffff","primaryTextColor":"#111827","primaryBorderColor":"#374151","lineColor":"#6b7280","secondaryColor":"#f3f4f6","secondaryTextColor":"#111827","secondaryBorderColor":"#6b7280","tertiaryColor":"#f9fafb","tertiaryTextColor":"#111827","tertiaryBorderColor":"#9ca3af","mainBkg":"#ffffff","nodeBorder":"#374151","nodeTextColor":"#111827","clusterBkg":"#f9fafb","clusterBorder":"#9ca3af","titleColor":"#111827","edgeLabelBackground":"#ffffff","textColor":"#6b7280","noteBkgColor":"#f3f4f6","noteTextColor":"#111827","noteBorderColor":"#6b7280","actorBkg":"#ffffff","actorBorder":"#374151","actorTextColor":"#111827","actorLineColor":"#9ca3af","signalColor":"#6b7280","signalTextColor":"#6b7280","labelBoxBkgColor":"#f3f4f6","labelBoxBorderColor":"#6b7280","labelTextColor":"#111827","loopTextColor":"#6b7280","sequenceNumberColor":"#ffffff","pie1":"#2563eb","pie2":"#6b7280","pie3":"#16a34a","pie4":"#d97706","pie5":"#dc2626","pie6":"#0891b2","pie7":"#4b5563","pie8":"#93c5fd","pie9":"#9ca3af","pieTitleTextSize":"20px","pieTitleTextColor":"#6b7280","pieSectionTextColor":"#ffffff","pieLegendTextColor":"#6b7280","pieStrokeColor":"#ffffff","pieStrokeWidth":"2px","pieOuterStrokeColor":"#d1d5db","pieOuterStrokeWidth":"2px","pieOpacity":"0.95"}}}%%
 flowchart TD
     subgraph SETUP["Setup"]
         direction LR
@@ -87,18 +87,49 @@ More diagrams (sequence, reversal, crash and backup): [`docs/how-it-works.md`](d
 
 ## Repository Structure
 
-| Path | Purpose |
-| ---- | ------- |
-| `README.md` | This document |
-| `app/` | Plain copy of `nsidnev/fastapi-realworld-example-app`, read only |
-| `agents/` | `CLAUDE.md` per role and MCP config examples with key placeholders |
-| `scripts/` | Start, stop, kill, one script per step, reader, checkers, key scanner |
-| `demo-state/` | Every recorded output: `step1/` to `step9/`, `notes/`, `screenshots/`, `closeout-result.json` |
-| `docs/` | Walkthrough, scoreboard, findings, VERIFIED.md, prompts, diagrams |
-| `tests/` | Tests that read the recorded outputs |
-| `run_demo.py` | Replay any steps: `--steps`, `--start`, `--dry-run` |
-| `requirements.txt` | Pinned `okto-pulse` and `okto-grafx` |
-| `LICENSE` | Demo code license (MIT) |
+```text
+pulse-grafx-decision-memory-demo/
+├── README.md
+├── LICENSE                     # demo code, MIT
+├── run_demo.py                 # replay any steps: --steps, --start, --dry-run
+├── requirements.txt            # pinned okto-pulse 0.4.2 and okto-grafx 0.0.8
+├── requirements-dev.txt        # test dependencies
+├── app/                        # the demo app: a read-only copy of a blogging API
+│   ├── FORK_NOTES.md
+│   ├── LICENSE                 # its own MIT license
+│   └── app/                    # FastAPI source the agents read
+├── agents/                     # one folder per role
+│   ├── recorder/CLAUDE.md
+│   ├── recaller/CLAUDE.md
+│   ├── reviewer/CLAUDE.md
+│   └── mcp.*.example.json      # MCP configs with key placeholders
+├── scripts/                    # start, stop, kill, one script per step
+│   ├── step03_recorder.py ... step09_backup_restore.py
+│   └── check_citations.py, read_store_counts.py, run_agent.py,
+│       build_closeout.py, render_scoreboard.py
+├── demo-state/                 # every recorded output of the real run
+│   ├── step1/ ... step9/
+│   ├── notes/
+│   ├── screenshots/
+│   └── closeout-result.json
+├── docs/
+│   ├── walkthrough.md
+│   ├── SCOREBOARD.md
+│   ├── FINDINGS.md
+│   ├── VERIFIED.md
+│   ├── how-it-works.md
+│   ├── prompts/                # the prompt for each agent step
+│   ├── hero.svg
+│   └── architecture.svg
+├── tests/                      # tests that read the recorded outputs
+└── .github/workflows/validate.yml
+```
+
+## The Demo App
+
+`app/` is the codebase the three sessions plan changes for: a plain copy of [`nsidnev/fastapi-realworld-example-app`](https://github.com/nsidnev/fastapi-realworld-example-app), a blogging API (users, articles, comments, tags) built with FastAPI.
+
+It is never run, so Postgres is not needed. The Recorder only reads it, and every decision it records points at a real file and line in it, which the citation checker confirms. The scenario around it (who decided what, and why the reversal happens) is invented for the demo. See [`app/FORK_NOTES.md`](app/FORK_NOTES.md).
 
 ## Roles
 
@@ -167,10 +198,15 @@ pip install -r requirements-dev.txt && python -m pytest tests -q
 > [!IMPORTANT]
 > Pre-alpha Grafx and a 0.x Pulse, one run on one machine, a SIGKILL crash only (macOS, not power loss, not Windows), reads taken with Pulse stopped, backup run in a Linux container because Grafx 0.0.8 refuses it on macOS. Both products are source-available, not open source. [All limits](docs/FINDINGS.md#limits).
 
-## Contributing & Licensing
+## Licenses
 
-To reproduce the run, fork this repo and follow the [walkthrough](docs/walkthrough.md). Demo code: [MIT](LICENSE). `app/` keeps its own [MIT license](app/LICENSE). Okto Pulse: [Elastic License 2.0](https://github.com/OktoLabsAI/okto-pulse/blob/main/LICENSE). Okto Grafx: [Elastic License 2.0 with SaaS/Branding Addendum](https://github.com/OktoLabsAI/okto-grafx/blob/main/LICENSE). Linked, not copied.
+To reproduce the run, fork this repo and follow the [walkthrough](docs/walkthrough.md).
 
-## Conclusion
+| Part | License |
+| ---- | ------- |
+| Demo code in this repo | [MIT](LICENSE) |
+| `app/` (the demo app) | [MIT](app/LICENSE), kept from the original project |
+| [Okto Pulse](https://github.com/OktoLabsAI/okto-pulse) | [Elastic License 2.0](https://github.com/OktoLabsAI/okto-pulse/blob/main/LICENSE) |
+| [Okto Grafx](https://github.com/OktoLabsAI/okto-grafx) | [Elastic License 2.0 with SaaS/Branding Addendum](https://github.com/OktoLabsAI/okto-grafx/blob/main/LICENSE) |
 
-Built on Okto Pulse and Okto Grafx, products of OktoLabs. Decisions kept as a graph on disk, not a chat transcript each session has to remember.
+Pulse and Grafx are installed from PyPI at pinned versions. Their source is not included in this repo.
