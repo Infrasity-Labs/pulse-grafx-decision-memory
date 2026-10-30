@@ -3,7 +3,10 @@
 Opens with connect(path, read_only=True). It never opens writable and does not retry or work around a
 refusal: a refusal is recorded as is. Also probes whether commit history is enabled, using a read transaction.
 
-Usage: python scripts/read_store_counts.py STORE_PATH [--out JSON_FILE]
+With --decisions the result also lists every Decision node (id, title, content, source_artifact_ref, quote) sorted by source_artifact_ref,
+so two stores can be compared by decision content and not only by counts.
+
+Usage: python scripts/read_store_counts.py STORE_PATH [--out JSON_FILE] [--decisions]
 Exit code 0 on a successful read, 4 if the read-only open was refused.
 """
 from __future__ import annotations
@@ -29,7 +32,7 @@ def kind_of(t) -> str:
     return "node" if "node" in k else "rel"
 
 
-def read_counts(path: str) -> dict:
+def read_counts(path: str, with_decisions: bool = False) -> dict:
     result: dict = {"path_name": Path(path).name, "read_only_requested": True, "opened": False}
     try:
         db = connect(path, read_only=True)
@@ -56,6 +59,10 @@ def read_counts(path: str) -> dict:
         result["node_total"] = sum(nodes.values())
         result["rel_total"] = sum(rels.values())
         result["tables_total"] = len(tables)
+        if with_decisions and "Decision" in nodes:
+            rows = db.execute("MATCH (n:Decision) RETURN n.id, n.title, n.content, n.source_artifact_ref, n.source_span_quote").rows
+            result["decisions"] = sorted(({"id": r[0], "title": r[1], "content": r[2], "source_artifact_ref": r[3], "quote": r[4]} for r in rows),
+                                         key=lambda d: (d["source_artifact_ref"] or "", d["id"]))
         try:
             with db.begin("read") as tx:
                 page = tx.commit_history(limit=1)
@@ -69,11 +76,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("store")
     ap.add_argument("--out")
+    ap.add_argument("--decisions", action="store_true", help="also list every Decision node")
     a = ap.parse_args()
-    res = read_counts(a.store)
+    res = read_counts(a.store, a.decisions)
     if a.out:
         Path(a.out).write_text(json.dumps(res, indent=2) + "\n")
-    print(json.dumps({k: v for k, v in res.items() if k not in ("node_counts", "rel_counts")}, indent=1)[:1500])
+    print(json.dumps({k: v for k, v in res.items() if k not in ("node_counts", "rel_counts", "decisions")}, indent=1)[:1500])
     return 0 if res["opened"] else 4
 
 

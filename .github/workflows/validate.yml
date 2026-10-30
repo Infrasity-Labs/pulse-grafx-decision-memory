@@ -1,12 +1,19 @@
 name: validate
 
+# The fast check. It reads the recorded files in demo-state/ and never starts Pulse or Grafx, so it cannot tell you that a product
+# still behaves as recorded. That is the job of the integration workflow. It must stay under one minute.
 on:
   push:
   pull_request:
 
 jobs:
-  validate:
+  recorded-evidence:
+    name: recorded evidence (offline, no Pulse started)
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      # A recorded output that is missing fails the tests. It does not skip them.
+      REQUIRE_EVIDENCE: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -20,8 +27,8 @@ jobs:
         run: python -m compileall -q scripts run_demo.py tests
       - name: Secret, em dash and machine path scan
         run: python scripts/scan_repo.py
-      - name: JSON and link checks
-        run: python scripts/check_links.py --external
+      - name: JSON and local link checks
+        run: python scripts/check_links.py
       - name: Unit tests on recorded outputs
         run: python -m pytest tests -q
       - name: Dry run of all ten steps

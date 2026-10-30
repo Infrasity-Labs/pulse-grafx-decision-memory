@@ -1,0 +1,1728 @@
+{
+  "arm": "llm-memory",
+  "kind": "llm",
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "runs": [
+    {
+      "run": 1,
+      "recorded_at": "2026-10-29T21:21:50+00:00",
+      "exit_code": 0,
+      "problem": null,
+      "model_requested": "claude-opus-5-5",
+      "model": "claude-opus-5-5",
+      "run_stats": {
+        "role": "recaller",
+        "model": "claude-opus-5-5",
+        "exit_code": 0,
+        "wall_seconds": 61.0,
+        "duration_ms": 59441,
+        "duration_api_ms": 58147,
+        "num_turns": 7,
+        "tool_calls": 6,
+        "input_tokens": 14,
+        "output_tokens": 4541,
+        "cache_creation_input_tokens": 22847,
+        "cache_read_input_tokens": 852694,
+        "total_cost_usd": 0.37564980000000003,
+        "is_error": false,
+        "stop_reason": "end_turn"
+      },
+      "questions_asked": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11",
+        "m12",
+        "m13",
+        "m14",
+        "m15",
+        "m16"
+      ],
+      "answers": [
+        {
+          "id": "d1",
+          "decision": "jwt-algorithm",
+          "abstain": false,
+          "answer": "Access tokens are signed with HS256 using one shared secret key."
+        },
+        {
+          "id": "d2",
+          "decision": "article-ownership",
+          "abstain": false,
+          "answer": "Only the article's author, matched by username, may change it."
+        },
+        {
+          "id": "d3",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422."
+        },
+        {
+          "id": "d4",
+          "decision": "article-slug-conflict",
+          "abstain": false,
+          "answer": "If the slug generated for a new article already exists, the API refuses the article with HTTP 400."
+        },
+        {
+          "id": "d5",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "The API has no refresh tokens, only one long-lived access token. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, so the team chose a one-week token that expires on its own."
+        },
+        {
+          "id": "d6",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires deleted content to be gone from live storage within 24 hours. A deleted_at flag was rejected because the rows would stay in the table."
+        },
+        {
+          "id": "d7",
+          "decision": "reset-link-lifetime",
+          "abstain": false,
+          "answer": "30 minutes. That covers slow mail delivery, since users open reset mail within 10 minutes, and avoids leaving a long-lived link in an inbox."
+        },
+        {
+          "id": "d8",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "fancyhash was ruled out. Its licence has a network-use clause that is not compatible with distributing the API."
+        },
+        {
+          "id": "d9",
+          "decision": "tag-handling",
+          "abstain": false,
+          "answer": "Tag names are unique text rows in the tags table. The articles_to_tags join table links them to articles."
+        },
+        {
+          "id": "d10",
+          "decision": "favorites-no-notification",
+          "abstain": false,
+          "answer": "No. Product decision PD-8 puts all notifications out of scope until the 2027 roadmap."
+        },
+        {
+          "id": "d11",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h1",
+          "decision": "jwt-subject-claim",
+          "abstain": false,
+          "answer": "Every access token carries the fixed subject claim \"access\"."
+        },
+        {
+          "id": "h2",
+          "decision": "password-salt",
+          "abstain": false,
+          "answer": "Each user's random salt is created with bcrypt.gensalt."
+        },
+        {
+          "id": "h3",
+          "decision": "duplicate-registration",
+          "abstain": false,
+          "answer": "Signing up with a username or email that is already taken gets HTTP 400."
+        },
+        {
+          "id": "h4",
+          "decision": "cors-allowed-origins",
+          "abstain": false,
+          "answer": "The origins listed in allowed_hosts may call the API. By default that is every origin."
+        },
+        {
+          "id": "h5",
+          "decision": "connection-pool-size",
+          "abstain": false,
+          "answer": "10. The pool is fixed at 10 through min_connection_count and max_connection_count."
+        },
+        {
+          "id": "h6",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores a tag that already exists, so no duplicate is created."
+        },
+        {
+          "id": "h7",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 measured login at a p95 of 240 ms with the default factor. One step higher went past the 300 ms login budget."
+        },
+        {
+          "id": "h8",
+          "decision": "page-size-default-reason",
+          "abstain": false,
+          "answer": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling."
+        },
+        {
+          "id": "h9",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3). That is why MongoDB was not chosen."
+        },
+        {
+          "id": "h10",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Sending tokens in cookies would need CSRF protection, which this API does not have (ADR-5). Tokens go only in the Authorization header."
+        },
+        {
+          "id": "h11",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query. A SQL file can be reviewed in a pull request, but ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "h12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m1",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token with no refresh token, so a stolen token expires on its own."
+        },
+        {
+          "id": "m2",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours."
+        },
+        {
+          "id": "m3",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "The fancyhash licence has a network-use clause that is not compatible with distributing the API."
+        },
+        {
+          "id": "m4",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "With the default factor, load test LT-9 measured login at a p95 of 240 ms. One step higher went past the 300 ms login budget."
+        },
+        {
+          "id": "m5",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Cookie transport would need CSRF protection that this API does not have (ADR-5)."
+        },
+        {
+          "id": "m6",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph says each user gets a salt from bcrypt.gensalt, but it does not say where the user row stores it."
+        },
+        {
+          "id": "m7",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422 with an errors list holding the validator's error objects."
+        },
+        {
+          "id": "m8",
+          "decision": "token-expiry",
+          "abstain": false,
+          "answer": "One week after issue."
+        },
+        {
+          "id": "m9",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores the existing tag. Tags are unique rows in the tags table, linked to the article through articles_to_tags."
+        },
+        {
+          "id": "m10",
+          "decision": "database-access-layer",
+          "abstain": false,
+          "answer": "aiosql loads the raw SQL files and the asyncpg driver runs them, wrapped in repository classes."
+        },
+        {
+          "id": "m11",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3)."
+        },
+        {
+          "id": "m12",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query in pull requests. Hand-written SQL files can be reviewed that way and ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "m13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m15",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m16",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "stance": "stop",
+          "cited": "no-refresh-tokens",
+          "answer": "Stop. This conflicts with the active decision to use one long-lived access token and no refresh tokens. Security review SR-2025-14 found that stored refresh tokens let a stolen browser profile keep access for months, and \"short access token with a refresh token\" was already considered and rejected. That decision would have to be revisited first."
+        },
+        {
+          "id": "t2",
+          "stance": "stop",
+          "cited": "hard-delete-articles",
+          "answer": "Stop. Legal review LR-77 requires deleted content to be gone from live storage within 24 hours. A deleted_at soft-delete column was explicitly rejected because the rows would stay in the table."
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "recorded_at": "2026-10-29T21:22:59+00:00",
+      "exit_code": 0,
+      "problem": null,
+      "model_requested": "claude-opus-5-5",
+      "model": "claude-opus-5-5",
+      "run_stats": {
+        "role": "recaller",
+        "model": "claude-opus-5-5",
+        "exit_code": 0,
+        "wall_seconds": 68.1,
+        "duration_ms": 66605,
+        "duration_api_ms": 65141,
+        "num_turns": 6,
+        "tool_calls": 5,
+        "input_tokens": 12,
+        "output_tokens": 4632,
+        "cache_creation_input_tokens": 16772,
+        "cache_read_input_tokens": 726541,
+        "total_cost_usd": 0.32185620000000004,
+        "is_error": false,
+        "stop_reason": "end_turn"
+      },
+      "questions_asked": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11",
+        "m12",
+        "m13",
+        "m14",
+        "m15",
+        "m16"
+      ],
+      "answers": [
+        {
+          "id": "d1",
+          "decision": "jwt-algorithm",
+          "abstain": false,
+          "answer": "Access tokens are signed with HS256 using one shared secret key."
+        },
+        {
+          "id": "d2",
+          "decision": "article-ownership",
+          "abstain": false,
+          "answer": "Only the article's author, matched by username, may modify it. Comments can likewise only be deleted by their author."
+        },
+        {
+          "id": "d3",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422, with an errors list made of the validator's error objects."
+        },
+        {
+          "id": "d4",
+          "decision": "article-slug-conflict",
+          "abstain": false,
+          "answer": "Creating an article whose generated slug already exists is refused with HTTP 400. Slugs are generated from the title with slugify."
+        },
+        {
+          "id": "d5",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "The API has no refresh tokens, only one long-lived access token. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. A one-week token expires on its own instead."
+        },
+        {
+          "id": "d6",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires content deleted by its author to be gone from live storage within 24 hours. A deleted_at flag would leave the rows in the table."
+        },
+        {
+          "id": "d7",
+          "decision": "reset-link-lifetime",
+          "abstain": false,
+          "answer": "Password reset links stay valid for 30 minutes. Users open the mail within about 10 minutes, so 30 minutes covers slow delivery without leaving a long-lived link in an inbox."
+        },
+        {
+          "id": "d8",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "fancyhash was ruled out because its licence has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept."
+        },
+        {
+          "id": "d9",
+          "decision": "tag-handling",
+          "abstain": false,
+          "answer": "Tag names are unique text rows in the tags table. They are linked to articles through the articles_to_tags join table."
+        },
+        {
+          "id": "d10",
+          "decision": "favorites-no-notification",
+          "abstain": false,
+          "answer": "No. Product decision PD-8 puts all notifications out of scope until the 2027 roadmap."
+        },
+        {
+          "id": "d11",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h1",
+          "decision": "jwt-subject-claim",
+          "abstain": false,
+          "answer": "Every access token carries the fixed subject claim \"access\"."
+        },
+        {
+          "id": "h2",
+          "decision": "password-salt",
+          "abstain": false,
+          "answer": "Each user's random salt is created with bcrypt.gensalt."
+        },
+        {
+          "id": "h3",
+          "decision": "duplicate-registration",
+          "abstain": false,
+          "answer": "Registering with a username or email that is already taken is answered with HTTP 400."
+        },
+        {
+          "id": "h4",
+          "decision": "cors-allowed-origins",
+          "abstain": false,
+          "answer": "The origins listed in allowed_hosts may call the API, and by default that is every origin."
+        },
+        {
+          "id": "h5",
+          "decision": "connection-pool-size",
+          "abstain": false,
+          "answer": "10. The pool is fixed at 10 connections through min_connection_count and max_connection_count."
+        },
+        {
+          "id": "h6",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores a tag that already exists, so no duplicate row is created."
+        },
+        {
+          "id": "h7",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 put login at a p95 of 240 ms with the default bcrypt factor. One step higher pushed it past the 300 ms login budget."
+        },
+        {
+          "id": "h8",
+          "decision": "page-size-default-reason",
+          "abstain": false,
+          "answer": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling."
+        },
+        {
+          "id": "h9",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3), so MongoDB was not chosen."
+        },
+        {
+          "id": "h10",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Tokens travel only in the Authorization header. Cookie transport would need CSRF protection that this API does not have (ADR-5)."
+        },
+        {
+          "id": "h11",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query. A SQL file can be reviewed in a pull request but ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "h12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m1",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token with no refresh token, so a stolen token expires on its own."
+        },
+        {
+          "id": "m2",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77, which requires content deleted by its author to be gone from live storage within 24 hours."
+        },
+        {
+          "id": "m3",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "Its licence has a network-use clause that is not compatible with distributing the API."
+        },
+        {
+          "id": "m4",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 measured login at a p95 of 240 ms with the default factor. One step higher exceeded the 300 ms login budget."
+        },
+        {
+          "id": "m5",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Cookie transport would need CSRF protection that the API does not have (ADR-5), so tokens are accepted only in the Authorization header."
+        },
+        {
+          "id": "m6",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph says each user gets a random salt from bcrypt.gensalt, but it does not say which column of the user row stores it."
+        },
+        {
+          "id": "m7",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422 with a JSON body holding an errors list of the validator's error objects."
+        },
+        {
+          "id": "m8",
+          "decision": "token-expiry",
+          "abstain": false,
+          "answer": "One week after issue."
+        },
+        {
+          "id": "m9",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert ignores the existing tag. Tags are unique rows in the tags table, linked to the article through articles_to_tags."
+        },
+        {
+          "id": "m10",
+          "decision": "database-access-layer",
+          "abstain": false,
+          "answer": "aiosql loads the raw SQL files, the asyncpg driver runs them, and repository classes wrap them."
+        },
+        {
+          "id": "m11",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3)."
+        },
+        {
+          "id": "m12",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query in pull requests. Hand-written SQL files can be reviewed that way and ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "m13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m15",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m16",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "stance": "stop",
+          "cited": "no-refresh-tokens",
+          "answer": "Stop. The graph records a decision for one long-lived access token and no refresh tokens, and lists the short token plus refresh token setup as a rejected alternative. Security review SR-2025-14 found that stored refresh tokens let a stolen browser profile keep access for months. Revisiting this needs a new security review that supersedes that decision."
+        },
+        {
+          "id": "t2",
+          "stance": "stop",
+          "cited": "hard-delete-articles",
+          "answer": "Stop. Legal review LR-77 requires content deleted by its author to be gone from live storage within 24 hours. A deleted_at soft-delete column was explicitly rejected because the rows would stay in the table."
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "recorded_at": "2026-10-29T21:24:07+00:00",
+      "exit_code": 0,
+      "problem": null,
+      "model_requested": "claude-opus-5-5",
+      "model": "claude-opus-5-5",
+      "run_stats": {
+        "role": "recaller",
+        "model": "claude-opus-5-5",
+        "exit_code": 0,
+        "wall_seconds": 66.6,
+        "duration_ms": 65128,
+        "duration_api_ms": 63763,
+        "num_turns": 8,
+        "tool_calls": 7,
+        "input_tokens": 16,
+        "output_tokens": 5175,
+        "cache_creation_input_tokens": 10789,
+        "cache_read_input_tokens": 951290,
+        "total_cost_usd": 0.347767,
+        "is_error": false,
+        "stop_reason": "end_turn"
+      },
+      "questions_asked": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11",
+        "m12",
+        "m13",
+        "m14",
+        "m15",
+        "m16"
+      ],
+      "answers": [
+        {
+          "id": "d1",
+          "decision": "jwt-algorithm",
+          "abstain": false,
+          "answer": "Access tokens are signed with HS256 using one shared secret key."
+        },
+        {
+          "id": "d2",
+          "decision": "article-ownership",
+          "abstain": false,
+          "answer": "Only the article's author, matched by username, may modify it."
+        },
+        {
+          "id": "d3",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422, with an errors list of the validator's error objects."
+        },
+        {
+          "id": "d4",
+          "decision": "article-slug-conflict",
+          "abstain": false,
+          "answer": "If the slug generated for a new article already exists, creation is refused with HTTP 400."
+        },
+        {
+          "id": "d5",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "The API has no refresh tokens, only one long-lived access token. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, so a stolen token now expires on its own after one week."
+        },
+        {
+          "id": "d6",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires content the author deleted to be gone from live storage within 24 hours. A deleted_at flag was rejected because the rows would stay in the table."
+        },
+        {
+          "id": "d7",
+          "decision": "reset-link-lifetime",
+          "abstain": false,
+          "answer": "30 minutes. Support tickets show users open the reset mail within 10 minutes, so 30 minutes covers slow mail without leaving a long-lived link in an inbox."
+        },
+        {
+          "id": "d8",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "fancyhash was ruled out because its licence has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept."
+        },
+        {
+          "id": "d9",
+          "decision": "tag-handling",
+          "abstain": false,
+          "answer": "Tag names are unique text rows in the tags table. The articles_to_tags join table links them to articles."
+        },
+        {
+          "id": "d10",
+          "decision": "favorites-no-notification",
+          "abstain": false,
+          "answer": "No. Product decision PD-8 puts all notifications out of scope until the 2027 roadmap."
+        },
+        {
+          "id": "d11",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h1",
+          "decision": "jwt-subject-claim",
+          "abstain": false,
+          "answer": "Every access token carries the fixed subject claim \"access\"."
+        },
+        {
+          "id": "h2",
+          "decision": "password-salt",
+          "abstain": false,
+          "answer": "Each user's random salt is created with bcrypt.gensalt."
+        },
+        {
+          "id": "h3",
+          "decision": "duplicate-registration",
+          "abstain": false,
+          "answer": "Registering with a username or email that is already taken gets HTTP 400."
+        },
+        {
+          "id": "h4",
+          "decision": "cors-allowed-origins",
+          "abstain": false,
+          "answer": "The origins listed in allowed_hosts, which defaults to every origin."
+        },
+        {
+          "id": "h5",
+          "decision": "connection-pool-size",
+          "abstain": false,
+          "answer": "10. The pool is fixed at 10 connections through min_connection_count and max_connection_count."
+        },
+        {
+          "id": "h6",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores a tag that already exists, so no duplicate is created."
+        },
+        {
+          "id": "h7",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 put login at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget."
+        },
+        {
+          "id": "h8",
+          "decision": "page-size-default-reason",
+          "abstain": false,
+          "answer": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling."
+        },
+        {
+          "id": "h9",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3), so MongoDB was not chosen."
+        },
+        {
+          "id": "h10",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Tokens travel only in the Authorization header because cookie transport would need CSRF protection that the API does not have (ADR-5)."
+        },
+        {
+          "id": "h11",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query. A SQL file can be reviewed in a pull request, but ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "h12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m1",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token with no refresh token so a stolen token expires on its own."
+        },
+        {
+          "id": "m2",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77, which requires content the author deleted to be gone from live storage within 24 hours."
+        },
+        {
+          "id": "m3",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "The fancyhash licence has a network-use clause that is not compatible with distributing the API."
+        },
+        {
+          "id": "m4",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 showed a login p95 of 240 ms at the default factor. One step higher went past the 300 ms login budget."
+        },
+        {
+          "id": "m5",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Cookie transport would need CSRF protection that this API does not have (ADR-5)."
+        },
+        {
+          "id": "m6",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph says each user gets a random salt from bcrypt.gensalt and that the salt is prepended to the password, but it does not say which column of the user row stores it."
+        },
+        {
+          "id": "m7",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422 with a JSON errors list holding the validator's error objects, following the general {\"errors\": [detail]} error shape."
+        },
+        {
+          "id": "m8",
+          "decision": "token-expiry",
+          "abstain": false,
+          "answer": "One week after issue."
+        },
+        {
+          "id": "m9",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores the existing tag, and the article is linked to it through articles_to_tags."
+        },
+        {
+          "id": "m10",
+          "decision": "database-access-layer",
+          "abstain": false,
+          "answer": "aiosql loads the raw SQL files and the asyncpg driver runs them, wrapped in repository classes."
+        },
+        {
+          "id": "m11",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3)."
+        },
+        {
+          "id": "m12",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query in pull requests. SQL files can be reviewed that way and ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "m13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m15",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m16",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "stance": "stop",
+          "cited": "no-refresh-tokens",
+          "answer": "Stop. The graph records a decision to use one one-week access token with no refresh tokens. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, and 'short access token with a refresh token' was considered and rejected. Changing this would mean revisiting that decision with the security reviewers first."
+        },
+        {
+          "id": "t2",
+          "stance": "stop",
+          "cited": "hard-delete-articles",
+          "answer": "Stop. Legal review LR-77 requires content the author deleted to be gone from live storage within 24 hours. Soft delete with a deleted_at column was explicitly rejected because the rows would stay in the table."
+        }
+      ]
+    },
+    {
+      "run": 4,
+      "recorded_at": "2026-10-29T21:31:32+00:00",
+      "exit_code": 0,
+      "problem": null,
+      "model_requested": "claude-opus-5-5",
+      "model": "claude-opus-5-5",
+      "run_stats": {
+        "role": "recaller",
+        "model": "claude-opus-5-5",
+        "exit_code": 0,
+        "wall_seconds": 61.0,
+        "duration_ms": 59354,
+        "duration_api_ms": 56922,
+        "num_turns": 6,
+        "tool_calls": 5,
+        "input_tokens": 12,
+        "output_tokens": 4622,
+        "cache_creation_input_tokens": 132083,
+        "cache_read_input_tokens": 611581,
+        "total_cost_usd": 0.8752192000000001,
+        "is_error": false,
+        "stop_reason": "end_turn"
+      },
+      "questions_asked": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11",
+        "m12",
+        "m13",
+        "m14",
+        "m15",
+        "m16"
+      ],
+      "answers": [
+        {
+          "id": "d1",
+          "decision": "jwt-algorithm",
+          "abstain": false,
+          "answer": "Access tokens are signed with HS256 using one shared secret key."
+        },
+        {
+          "id": "d2",
+          "decision": "article-ownership",
+          "abstain": false,
+          "answer": "Only the article's author, matched by username, may modify the article. For comments, only the comment's author may delete it."
+        },
+        {
+          "id": "d3",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422, with an errors list of the validator's error objects."
+        },
+        {
+          "id": "d4",
+          "decision": "article-slug-conflict",
+          "abstain": false,
+          "answer": "Creating an article whose generated slug already exists is refused with HTTP 400."
+        },
+        {
+          "id": "d5",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "The API has no refresh tokens, only one long-lived access token. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, so a stolen one-week token now expires on its own."
+        },
+        {
+          "id": "d6",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at flag was rejected because the rows would stay in the table."
+        },
+        {
+          "id": "d7",
+          "decision": "reset-link-lifetime",
+          "abstain": false,
+          "answer": "30 minutes. Users open reset mail within 10 minutes, and 30 minutes covers slow mail delivery without leaving a long-lived link in an inbox."
+        },
+        {
+          "id": "d8",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "fancyhash was ruled out because its licence has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept."
+        },
+        {
+          "id": "d9",
+          "decision": "tag-handling",
+          "abstain": false,
+          "answer": "Tag names are unique text rows in the tags table, and they link to articles through the articles_to_tags join table."
+        },
+        {
+          "id": "d10",
+          "decision": "favorites-no-notification",
+          "abstain": false,
+          "answer": "No. Product decision PD-8 puts all notifications out of scope until the 2027 roadmap."
+        },
+        {
+          "id": "d11",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h1",
+          "decision": "jwt-subject-claim",
+          "abstain": false,
+          "answer": "Every access token carries the fixed subject claim 'access'."
+        },
+        {
+          "id": "h2",
+          "decision": "password-salt",
+          "abstain": false,
+          "answer": "Each user's random salt is created with bcrypt.gensalt."
+        },
+        {
+          "id": "h3",
+          "decision": "duplicate-registration",
+          "abstain": false,
+          "answer": "Registering with a username or email that is already taken is answered with HTTP 400."
+        },
+        {
+          "id": "h4",
+          "decision": "cors-allowed-origins",
+          "abstain": false,
+          "answer": "The origins listed in allowed_hosts may call the API. By default that is every origin."
+        },
+        {
+          "id": "h5",
+          "decision": "connection-pool-size",
+          "abstain": false,
+          "answer": "10. The pool is fixed at 10 connections through min_connection_count and max_connection_count."
+        },
+        {
+          "id": "h6",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores a tag that already exists, so no duplicate is created."
+        },
+        {
+          "id": "h7",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 put login at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget."
+        },
+        {
+          "id": "h8",
+          "decision": "page-size-default-reason",
+          "abstain": false,
+          "answer": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling."
+        },
+        {
+          "id": "h9",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "MongoDB was passed over because the data is relational and the DBA team supports only PostgreSQL (ADR-3)."
+        },
+        {
+          "id": "h10",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Tokens travel only in the Authorization header, never in cookies. Cookie transport would need CSRF protection that this API does not have (ADR-5)."
+        },
+        {
+          "id": "h11",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "h12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m1",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token with no refresh token, so a stolen token expires on its own."
+        },
+        {
+          "id": "m2",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours."
+        },
+        {
+          "id": "m3",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "The fancyhash licence has a network-use clause that is not compatible with distributing the API."
+        },
+        {
+          "id": "m4",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 measured login p95 at 240 ms with the default factor. One step higher exceeded the 300 ms login budget."
+        },
+        {
+          "id": "m5",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Cookie transport would need CSRF protection that the API does not have (ADR-5), so tokens go only in the Authorization header."
+        },
+        {
+          "id": "m6",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph says each user gets a random salt from bcrypt.gensalt, but it does not say where in the user row the salt is stored."
+        },
+        {
+          "id": "m7",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422 with a JSON body holding an errors list of the validator's error objects."
+        },
+        {
+          "id": "m8",
+          "decision": "token-expiry",
+          "abstain": false,
+          "answer": "One week after issue."
+        },
+        {
+          "id": "m9",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores the existing tag. Tags stay unique rows, and the article is linked through articles_to_tags."
+        },
+        {
+          "id": "m10",
+          "decision": "database-access-layer",
+          "abstain": false,
+          "answer": "aiosql loads the raw SQL files and the asyncpg driver runs them, wrapped in repository classes."
+        },
+        {
+          "id": "m11",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3)."
+        },
+        {
+          "id": "m12",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query in pull requests. SQL files can be reviewed that way and ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "m13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m15",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m16",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "stance": "stop",
+          "cited": "no-refresh-tokens",
+          "answer": "Stop. The active decision is to use one long-lived access token and no refresh tokens. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, and 'short access token with a refresh token' was considered and rejected. Going ahead would mean revisiting that decision with security review first."
+        },
+        {
+          "id": "t2",
+          "stance": "stop",
+          "cited": "hard-delete-articles",
+          "answer": "Stop. Legal review LR-77 requires deleted content to be gone from live storage within 24 hours. A soft delete with a deleted_at column was explicitly rejected because the rows would stay in the table."
+        }
+      ]
+    },
+    {
+      "run": 5,
+      "recorded_at": "2026-10-29T21:32:41+00:00",
+      "exit_code": 0,
+      "problem": null,
+      "model_requested": "claude-opus-5-5",
+      "model": "claude-opus-5-5",
+      "run_stats": {
+        "role": "recaller",
+        "model": "claude-opus-5-5",
+        "exit_code": 0,
+        "wall_seconds": 68.3,
+        "duration_ms": 66462,
+        "duration_api_ms": 64883,
+        "num_turns": 8,
+        "tool_calls": 7,
+        "input_tokens": 16,
+        "output_tokens": 5357,
+        "cache_creation_input_tokens": 18611,
+        "cache_read_input_tokens": 958485,
+        "total_cost_usd": 0.39195599999999997,
+        "is_error": false,
+        "stop_reason": "end_turn"
+      },
+      "questions_asked": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11",
+        "m12",
+        "m13",
+        "m14",
+        "m15",
+        "m16"
+      ],
+      "answers": [
+        {
+          "id": "d1",
+          "decision": "jwt-algorithm",
+          "abstain": false,
+          "answer": "Access tokens are signed with HS256 using one shared secret key."
+        },
+        {
+          "id": "d2",
+          "decision": "article-ownership",
+          "abstain": false,
+          "answer": "Only the article's author, matched by username, may modify it."
+        },
+        {
+          "id": "d3",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422."
+        },
+        {
+          "id": "d4",
+          "decision": "article-slug-conflict",
+          "abstain": false,
+          "answer": "Creating an article whose generated slug already exists is refused with HTTP 400."
+        },
+        {
+          "id": "d5",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "The API has no refresh tokens, only one long-lived access token. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, so the team chose a one-week token that expires on its own."
+        },
+        {
+          "id": "d6",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires content deleted by its author to be gone from live storage within 24 hours. A deleted_at flag was rejected because the rows would stay in the table."
+        },
+        {
+          "id": "d7",
+          "decision": "reset-link-lifetime",
+          "abstain": false,
+          "answer": "30 minutes. Users open reset mail within about 10 minutes, and 30 minutes allows for slow mail without leaving a long-lived link in an inbox."
+        },
+        {
+          "id": "d8",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "fancyhash was ruled out because its licence has a network-use clause that does not fit distributing the API. Passlib with bcrypt was kept."
+        },
+        {
+          "id": "d9",
+          "decision": "tag-handling",
+          "abstain": false,
+          "answer": "Tags are unique text rows in a tags table, linked to articles through the articles_to_tags join table."
+        },
+        {
+          "id": "d10",
+          "decision": "favorites-no-notification",
+          "abstain": false,
+          "answer": "No. Product decision PD-8 puts all notifications out of scope until the 2027 roadmap."
+        },
+        {
+          "id": "d11",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "d13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h1",
+          "decision": "jwt-subject-claim",
+          "abstain": false,
+          "answer": "Every access token carries the fixed subject claim \"access\"."
+        },
+        {
+          "id": "h2",
+          "decision": "password-salt",
+          "abstain": false,
+          "answer": "Each user's random salt is created with bcrypt.gensalt."
+        },
+        {
+          "id": "h3",
+          "decision": "duplicate-registration",
+          "abstain": false,
+          "answer": "Registering with a username or email that is already taken gets HTTP 400."
+        },
+        {
+          "id": "h4",
+          "decision": "cors-allowed-origins",
+          "abstain": false,
+          "answer": "The origins listed in allowed_hosts. By default that is every origin."
+        },
+        {
+          "id": "h5",
+          "decision": "connection-pool-size",
+          "abstain": false,
+          "answer": "10. The pool is fixed at 10 connections through min_connection_count and max_connection_count."
+        },
+        {
+          "id": "h6",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert statement ignores a tag that already exists, so no duplicate is created."
+        },
+        {
+          "id": "h7",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 put login at a p95 of 240 ms with the default work factor. One step higher went past the 300 ms login budget."
+        },
+        {
+          "id": "h8",
+          "decision": "page-size-default-reason",
+          "abstain": false,
+          "answer": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling."
+        },
+        {
+          "id": "h9",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3), so MongoDB was not chosen."
+        },
+        {
+          "id": "h10",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Sending tokens in cookies would need CSRF protection, which this API does not have (ADR-5). Tokens go only in the Authorization header."
+        },
+        {
+          "id": "h11",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query. A SQL file can be reviewed in a pull request, but ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "h12",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "h14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m1",
+          "decision": "no-refresh-tokens",
+          "abstain": false,
+          "answer": "Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token with no refresh token, so a stolen token expires on its own."
+        },
+        {
+          "id": "m2",
+          "decision": "hard-delete-articles",
+          "abstain": false,
+          "answer": "Legal review LR-77 requires content deleted by its author to be gone from live storage within 24 hours."
+        },
+        {
+          "id": "m3",
+          "decision": "reject-fancyhash",
+          "abstain": false,
+          "answer": "The fancyhash licence has a network-use clause that does not fit distributing the API."
+        },
+        {
+          "id": "m4",
+          "decision": "bcrypt-work-factor",
+          "abstain": false,
+          "answer": "Load test LT-9 showed a login p95 of 240 ms at the default factor. One step higher went past the 300 ms login budget."
+        },
+        {
+          "id": "m5",
+          "decision": "tokens-header-only",
+          "abstain": false,
+          "answer": "Cookie transport would need CSRF protection, which this API does not have (ADR-5)."
+        },
+        {
+          "id": "m6",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this. It says each user gets a random salt from bcrypt.gensalt that is prepended to the password, but it does not say which field of the user row stores it."
+        },
+        {
+          "id": "m7",
+          "decision": "validation-error-shape",
+          "abstain": false,
+          "answer": "HTTP 422 with a JSON errors list that holds the validator's error objects."
+        },
+        {
+          "id": "m8",
+          "decision": "token-expiry",
+          "abstain": false,
+          "answer": "One week after issue."
+        },
+        {
+          "id": "m9",
+          "decision": "tag-create-idempotent",
+          "abstain": false,
+          "answer": "The insert of the existing tag is ignored, and the existing unique tag row is used."
+        },
+        {
+          "id": "m10",
+          "decision": "database-access-layer",
+          "abstain": false,
+          "answer": "aiosql loads the raw SQL files, and the asyncpg driver runs them, wrapped in repository classes."
+        },
+        {
+          "id": "m11",
+          "decision": "postgres-over-mongodb",
+          "abstain": false,
+          "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3)."
+        },
+        {
+          "id": "m12",
+          "decision": "aiosql-over-orm",
+          "abstain": false,
+          "answer": "The DBA team reviews every query in pull requests. SQL files can be reviewed that way, but ORM output cannot (ADR-4)."
+        },
+        {
+          "id": "m13",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m14",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m15",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        },
+        {
+          "id": "m16",
+          "decision": null,
+          "abstain": true,
+          "answer": "The graph does not answer this."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "stance": "stop",
+          "cited": "no-refresh-tokens",
+          "answer": "Stop. The graph records a decision to use one long-lived access token with no refresh tokens. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, and 'short access token with a refresh token' was considered and rejected. Reopen that decision with security review before changing anything."
+        },
+        {
+          "id": "t2",
+          "stance": "stop",
+          "cited": "hard-delete-articles",
+          "answer": "Stop. Legal review LR-77 requires deleted content to be gone from live storage within 24 hours. A deleted_at soft-delete column was explicitly rejected because the rows would stay in the table."
+        }
+      ]
+    }
+  ]
+}

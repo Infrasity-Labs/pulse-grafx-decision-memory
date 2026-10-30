@@ -1,0 +1,406 @@
+{
+  "note": "Scripted probe, no LLM. All writes went to a scratch board.",
+  "board_id": "f3dc7472-2e23-4456-a472-b962be2e7d14",
+  "summary": {
+    "RECALLER": {
+      "preset": "Reporter",
+      "denied_actions_tried": 10,
+      "denied_as_expected": 10,
+      "by_kind": {
+        "permission": 5,
+        "ownership": 5
+      },
+      "controls_tried": 2,
+      "controls_succeeded": 2
+    },
+    "RECORDER": {
+      "preset": "Spec",
+      "denied_actions_tried": 4,
+      "denied_as_expected": 4,
+      "by_kind": {
+        "permission": 4,
+        "ownership": 0
+      },
+      "controls_tried": 4,
+      "controls_succeeded": 4
+    },
+    "REVIEWER": {
+      "preset": "Validator",
+      "denied_actions_tried": 5,
+      "denied_as_expected": 5,
+      "by_kind": {
+        "permission": 5,
+        "ownership": 0
+      },
+      "controls_tried": 2,
+      "controls_succeeded": 2
+    }
+  },
+  "results": [
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_add_decision",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_move_spec",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_move_spec",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_kg_begin_consolidation",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_begin_consolidation",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "kg.session.begin",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "kg.session.begin",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"kg.session.begin\", \"detail\": \"Agent does not have the 'kg.session.begin' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_add_decision",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.structured_entity.decision.create",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.structured_entity.decision.create",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.structured_entity.decision.create\", \"detail\": \"Agent does not have the 'spec.structured_entity.decision.create' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_create_spec",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.entity.create",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.entity.create",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.entity.create\", \"detail\": \"Agent does not have the 'spec.entity.create' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_move_spec",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.move.approved_to_draft",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.move.approved_to_draft",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.move.approved_to_draft\", \"detail\": \"Agent does not have the 'spec.move.approved_to_draft' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_query_cypher",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "kg.power.cypher",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "kg.power.cypher",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"kg.power.cypher\", \"detail\": \"Agent does not have the 'kg.power.cypher' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "kind": "ownership (another identity's open session)",
+      "expected_error_code": [
+        "session_ownership_mismatch"
+      ],
+      "expected_permission": null,
+      "ok": false,
+      "error_code": "session_ownership_mismatch",
+      "required_permission": null,
+      "message": "Agent a8ac9446-3985-4737-b26e-ee34d4430ec8 does not own session kgses_4f2bcd43cd8c42fb",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "kind": "ownership (another identity's open session)",
+      "expected_error_code": [
+        "session_ownership_mismatch"
+      ],
+      "expected_permission": null,
+      "ok": false,
+      "error_code": "session_ownership_mismatch",
+      "required_permission": null,
+      "message": "Agent a8ac9446-3985-4737-b26e-ee34d4430ec8 does not own session kgses_4f2bcd43cd8c42fb",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_propose_reconciliation",
+      "kind": "ownership (another identity's open session)",
+      "expected_error_code": [
+        "session_ownership_mismatch"
+      ],
+      "expected_permission": null,
+      "ok": false,
+      "error_code": "session_ownership_mismatch",
+      "required_permission": null,
+      "message": "Agent a8ac9446-3985-4737-b26e-ee34d4430ec8 does not own session kgses_4f2bcd43cd8c42fb",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_commit_consolidation",
+      "kind": "ownership (another identity's open session)",
+      "expected_error_code": [
+        "session_ownership_mismatch"
+      ],
+      "expected_permission": null,
+      "ok": false,
+      "error_code": "session_ownership_mismatch",
+      "required_permission": null,
+      "message": "Agent a8ac9446-3985-4737-b26e-ee34d4430ec8 does not own session kgses_4f2bcd43cd8c42fb",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_abort_consolidation",
+      "kind": "ownership (another identity's open session)",
+      "expected_error_code": [
+        "session_ownership_mismatch"
+      ],
+      "expected_permission": null,
+      "ok": false,
+      "error_code": "session_ownership_mismatch",
+      "required_permission": null,
+      "message": "Agent a8ac9446-3985-4737-b26e-ee34d4430ec8 does not own session kgses_4f2bcd43cd8c42fb",
+      "as_expected": true
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_find_similar_decisions",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    },
+    {
+      "role": "RECALLER",
+      "preset": "Reporter",
+      "tool": "okto_pulse_kg_query_natural",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_move_spec",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.move.approved_to_draft",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.move.approved_to_draft",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.move.approved_to_draft\", \"detail\": \"Agent does not have the 'spec.move.approved_to_draft' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_submit_spec_evaluation",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.evaluations.submit",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.evaluations.submit",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.evaluations.submit\", \"detail\": \"Agent does not have the 'spec.evaluations.submit' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_record_requirement_lint",
+      "kind": "permission",
+      "expected_error_code": [
+        "forbidden",
+        "permission_denied"
+      ],
+      "expected_permission": "spec.quality.assess",
+      "ok": false,
+      "error_code": "forbidden",
+      "required_permission": "spec.quality.assess",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.quality.assess\", \"detail\": \"Agent does not have the 'spec.quality.assess' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "RECORDER",
+      "preset": "Spec",
+      "tool": "okto_pulse_kg_health",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "kg.operations.health.read",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "kg.operations.health.read",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"kg.operations.health.read\", \"detail\": \"Agent does not have the 'kg.operations.health.read' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_add_decision",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.structured_entity.decision.create",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.structured_entity.decision.create",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.structured_entity.decision.create\", \"detail\": \"Agent does not have the 'spec.structured_entity.decision.create' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_create_spec",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.entity.create",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.entity.create",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.entity.create\", \"detail\": \"Agent does not have the 'spec.entity.create' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_delete_spec",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "spec.entity.delete",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "spec.entity.delete",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.entity.delete\", \"detail\": \"Agent does not have the 'spec.entity.delete' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_create_card",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "card.entity.create",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "card.entity.create",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"card.entity.create\", \"detail\": \"Agent does not have the 'card.entity.create' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_kg_health",
+      "kind": "permission",
+      "expected_error_code": [
+        "permission_denied"
+      ],
+      "expected_permission": "kg.operations.health.read",
+      "ok": false,
+      "error_code": "permission_denied",
+      "required_permission": "kg.operations.health.read",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"kg.operations.health.read\", \"detail\": \"Agent does not have the 'kg.operations.health.read' permission.\"}",
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_kg_begin_consolidation",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true
+    },
+    {
+      "role": "REVIEWER",
+      "preset": "Validator",
+      "tool": "okto_pulse_kg_find_contradictions",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    },
+    {
+      "role": "MAINTAINER",
+      "preset": "Full Control",
+      "tool": "okto_pulse_kg_health",
+      "kind": "control (allowed)",
+      "ok": true,
+      "as_expected": true,
+      "error_code": null
+    }
+  ]
+}

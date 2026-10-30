@@ -1,0 +1,6 @@
+$ python spec_flow.py
+/usr/local/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+gate refusal: spec_validation_gate_not_ready | pass: validated | role denied: permission_denied
+before closeout: layers {'working': 10}, recaller finds 0 of 10; after: 10 of 10, layers {'canonical': 10, 'working': 10}

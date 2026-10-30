@@ -3,12 +3,14 @@ import json
 
 import pytest
 
+from conftest import missing
+
 
 @pytest.fixture
 def runs(state):
     files = sorted((state / "step9").glob("backup-restore-*.json"))
     if not files:
-        pytest.skip("step 9 not recorded yet")
+        missing("step 9 not recorded yet")
     return {f.stem.replace("backup-restore-", ""): json.loads(f.read_text()) for f in files}
 
 

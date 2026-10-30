@@ -1,0 +1,7 @@
+$ python lexical_baseline.py
+legacy ten questions on the 12 recorded decisions: lexical top-1 7 of 10 (misses l2, l4, l9)
+32 decisions, abstention threshold 0.1918 (chosen on dev)
+  dev       answerable 4/10 correct (4 wrong, 2 missed by abstaining); unanswerable 2/3 abstained (1 fabricated); graph-only 2/4; near-duplicate 3/9
+  held_out  answerable 3/11 correct (1 wrong, 7 missed by abstaining); unanswerable 3/3 abstained (0 fabricated); graph-only 1/5; near-duplicate 3/10
+  legacy    answerable 4/10 correct (3 wrong, 3 missed by abstaining); unanswerable 0/0 abstained (0 fabricated); graph-only 0/0; near-duplicate 0/0
+  model_authored answerable 11/12 correct (1 wrong, 0 missed by abstaining); unanswerable 4/4 abstained (0 fabricated); graph-only 7/7; near-duplicate 10/11

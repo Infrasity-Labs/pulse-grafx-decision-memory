@@ -1,0 +1,7 @@
+$ python probe_roles.py
+<venv>/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+RECALLER (Reporter): denied as expected 10 of 10 (permission 5, ownership 5); controls 2 of 2
+RECORDER (Spec): denied as expected 4 of 4 (permission 4, ownership 0); controls 4 of 4
+REVIEWER (Validator): denied as expected 5 of 5 (permission 5, ownership 0); controls 2 of 2

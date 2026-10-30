@@ -2,3 +2,5 @@
 # okto-pulse 0.4.2 requires okto-grafx[accel]==0.0.8 exactly, so Grafx comes with it.
 okto-pulse==0.4.2
 okto-grafx[accel]==0.0.8
+# Install with the constraints file so that fastmcp and the embedding libraries are pinned too:
+#   pip install -r requirements.txt -c constraints.txt

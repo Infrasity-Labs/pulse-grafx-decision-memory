@@ -1,0 +1,131 @@
+{
+  "expected": 12,
+  "found": 12,
+  "citations_ok": 12,
+  "missing_slugs": [],
+  "unexpected_slugs": [],
+  "duplicate_slugs": [],
+  "all_ok": true,
+  "results": [
+    {
+      "slug": "auth-header-scheme",
+      "title": "The Authorization header must hold a prefix and a token separated by one space, and the prefix must equal the configured jwt_token_prefix.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/dependencies/authentication.py",
+      "line": 51,
+      "line_text": "token_prefix, token = api_key.split(\" \")",
+      "quote_checked": true
+    },
+    {
+      "slug": "comment-ownership",
+      "title": "Only the comment's author, matched by username, may delete a comment.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/comments.py",
+      "line": 6,
+      "line_text": "return comment.author.username == user.username",
+      "quote_checked": true
+    },
+    {
+      "slug": "database-access-layer",
+      "title": "The code talks to PostgreSQL through raw SQL files loaded by aiosql on the asyncpg driver, wrapped in repository classes.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/queries/queries.py",
+      "line": 5,
+      "line_text": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "error-response-shape",
+      "title": "HTTP errors are returned as JSON of the form {\"errors\": [detail]} with the exception status code.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/errors/http_error.py",
+      "line": 7,
+      "line_text": "return JSONResponse({\"errors\": [exc.detail]}, status_code=exc.status_code)",
+      "quote_checked": true
+    },
+    {
+      "slug": "favorites",
+      "title": "Favoriting inserts a (user_id, article_id) row into a favorites join table and ignores duplicates.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/queries/sql/articles.sql",
+      "line": 2,
+      "line_text": "INSERT INTO favorites (user_id, article_id)",
+      "quote_checked": true
+    },
+    {
+      "slug": "pagination-parameters",
+      "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/schemas/articles.py",
+      "line": 8,
+      "line_text": "DEFAULT_ARTICLES_LIMIT = 20",
+      "quote_checked": true
+    },
+    {
+      "slug": "password-hashing",
+      "title": "Passwords are hashed with bcrypt through passlib CryptContext, with a per-user bcrypt salt prepended to the password.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/security.py",
+      "line": 4,
+      "line_text": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "settings-loading",
+      "title": "Settings are pydantic BaseSettings classes chosen by the APP_ENV value and cached with lru_cache.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/core/config.py",
+      "line": 19,
+      "line_text": "app_env = BaseAppSettings().app_env",
+      "quote_checked": true
+    },
+    {
+      "slug": "slug-rules",
+      "title": "Article slugs are generated from the title with the slugify library.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/articles.py",
+      "line": 19,
+      "line_text": "return slugify(title)",
+      "quote_checked": true
+    },
+    {
+      "slug": "tag-handling",
+      "title": "Tags are stored as unique text rows in a tags table and linked to articles through an articles_to_tags join table.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/repositories/articles.py",
+      "line": 55,
+      "line_text": "await self._tags_repo.create_tags_that_dont_exist(tags=tags)",
+      "quote_checked": true
+    },
+    {
+      "slug": "test-layout",
+      "title": "Tests live in a top-level tests folder split into test_api, test_db, test_schemas and test_services, with shared fixtures in conftest.py.",
+      "ok": true,
+      "problem": null,
+      "file": "app/pyproject.toml",
+      "line": 46,
+      "line_text": "testpaths = \"tests\"",
+      "quote_checked": true
+    },
+    {
+      "slug": "token-expiry",
+      "title": "Access tokens are HS256 JWTs that expire one week after issue.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 12,
+      "line_text": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week",
+      "quote_checked": true
+    }
+  ]
+}

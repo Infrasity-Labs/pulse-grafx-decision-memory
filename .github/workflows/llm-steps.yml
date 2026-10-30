@@ -1,0 +1,76 @@
+name: llm steps (manual)
+
+# Steps 3 to 5 with a real model, run on purpose. This calls Claude Code, uses the repository secret ANTHROPIC_API_KEY and costs money,
+# so it never runs on push or pull request. The model is pinned in config/agent.json. The run summary records the model and the date.
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: "Independent runs of steps 3 to 5 on fresh data homes (run_n.py), and repetitions of each arm (run_arms.py)"
+        default: "5"
+      arms:
+        description: "Also run the LLM arms (memory, no-memory, code-notes) with run_arms.py"
+        type: boolean
+        default: true
+      claude_code_version:
+        description: "@anthropic-ai/claude-code version. 2.1.312 is the version of the recorded run."
+        default: "2.1.312"
+
+jobs:
+  llm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-all-minilm-l6-v2
+      - name: Install Claude Code and the pinned packages
+        run: |
+          npm install -g "@anthropic-ai/claude-code@${{ inputs.claude_code_version }}"
+          python -m venv .venv
+          .venv/bin/pip install -r requirements.txt -r requirements-dev.txt -c constraints.txt --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Record the model, the date and the versions
+        run: |
+          mkdir -p .work/llm
+          .venv/bin/python - <<'PY' > .work/llm/run-info.json
+          import datetime, importlib.metadata as md, json, os, subprocess
+          cfg = json.load(open("config/agent.json"))
+          print(json.dumps({
+              "recorded_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+              "model_requested": cfg["model"],
+              "claude_code": subprocess.run(["claude", "--version"], capture_output=True, text=True).stdout.strip(),
+              "okto_pulse": md.version("okto-pulse"), "okto_grafx": md.version("okto-grafx"),
+              "commit": os.environ["GITHUB_SHA"], "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+          }, indent=2))
+          PY
+          cat .work/llm/run-info.json
+          { echo "### LLM steps"; echo '```json'; cat .work/llm/run-info.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Steps 3 and 4 over N fresh data homes
+        run: .venv/bin/python scripts/run_n.py --runs "${{ inputs.runs }}" --agents recorder recaller reviewer --splits dev held_out model_authored --out .work/llm/n-runs
+      - name: LLM arms on the 32-decision board
+        if: inputs.arms
+        # run_arms.py needs a running Pulse with the corpus board. ci_llm_arms.py starts one on a temporary data home and free ports, builds the board, runs the arms and stops Pulse.
+        run: .venv/bin/python scripts/ci_llm_arms.py --work .work/llm/arms --runs "${{ inputs.runs }}" --splits dev held_out model_authored
+      - name: Upload the results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: llm-steps-results
+          if-no-files-found: warn
+          path: |
+            .work/llm/run-info.json
+            .work/llm/n-runs/summary.json
+            .work/llm/n-runs/run-*/state
+            .work/llm/arms/state
+            .work/logs/*.log

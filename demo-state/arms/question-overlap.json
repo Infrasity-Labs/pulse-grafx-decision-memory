@@ -1,0 +1,711 @@
+{
+  "method": "content words after the stop word list in scripts/lexical_baseline.py; exact words and 5-letter prefixes",
+  "summary": {
+    "dev": {
+      "answerable_questions": 10,
+      "mean_exact_overlap": 0.25,
+      "mean_prefix_overlap": 0.3,
+      "max_exact_overlap": 0.43,
+      "questions_with_no_shared_word": 2,
+      "expected_decision_has_most_shared_words": 8
+    },
+    "held_out": {
+      "answerable_questions": 11,
+      "mean_exact_overlap": 0.21,
+      "mean_prefix_overlap": 0.21,
+      "max_exact_overlap": 0.4,
+      "questions_with_no_shared_word": 1,
+      "expected_decision_has_most_shared_words": 8
+    },
+    "model_authored": {
+      "answerable_questions": 12,
+      "mean_exact_overlap": 0.48,
+      "mean_prefix_overlap": 0.58,
+      "max_exact_overlap": 0.75,
+      "questions_with_no_shared_word": 0,
+      "expected_decision_has_most_shared_words": 11
+    },
+    "legacy": {
+      "answerable_questions": 10,
+      "mean_exact_overlap": 0.32,
+      "mean_prefix_overlap": 0.38,
+      "max_exact_overlap": 0.67,
+      "questions_with_no_shared_word": 2,
+      "expected_decision_has_most_shared_words": 8
+    }
+  },
+  "rows": [
+    {
+      "id": "d1",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "jwt-algorithm",
+      "question_words": 8,
+      "shared_words": [
+        "algorithm",
+        "tokens"
+      ],
+      "exact_overlap": 0.25,
+      "prefix_overlap": 0.25,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d2",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "article-ownership",
+      "question_words": 5,
+      "shared_words": [],
+      "exact_overlap": 0.0,
+      "prefix_overlap": 0.0,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d3",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "validation-error-shape",
+      "question_words": 8,
+      "shared_words": [
+        "api",
+        "request",
+        "validation"
+      ],
+      "exact_overlap": 0.38,
+      "prefix_overlap": 0.5,
+      "decisions_sharing_more_words": 1
+    },
+    {
+      "id": "d4",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "article-slug-conflict",
+      "question_words": 9,
+      "shared_words": [],
+      "exact_overlap": 0.0,
+      "prefix_overlap": 0.0,
+      "decisions_sharing_more_words": 3
+    },
+    {
+      "id": "d5",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "no-refresh-tokens",
+      "question_words": 7,
+      "shared_words": [
+        "again"
+      ],
+      "exact_overlap": 0.14,
+      "prefix_overlap": 0.29,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d6",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "hard-delete-articles",
+      "question_words": 7,
+      "shared_words": [
+        "deleted",
+        "removed"
+      ],
+      "exact_overlap": 0.29,
+      "prefix_overlap": 0.29,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d7",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "reset-link-lifetime",
+      "question_words": 7,
+      "shared_words": [
+        "link",
+        "long",
+        "password"
+      ],
+      "exact_overlap": 0.43,
+      "prefix_overlap": 0.43,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d8",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "reject-fancyhash",
+      "question_words": 5,
+      "shared_words": [
+        "hashing",
+        "package"
+      ],
+      "exact_overlap": 0.4,
+      "prefix_overlap": 0.4,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d9",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "tag-handling",
+      "question_words": 6,
+      "shared_words": [
+        "article",
+        "tag"
+      ],
+      "exact_overlap": 0.33,
+      "prefix_overlap": 0.5,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d10",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "favorites-no-notification",
+      "question_words": 7,
+      "shared_words": [
+        "article",
+        "author"
+      ],
+      "exact_overlap": 0.29,
+      "prefix_overlap": 0.29,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "d11",
+      "split": "dev",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 5
+    },
+    {
+      "id": "d12",
+      "split": "dev",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 7
+    },
+    {
+      "id": "d13",
+      "split": "dev",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 6
+    },
+    {
+      "id": "h1",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "jwt-subject-claim",
+      "question_words": 6,
+      "shared_words": [
+        "constant"
+      ],
+      "exact_overlap": 0.17,
+      "prefix_overlap": 0.17,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h2",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "password-salt",
+      "question_words": 8,
+      "shared_words": [
+        "each",
+        "random"
+      ],
+      "exact_overlap": 0.25,
+      "prefix_overlap": 0.25,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h3",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "duplicate-registration",
+      "question_words": 9,
+      "shared_words": [
+        "already"
+      ],
+      "exact_overlap": 0.11,
+      "prefix_overlap": 0.11,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h4",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "cors-allowed-origins",
+      "question_words": 6,
+      "shared_words": [
+        "origins"
+      ],
+      "exact_overlap": 0.17,
+      "prefix_overlap": 0.17,
+      "decisions_sharing_more_words": 1
+    },
+    {
+      "id": "h5",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "connection-pool-size",
+      "question_words": 6,
+      "shared_words": [
+        "connections",
+        "database"
+      ],
+      "exact_overlap": 0.33,
+      "prefix_overlap": 0.33,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h6",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "tag-create-idempotent",
+      "question_words": 5,
+      "shared_words": [
+        "already",
+        "saving"
+      ],
+      "exact_overlap": 0.4,
+      "prefix_overlap": 0.4,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h7",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "bcrypt-work-factor",
+      "question_words": 5,
+      "shared_words": [
+        "password"
+      ],
+      "exact_overlap": 0.2,
+      "prefix_overlap": 0.2,
+      "decisions_sharing_more_words": 1
+    },
+    {
+      "id": "h8",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "page-size-default-reason",
+      "question_words": 5,
+      "shared_words": [
+        "default",
+        "items"
+      ],
+      "exact_overlap": 0.4,
+      "prefix_overlap": 0.4,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h9",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "postgres-over-mongodb",
+      "question_words": 6,
+      "shared_words": [
+        "team"
+      ],
+      "exact_overlap": 0.17,
+      "prefix_overlap": 0.17,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h10",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "tokens-header-only",
+      "question_words": 7,
+      "shared_words": [],
+      "exact_overlap": 0.0,
+      "prefix_overlap": 0.0,
+      "decisions_sharing_more_words": 7
+    },
+    {
+      "id": "h11",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "aiosql-over-orm",
+      "question_words": 7,
+      "shared_words": [
+        "sql"
+      ],
+      "exact_overlap": 0.14,
+      "prefix_overlap": 0.14,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "h12",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 6
+    },
+    {
+      "id": "h13",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 5
+    },
+    {
+      "id": "h14",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 4
+    },
+    {
+      "id": "m1",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "no-refresh-tokens",
+      "question_words": 8,
+      "shared_words": [
+        "sessions",
+        "team",
+        "token"
+      ],
+      "exact_overlap": 0.38,
+      "prefix_overlap": 0.5,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m2",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "hard-delete-articles",
+      "question_words": 8,
+      "shared_words": [
+        "deleted",
+        "storage"
+      ],
+      "exact_overlap": 0.25,
+      "prefix_overlap": 0.57,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m3",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "reject-fancyhash",
+      "question_words": 7,
+      "shared_words": [
+        "fancyhash",
+        "hashing",
+        "password"
+      ],
+      "exact_overlap": 0.43,
+      "prefix_overlap": 0.57,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m4",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "bcrypt-work-factor",
+      "question_words": 7,
+      "shared_words": [
+        "bcrypt",
+        "default"
+      ],
+      "exact_overlap": 0.29,
+      "prefix_overlap": 0.29,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m5",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "tokens-header-only",
+      "question_words": 6,
+      "shared_words": [
+        "api",
+        "cookies",
+        "tokens"
+      ],
+      "exact_overlap": 0.5,
+      "prefix_overlap": 0.5,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m6",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "password-salt",
+      "question_words": 8,
+      "shared_words": [
+        "each",
+        "random",
+        "row",
+        "salt",
+        "user"
+      ],
+      "exact_overlap": 0.62,
+      "prefix_overlap": 0.75,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m7",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "validation-error-shape",
+      "question_words": 6,
+      "shared_words": [
+        "request",
+        "validation"
+      ],
+      "exact_overlap": 0.33,
+      "prefix_overlap": 0.33,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m8",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "token-expiry",
+      "question_words": 6,
+      "shared_words": [
+        "access",
+        "after"
+      ],
+      "exact_overlap": 0.33,
+      "prefix_overlap": 0.67,
+      "decisions_sharing_more_words": 2
+    },
+    {
+      "id": "m9",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "tag-create-idempotent",
+      "question_words": 8,
+      "shared_words": [
+        "already",
+        "article",
+        "exists",
+        "tag",
+        "tags"
+      ],
+      "exact_overlap": 0.62,
+      "prefix_overlap": 0.62,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m10",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "database-access-layer",
+      "question_words": 7,
+      "shared_words": [
+        "driver",
+        "files",
+        "loads",
+        "query",
+        "sql"
+      ],
+      "exact_overlap": 0.71,
+      "prefix_overlap": 0.71,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m11",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "postgres-over-mongodb",
+      "question_words": 8,
+      "shared_words": [
+        "articles",
+        "chosen",
+        "favorites",
+        "postgresql",
+        "store",
+        "tags"
+      ],
+      "exact_overlap": 0.75,
+      "prefix_overlap": 0.75,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m12",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "aiosql-over-orm",
+      "question_words": 10,
+      "shared_words": [
+        "generated",
+        "hand",
+        "orm",
+        "queries",
+        "reason",
+        "written"
+      ],
+      "exact_overlap": 0.6,
+      "prefix_overlap": 0.7,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "m13",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 9
+    },
+    {
+      "id": "m14",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 8
+    },
+    {
+      "id": "m15",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 6
+    },
+    {
+      "id": "m16",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "question_words": 6
+    },
+    {
+      "id": "l1",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "auth-header-scheme",
+      "question_words": 9,
+      "shared_words": [
+        "prefix",
+        "token"
+      ],
+      "exact_overlap": 0.22,
+      "prefix_overlap": 0.22,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l2",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "token-expiry",
+      "question_words": 7,
+      "shared_words": [],
+      "exact_overlap": 0.0,
+      "prefix_overlap": 0.29,
+      "decisions_sharing_more_words": 8
+    },
+    {
+      "id": "l3",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "password-hashing",
+      "question_words": 6,
+      "shared_words": [
+        "app",
+        "passwords",
+        "user"
+      ],
+      "exact_overlap": 0.5,
+      "prefix_overlap": 0.67,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l4",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "error-response-shape",
+      "question_words": 7,
+      "shared_words": [],
+      "exact_overlap": 0.0,
+      "prefix_overlap": 0.14,
+      "decisions_sharing_more_words": 7
+    },
+    {
+      "id": "l5",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "pagination-parameters",
+      "question_words": 7,
+      "shared_words": [
+        "articles",
+        "parameters",
+        "query"
+      ],
+      "exact_overlap": 0.43,
+      "prefix_overlap": 0.43,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l6",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "slug-rules",
+      "question_words": 5,
+      "shared_words": [
+        "article"
+      ],
+      "exact_overlap": 0.2,
+      "prefix_overlap": 0.2,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l7",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "comment-ownership",
+      "question_words": 3,
+      "shared_words": [
+        "comment",
+        "delete"
+      ],
+      "exact_overlap": 0.67,
+      "prefix_overlap": 0.67,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l8",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "favorites",
+      "question_words": 5,
+      "shared_words": [
+        "article",
+        "user"
+      ],
+      "exact_overlap": 0.4,
+      "prefix_overlap": 0.4,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l9",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "settings-loading",
+      "question_words": 4,
+      "shared_words": [
+        "app",
+        "settings"
+      ],
+      "exact_overlap": 0.5,
+      "prefix_overlap": 0.5,
+      "decisions_sharing_more_words": 0
+    },
+    {
+      "id": "l10",
+      "split": "legacy",
+      "kind": "answerable",
+      "expected_slug": "test-layout",
+      "question_words": 4,
+      "shared_words": [
+        "tests"
+      ],
+      "exact_overlap": 0.25,
+      "prefix_overlap": 0.25,
+      "decisions_sharing_more_words": 0
+    }
+  ]
+}

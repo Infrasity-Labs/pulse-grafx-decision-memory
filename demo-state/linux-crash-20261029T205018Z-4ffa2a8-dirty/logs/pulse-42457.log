@@ -1,0 +1,179 @@
+=== start 2026-10-29T20:47:55Z ===
+  Data home: /work/pulse-home
+  Source: DATA_DIR
+Terms-of-Use pre-accepted via --accept-terms (version 0.2.0).
+Starting Okto Pulse Community...
+  App:  http://127.0.0.1:42457  (API + Frontend)
+  MCP:  http://127.0.0.1:46633/mcp
+  Press Ctrl+C to stop.
+
+/usr/local/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+INFO:     Started server process [58]
+INFO:     Waiting for application startup.
+INFO:     Started server process [58]
+INFO:     Waiting for application startup.
+INFO:     Uvicorn running on http://127.0.0.1:46633 (Press CTRL+C to quit)
+INFO:     kg.native_runtime_budget effective={'board_buffer_pool_mb': 64, 'global_buffer_pool_mb': 64, 'read_participants': 2} process_envelope={'buffer_pool_per_board_mb': 192, 'global_buffer_pool_mb': 192, 'total_process_bound_available': False}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 12243.54it/s]
+INFO:     kg.tick.scheduler_started interval_minutes=1440
+INFO:     Uvicorn running on http://127.0.0.1:42457 (Press CTRL+C to quit)
+INFO:     API Server initialized successfully - http://127.0.0.1:42457/api/v1
+INFO:     UI Server initialized successfully - http://127.0.0.1:42457
+INFO:     MCP Server initialized successfully - http://127.0.0.1:46633/mcp
+INFO:     Startup complete - The application is ready
+INFO:     127.0.0.1:39674 - "GET /api/v1/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39686 - "POST /api/v1/boards HTTP/1.1" 201 Created
+INFO:     127.0.0.1:36952 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:36956 - "POST /api/v1/agents/ddcb33ff-cca5-48ee-965f-fa8d71eeec78/boards/611c0152-0e85-4971-a3a2-e8430f55345a HTTP/1.1" 201 Created
+INFO:     127.0.0.1:36960 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:36968 - "POST /api/v1/agents/7e4f417d-3a0a-4fdd-8b45-57000505ff03/boards/611c0152-0e85-4971-a3a2-e8430f55345a HTTP/1.1" 201 Created
+INFO:     127.0.0.1:36978 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:36994 - "POST /api/v1/agents/c8737a8b-f1e4-49c9-85e8-6a89e760a7a8/boards/611c0152-0e85-4971-a3a2-e8430f55345a HTTP/1.1" 201 Created
+INFO:     127.0.0.1:37008 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:37024 - "POST /api/v1/agents/f1437262-ba51-4cb8-9cdb-3f3e530e7d34/boards/611c0152-0e85-4971-a3a2-e8430f55345a HTTP/1.1" 201 Created
+INFO:     127.0.0.1:37036 - "POST /api/v1/boards/611c0152-0e85-4971-a3a2-e8430f55345a/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:52994 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52998 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:53000 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53002 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:53014 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57020 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:57034 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+consolidation failed for spec:8c1dc597-07b5-4fbd-8d57-ce143b2acf38: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 4819, in _process_batch
+    outcome = await _process_queue_entry_serialized(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1783, in _process_queue_entry_serialized
+    return await _process_queue_entry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 3477, in _process_queue_entry
+    commit_resp = await _commit_consolidation_with_board_graph_lifecycle(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1748, in _commit_consolidation_with_board_graph_lifecycle
+    return await _commit_with_lease(enter_graph_write(mutation_ref))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1675, in _commit_with_lease
+    commit_resp = await commit_consolidation(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5358, in commit_consolidation
+    _validate_degraded_connectivity_before_open(
+  File "/usr/local/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 2444, in _validate_degraded_connectivity_before_open
+    raise KGPrimitiveError(
+okto_pulse.core.kg.primitives.KGPrimitiveError: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+INFO:     127.0.0.1:54308 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:54324 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:38016 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:38028 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+kg.rebuild_sources.store_unavailable board=611c0152-0e85-4971-a3a2-e8430f55345a err=read_error: board source rows could not be read (OperationalError)
+kg.health.source_enumeration_probe_failed board=611c0152-0e85-4971-a3a2-e8430f55345a err=read_error: board source rows could not be read (OperationalError)
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:48950 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:48954 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.first_write_acknowledged board=611c0152-0e85-4971-a3a2-e8430f55345a generation=940b7f9d673d1e90
+INFO:     127.0.0.1:37718 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.first_write_convergence board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=converged elapsed_ms=2269
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:37730 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:59412 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:59424 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:45160 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:45168 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45184 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45194 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:45210 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45214 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45230 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45246 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45256 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45272 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45288 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45304 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45316 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45326 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45330 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45340 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45344 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45354 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45368 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45376 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45390 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45394 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45398 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45406 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45420 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45432 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45436 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45442 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45458 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45470 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45484 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45486 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45498 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45514 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45528 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45536 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:45538 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45544 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45560 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45568 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:45576 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45590 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45598 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45614 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45616 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45624 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45640 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45646 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=611c0152-0e85-4971-a3a2-e8430f55345a outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=611c0152-0e85-4971-a3a2-e8430f55345a classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:45658 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45670 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     shutdown signal received (signum=15) — starting ordered shutdown
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [58]
+INFO:     kg.shutdown.graphs_closed {'boards_closed': 1, 'boards_failed': 0, 'global_failed': 0, 'duration_ms': 16}
+INFO:     KG graphs closed on shutdown (boards_closed=1 boards_failed=0 duration_ms=16)
+INFO:     Application shutdown complete.
+INFO:     Finished server process [58]

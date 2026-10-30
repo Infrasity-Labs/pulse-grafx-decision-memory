@@ -5,7 +5,7 @@ import shutil
 
 import pytest
 
-from conftest import ROOT, STATE
+from conftest import ROOT, STATE, missing
 
 spec = importlib.util.spec_from_file_location("build_closeout", ROOT / "scripts" / "build_closeout.py")
 bc = importlib.util.module_from_spec(spec)
@@ -15,7 +15,7 @@ spec.loader.exec_module(bc)
 @pytest.fixture(scope="module")
 def result():
     if not (STATE / "step9").exists():
-        pytest.skip("steps not recorded yet")
+        missing("step9 not recorded yet")
     return bc.build(STATE)
 
 
@@ -59,8 +59,27 @@ def test_missing_output_stops_the_builder(tmp_path):
 def test_committed_closeout_file_is_current(result):
     p = STATE / "closeout-result.json"
     if not p.exists():
-        pytest.skip("closeout not built")
+        missing("closeout-result.json not built")
     committed = json.loads(p.read_text())
     for k in result:
         if k != "generated_at":
             assert committed[k] == result[k], k
+
+
+def test_committed_closeout_says_whether_the_run_was_recorded():
+    p = STATE / "closeout-result.json"
+    if not p.exists():
+        missing("closeout-result.json not built")
+    run = json.loads(p.read_text())["run"]
+    assert isinstance(run["recorded"], bool)
+    if not run["recorded"]:
+        assert "run_id" not in run and "commit" not in run, "an unrecorded run must not carry an invented id or commit"
+
+
+def test_run_info_takes_run_id_commit_and_versions_from_the_environment(result, monkeypatch):
+    monkeypatch.setenv("GITHUB_RUN_ID", "12345")
+    monkeypatch.setenv("GITHUB_RUN_ATTEMPT", "2")
+    monkeypatch.setenv("GITHUB_SHA", "a" * 40)
+    run = bc.run_info(result)
+    assert (run["run_id"], run["run_attempt"], run["commit"], run["recorded"]) == ("12345", "2", "a" * 40, True)
+    assert run["tool_versions"]["okto_grafx"] == result["versions"]["okto_grafx"] and run["date"] == result["generated_at"]

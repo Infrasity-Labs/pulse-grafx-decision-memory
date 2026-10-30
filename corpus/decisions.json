@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "about": "Decisions added to the 12 recorded ones to form a 32-decision board. code-derived: a fact the app code shows, with a file, a line and the exact line text. graph-only: a decision whose reason is written nowhere except in the graph. Every graph-only reason is INVENTED for this demo and says so. group marks near-duplicate families that a retrieval tool has to tell apart.",
+  "decisions": [
+    {
+      "slug": "jwt-algorithm",
+      "origin": "code-derived",
+      "group": "token",
+      "title": "Access tokens are signed with the HS256 algorithm using one shared secret key.",
+      "content": "Tokens are JWTs signed and verified with HS256. The secret comes from the application settings.\nSource: app/app/services/jwt.py:11",
+      "source": {"path": "app/app/services/jwt.py", "line": 11, "quote": "ALGORITHM = \"HS256\""}
+    },
+    {
+      "slug": "jwt-subject-claim",
+      "origin": "code-derived",
+      "group": "token",
+      "title": "Every access token carries the fixed subject claim access.",
+      "content": "The token payload holds the username plus an expiry and the subject value access, which is a constant in the JWT service.\nSource: app/app/services/jwt.py:10",
+      "source": {"path": "app/app/services/jwt.py", "line": 10, "quote": "JWT_SUBJECT = \"access\""}
+    },
+    {
+      "slug": "password-salt",
+      "origin": "code-derived",
+      "group": "password",
+      "title": "Each user gets a random salt created with bcrypt.gensalt.",
+      "content": "A helper returns a fresh bcrypt salt as text. The user row stores the salt next to the hashed password.\nSource: app/app/services/security.py:8",
+      "source": {"path": "app/app/services/security.py", "line": 8, "quote": "return bcrypt.gensalt().decode()"}
+    },
+    {
+      "slug": "validation-error-shape",
+      "origin": "code-derived",
+      "group": "errors",
+      "title": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.",
+      "content": "A separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.\nSource: app/app/api/errors/validation_error.py:17",
+      "source": {"path": "app/app/api/errors/validation_error.py", "line": 17, "quote": "{\"errors\": exc.errors()},"}
+    },
+    {
+      "slug": "duplicate-registration",
+      "origin": "code-derived",
+      "group": "auth",
+      "title": "Registering with a username or email that is already taken is answered with HTTP 400.",
+      "content": "The register route checks the username first and the email second. Each taken value raises a 400 error with its own message from the strings module.\nSource: app/app/api/routes/authentication.py:70",
+      "source": {"path": "app/app/api/routes/authentication.py", "line": 70, "quote": "detail=strings.USERNAME_TAKEN,"}
+    },
+    {
+      "slug": "article-ownership",
+      "origin": "code-derived",
+      "group": "ownership",
+      "title": "Only an article's author, matched by username, may modify the article.",
+      "content": "The service compares the article author's username with the current user's username. Other users get a refusal.\nSource: app/app/services/articles.py:23",
+      "source": {"path": "app/app/services/articles.py", "line": 23, "quote": "return article.author.username == user.username"}
+    },
+    {
+      "slug": "cors-allowed-origins",
+      "origin": "code-derived",
+      "group": "settings",
+      "title": "Cross-origin calls are allowed from the origins in allowed_hosts, which default to every origin.",
+      "content": "The CORS middleware reads allowed_hosts from the settings. The default list holds a single wildcard entry.\nSource: app/app/core/settings/app.py:31",
+      "source": {"path": "app/app/core/settings/app.py", "line": 31, "quote": "allowed_hosts: List[str] = [\"*\"]"}
+    },
+    {
+      "slug": "connection-pool-size",
+      "origin": "code-derived",
+      "group": "settings",
+      "title": "The database pool is fixed at 10 connections through min_connection_count and max_connection_count.",
+      "content": "Both pool bounds default to 10 in the application settings, and the pool is created with those two values at start-up.\nSource: app/app/core/settings/app.py:22",
+      "source": {"path": "app/app/core/settings/app.py", "line": 22, "quote": "max_connection_count: int = 10"}
+    },
+    {
+      "slug": "tag-create-idempotent",
+      "origin": "code-derived",
+      "group": "tags",
+      "title": "Creating a tag that already exists is ignored by the insert statement.",
+      "content": "The tag insert uses ON CONFLICT DO NOTHING, so saving an article with a known tag adds no new tag row.\nSource: app/app/db/queries/sql/tags.sql:9",
+      "source": {"path": "app/app/db/queries/sql/tags.sql", "line": 9, "quote": "ON CONFLICT DO NOTHING;"}
+    },
+    {
+      "slug": "article-slug-conflict",
+      "origin": "code-derived",
+      "group": "slug",
+      "title": "Creating an article whose generated slug already exists is refused with HTTP 400.",
+      "content": "The create route builds the slug from the title and checks whether an article with that slug exists. If it does, the route raises a 400 error and does not add a numeric suffix.\nSource: app/app/api/routes/articles/articles_resource.py:65",
+      "source": {"path": "app/app/api/routes/articles/articles_resource.py", "line": 65, "quote": "if await check_article_exists(articles_repo, slug):"}
+    },
+    {
+      "slug": "no-refresh-tokens",
+      "origin": "graph-only",
+      "group": "token",
+      "title": "Sessions use one long-lived access token and the API has no refresh tokens.",
+      "content": "The API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.",
+      "rationale": "Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "alternatives": ["short access token with a refresh token", "server-side session store"],
+      "reason_keywords": ["SR-2025-14", "stolen"]
+    },
+    {
+      "slug": "hard-delete-articles",
+      "origin": "graph-only",
+      "group": "delete",
+      "title": "Deleted articles and comments are removed from the database, with no soft-delete flag.",
+      "content": "Deleting an article or a comment runs a SQL DELETE. No deleted_at column exists.\nInvented for this demo.",
+      "rationale": "Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "alternatives": ["soft delete with a deleted_at column", "nightly purge of soft-deleted rows"],
+      "reason_keywords": ["LR-77", "24 hours"]
+    },
+    {
+      "slug": "reset-link-lifetime",
+      "origin": "graph-only",
+      "group": "token",
+      "title": "Password reset links stay valid for 30 minutes.",
+      "content": "The API has no password reset flow yet. This fixes the rule for when it is built: a reset link works once and expires 30 minutes after it is sent.\nInvented for this demo.",
+      "rationale": "Support tickets showed that users open a reset mail within 10 minutes. A link that lives 30 minutes covers slow mail delivery without leaving a long-lived link in an inbox. Invented for this demo.",
+      "alternatives": ["24 hours", "10 minutes"],
+      "reason_keywords": ["30 minutes", "slow mail"]
+    },
+    {
+      "slug": "reject-fancyhash",
+      "origin": "graph-only",
+      "group": "password",
+      "title": "The fancyhash package is not used for password hashing because of its licence.",
+      "content": "Password hashing stays on passlib with bcrypt. The fancyhash package was evaluated and rejected.\nInvented for this demo.",
+      "rationale": "The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.",
+      "alternatives": ["fancyhash", "passlib with bcrypt"],
+      "reason_keywords": ["licence", "network-use clause"]
+    },
+    {
+      "slug": "bcrypt-work-factor",
+      "origin": "graph-only",
+      "group": "password",
+      "title": "bcrypt keeps the default passlib work factor.",
+      "content": "No custom rounds value is set on the password context, so passlib's default applies.\nInvented for this demo.",
+      "rationale": "Load test LT-9 put the login endpoint at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget. Invented for this demo.",
+      "alternatives": ["one work factor step higher", "argon2"],
+      "reason_keywords": ["LT-9", "300 ms"]
+    },
+    {
+      "slug": "page-size-default-reason",
+      "origin": "graph-only",
+      "group": "pagination",
+      "title": "The article list defaults to 20 items per page.",
+      "content": "The default limit of the article list is 20 items.\nInvented for this demo.",
+      "rationale": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling. Invented for this demo.",
+      "alternatives": ["10 items", "50 items"],
+      "reason_keywords": ["DR-31", "mobile"]
+    },
+    {
+      "slug": "favorites-no-notification",
+      "origin": "graph-only",
+      "group": "favorites",
+      "title": "Favoriting an article sends no notification to its author.",
+      "content": "Adding a favorite writes a database row and nothing else. No message is sent to the author.\nInvented for this demo.",
+      "rationale": "Product decision PD-8 puts all notifications out of scope until the 2027 roadmap. Invented for this demo.",
+      "alternatives": ["notify the author on every favorite", "send a weekly digest"],
+      "reason_keywords": ["PD-8", "2027"]
+    },
+    {
+      "slug": "postgres-over-mongodb",
+      "origin": "graph-only",
+      "group": "database",
+      "title": "PostgreSQL is the data store and MongoDB was not chosen.",
+      "content": "Articles, tags and favorites are stored in PostgreSQL tables joined by foreign keys.\nInvented for this demo.",
+      "rationale": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3). Invented for this demo.",
+      "alternatives": ["MongoDB", "SQLite"],
+      "reason_keywords": ["ADR-3", "supports only PostgreSQL"]
+    },
+    {
+      "slug": "aiosql-over-orm",
+      "origin": "graph-only",
+      "group": "database",
+      "title": "Queries are hand-written SQL files, not generated by an ORM.",
+      "content": "Every query lives in a SQL file that the repositories call by name.\nInvented for this demo.",
+      "rationale": "The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "alternatives": ["SQLAlchemy ORM", "Django ORM"],
+      "reason_keywords": ["ADR-4", "reviewed"]
+    },
+    {
+      "slug": "tokens-header-only",
+      "origin": "graph-only",
+      "group": "token",
+      "title": "Tokens travel only in the Authorization header and never in cookies.",
+      "content": "The API reads the token from the Authorization header. It does not set or read any cookie.\nInvented for this demo.",
+      "rationale": "Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.",
+      "alternatives": ["session cookie", "cookie plus CSRF token"],
+      "reason_keywords": ["ADR-5", "CSRF"]
+    }
+  ]
+}

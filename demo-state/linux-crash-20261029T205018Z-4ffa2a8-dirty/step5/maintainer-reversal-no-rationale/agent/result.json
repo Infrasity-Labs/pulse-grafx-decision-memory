@@ -1,0 +1,19 @@
+{
+  "role": "reviewer",
+  "exit_code": 0,
+  "seconds": 0.1,
+  "model": "scripted-agent (no LLM)",
+  "tool_call_count": 2,
+  "tool_calls": [
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_find_contradictions"
+  ],
+  "final": {
+    "type": "result",
+    "subtype": "success",
+    "is_error": false,
+    "result": "{\"recorded\": false, \"reason_for_decision\": \"the note gives no reason\", \"old_decision_id\": \"decision_67d73f10562da8144b68c7d0\", \"new_decision_id\": null, \"what_i_did\": [], \"contradiction_pairs_before\": 1, \"problems\": [\"The Maintainer note has an empty reason. Nothing was recorded.\"]}",
+    "num_turns": 2
+  },
+  "stderr_tail": ""
+}

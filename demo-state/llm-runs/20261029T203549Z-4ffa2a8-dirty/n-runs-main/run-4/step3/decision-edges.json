@@ -1,0 +1,17 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "The Authorization header is parsed by splitting on a single space and rejected with 403 if the prefix does not match.",
+    "The Authorization header scheme defaults to the word Token instead of Bearer."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "A separate per-user salt is stored in its own column and prepended to the password before hashing.",
+    "Passwords are hashed with bcrypt through a passlib CryptContext."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Updating an article title regenerates its slug, so the article URL changes.",
+    "An article slug is derived from its title with python-slugify."
+  ]
+]

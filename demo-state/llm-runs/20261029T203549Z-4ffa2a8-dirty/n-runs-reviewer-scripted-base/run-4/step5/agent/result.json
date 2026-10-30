@@ -1,0 +1,177 @@
+{
+  "role": "reviewer",
+  "exit_code": 0,
+  "seconds": 106.1,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 29,
+  "tool_calls": [
+    "Read",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_list_spec_evaluations",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_propose_reconciliation",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_get_related_context",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation",
+    "mcp__pulse__okto_pulse_kg_abort_consolidation",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_query_cypher"
+  ],
+  "final": {
+    "duration_api_ms": 100633,
+    "stop_reason": "end_turn",
+    "session_id": "c4df049c-a102-4408-8f4f-b1171ba5409f",
+    "total_cost_usd": 0.7927162000000001,
+    "usage": {
+      "input_tokens": 44,
+      "cache_creation_input_tokens": 20500,
+      "cache_read_input_tokens": 2649201,
+      "output_tokens": 8010,
+      "output_tokens_details": {
+        "thinking_tokens": 529
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 20500
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1737,
+          "cache_read_input_tokens": 128666,
+          "cache_creation_input_tokens": 1934,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 1934,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 44,
+        "outputTokens": 8010,
+        "cacheReadInputTokens": 2649201,
+        "cacheCreationInputTokens": 20500,
+        "webSearchRequests": 0,
+        "costUSD": 0.7927162000000001,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 529,
+        "cacheCreationEphemeral5mInputTokens": 20500,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 30,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"recorded\": true, \"reason_for_decision\": \"The public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)\", \"old_decision_id\": \"decision_c155a67627212d3141e4a189\", \"new_decision_id\": \"decision_e45edb14d6d5a927bf28db7d\", \"what_i_did\": [\"okto_pulse_kg_begin_consolidation(artifact_type=final_report, artifact_id=c8419de5-0bdd-42c6-8366-e79438138e2c:decision:error-response-shape-v2, raw_content=maintainer note text) -> session kgses_c86efa673fe543a8\", \"okto_pulse_kg_add_node_candidate(candidate_id=new_decision, node_type=Decision, title='Error responses use RFC 7807 problem+json with type, title, status and detail', justification=note reason, no source_artifact_ref)\", \"okto_pulse_kg_add_edge_candidate(supersedes, new_decision -> decision_c155a67627212d3141e4a189 given as to_node_id) -> rejected invalid_candidate (needs to_candidate_id); retried with to_candidate_id=kg:decision_c155a67627212d3141e4a189 -> accepted\", \"okto_pulse_kg_add_edge_candidate(contradicts, new_decision -> kg:decision_c155a67627212d3141e4a189) -> accepted\", \"okto_pulse_kg_propose_reconciliation -> ADD new_decision\", \"okto_pulse_kg_commit_consolidation -> rejected kg_node_connectivity_violation (missing belongs_to to an Entity, unresolved_source_ref), nothing written\", \"okto_pulse_kg_add_edge_candidate(belongs_to, new_decision -> kg:entity_40cbaee1fbd23feffe040958) -> rejected layer_violation (belongs_to is reserved for the deterministic worker)\", \"okto_pulse_kg_commit_consolidation -> same connectivity rejection, nothing written\", \"okto_pulse_kg_abort_consolidation(kgses_c86efa673fe543a8) -> aborted, compensating_delete_applied=false\", \"okto_pulse_kg_begin_consolidation(same artifact_type, artifact_id and raw_content) -> session kgses_c750e51d9ea74dd6\", \"okto_pulse_kg_add_node_candidate(same Decision, plus source_artifact_ref=spec:c8419de5-0bdd-42c6-8366-e79438138e2c)\", \"okto_pulse_kg_add_edge_candidate(supersedes, new_decision -> kg:decision_c155a67627212d3141e4a189, confidence 0.9)\", \"okto_pulse_kg_add_edge_candidate(contradicts, new_decision -> kg:decision_c155a67627212d3141e4a189, confidence 0.9)\", \"okto_pulse_kg_commit_consolidation -> committed: nodes_added=1, edges_added=3, nodes_superseded=0, connectivity passed\"], \"graph_after\": \"get_supersedence_chain(new decision_e45edb14d6d5a927bf28db7d) returns chain=[decision_c155a67627212d3141e4a189 with superseded_by=null, superseded_at=null], depth=1, current_active=decision_e45edb14d6d5a927bf28db7d. get_supersedence_chain(old decision_c155a67627212d3141e4a189) returns chain=[], depth=0, current_active=decision_c155a67627212d3141e4a189. find_contradictions(old) returns 1 pair: decision_e45edb14d6d5a927bf28db7d vs decision_c155a67627212d3141e4a189, confidence 0.9. A Cypher read shows the supersedes and contradicts edges from the new decision to the old one. Both nodes have superseded_by=null and superseded_at=null.\", \"problems\": [\"The old decision is still in the graph, and a supersedes edge now points to it from the new decision. But commit returned nodes_superseded=0, and the old node's superseded_by and superseded_at fields are still null.\", \"The chain read from the old decision still names the old decision as current_active with an empty chain. The read from the new decision names the new one as current_active. The graph gives two different answers depending on which decision you start from.\", \"Before my change, the old decision had no edges at all, not even belongs_to to an Entity (get_related_context and Cypher both returned empty).\", \"The first commit failed the connectivity guard. Agents are not allowed to propose belongs_to edges. It only passed after I set source_artifact_ref=spec:c8419de5-0bdd-42c6-8366-e79438138e2c on the node. That ref differs from the old decision's style, which is final_report:...:decision:error-response-shape. Commit reported edges_added=3, which presumably means the deterministic layer added a belongs_to edge.\", \"I could not read okto-pulse://workflows/kg because I have no resource-read tool. I worked out the candidate formats (to_candidate_id with a kg: prefix, which edge types are allowed) from the tool error messages.\"]}",
+    "ttft_ms": 5903,
+    "type": "result",
+    "duration_ms": 104041,
+    "uuid": "fd049c57-4afa-4195-b180-be96376be06f",
+    "ttft_stream_ms": 5902,
+    "time_to_request_ms": 532,
+    "first_content_frame_ms": 5903,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 44,
+        "outputTokens": 8010,
+        "cacheReadInputTokens": 2649201,
+        "cacheCreationInputTokens": 20500,
+        "webSearchRequests": 0,
+        "costUSD": 0.7927162000000001,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 529,
+        "cacheCreationEphemeral5mInputTokens": 20500,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "reviewer",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 106.1,
+    "duration_ms": 104041,
+    "duration_api_ms": 100633,
+    "num_turns": 30,
+    "tool_calls": 29,
+    "input_tokens": 44,
+    "output_tokens": 8010,
+    "cache_creation_input_tokens": 20500,
+    "cache_read_input_tokens": 2649201,
+    "total_cost_usd": 0.7927162000000001,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T21:45:09Z"
+}

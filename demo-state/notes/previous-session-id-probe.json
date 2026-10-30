@@ -1,0 +1,23 @@
+{
+  "note": "The spec had no consolidation opened by this probe before the first call. Sessions the probe aborted never commit, so they are not in the audit list.",
+  "begin_consolidation_calls": [
+    {
+      "call": "at once",
+      "own_session_id": "kgses_e5e673187ecb4995",
+      "previous_session_id": null
+    },
+    {
+      "call": "after 40 s",
+      "own_session_id": "kgses_91a0234a42dc4c20",
+      "previous_session_id": "kgses_712dfa3045724989"
+    }
+  ],
+  "audit_entries_for_the_spec": [
+    {
+      "session_id": "kgses_712dfa3045724989",
+      "agent": "system:historical_consolidation",
+      "committed_at": "2026-10-29T19:41:21.333675"
+    }
+  ],
+  "previous_session_id_is_a_system_session": true
+}

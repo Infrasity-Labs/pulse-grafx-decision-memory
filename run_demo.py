@@ -6,6 +6,8 @@
   python run_demo.py --start 3                 run steps 3 to 10
   python run_demo.py --list                    list the steps
 
+No model, no key: python scripts/run_integration.py runs steps 1 to 9 with scripted agents on a fresh data home and asserts the outcomes.
+
 A dry run uses only the Python standard library. It needs no Pulse or Grafx install and starts nothing.
 A real run needs Mac or Linux, Python 3.11 to 3.13, free ports 8100 and 8101, Claude Code logged in,
 and network access. Step 7 sends SIGKILL to the okto-pulse server it started. Step 5 runs the Maintainer
@@ -28,18 +30,20 @@ PY = ".venv/bin/python"
 STEPS = [
     {"n": 1, "title": "Setup: environment, install, init, start, status",
      "shows": "the pairing: okto-pulse 0.4.2 requires okto-grafx 0.0.8; the real embedding model is loaded",
-     "commands": ["python3.12 -m venv .venv", ".venv/bin/pip install -r requirements.txt", f"{PY} scripts/capture_versions.py",
+     "commands": ["python3.12 -m venv .venv", ".venv/bin/pip install -r requirements.txt -c constraints.txt", f"{PY} scripts/capture_versions.py",
                   "scripts/init_pulse.sh MAINTAINER agents/.keys.local", "scripts/start_pulse.sh", "scripts/status.sh",
                   f"{PY} scripts/check_embedding.py"], "prompts": []},
     {"n": 2, "title": "Board, identities, anchor spec",
      "shows": "one board, four identities from Pulse presets, and the board's Grafx store folder",
-     "commands": [f"{PY} scripts/setup_board.py"], "prompts": []},
+     "commands": [f"{PY} scripts/setup_board.py", f"{PY} scripts/probe_roles.py"], "prompts": []},
     {"n": 3, "title": "Recorder: twelve decisions in one consolidation",
      "shows": "decisions in the board graph, each with a file and line that exist",
-     "commands": [f"{PY} scripts/step03_recorder.py"], "prompts": ["docs/prompts/step3-recorder.md"]},
+     "commands": [f"{PY} scripts/step03_recorder.py", f"{PY} scripts/scripted_steps.py code-extras", f"{PY} scripts/spec_flow.py"],
+     "prompts": ["docs/prompts/step3-recorder.md"]},
     {"n": 4, "title": "Recaller: ten questions in a fresh session",
      "shows": "recall by similarity, natural-language search and decision history; a read-only identity cannot write",
-     "commands": [f"{PY} scripts/step04_recaller.py", f"{PY} scripts/probe_history.py"], "prompts": ["docs/prompts/step4-recaller.md"]},
+     "commands": [f"{PY} scripts/step04_recaller.py", f"{PY} scripts/probe_history.py", f"{PY} scripts/lexical_baseline.py", f"{PY} scripts/arm_pulse_retrieval.py"],
+     "prompts": ["docs/prompts/step4-recaller.md"]},
     {"n": 5, "title": "Reversal: Maintainer reverses one decision, Reviewer records it",
      "shows": "supersedence chain, contradiction pairs, decision history",
      "commands": [f"{PY} scripts/maintainer_reverse.py", f"{PY} scripts/step05_reversal.py"], "prompts": ["docs/prompts/step5-reviewer.md"]},

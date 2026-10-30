@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "about": "Questions written by claude-haiku-5-5, a different model from the agent model in config/agent.json (claude-opus-5-5), and not by a person. The model saw only the 32 decision texts (title, content and reason), not the code and not the other question sets, and was asked for 12 answerable and 4 unanswerable questions. Nothing was dropped or reworded after it answered: every question it wrote is here. This script only added ids, the sibling decisions of the same group as distractors, and the graph_only and near_duplicate tags, which are computed from the corpus. For a graph_only question the scorer uses the reason keywords of the decision, as it does for dev and held_out, so the keywords the model gave are not what scores those questions. A deterministic check confirmed that each answer keyword appears in the expected decision and that no absent term appears in any decision. A person has not reviewed these questions. Split model_authored is scored separately from dev and held_out.",
+  "authoring": {
+    "model": "claude-haiku-5-5",
+    "date": "2026-10-29",
+    "cost_usd": 0.003616565,
+    "prompt": "corpus/authoring/model-authored-prompt.txt",
+    "raw_reply": "corpus/authoring/model-authored-reply.json",
+    "input": "32 decision texts only",
+    "questions_written": 16,
+    "dropped_after_writing": []
+  },
+  "questions": [
+    {
+      "id": "m1",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "no-refresh-tokens",
+      "text": "Why did the team decide against issuing a second token for renewing sessions?",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "token-expiry",
+        "jwt-algorithm",
+        "jwt-subject-claim",
+        "reset-link-lifetime",
+        "tokens-header-only"
+      ],
+      "answer_keywords": [
+        "stolen"
+      ]
+    },
+    {
+      "id": "m2",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "hard-delete-articles",
+      "text": "Which compliance requirement is behind removing deleted posts from storage completely?",
+      "tags": [
+        "graph_only"
+      ],
+      "distractors": [],
+      "answer_keywords": [
+        "LR-77"
+      ]
+    },
+    {
+      "id": "m3",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "reject-fancyhash",
+      "text": "What licensing objection rules out fancyhash for password hashing?",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "password-hashing",
+        "password-salt",
+        "bcrypt-work-factor"
+      ],
+      "answer_keywords": [
+        "licence"
+      ]
+    },
+    {
+      "id": "m4",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "bcrypt-work-factor",
+      "text": "Why was the bcrypt cost left at its default rather than raised?",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "password-hashing",
+        "password-salt",
+        "reject-fancyhash"
+      ],
+      "answer_keywords": [
+        "300"
+      ]
+    },
+    {
+      "id": "m5",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "tokens-header-only",
+      "text": "Why does the API refuse to accept tokens through cookies?",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "token-expiry",
+        "jwt-algorithm",
+        "jwt-subject-claim",
+        "no-refresh-tokens",
+        "reset-link-lifetime"
+      ],
+      "answer_keywords": [
+        "CSRF"
+      ]
+    },
+    {
+      "id": "m6",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "password-salt",
+      "text": "Where does the stored user row keep each user's random salt?",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "password-hashing",
+        "reject-fancyhash",
+        "bcrypt-work-factor"
+      ],
+      "answer_keywords": [
+        "next to"
+      ]
+    },
+    {
+      "id": "m7",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "validation-error-shape",
+      "text": "What shape does the response take when a request fails validation?",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "error-response-shape"
+      ],
+      "answer_keywords": [
+        "422"
+      ]
+    },
+    {
+      "id": "m8",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "token-expiry",
+      "text": "How long is an access token valid after it is issued?",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "jwt-algorithm",
+        "jwt-subject-claim",
+        "no-refresh-tokens",
+        "reset-link-lifetime",
+        "tokens-header-only"
+      ],
+      "answer_keywords": [
+        "week"
+      ]
+    },
+    {
+      "id": "m9",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "tag-create-idempotent",
+      "text": "What happens when an article is saved with a tag that already exists in the tags table?",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "tag-handling"
+      ],
+      "answer_keywords": [
+        "ignored"
+      ]
+    },
+    {
+      "id": "m10",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "database-access-layer",
+      "text": "Which library loads the SQL query files, and which driver runs them?",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "postgres-over-mongodb",
+        "aiosql-over-orm"
+      ],
+      "answer_keywords": [
+        "asyncpg"
+      ]
+    },
+    {
+      "id": "m11",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "postgres-over-mongodb",
+      "text": "Why was PostgreSQL chosen over a document store for articles, tags and favorites?",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "database-access-layer",
+        "aiosql-over-orm"
+      ],
+      "answer_keywords": [
+        "relational"
+      ]
+    },
+    {
+      "id": "m12",
+      "split": "model_authored",
+      "kind": "answerable",
+      "expected_slug": "aiosql-over-orm",
+      "text": "What review process is the reason queries are written by hand rather than generated by an ORM?",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "database-access-layer",
+        "postgres-over-mongodb"
+      ],
+      "answer_keywords": [
+        "DBA"
+      ]
+    },
+    {
+      "id": "m13",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "text": "Does the API limit how many login attempts a client can make per minute?",
+      "tags": [],
+      "absent_terms": [
+        "rate limiting",
+        "throttling"
+      ]
+    },
+    {
+      "id": "m14",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "text": "Can clients subscribe to real-time updates over a WebSocket connection?",
+      "tags": [],
+      "absent_terms": [
+        "WebSocket",
+        "real-time"
+      ]
+    },
+    {
+      "id": "m15",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "text": "Can users upload a profile photo that is stored with their account?",
+      "tags": [],
+      "absent_terms": [
+        "avatar upload",
+        "profile photo"
+      ]
+    },
+    {
+      "id": "m16",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "text": "Is a GraphQL endpoint offered alongside the REST routes?",
+      "tags": [],
+      "absent_terms": [
+        "GraphQL"
+      ]
+    }
+  ]
+}

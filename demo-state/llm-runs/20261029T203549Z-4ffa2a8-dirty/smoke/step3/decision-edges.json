@@ -1,0 +1,17 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "The JWT payload identifies the user by username, not by numeric id.",
+    "JWT access tokens are signed with the symmetric HS256 algorithm."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "A separate per-user salt column is prepended to the password before hashing.",
+    "Passwords are hashed with bcrypt through a passlib CryptContext."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Creating an article whose slug already exists is rejected with HTTP 400 instead of making the slug unique.",
+    "An article slug is derived from its title with slugify, and recomputed when the title changes."
+  ]
+]

@@ -1,0 +1,194 @@
+{
+  "role": "recorder",
+  "exit_code": 0,
+  "seconds": 122.0,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 46,
+  "tool_calls": [
+    "Glob",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Glob",
+    "Read",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_propose_reconciliation",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation"
+  ],
+  "final": {
+    "duration_api_ms": 117696,
+    "stop_reason": "end_turn",
+    "session_id": "3ea64bab-16c4-4de2-9eb4-c1fe720c89a4",
+    "total_cost_usd": 1.38415,
+    "usage": {
+      "input_tokens": 24,
+      "cache_creation_input_tokens": 158572,
+      "cache_read_input_tokens": 1535970,
+      "output_tokens": 14200,
+      "output_tokens_details": {
+        "thinking_tokens": 1981
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 158572
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 2233,
+          "cache_read_input_tokens": 157884,
+          "cache_creation_input_tokens": 688,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 688,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 24,
+        "outputTokens": 14200,
+        "cacheReadInputTokens": 1535970,
+        "cacheCreationInputTokens": 158572,
+        "webSearchRequests": 0,
+        "costUSD": 1.38415,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1981,
+        "cacheCreationEphemeral5mInputTokens": 158572,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 47,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"session_id\": \"kgses_4799ac9e43754267\", \"commit_status\": \"committed\", \"nodes_added\": 19, \"edges_added\": 3, \"decisions\": [{\"slug\": \"jwt-hs256\", \"title\": \"Access tokens are signed with the symmetric HS256 algorithm.\", \"file\": \"app/app/services/jwt.py\", \"line\": 11, \"quote\": \"ALGORITHM = \\\"HS256\\\"\"}, {\"slug\": \"jwt-one-week-expiry\", \"title\": \"Access tokens expire after one week and there is no refresh token.\", \"file\": \"app/app/services/jwt.py\", \"line\": 12, \"quote\": \"ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week\"}, {\"slug\": \"jwt-username-subject\", \"title\": \"The token identifies the user by username, not by user id.\", \"file\": \"app/app/services/jwt.py\", \"line\": 29, \"quote\": \"jwt_content=JWTUser(username=user.username).dict(),\"}, {\"slug\": \"auth-token-prefix\", \"title\": \"The Authorization header must use the prefix Token, not Bearer.\", \"file\": \"app/app/core/settings/app.py\", \"line\": 29, \"quote\": \"jwt_token_prefix: str = \\\"Token\\\"\"}, {\"slug\": \"auth-failure-403\", \"title\": \"Bad tokens, wrong prefixes and unknown users are answered with 403, not 401.\", \"file\": \"app/app/api/dependencies/authentication.py\", \"line\": 54, \"quote\": \"status_code=status.HTTP_403_FORBIDDEN,\"}, {\"slug\": \"login-uniform-error\", \"title\": \"Login returns the same error for an unknown email and a wrong password.\", \"file\": \"app/app/api/routes/authentication.py\", \"line\": 28, \"quote\": \"wrong_login_error = HTTPException(\"}, {\"slug\": \"bcrypt-passlib\", \"title\": \"Passwords are hashed with bcrypt through a passlib CryptContext.\", \"file\": \"app/app/services/security.py\", \"line\": 4, \"quote\": \"pwd_context = CryptContext(schemes=[\\\"bcrypt\\\"], deprecated=\\\"auto\\\")\"}, {\"slug\": \"password-extra-salt\", \"title\": \"A separately stored per-user salt is prepended to the password before hashing.\", \"file\": \"app/app/models/domain/users.py\", \"line\": 24, \"quote\": \"self.hashed_password = security.get_password_hash(self.salt + password)\"}, {\"slug\": \"slug-from-title\", \"title\": \"An article slug is derived from its title with slugify.\", \"file\": \"app/app/services/articles.py\", \"line\": 19, \"quote\": \"return slugify(title)\"}, {\"slug\": \"duplicate-slug-rejected\", \"title\": \"Creating an article whose title gives an existing slug is rejected with 400.\", \"file\": \"app/app/api/routes/articles/articles_resource.py\", \"line\": 65, \"quote\": \"if await check_article_exists(articles_repo, slug):\"}, {\"slug\": \"slug-changes-on-title-update\", \"title\": \"Updating an article title regenerates its slug, so its URL changes.\", \"file\": \"app/app/api/routes/articles/articles_resource.py\", \"line\": 100, \"quote\": \"slug = get_slug_for_article(article_update.title) if article_update.title else None\"}, {\"slug\": \"author-only-modify\", \"title\": \"Only the author may update or delete an article, checked by comparing usernames.\", \"file\": \"app/app/services/articles.py\", \"line\": 23, \"quote\": \"return article.author.username == user.username\"}, {\"slug\": \"article-author-set-null\", \"title\": \"Deleting a user keeps their articles and sets author_id to NULL.\", \"file\": \"app/app/db/migrations/versions/fdf8821871d7_main_tables.py\", \"line\": 108, \"quote\": \"\\\"author_id\\\", sa.Integer, sa.ForeignKey(\\\"users.id\\\", ondelete=\\\"SET NULL\\\")\"}, {\"slug\": \"updated-at-db-trigger\", \"title\": \"updated_at is maintained by a Postgres trigger, not by application code.\", \"file\": \"app/app/db/migrations/versions/fdf8821871d7_main_tables.py\", \"line\": 27, \"quote\": \"NEW.updated_at = now();\"}, {\"slug\": \"raw-sql-aiosql\", \"title\": \"Database access uses raw SQL files loaded with aiosql on asyncpg, not an ORM.\", \"file\": \"app/app/db/queries/queries.py\", \"line\": 5, \"quote\": \"queries = aiosql.from_path(pathlib.Path(__file__).parent / \\\"sql\\\", \\\"asyncpg\\\")\"}, {\"slug\": \"article-list-limit\", \"title\": \"Article lists default to 20 items and have no upper limit.\", \"file\": \"app/app/models/schemas/articles.py\", \"line\": 8, \"quote\": \"DEFAULT_ARTICLES_LIMIT = 20\"}, {\"slug\": \"camelcase-json\", \"title\": \"API models use camelCase JSON aliases generated from snake_case field names.\", \"file\": \"app/app/models/domain/rwmodel.py\", \"line\": 21, \"quote\": \"alias_generator = convert_field_to_camel_case\"}, {\"slug\": \"datetime-utc-z\", \"title\": \"Datetimes are serialized as UTC ISO strings ending in Z.\", \"file\": \"app/app/models/domain/rwmodel.py\", \"line\": 7, \"quote\": \"return dt.replace(tzinfo=datetime.timezone.utc).isoformat().replace(\\\"+00:00\\\", \\\"Z\\\")\"}, {\"slug\": \"cors-allow-all\", \"title\": \"CORS allows every origin by default, with credentials allowed.\", \"file\": \"app/app/core/settings/app.py\", \"line\": 31, \"quote\": \"allowed_hosts: List[str] = [\\\"*\\\"]\"}], \"problems\": [\"I could not read okto-pulse://workflows/kg because no MCP resource-read tool was available in this session. I inferred the node and edge candidate field names (edge_type, from_candidate_id, to_candidate_id) from the task and tool descriptions. The server accepted them.\", \"The commit reported kg_health_state 'recovery_needed_graph_readable'. Board KG health may need attention, but the commit succeeded.\", \"Each quote is the cited line with its leading indentation removed. The line also appears elsewhere: for auth-failure-403 the quoted text also appears at lines 59, 90 and 98 of the same file.\", \"Session timestamps (expires_at 2026-10-29T22:19Z, committed_at 2026-10-29T21:20Z) are a day behind today's date of 2026-10-30. This may be server clock skew.\"]}",
+    "ttft_ms": 2936,
+    "type": "result",
+    "duration_ms": 120319,
+    "uuid": "3bd1f1f8-5061-44d8-8b27-52c00b39f4e3",
+    "ttft_stream_ms": 1408,
+    "time_to_request_ms": 266,
+    "first_content_frame_ms": 1408,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 24,
+        "outputTokens": 14200,
+        "cacheReadInputTokens": 1535970,
+        "cacheCreationInputTokens": 158572,
+        "webSearchRequests": 0,
+        "costUSD": 1.38415,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1981,
+        "cacheCreationEphemeral5mInputTokens": 158572,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "recorder",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 122.0,
+    "duration_ms": 120319,
+    "duration_api_ms": 117696,
+    "num_turns": 47,
+    "tool_calls": 46,
+    "input_tokens": 24,
+    "output_tokens": 14200,
+    "cache_creation_input_tokens": 158572,
+    "cache_read_input_tokens": 1535970,
+    "total_cost_usd": 1.38415,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T21:20:40Z"
+}

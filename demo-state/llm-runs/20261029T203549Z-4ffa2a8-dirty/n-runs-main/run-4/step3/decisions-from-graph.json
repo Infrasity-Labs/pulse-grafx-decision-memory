@@ -1,0 +1,192 @@
+[
+  {
+    "id": "decision_1b4fea0636d96ec9d67f81e1",
+    "title": "Database queries are raw SQL files loaded with aiosql for asyncpg, not an ORM.",
+    "content": "queries.py loads every .sql file in the sql folder through aiosql with the asyncpg adapter. Only filter_articles builds SQL dynamically with pypika.\nSource: app/app/db/queries/queries.py:5",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:aiosql-raw-sql",
+    "slug": "aiosql-raw-sql",
+    "quote": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_71576c14ee32149497757794",
+    "title": "Deleting a user keeps their articles and sets author_id to NULL.",
+    "content": "articles.author_id references users.id with ondelete SET NULL, while comments, favorites and follows cascade. Orphaned articles therefore have no author.\nSource: app/app/db/migrations/versions/fdf8821871d7_main_tables.py:108",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:article-author-set-null",
+    "slug": "article-author-set-null",
+    "quote": "            \"author_id\", sa.Integer, sa.ForeignKey(\"users.id\", ondelete=\"SET NULL\")",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_f7ab75f360b101fa94f8e31b",
+    "title": "Article lists default to 20 items with limit at least 1 and no upper bound.",
+    "content": "ArticlesFilters sets limit to DEFAULT_ARTICLES_LIMIT (20) with ge=1 and offset default 0 with ge=0. No maximum is enforced on limit.\nSource: app/app/models/schemas/articles.py:42",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:article-list-limit",
+    "slug": "article-list-limit",
+    "quote": "    limit: int = Field(DEFAULT_ARTICLES_LIMIT, ge=1)",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_cc045b043c307530dfe68013",
+    "title": "articlesCount in list responses is the length of the returned page, not the total number of matches.",
+    "content": "list_articles sets articles_count to len(articles) after applying limit and offset. No separate count query is run.\nSource: app/app/api/routes/articles/articles_resource.py:49",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:articles-count-page-length",
+    "slug": "articles-count-page-length",
+    "quote": "        articles_count=len(articles),",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_4966de80bd0a25f1330338e4",
+    "title": "The Authorization header is parsed by splitting on a single space and rejected with 403 if the prefix does not match.",
+    "content": "The header value must split into exactly two parts on one space, and the first part must equal settings.jwt_token_prefix. Any other shape, or an invalid token or unknown user, returns 403 rather than 401.\nSource: app/app/api/dependencies/authentication.py:51",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:auth-header-split",
+    "slug": "auth-header-split",
+    "quote": "        token_prefix, token = api_key.split(\" \")",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_305f74a54ba4ecb95abc8c54",
+    "title": "Only the article author may update or delete an article, checked by username equality.",
+    "content": "check_user_can_modify_article compares the article author's username with the current user's username. The PUT and DELETE article routes depend on check_article_modification_permissions, which uses it.\nSource: app/app/services/articles.py:23",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:author-only-modify",
+    "slug": "author-only-modify",
+    "quote": "    return article.author.username == user.username",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_50341b688b4e778de96b84a2",
+    "title": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+    "content": "A module-level CryptContext uses the bcrypt scheme with deprecated=\"auto\". verify_password and get_password_hash both go through this context.\nSource: app/app/services/security.py:4",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:bcrypt-hashing",
+    "slug": "bcrypt-hashing",
+    "quote": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_47275134c5e2adde05f3888b",
+    "title": "All domain models expose camelCase JSON field names through a pydantic alias generator.",
+    "content": "RWModel converts snake_case field names to camelCase aliases and also allows population by field name. Datetimes are encoded as UTC ISO strings ending in Z.\nSource: app/app/models/domain/rwmodel.py:21",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:camelcase-aliases",
+    "slug": "camelcase-aliases",
+    "quote": "        alias_generator = convert_field_to_camel_case",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_0490c2f20c4e470fe90d55a0",
+    "title": "The asyncpg connection pool is fixed at 10 connections by default (min equals max).",
+    "content": "AppSettings defaults both min_connection_count and max_connection_count to 10, and connect_to_db passes them as min_size and max_size.\nSource: app/app/core/settings/app.py:23",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:fixed-pool-size",
+    "slug": "fixed-pool-size",
+    "quote": "    min_connection_count: int = 10",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_78db2a93a2623c68adf2af5f",
+    "title": "JWT access tokens are signed with the symmetric HS256 algorithm.",
+    "content": "The JWT service signs and verifies every access token with HS256 using the app secret_key. Decoding accepts only this one algorithm, so changing it invalidates all issued tokens.\nSource: app/app/services/jwt.py:11",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:jwt-hs256",
+    "slug": "jwt-hs256",
+    "quote": "ALGORITHM = \"HS256\"",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_aa8307721d7857fcc9a2d382",
+    "title": "Access tokens expire one week after issue.",
+    "content": "Access tokens get an exp claim of 60 * 24 * 7 minutes after creation. There is no refresh token; a new token is issued on login, registration and every GET or PUT of the current user.\nSource: app/app/services/jwt.py:12",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:jwt-one-week-expiry",
+    "slug": "jwt-one-week-expiry",
+    "quote": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_dc0dd5b9b76f419660ee2ad2",
+    "title": "The JWT payload identifies the user by username, not by numeric id.",
+    "content": "The token content is only the username; the current user is loaded with get_user_by_username. Because usernames can be changed via PUT /user, a rename makes older tokens resolve to no user (403).\nSource: app/app/services/jwt.py:29",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:jwt-username-identity",
+    "slug": "jwt-username-identity",
+    "quote": "        jwt_content=JWTUser(username=user.username).dict(),",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_fee9e15584284215d2d935a9",
+    "title": "Login returns the same 400 error for an unknown email and a wrong password.",
+    "content": "The login route builds one wrong_login_error and raises it both when the email is not found and when check_password fails. Login is by email, not username.\nSource: app/app/api/routes/authentication.py:28",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:login-uniform-error",
+    "slug": "login-uniform-error",
+    "quote": "    wrong_login_error = HTTPException(",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_f099505b7696039570856ba3",
+    "title": "A separate per-user salt is stored in its own column and prepended to the password before hashing.",
+    "content": "change_password generates a new bcrypt salt, stores it in users.salt, and hashes salt + password. check_password must use the same concatenation, so dropping or reordering the salt breaks every existing login.\nSource: app/app/models/domain/users.py:24",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:salt-prepended",
+    "slug": "salt-prepended",
+    "quote": "        self.hashed_password = security.get_password_hash(self.salt + password)",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_db3b7a18a74080310803c8c7",
+    "title": "Updating an article title regenerates its slug, so the article URL changes.",
+    "content": "The update route computes a new slug from the new title when one is given and passes it to update_article. Unlike create, it does not check whether the new slug already exists.\nSource: app/app/api/routes/articles/articles_resource.py:100",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:slug-changes-on-title-update",
+    "slug": "slug-changes-on-title-update",
+    "quote": "    slug = get_slug_for_article(article_update.title) if article_update.title else None",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_3fc14ee5ce2508e25e2e8c9a",
+    "title": "An article slug is derived from its title with python-slugify.",
+    "content": "get_slug_for_article returns slugify(title) with no suffix or id. Creating an article whose title slugifies to an existing slug fails with 400 ARTICLE_ALREADY_EXISTS.\nSource: app/app/services/articles.py:19",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:slug-from-title",
+    "slug": "slug-from-title",
+    "quote": "    return slugify(title)",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_07af7c5f2bed307d3af0b693",
+    "title": "The article slug is a unique, indexed column and is the public key for articles.",
+    "content": "articles.slug is Text, unique, not null and indexed. Routes, favorites, tags and comments look articles up by slug rather than by id.\nSource: app/app/db/migrations/versions/fdf8821871d7_main_tables.py:103",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:slug-unique-key",
+    "slug": "slug-unique-key",
+    "quote": "        sa.Column(\"slug\", sa.Text, unique=True, nullable=False, index=True),",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_4ba76eecd2d7512bf1767d9f",
+    "title": "The Authorization header scheme defaults to the word Token instead of Bearer.",
+    "content": "AppSettings sets jwt_token_prefix to \"Token\". Clients must send \"Authorization: Token <jwt>\"; the setting is configurable per environment.\nSource: app/app/core/settings/app.py:29",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:token-prefix-token",
+    "slug": "token-prefix-token",
+    "quote": "    jwt_token_prefix: str = \"Token\"",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  },
+  {
+    "id": "decision_f332f4d3feafac75aa46f45a",
+    "title": "updated_at is maintained by a PostgreSQL BEFORE UPDATE trigger, not by application code.",
+    "content": "The migration creates a plpgsql function that sets NEW.updated_at = now(), and attaches it to users, articles and commentaries. Repositories read updated_at back from the database after an update.\nSource: app/app/db/migrations/versions/fdf8821871d7_main_tables.py:27",
+    "ref": "final_report:10e0c0a1-3346-4387-9fb1-e2abac36738d:decision:updated-at-db-trigger",
+    "slug": "updated-at-db-trigger",
+    "quote": "        NEW.updated_at = now();",
+    "layer": "canonical",
+    "agent": "a68332bc-5cc2-4575-b7f3-bac14fd49b7e"
+  }
+]

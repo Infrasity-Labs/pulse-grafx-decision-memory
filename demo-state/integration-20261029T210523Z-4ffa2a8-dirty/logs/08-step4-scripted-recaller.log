@@ -1,0 +1,41 @@
+$ python step04_recaller.py --scripted
+<venv>/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+{
+ "questions": 10,
+ "agent_choice_correct": 10,
+ "similar_top1_correct": 10,
+ "natural_top1_correct": 10,
+ "history_top1_correct": 0,
+ "similar_expected_in_results": 10,
+ "natural_expected_in_results": 10,
+ "history_expected_in_results": 0,
+ "write_probe": "{\"outcome\": \"error\", \"data\": {\"error\": {\"code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"required_permission\": \"kg.session.begin\"}}, \"error_code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"retryable\": false, \"next_action\": null, \"meta\": {\"contract\": \"okto-pulse.mcp-tool-outcome\", \"contract_version\": \"2.0\", \"tool\": \"okto_pulse_kg_begin_consolidation\"}, \"details\": {\"error\": {\"code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"required_permission\": \"kg.session.begin\"}}}",
+ "answerable_expected_on_board": 10,
+ "answerable_expected_missing_from_board": [],
+ "agent_choice_correct_where_expected_on_board": 10,
+ "tool_call_names": [
+  "mcp__pulse__okto_pulse_kg_begin_consolidation",
+  "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+  "mcp__pulse__okto_pulse_kg_get_decision_history",
+  "mcp__pulse__okto_pulse_kg_query_natural"
+ ],
+ "scores_by_split": {
+  "legacy": {
+   "questions": 10,
+   "answered_by_arm": 10,
+   "answerable": 10,
+   "correct": 10,
+   "wrong": 0,
+   "missed_by_abstaining": 0,
+   "unanswerable": 0,
+   "correct_abstentions": 0,
+   "fabricated": 0,
+   "graph_only_total": 0,
+   "graph_only_correct": 0,
+   "near_duplicate_total": 0,
+   "near_duplicate_correct": 0
+  }
+ }
+}

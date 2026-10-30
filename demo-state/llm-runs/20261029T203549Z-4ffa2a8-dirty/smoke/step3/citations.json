@@ -1,0 +1,217 @@
+{
+  "mode": "open",
+  "found": 17,
+  "citations_ok": 17,
+  "all_ok": true,
+  "reference_entries": 22,
+  "reference_covered": 9,
+  "reference_recall": 0.409,
+  "covered_by": {
+    "pagination-parameters": "articles-page-limit",
+    "article-ownership": "author-only-modify",
+    "password-hashing": "bcrypt-hashing",
+    "article-slug-conflict": "duplicate-slug-rejected",
+    "jwt-algorithm": "jwt-hs256",
+    "token-expiry": "jwt-one-week-expiry",
+    "database-access-layer": "raw-sql-aiosql",
+    "slug-rules": "slug-from-title",
+    "tag-create-idempotent": "tags-insert-ignore"
+  },
+  "reference_not_covered": [
+    "auth-header-scheme",
+    "error-response-shape",
+    "comment-ownership",
+    "favorites",
+    "tag-handling",
+    "settings-loading",
+    "test-layout",
+    "jwt-subject-claim",
+    "password-salt",
+    "validation-error-shape",
+    "duplicate-registration",
+    "cors-allowed-origins",
+    "connection-pool-size"
+  ],
+  "nodes_matching_no_reference_entry": [
+    "auth-failure-403",
+    "author-delete-set-null",
+    "camelcase-aliases",
+    "jwt-username-claim",
+    "salt-prefix-password",
+    "token-prefix",
+    "updated-at-trigger",
+    "utc-z-datetimes"
+  ],
+  "results": [
+    {
+      "slug": "articles-page-limit",
+      "title": "Article lists default to 20 items with offset pagination and no upper limit.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/schemas/articles.py",
+      "line": 8,
+      "line_text": "DEFAULT_ARTICLES_LIMIT = 20",
+      "quote_checked": true
+    },
+    {
+      "slug": "auth-failure-403",
+      "title": "Bad or unknown tokens are answered with HTTP 403, not 401.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/dependencies/authentication.py",
+      "line": 54,
+      "line_text": "status_code=status.HTTP_403_FORBIDDEN,",
+      "quote_checked": true
+    },
+    {
+      "slug": "author-delete-set-null",
+      "title": "Deleting a user keeps their articles and sets author_id to NULL.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/migrations/versions/fdf8821871d7_main_tables.py",
+      "line": 108,
+      "line_text": "\"author_id\", sa.Integer, sa.ForeignKey(\"users.id\", ondelete=\"SET NULL\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "author-only-modify",
+      "title": "Only the article author may update or delete it, checked by comparing usernames.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/articles.py",
+      "line": 23,
+      "line_text": "return article.author.username == user.username",
+      "quote_checked": true
+    },
+    {
+      "slug": "bcrypt-hashing",
+      "title": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/security.py",
+      "line": 4,
+      "line_text": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "camelcase-aliases",
+      "title": "All API models expose camelCase JSON names generated from snake_case fields.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/domain/rwmodel.py",
+      "line": 21,
+      "line_text": "alias_generator = convert_field_to_camel_case",
+      "quote_checked": true
+    },
+    {
+      "slug": "duplicate-slug-rejected",
+      "title": "Creating an article whose slug already exists is rejected with HTTP 400 instead of making the slug unique.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/routes/articles/articles_resource.py",
+      "line": 65,
+      "line_text": "if await check_article_exists(articles_repo, slug):",
+      "quote_checked": true
+    },
+    {
+      "slug": "jwt-hs256",
+      "title": "JWT access tokens are signed with the symmetric HS256 algorithm.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 11,
+      "line_text": "ALGORITHM = \"HS256\"",
+      "quote_checked": true
+    },
+    {
+      "slug": "jwt-one-week-expiry",
+      "title": "Access tokens expire one week after issue.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 12,
+      "line_text": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week",
+      "quote_checked": true
+    },
+    {
+      "slug": "jwt-username-claim",
+      "title": "The JWT payload identifies the user by username, not by numeric id.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 29,
+      "line_text": "jwt_content=JWTUser(username=user.username).dict(),",
+      "quote_checked": true
+    },
+    {
+      "slug": "raw-sql-aiosql",
+      "title": "Database access uses named raw SQL files loaded by aiosql on asyncpg, not an ORM.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/queries/queries.py",
+      "line": 5,
+      "line_text": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "salt-prefix-password",
+      "title": "A separate per-user salt column is prepended to the password before hashing.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/domain/users.py",
+      "line": 24,
+      "line_text": "self.hashed_password = security.get_password_hash(self.salt + password)",
+      "quote_checked": true
+    },
+    {
+      "slug": "slug-from-title",
+      "title": "An article slug is derived from its title with slugify, and recomputed when the title changes.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/articles.py",
+      "line": 19,
+      "line_text": "return slugify(title)",
+      "quote_checked": true
+    },
+    {
+      "slug": "tags-insert-ignore",
+      "title": "Tags live in a shared table keyed by the tag text and are inserted with ON CONFLICT DO NOTHING.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/queries/sql/tags.sql",
+      "line": 9,
+      "line_text": "ON CONFLICT DO NOTHING;",
+      "quote_checked": true
+    },
+    {
+      "slug": "token-prefix",
+      "title": "The Authorization header must use the prefix \"Token\", not \"Bearer\".",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/core/settings/app.py",
+      "line": 29,
+      "line_text": "jwt_token_prefix: str = \"Token\"",
+      "quote_checked": true
+    },
+    {
+      "slug": "updated-at-trigger",
+      "title": "updated_at is maintained by a PostgreSQL trigger, not by application code.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/migrations/versions/fdf8821871d7_main_tables.py",
+      "line": 27,
+      "line_text": "NEW.updated_at = now();",
+      "quote_checked": true
+    },
+    {
+      "slug": "utc-z-datetimes",
+      "title": "Datetimes are serialized as UTC ISO 8601 strings ending in Z.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/domain/rwmodel.py",
+      "line": 7,
+      "line_text": "return dt.replace(tzinfo=datetime.timezone.utc).isoformat().replace(\"+00:00\", \"Z\")",
+      "quote_checked": true
+    }
+  ]
+}

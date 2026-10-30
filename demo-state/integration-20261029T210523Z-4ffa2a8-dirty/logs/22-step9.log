@@ -1,0 +1,7 @@
+$ python step09_backup_restore.py
+[darwin] backup_ok=False restore_ok=False counts_match={'original_vs_copy': True, 'original_vs_restored': False} decisions_match={'original_vs_copy': True, 'original_vs_restored': False} original_untouched=True verify_exit original=0 copy=0 restored=None
+Host refused the backup (platform). Repeating the same procedure in a Linux container.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[linux-container] backup_ok=True restore_ok=True counts_match={'original_vs_copy': True, 'original_vs_restored': True} decisions_match={'original_vs_copy': True, 'original_vs_restored': True} original_untouched=True verify_exit original=0 copy=0 restored=0
+
+[linux-container] backup_ok=True restore_ok=True counts_match={'original_vs_copy': True, 'original_vs_restored': True} decisions_match={'original_vs_copy': True, 'original_vs_restored': True} original_untouched=True verify_exit original=0 copy=0 restored=0

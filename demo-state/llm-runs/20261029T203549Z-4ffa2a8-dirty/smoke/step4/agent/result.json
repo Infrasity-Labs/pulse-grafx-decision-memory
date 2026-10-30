@@ -1,0 +1,186 @@
+{
+  "role": "recaller",
+  "exit_code": 0,
+  "seconds": 95.7,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 38,
+  "tool_calls": [
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation"
+  ],
+  "final": {
+    "duration_api_ms": 92578,
+    "stop_reason": "end_turn",
+    "session_id": "1363b309-3dc6-493f-891f-b39c5010ffe3",
+    "total_cost_usd": 1.0963555999999999,
+    "usage": {
+      "input_tokens": 18,
+      "cache_creation_input_tokens": 138908,
+      "cache_read_input_tokens": 1004618,
+      "output_tokens": 10041,
+      "output_tokens_details": {
+        "thinking_tokens": 506
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 138908
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 3663,
+          "cache_read_input_tokens": 137314,
+          "cache_creation_input_tokens": 1594,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 1594,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 18,
+        "outputTokens": 10041,
+        "cacheReadInputTokens": 1004618,
+        "cacheCreationInputTokens": 138908,
+        "webSearchRequests": 0,
+        "costUSD": 1.0963555999999999,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 506,
+        "cacheCreationEphemeral5mInputTokens": 138908,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 39,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"answers\": [\n{\"id\": \"d1\", \"decision_id\": \"decision_73704e8ff9318cb8bba01a17\", \"answer\": \"JWT access tokens are signed with the symmetric HS256 algorithm, using one shared secret key (decision_cf73f5b1e2795de460605838 says the same).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_query_cypher (permission denied: kg.power.cypher)\", \"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"d2\", \"decision_id\": \"decision_8246f4fdcff2432e38669c85\", \"answer\": \"Only the article's author may update or delete it. This is checked by comparing usernames.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"d3\", \"decision_id\": \"decision_192a98944a9d45567287e13f\", \"answer\": \"A failed request validation returns HTTP 422, with an errors list of the validator's error objects.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"d4\", \"decision_id\": \"decision_680f82c884dc084b13c2aa01\", \"answer\": \"The slug is made from the title with slugify. Creating an article whose generated slug already exists is refused with HTTP 400.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"d5\", \"decision_id\": \"decision_e998e9cb4cf8e6d54ea1470e\", \"answer\": \"The API issues one access token valid for a week and has no refresh tokens, so a client logs in again to get a new one. Reason: security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. Without one, a stolen token expires on its own.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"d6\", \"decision_id\": \"decision_c7597935fccbab2a1c65a9f0\", \"answer\": \"Deleting runs a SQL DELETE and there is no deleted_at column. Reason: legal review LR-77 requires that content deleted by its author is gone from live storage within 24 hours. A soft-delete flag would leave the rows in the table.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"d7\", \"decision_id\": \"decision_80de7fa199f07e55587981b4\", \"answer\": \"30 minutes, and a link works only once. This rule is fixed for a reset flow that is not built yet. Reason: support tickets showed users open reset mail within 10 minutes, so 30 minutes covers slow delivery without leaving a long-lived link in an inbox.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"d8\", \"decision_id\": \"decision_0053daedc0438b771c31d1f9\", \"answer\": \"fancyhash was rejected because its licence has a network-use clause that does not allow distributing the API. Passlib with bcrypt was kept.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"d9\", \"decision_id\": \"decision_757857ca41730358e8a95e56\", \"answer\": \"Tag names are in the tags table, with the tag text as primary key. create_article links tags to the article in the same transaction, but the graph does not name the linking table.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"d10\", \"decision_id\": \"decision_503bc4a978524f7b1b2463d6\", \"answer\": \"No. Adding a favorite only writes a database row and sends nothing to the author. Reason: product decision PD-8 puts all notifications out of scope until the 2027 roadmap.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"d11\", \"decision_id\": null, \"answer\": \"The graph has no decision about a cloud region for the production database. The only near match is the PostgreSQL vs MongoDB choice.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"d12\", \"decision_id\": null, \"answer\": \"The graph has no decision about a rate limit or a requests-per-minute cap.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"d13\", \"decision_id\": null, \"answer\": \"The graph has no decision about on-call duty or incident response.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h1\", \"decision_id\": \"decision_b2030475d2081e8f9e432646\", \"answer\": \"Every access token carries the fixed subject claim \\\"access\\\".\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h2\", \"decision_id\": \"decision_9e4a53bae821fb848c0289ac\", \"answer\": \"Each user gets a random salt made with bcrypt.gensalt. It is stored in a separate per-user column and prepended to the password before hashing.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h3\", \"decision_id\": \"decision_2cd61f916a5f335e80d8877c\", \"answer\": \"Signing up with a username or email that is already taken gets HTTP 400.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h4\", \"decision_id\": \"decision_c06e22c152907c95ba3a4cd9\", \"answer\": \"Cross-origin calls are allowed from the origins in allowed_hosts. By default that is every origin.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h5\", \"decision_id\": \"decision_a62ab53d674d1eebc698d1b0\", \"answer\": \"The database pool is fixed at 10 connections through min_connection_count and max_connection_count.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h6\", \"decision_id\": \"decision_a34622845e68f84551f18a78\", \"answer\": \"The insert ignores a tag that already exists (ON CONFLICT DO NOTHING), so the existing tag is reused.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"h7\", \"decision_id\": \"decision_55a56ba83141c13e82800bc9\", \"answer\": \"bcrypt keeps passlib's default work factor. Reason: load test LT-9 measured login at a p95 of 240 ms with the default, and one step higher went past the 300 ms login budget.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"h8\", \"decision_id\": \"decision_2910cc58c4b69768db252327\", \"answer\": \"The article list defaults to 20 items because design review DR-31 found the mobile list screen fits 20 rows without scrolling.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"h9\", \"decision_id\": \"decision_a63255d6072d9727156a4e4a\", \"answer\": \"PostgreSQL was chosen over MongoDB because the data is relational and the DBA team supports only PostgreSQL (ADR-3).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"h10\", \"decision_id\": \"decision_2640e33f6068b4d88737d661\", \"answer\": \"Tokens travel only in the Authorization header, never in cookies. Cookie transport would need CSRF protection, which this API does not have (ADR-5).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"h11\", \"decision_id\": \"decision_a65026f8b2747e9cce70a9c8\", \"answer\": \"Queries are hand-written SQL files because the DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_get_decision_history\"]},\n{\"id\": \"h12\", \"decision_id\": null, \"answer\": \"The graph has no decision about a welcome message or an email service. The closest match says notifications are out of scope.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h13\", \"decision_id\": null, \"answer\": \"The graph has no decision about profile picture uploads or size limits.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]},\n{\"id\": \"h14\", \"decision_id\": null, \"answer\": \"The graph has no decision about payments or subscriptions.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\"]}\n], \"write_probe\": \"permission_denied: {\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\"}",
+    "ttft_ms": 4931,
+    "type": "result",
+    "duration_ms": 93331,
+    "uuid": "c9ee4589-6fd4-4fc2-85d9-4b77acaf5b20",
+    "ttft_stream_ms": 4373,
+    "time_to_request_ms": 256,
+    "first_content_frame_ms": 4373,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 18,
+        "outputTokens": 10041,
+        "cacheReadInputTokens": 1004618,
+        "cacheCreationInputTokens": 138908,
+        "webSearchRequests": 0,
+        "costUSD": 1.0963555999999999,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 506,
+        "cacheCreationEphemeral5mInputTokens": 138908,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "recaller",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 95.7,
+    "duration_ms": 93331,
+    "duration_api_ms": 92578,
+    "num_turns": 39,
+    "tool_calls": 38,
+    "input_tokens": 18,
+    "output_tokens": 10041,
+    "cache_creation_input_tokens": 138908,
+    "cache_read_input_tokens": 1004618,
+    "total_cost_usd": 1.0963555999999999,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T20:39:31Z"
+}

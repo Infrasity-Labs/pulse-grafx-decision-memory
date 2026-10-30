@@ -1,0 +1,12 @@
+{
+  "maintainer_note_version": 1,
+  "reverses_slug": "error-response-shape",
+  "new_slug": "error-response-shape-v2",
+  "old_choice": "HTTP errors return the JSON body {\"errors\": [detail]} with the status code of the exception (app/app/api/errors/http_error.py).",
+  "new_choice": "Error responses return RFC 7807 application/problem+json with the fields type, title, status and detail.",
+  "new_title": "Error responses use RFC 7807 problem+json with type, title, status and detail",
+  "reason": "The public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)",
+  "scope": "Decision only. The code under app/ is not changed.",
+  "reversed_at": "2026-10-29T21:34:01+00:00",
+  "by": "Maintainer"
+}

@@ -1,0 +1,110 @@
+{
+  "board_id": "d92f4c86-f3ce-4280-9e37-9613cda4b078",
+  "board_name": "RealWorld API Decisions",
+  "anchor_spec_id": "13d3b7c7-728b-4efa-9fe6-6058e43cbb0a",
+  "anchor_spec_status": "draft",
+  "agents": [
+    {
+      "role": "MAINTAINER",
+      "agent_id": "17a0a679-8d85-4378-bf56-45dbfe84beeb",
+      "name": "Maintainer (demo)",
+      "preset": "Full Control",
+      "preset_id": "30fae5ae-7971-45ae-976d-c7016b2bf8ae",
+      "board_grant_status": "ok"
+    },
+    {
+      "role": "RECORDER",
+      "agent_id": "878eebe4-626b-4459-a7e0-169516beef92",
+      "name": "Recorder (demo)",
+      "preset": "Spec",
+      "preset_id": "bbf044ad-956e-4d86-8a0e-b787f75232a2",
+      "board_grant_status": "ok"
+    },
+    {
+      "role": "RECALLER",
+      "agent_id": "c6085237-a86f-4e3f-b702-543389e80acb",
+      "name": "Recaller (demo)",
+      "preset": "Reporter",
+      "preset_id": "96fa3ec2-300d-4034-807d-7c88beab0919",
+      "board_grant_status": "ok"
+    },
+    {
+      "role": "REVIEWER",
+      "agent_id": "820e9a37-b735-4461-a980-92b5daf80c1b",
+      "name": "Reviewer (demo)",
+      "preset": "Validator",
+      "preset_id": "e6db165b-bcb1-46a5-ae14-4089b95b0142",
+      "board_grant_status": "ok"
+    }
+  ],
+  "grafx_folder_exists": true,
+  "grafx_folder_entries": [
+    "generation-1"
+  ],
+  "presets_available": [
+    "Executor",
+    "Full Control",
+    "QA",
+    "Reporter",
+    "Spec",
+    "Validator"
+  ],
+  "health_after_create": [
+    {
+      "t_s": 1,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 0
+    },
+    {
+      "t_s": 6,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 11,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 16,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 21,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 27,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 32,
+      "graph_state": "recovery_needed",
+      "overall_state": "recovery_needed",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    },
+    {
+      "t_s": 37,
+      "graph_state": "healthy",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "queue_depth": 1
+    }
+  ]
+}

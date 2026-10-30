@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 # Start okto-pulse serve in the background and wait until both servers answer.
 # Env: PULSE_HOME (data home), PULSE_API_PORT, PULSE_MCP_PORT. Prints the pid and seconds to ready.
+# Refuses to start when either port is already taken by another process, so it never touches another Pulse that may run on the defaults.
 set -euo pipefail
 source "$(dirname "$0")/_env.sh"
 if [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
   echo "already running pid $(cat "$PIDFILE")"; exit 0
 fi
+port_in_use() { (exec 3<>"/dev/tcp/127.0.0.1/$1") 2>/dev/null; }
+for port in "$PULSE_API_PORT" "$PULSE_MCP_PORT"; do
+  if port_in_use "$port"; then
+    echo "port $port on 127.0.0.1 is already in use by another process. Not starting. Nothing was changed." >&2
+    echo "Pick free ports: PULSE_API_PORT=<port> PULSE_MCP_PORT=<port> scripts/start_pulse.sh" >&2
+    exit 3
+  fi
+done
 LOG="$LOG_DIR/pulse-$PULSE_API_PORT.log"
 echo "=== start $(date -u +%FT%TZ) ===" >> "$LOG"
 start=$(date +%s)

@@ -35,12 +35,12 @@ def test_every_mermaid_block_uses_the_shared_theme_and_declares_a_diagram():
 
 
 def test_readme_stays_short():
-    assert len((ROOT / "README.md").read_text().splitlines()) <= 260
+    assert len((ROOT / "README.md").read_text().splitlines()) <= 300
 
 
 def test_readme_has_the_front_page_sections_in_order():
     headings = re.findall(r"^## (.+)$", (ROOT / "README.md").read_text(), flags=re.M)
-    order = ["About Okto Pulse and Grafx", "The Problem", "How It Works", "Pulse in Action", "Architecture", "Repository Structure", "The Demo App", "Roles", "Prerequisites", "Quickstart", "The Ten Steps", "Where to Find Artifacts", "Limits", "Licenses"]
+    order = ["The Scenario", "About Okto Pulse and Grafx", "The Problem", "How It Works", "Pulse in Action", "Architecture", "Repository Structure", "The Demo App", "Roles", "Prerequisites", "Quickstart", "The Ten Steps", "Where to Find Artifacts", "Limits", "Live or Recorded", "What This Demo Does Not Show", "Licenses"]
     assert [h for h in headings if h in order] == order
 
 
@@ -54,7 +54,7 @@ def test_every_local_image_exists():
 
 def test_limits_are_named_up_front_and_in_full():
     readme = (ROOT / "README.md").read_text().lower()
-    for phrase in ("pre-alpha", "sigkill", "one run on one machine", "source-available", "pulse stopped", "linux container"):
+    for phrase in ("pre-alpha", "sigkill", "one machine", "one model", "source-available", "pulse stopped", "linux container"):
         assert phrase in readme, phrase
     full = (ROOT / "docs" / "FINDINGS.md").read_text().lower()
-    assert "## limits" in full and "one run, one machine" in full and "pre-release" in full
+    assert "## limits" in full and "one machine, one model" in full and "pre-release" in full

@@ -61,9 +61,13 @@ class Mcp:
     def call(self, tool: str, args: dict | None = None):
         async def _go():
             r = await self._c.call_tool(tool, args or {}, raise_on_error=False)
-            return r.structured_content if r.structured_content is not None else [getattr(x, "text", str(x)) for x in r.content]
-        raw = self._loop.run_until_complete(_go())
+            raw = r.structured_content if r.structured_content is not None else [getattr(x, "text", str(x)) for x in r.content]
+            return raw, bool(r.is_error)
+        raw, is_error = self._loop.run_until_complete(_go())
         ok, data, env = parse_outcome(raw)
+        if is_error and ok:  # a tool-level error (for example a rejected argument) comes back as plain text, not as an outcome envelope
+            env = {"outcome": "error", "error_code": "tool_error", "message": " ".join(raw) if isinstance(raw, list) else str(raw), "data": None}
+            return {"ok": False, "data": None, "envelope": env}
         return {"ok": ok, "data": data, "envelope": env}
 
     def close(self) -> None:

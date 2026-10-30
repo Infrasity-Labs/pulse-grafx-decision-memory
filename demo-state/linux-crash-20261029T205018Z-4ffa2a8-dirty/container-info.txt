@@ -1,0 +1,5 @@
+uname: Linux 7.0.12-linuxkit aarch64
+kernel_release: 7.0.12-linuxkit
+os: Debian GNU/Linux 13 (trixie)
+filesystem_of_work: 
+cpus: 8

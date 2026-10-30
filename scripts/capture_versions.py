@@ -5,6 +5,7 @@ Writes demo-state/step1/versions.json and prints it.
 from __future__ import annotations
 
 import json
+import os
 import platform
 import subprocess
 import sys
@@ -12,7 +13,7 @@ from importlib.metadata import PackageNotFoundError, requires, version
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "demo-state" / "step1"
+OUT = Path(os.environ.get("DEMO_STATE", ROOT / "demo-state")) / "step1"
 
 
 def ver(name: str) -> str | None:
@@ -28,7 +29,10 @@ def main() -> None:
     st_req = next((r for r in reqs if r.lower().startswith("sentence-transformers")), None)
     core_reqs = [r for r in (requires("okto-pulse-core") or []) if "grafx" in r.lower()]
     installed_grafx = ver("okto-grafx")
-    claude = subprocess.run(["claude", "--version"], capture_output=True, text=True).stdout.strip() or None
+    try:  # a host or container without Claude Code (the Linux crash run) has no claude binary: record None
+        claude = subprocess.run(["claude", "--version"], capture_output=True, text=True).stdout.strip() or None
+    except FileNotFoundError:
+        claude = None
     out = {
         "python": platform.python_version(),
         "platform": f"{platform.system()} {platform.machine()}",

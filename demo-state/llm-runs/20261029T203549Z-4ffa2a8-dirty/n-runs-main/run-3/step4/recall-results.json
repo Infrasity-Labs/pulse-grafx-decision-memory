@@ -1,0 +1,1143 @@
+{
+  "summary": {
+    "questions": 43,
+    "agent_choice_correct": 41,
+    "similar_top1_correct": 0,
+    "natural_top1_correct": 1,
+    "history_top1_correct": 0,
+    "similar_expected_in_results": 1,
+    "natural_expected_in_results": 3,
+    "history_expected_in_results": 0,
+    "write_probe": "permission_denied: {\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"kg.session.begin\", \"detail\": \"Agent does not have the 'kg.session.begin' permission.\"}",
+    "answerable_expected_on_board": 32,
+    "answerable_expected_missing_from_board": [
+      "d9"
+    ],
+    "agent_choice_correct_where_expected_on_board": 31,
+    "tool_call_names": [
+      "mcp__pulse__okto_pulse_kg_begin_consolidation",
+      "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+      "mcp__pulse__okto_pulse_kg_get_decision_history",
+      "mcp__pulse__okto_pulse_kg_get_related_context",
+      "mcp__pulse__okto_pulse_kg_list_alternatives",
+      "mcp__pulse__okto_pulse_kg_query_cypher",
+      "mcp__pulse__okto_pulse_kg_query_natural",
+      "mcp__pulse__okto_pulse_kg_query_reflective"
+    ],
+    "tool_usage": {
+      "mcp__pulse__okto_pulse_kg_begin_consolidation": 1,
+      "mcp__pulse__okto_pulse_kg_find_similar_decisions": 1,
+      "mcp__pulse__okto_pulse_kg_get_decision_history": 1,
+      "mcp__pulse__okto_pulse_kg_get_related_context": 1,
+      "mcp__pulse__okto_pulse_kg_list_alternatives": 1,
+      "mcp__pulse__okto_pulse_kg_query_cypher": 1,
+      "mcp__pulse__okto_pulse_kg_query_natural": 11,
+      "mcp__pulse__okto_pulse_kg_query_reflective": 19
+    },
+    "scores_by_split": {
+      "dev": {
+        "questions": 13,
+        "answered_by_arm": 13,
+        "answerable": 10,
+        "correct": 9,
+        "wrong": 0,
+        "missed_by_abstaining": 1,
+        "unanswerable": 3,
+        "correct_abstentions": 3,
+        "fabricated": 0,
+        "graph_only_total": 4,
+        "graph_only_correct": 4,
+        "near_duplicate_total": 9,
+        "near_duplicate_correct": 8
+      },
+      "held_out": {
+        "questions": 14,
+        "answered_by_arm": 14,
+        "answerable": 11,
+        "correct": 11,
+        "wrong": 0,
+        "missed_by_abstaining": 0,
+        "unanswerable": 3,
+        "correct_abstentions": 3,
+        "fabricated": 0,
+        "graph_only_total": 5,
+        "graph_only_correct": 5,
+        "near_duplicate_total": 10,
+        "near_duplicate_correct": 10
+      },
+      "model_authored": {
+        "questions": 16,
+        "answered_by_arm": 16,
+        "answerable": 12,
+        "correct": 12,
+        "wrong": 0,
+        "missed_by_abstaining": 0,
+        "unanswerable": 4,
+        "correct_abstentions": 4,
+        "fabricated": 0,
+        "graph_only_total": 7,
+        "graph_only_correct": 7,
+        "near_duplicate_total": 11,
+        "near_duplicate_correct": 11
+      }
+    }
+  },
+  "per_question": [
+    {
+      "q": "d1",
+      "id": "d1",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Which signing algorithm protects the session tokens the API hands out?",
+      "expected_slug": "jwt-algorithm",
+      "tools": {
+        "similar": {
+          "top_id": "decision_cf4b9bc89b77fcc5b3f2638f",
+          "top_title": "Tokens travel only in the Authorization header and never in cookies.",
+          "top_slug": "tokens-header-only",
+          "top_similarity": 0.5377954072140854,
+          "results_returned": 36,
+          "top_is_expected": false,
+          "expected_in_results": true,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_find_similar_decisions",
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_6b2891dea40d840d2f226577",
+        "decision_title": null,
+        "slug": "jwt-algorithm",
+        "answer": "Access tokens are JWTs signed and verified with HS256 using one shared secret key from the application settings. The graph gives no reason for this choice.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d2",
+      "id": "d2",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Who may edit or remove a published piece of writing?",
+      "expected_slug": "article-ownership",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_1a1ff1453db9b37e77b58fd5",
+        "decision_title": null,
+        "slug": "article-ownership",
+        "answer": "Only the article's author may update or delete it. This is checked by comparing the author's username with the current user's username, and there is no admin or role override.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d3",
+      "id": "d3",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "What status code does the API answer with when a request body fails validation?",
+      "expected_slug": "validation-error-shape",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_5142c1abe48ac0c4c8f8c5b0",
+        "decision_title": null,
+        "slug": "validation-error-shape",
+        "answer": "HTTP 422, with an errors list made of the validator's own error objects.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d4",
+      "id": "d4",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "What happens when two pieces of writing end up with the same URL name?",
+      "expected_slug": "article-slug-conflict",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_ab031196135d48cb83987f2b",
+        "decision_title": null,
+        "slug": "article-slug-conflict",
+        "answer": "On create, a slug that already exists is refused with HTTP 400 (ARTICLE_ALREADY_EXISTS) and no numeric suffix is added. On update, a title change regenerates the slug without this check, so a collision falls to the UNIQUE constraint on the slug column.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d5",
+      "id": "d5",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Why can a user not renew a session without logging in again?",
+      "expected_slug": "no-refresh-tokens",
+      "tools": {
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_fedc3bfb672d1e1b93c59fcf",
+          "top_title": "Sessions use one long-lived access token and the API has no refresh tokens.",
+          "top_slug": "no-refresh-tokens",
+          "top_similarity": 0.6147,
+          "results_returned": 4,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_get_decision_history",
+          "okto_pulse_kg_get_related_context",
+          "okto_pulse_kg_list_alternatives",
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_fedc3bfb672d1e1b93c59fcf",
+        "decision_title": null,
+        "slug": "no-refresh-tokens",
+        "answer": "The API issues one access token valid for a week and has no refresh endpoint, so a client logs in again. Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, so the team wanted a stolen token to expire on its own.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d6",
+      "id": "d6",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Why are removed pieces of writing erased instead of being flagged as deleted?",
+      "expected_slug": "hard-delete-articles",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_6e27c0d65346b2cb5569fb67",
+        "decision_title": null,
+        "slug": "hard-delete-articles",
+        "answer": "Deleting an article or comment runs a SQL DELETE and no deleted_at column exists. Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours, and a soft-delete flag would leave the rows in the table.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d7",
+      "id": "d7",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "How long does a link for choosing a new password keep working?",
+      "expected_slug": "reset-link-lifetime",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_c6fc42ab120f4a2ff12d667e",
+        "decision_title": null,
+        "slug": "reset-link-lifetime",
+        "answer": "30 minutes, and the link works only once. This is a rule for a reset flow that does not exist yet. Support tickets showed users open the reset mail within 10 minutes, and 30 minutes covers slow mail without leaving a long-lived link in an inbox.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d8",
+      "id": "d8",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Which hashing package was ruled out, and on what grounds?",
+      "expected_slug": "reject-fancyhash",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_2a09d4a7ea7995cb3db6f74d",
+        "decision_title": null,
+        "slug": "reject-fancyhash",
+        "answer": "fancyhash was evaluated and rejected because its licence has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d9",
+      "id": "d9",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Which tables hold a tag name and its link to an article?",
+      "expected_slug": "tag-handling",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph says only that articles, tags and favorites are stored in PostgreSQL tables joined by foreign keys. It does not name the tables that hold a tag name and its link to an article.",
+        "abstained": true,
+        "correct": false
+      },
+      "expected_on_board": false
+    },
+    {
+      "q": "d10",
+      "id": "d10",
+      "split": "dev",
+      "kind": "answerable",
+      "question": "Does the author hear about it when a reader likes their article, and why not?",
+      "expected_slug": "favorites-no-notification",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_275f962dbd99a61aa48c2479",
+        "decision_title": null,
+        "slug": "favorites-no-notification",
+        "answer": "No. Favoriting writes a database row and nothing else, because product decision PD-8 puts all notifications out of scope until the 2027 roadmap.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "d11",
+      "id": "d11",
+      "split": "dev",
+      "kind": "unanswerable",
+      "question": "Which cloud region hosts the production database?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": "decision_aa99895a4d9a5bb45d2470d9",
+          "top_title": "PostgreSQL is the data store and MongoDB was not chosen.",
+          "top_slug": "postgres-over-mongodb",
+          "top_similarity": 0.3005,
+          "results_returned": 1,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about a cloud region or production database hosting. The only match was the PostgreSQL choice.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "d12",
+      "id": "d12",
+      "split": "dev",
+      "kind": "unanswerable",
+      "question": "How many requests per minute may one client send?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": "decision_fedc3bfb672d1e1b93c59fcf",
+          "top_title": "Sessions use one long-lived access token and the API has no refresh tokens.",
+          "top_slug": "no-refresh-tokens",
+          "top_similarity": 0.3156,
+          "results_returned": 1,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about a per-client request rate limit.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "d13",
+      "id": "d13",
+      "split": "dev",
+      "kind": "unanswerable",
+      "question": "Who is on call when the API returns server errors at night?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": "decision_5142c1abe48ac0c4c8f8c5b0",
+          "top_title": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.",
+          "top_slug": "validation-error-shape",
+          "top_similarity": 0.4585,
+          "results_returned": 3,
+          "top_is_expected": false,
+          "expected_in_results": true,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about on-call staffing or incident response.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "h1",
+      "id": "h1",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "What constant string do signed credentials carry to say what they are for?",
+      "expected_slug": "jwt-subject-claim",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_63f8146506035ba4888df7bd",
+        "decision_title": null,
+        "slug": "jwt-subject-claim",
+        "answer": "Every access token carries the fixed subject claim \"access\", which is a constant in the JWT service.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h2",
+      "id": "h2",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "Where does the random value mixed into each account's secret come from?",
+      "expected_slug": "password-salt",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_32447e7343b6a16ec8ca0412",
+        "decision_title": null,
+        "slug": "password-salt",
+        "answer": "Each user gets a fresh random salt created with bcrypt.gensalt. It is stored in the user row next to the hashed password.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h3",
+      "id": "h3",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "What does the server reply when someone signs up under a name that is already in use?",
+      "expected_slug": "duplicate-registration",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": "decision_1af6df8fc9ffba3ffa612d1c",
+        "decision_title": null,
+        "slug": "duplicate-registration",
+        "answer": "HTTP 400. The register route checks the username first and the email second, and each taken value raises a 400 error with its own message.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h4",
+      "id": "h4",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "Which browser origins may call the API from another website?",
+      "expected_slug": "cors-allowed-origins",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_5f632153c4cf1b7051a4a1e2",
+        "decision_title": null,
+        "slug": "cors-allowed-origins",
+        "answer": "The origins listed in the allowed_hosts setting. By default that list holds a single wildcard, so every origin is allowed.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h5",
+      "id": "h5",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "How many simultaneous database connections can the service open?",
+      "expected_slug": "connection-pool-size",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_9cd3a74f94b2ad4e11d91e03",
+        "decision_title": null,
+        "slug": "connection-pool-size",
+        "answer": "10. The pool is fixed at 10 connections because min_connection_count and max_connection_count both default to 10.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h6",
+      "id": "h6",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "What does saving a post do with a label that is already in the database?",
+      "expected_slug": "tag-create-idempotent",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": "decision_29c63d225e3d1929806be0d0",
+        "decision_title": null,
+        "slug": "tag-create-idempotent",
+        "answer": "The tag insert uses ON CONFLICT DO NOTHING, so a tag that already exists is ignored and no new tag row is added.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h7",
+      "id": "h7",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "Why was the cost of password hashing not raised?",
+      "expected_slug": "bcrypt-work-factor",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_5afb537e7e7a319d6eca294f",
+        "decision_title": null,
+        "slug": "bcrypt-work-factor",
+        "answer": "bcrypt keeps passlib's default work factor. Load test LT-9 measured login at p95 240 ms with the default, and one step higher pushed it past the 300 ms login budget.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h8",
+      "id": "h8",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "Why does a listing show twenty items by default?",
+      "expected_slug": "page-size-default-reason",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_1bc85be769c3e9b3ca8e53c4",
+        "decision_title": null,
+        "slug": "page-size-default-reason",
+        "answer": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h9",
+      "id": "h9",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "What made the team pass on a document-oriented database?",
+      "expected_slug": "postgres-over-mongodb",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": "decision_aa99895a4d9a5bb45d2470d9",
+        "decision_title": null,
+        "slug": "postgres-over-mongodb",
+        "answer": "MongoDB was not chosen because the data is relational and the DBA team supports only PostgreSQL (ADR-3).",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h10",
+      "id": "h10",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "What rules out browser-stored session identifiers for authentication?",
+      "expected_slug": "tokens-header-only",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_cf4b9bc89b77fcc5b3f2638f",
+        "decision_title": null,
+        "slug": "tokens-header-only",
+        "answer": "Tokens travel only in the Authorization header and never in cookies, because cookie transport would need CSRF protection that this API does not have (ADR-5).",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h11",
+      "id": "h11",
+      "split": "held_out",
+      "kind": "answerable",
+      "question": "What is the argument against letting a library produce our SQL automatically?",
+      "expected_slug": "aiosql-over-orm",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_faa68f2ab3ec4b8880348ccd",
+        "decision_title": null,
+        "slug": "aiosql-over-orm",
+        "answer": "The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4).",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "h12",
+      "id": "h12",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "question": "Which service sends the welcome message to new users?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": "decision_93f653ad732b805ad2a0afb4",
+          "top_title": "Only an article's author, matched by username, may modify the article.",
+          "top_slug": "article-ownership",
+          "top_similarity": 0.3292,
+          "results_returned": 3,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about a welcome message or an email service.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "h13",
+      "id": "h13",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "question": "What is the largest profile picture a user may upload?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about profile picture uploads or size limits.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "h14",
+      "id": "h14",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "question": "Which payment provider handles subscriptions?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about payments or subscriptions.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "m1",
+      "id": "m1",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Why did the team decide against issuing a second token for renewing sessions?",
+      "expected_slug": "no-refresh-tokens",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective",
+          "okto_pulse_kg_list_alternatives"
+        ],
+        "decision_id": "decision_fedc3bfb672d1e1b93c59fcf",
+        "decision_title": null,
+        "slug": "no-refresh-tokens",
+        "answer": "Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token with no refresh token so a stolen token expires on its own. Short-token-plus-refresh and a server-side session store were considered and not chosen.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m2",
+      "id": "m2",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Which compliance requirement is behind removing deleted posts from storage completely?",
+      "expected_slug": "hard-delete-articles",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_6e27c0d65346b2cb5569fb67",
+        "decision_title": null,
+        "slug": "hard-delete-articles",
+        "answer": "Legal review LR-77, which requires that content its author deleted is gone from live storage within 24 hours.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m3",
+      "id": "m3",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "What licensing objection rules out fancyhash for password hashing?",
+      "expected_slug": "reject-fancyhash",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_2a09d4a7ea7995cb3db6f74d",
+        "decision_title": null,
+        "slug": "reject-fancyhash",
+        "answer": "fancyhash's licence has a network-use clause that is not compatible with distributing the API.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m4",
+      "id": "m4",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Why was the bcrypt cost left at its default rather than raised?",
+      "expected_slug": "bcrypt-work-factor",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_5afb537e7e7a319d6eca294f",
+        "decision_title": null,
+        "slug": "bcrypt-work-factor",
+        "answer": "Load test LT-9 measured the login endpoint at p95 240 ms with the default factor. One step higher pushed it past the 300 ms login budget.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m5",
+      "id": "m5",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Why does the API refuse to accept tokens through cookies?",
+      "expected_slug": "tokens-header-only",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_cf4b9bc89b77fcc5b3f2638f",
+        "decision_title": null,
+        "slug": "tokens-header-only",
+        "answer": "Cookie transport would need CSRF protection that this API does not have (ADR-5). The API reads the token only from the Authorization header.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m6",
+      "id": "m6",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Where does the stored user row keep each user's random salt?",
+      "expected_slug": "password-salt",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_e90e4cfb53594daf89f3019a",
+        "decision_title": null,
+        "slug": null,
+        "answer": "The salt is stored in its own salt column on the users table, next to the hashed password. It is prepended to the password before bcrypt hashing, so the column cannot be dropped or changed without breaking logins.",
+        "abstained": false,
+        "correct": false
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m7",
+      "id": "m7",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "What shape does the response take when a request fails validation?",
+      "expected_slug": "validation-error-shape",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_5142c1abe48ac0c4c8f8c5b0",
+        "decision_title": null,
+        "slug": "validation-error-shape",
+        "answer": "An HTTP 422 response with an errors list of the validator's own error objects, not the single detail string used for other HTTP errors.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m8",
+      "id": "m8",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "How long is an access token valid after it is issued?",
+      "expected_slug": "token-expiry",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": "decision_eda13735e7c828b6e23a392a",
+        "decision_title": null,
+        "slug": "token-expiry",
+        "answer": "One week (ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7). There is no refresh or revocation mechanism.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m9",
+      "id": "m9",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "What happens when an article is saved with a tag that already exists in the tags table?",
+      "expected_slug": "tag-create-idempotent",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_29c63d225e3d1929806be0d0",
+        "decision_title": null,
+        "slug": "tag-create-idempotent",
+        "answer": "The tag insert uses ON CONFLICT DO NOTHING, so no new tag row is added.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m10",
+      "id": "m10",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Which library loads the SQL query files, and which driver runs them?",
+      "expected_slug": "database-access-layer",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_5f81bf77551566bd059a10f5",
+        "decision_title": null,
+        "slug": "database-access-layer",
+        "answer": "aiosql loads the .sql files and the asyncpg adapter runs them. Only the dynamic article filter builds SQL with pypika.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m11",
+      "id": "m11",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "Why was PostgreSQL chosen over a document store for articles, tags and favorites?",
+      "expected_slug": "postgres-over-mongodb",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_aa99895a4d9a5bb45d2470d9",
+        "decision_title": null,
+        "slug": "postgres-over-mongodb",
+        "answer": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3).",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m12",
+      "id": "m12",
+      "split": "model_authored",
+      "kind": "answerable",
+      "question": "What review process is the reason queries are written by hand rather than generated by an ORM?",
+      "expected_slug": "aiosql-over-orm",
+      "tools": {},
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_reflective"
+        ],
+        "decision_id": "decision_faa68f2ab3ec4b8880348ccd",
+        "decision_title": null,
+        "slug": "aiosql-over-orm",
+        "answer": "The DBA team reviews every query in pull requests. A SQL file can be reviewed that way and ORM output cannot (ADR-4).",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": "m13",
+      "id": "m13",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "question": "Does the API limit how many login attempts a client can make per minute?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": "decision_fedc3bfb672d1e1b93c59fcf",
+          "top_title": "Sessions use one long-lived access token and the API has no refresh tokens.",
+          "top_slug": "no-refresh-tokens",
+          "top_similarity": 0.4827,
+          "results_returned": 3,
+          "top_is_expected": false,
+          "expected_in_results": true,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about rate limiting login attempts. The matches were only about tokens and login error messages.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "m14",
+      "id": "m14",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "question": "Can clients subscribe to real-time updates over a WebSocket connection?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about WebSocket or real-time updates.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "m15",
+      "id": "m15",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "question": "Can users upload a profile photo that is stored with their account?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about uploading or storing profile photos.",
+        "abstained": true,
+        "correct": true
+      }
+    },
+    {
+      "q": "m16",
+      "id": "m16",
+      "split": "model_authored",
+      "kind": "unanswerable",
+      "question": "Is a GraphQL endpoint offered alongside the REST routes?",
+      "expected_slug": null,
+      "tools": {
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": [
+          "okto_pulse_kg_query_natural",
+          "okto_pulse_kg_find_similar_decisions"
+        ],
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "The graph has no decision about a GraphQL endpoint.",
+        "abstained": true,
+        "correct": true
+      }
+    }
+  ]
+}

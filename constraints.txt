@@ -1,0 +1,19 @@
+# Constraints for the packages that okto-pulse and okto-grafx pull in and that change what the demo measures.
+# Use with: pip install -r requirements.txt -c constraints.txt
+#
+# Where each version comes from:
+#   okto-pulse-core, sentence-transformers, torch   recorded in docs/VERIFIED.md for the run of 2026-10-29 (read with importlib.metadata)
+#   fastmcp, mcp, transformers, numpy               not recorded in that run. Read from a clean install of requirements.txt
+#                                                   into a new Python 3.12.13 venv on macOS arm64 on 2026-10-30 with pip list.
+#                                                   scripts/pulse_mcp.py imports fastmcp, so it is pinned here and not left to float.
+#
+# sentence-transformers and torch decide the embedding behind the similarity scores in docs/SCOREBOARD.md. They are pinned for that reason.
+# On Linux, pip picks a CUDA build of torch unless you add --extra-index-url https://download.pytorch.org/whl/cpu.
+# A "+cpu" build of the same number satisfies the pin below.
+okto-pulse-core==0.4.2
+fastmcp==2.14.7
+mcp==1.30.0
+sentence-transformers==5.7.0
+transformers==5.22.0
+torch==2.15.0
+numpy==2.5.4

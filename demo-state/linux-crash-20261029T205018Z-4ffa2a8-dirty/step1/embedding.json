@@ -1,0 +1,15 @@
+{
+  "configured_mode": "sentence-transformers",
+  "configured_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "configured_dim": 384,
+  "provider": "CommunitySentenceTransformerProvider",
+  "metadata_after_load": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_dimension": 384,
+    "is_loaded": true,
+    "is_stub": false
+  },
+  "vector_length": 384,
+  "similarity_related_pair": 0.487,
+  "similarity_unrelated_pair": -0.063
+}

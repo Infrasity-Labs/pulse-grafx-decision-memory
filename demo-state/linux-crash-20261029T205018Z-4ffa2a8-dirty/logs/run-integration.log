@@ -1,0 +1,31 @@
+integration run in /work: pulse ports 32835/43109, data home /work/pulse-home
+phase setup
+  [ok] versions (0 s, exit 0) log: work/logs/01-versions.log
+  [ok] init (11 s, exit 0) log: work/logs/02-init.log
+  [ok] start (26 s, exit 0) log: work/logs/03-start.log
+  [ok] status (2 s, exit 0) log: work/logs/04-status.log
+  [ok] embedding (7 s, exit 0) log: work/logs/05-embedding.log
+  [ok] board (43 s, exit 0) log: work/logs/06-board.log
+phase memory
+  [ok] step3-scripted-recorder (5 s, exit 0) log: work/logs/07-step3-scripted-recorder.log
+  [ok] step4-scripted-recaller (7 s, exit 0) log: work/logs/08-step4-scripted-recaller.log
+  [ok] step3b-code-extras (4 s, exit 0) log: work/logs/09-step3b-code-extras.log
+  [ok] step3b-spec-flow (130 s, exit 0) log: work/logs/10-step3b-spec-flow.log
+  [ok] roles (44 s, exit 0) log: work/logs/11-roles.log
+  [ok] arm-lexical (0 s, exit 0) log: work/logs/12-arm-lexical.log
+  [ok] arm-pulse-retrieval (5 s, exit 0) log: work/logs/13-arm-pulse-retrieval.log
+  [ok] history-probe (1 s, exit 0) log: work/logs/14-history-probe.log
+phase reversal
+  [ok] step5-note (1 s, exit 0) log: work/logs/15-step5-note.log
+  [ok] step5-scripted-reviewer (5 s, exit 0) log: work/logs/16-step5-scripted-reviewer.log
+  [ok] step5-note-no-rationale (1 s, exit 0) log: work/logs/17-step5-note-no-rationale.log
+  [ok] step5-scripted-reviewer-no-rationale (3 s, exit 0) log: work/logs/18-step5-scripted-reviewer-no-rationale.log
+phase global
+  [ok] step6 (48 s, exit 0) log: work/logs/19-step6.log
+phase crash
+  [ok] step7 (517 s, exit 0) log: work/logs/20-step7.log
+phase read
+  [ok] step8 (21 s, exit 0) log: work/logs/21-step8.log
+phase assert
+  [ok] assert (0 s, exit 0) log: work/logs/22-assert.log
+integration run complete

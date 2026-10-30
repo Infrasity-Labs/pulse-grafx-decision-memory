@@ -1,0 +1,17 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "The Authorization header must hold a prefix and a token separated by one space, and the prefix must equal the configured jwt_token_prefix.",
+    "Settings are pydantic BaseSettings classes chosen by the APP_ENV value and cached with lru_cache."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Favoriting inserts a (user_id, article_id) row into a favorites join table and ignores duplicates.",
+    "The code talks to PostgreSQL through raw SQL files loaded by aiosql on the asyncpg driver, wrapped in repository classes."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Tags are stored as unique text rows in a tags table and linked to articles through an articles_to_tags join table.",
+    "The code talks to PostgreSQL through raw SQL files loaded by aiosql on the asyncpg driver, wrapped in repository classes."
+  ]
+]

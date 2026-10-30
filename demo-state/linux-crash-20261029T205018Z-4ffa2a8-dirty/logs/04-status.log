@@ -1,0 +1,16 @@
+$ status.sh
+Okto Pulse Community Status
+  Data dir: /work/pulse-home
+  Source:   DATA_DIR
+  Database: /work/pulse-home/data/pulse.db
+  DB size:  4176.0 KB
+  Boards:   1
+  Cards:    0
+  Specs:    0
+  Agents:   1
+  Runtime identity: confirmed (instance 90f5cfe8de954b819c97fd055ee3d521)
+
+  API server (32835):  running
+  MCP server (43109):  running
+--- json
+{"agents": 1, "api_up": true, "boards": 1, "cards": 0, "data_dir": "/work/pulse-home", "database_status": "ready", "db_path": "/work/pulse-home/data/pulse.db", "db_size_kb": 4176.0, "error": null, "mcp_up": true, "runtime_identity": {"created_at": "2026-10-29T20:50:30.617544+00:00", "data_dir": "/work/pulse-home", "data_dir_origin": "DATA_DIR", "heartbeat_at": "2026-10-29T20:50:30.617544+00:00", "instance_id": "90f5cfe8de954b819c97fd055ee3d521", "pid": 58, "reason": "matching_live_fresh_lock", "state": "confirmed"}, "source": "DATA_DIR", "specs": 0}

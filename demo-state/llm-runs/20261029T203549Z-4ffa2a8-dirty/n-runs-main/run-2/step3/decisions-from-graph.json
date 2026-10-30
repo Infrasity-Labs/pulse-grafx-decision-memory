@@ -1,0 +1,212 @@
+[
+  {
+    "id": "decision_0e41bc8cd3da1cc0d0daadb1",
+    "title": "Deleting a user keeps their articles and sets author_id to NULL.",
+    "content": "articles.author_id references users.id with ondelete SET NULL. Comments, favorites and follows cascade on user delete instead.\nSource: app/app/db/migrations/versions/fdf8821871d7_main_tables.py:108",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:article-author-set-null",
+    "slug": "article-author-set-null",
+    "quote": "            \"author_id\", sa.Integer, sa.ForeignKey(\"users.id\", ondelete=\"SET NULL\")",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_6db04522e172d14ad383215d",
+    "title": "articlesCount in list responses is the length of the returned page, not the total matching count.",
+    "content": "list_articles sets articles_count to len(articles) after applying limit and offset. Clients cannot get a total count from this field.\nSource: app/app/api/routes/articles/articles_resource.py:49",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:articles-count-page-length",
+    "slug": "articles-count-page-length",
+    "quote": "        articles_count=len(articles),",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_58bfffa67a26a68b25847d61",
+    "title": "Article lists default to 20 items with limit at least 1 and no upper bound.",
+    "content": "DEFAULT_ARTICLES_LIMIT is 20 and DEFAULT_ARTICLES_OFFSET is 0. The query parameters enforce limit ge=1 and offset ge=0, with no maximum limit.\nSource: app/app/models/schemas/articles.py:8",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:articles-default-limit",
+    "slug": "articles-default-limit",
+    "quote": "DEFAULT_ARTICLES_LIMIT = 20",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_fdd374953beab189ffce6103",
+    "title": "The Authorization header must use the prefix Token, not Bearer.",
+    "content": "The header is split on one space and the prefix must equal settings.jwt_token_prefix, which defaults to Token. Any other prefix is rejected with 403.\nSource: app/app/core/settings/app.py:29",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:auth-header-token-prefix",
+    "slug": "auth-header-token-prefix",
+    "quote": "    jwt_token_prefix: str = \"Token\"",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_137bcacf9b27d23f7d582eab",
+    "title": "Only the article author, matched by username, may update or delete an article.",
+    "content": "check_user_can_modify_article compares the article author username with the current user username. The update and delete routes depend on this check and return 403 otherwise.\nSource: app/app/services/articles.py:23",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:author-only-modify",
+    "slug": "author-only-modify",
+    "quote": "    return article.author.username == user.username",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_9e8ac8828d82dae5fcbb685e",
+    "title": "An undecodable token or an unknown token user returns 403, not 401.",
+    "content": "When the token fails to decode, or its username does not exist, the dependency raises HTTP 403 with MALFORMED_PAYLOAD. A wrong header prefix also returns 403.\nSource: app/app/api/dependencies/authentication.py:90",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:bad-token-403",
+    "slug": "bad-token-403",
+    "quote": "            status_code=status.HTTP_403_FORBIDDEN,",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_59949d4afdfc3daf08f0032e",
+    "title": "Passwords are hashed with bcrypt through passlib.",
+    "content": "A passlib CryptContext with the bcrypt scheme hashes and verifies passwords. deprecated is set to auto.\nSource: app/app/services/security.py:4",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:bcrypt-scheme",
+    "slug": "bcrypt-scheme",
+    "quote": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_c8fb70169abaac9767145a3e",
+    "title": "API field names are camelCase aliases generated from snake_case model fields.",
+    "content": "RWModel sets alias_generator to convert_field_to_camel_case and allows population by field name. Renaming a Python field changes the JSON key.\nSource: app/app/models/domain/rwmodel.py:21",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:camelcase-aliases",
+    "slug": "camelcase-aliases",
+    "quote": "        alias_generator = convert_field_to_camel_case",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_79bae6c2b8f49718ead711aa",
+    "title": "The asyncpg pool defaults to a fixed size of 10 connections.",
+    "content": "max_connection_count and min_connection_count both default to 10 and are passed to asyncpg.create_pool at startup.\nSource: app/app/core/settings/app.py:22",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:db-pool-size-10",
+    "slug": "db-pool-size-10",
+    "quote": "    max_connection_count: int = 10",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_11b83121bd73e53c935a09f6",
+    "title": "Creating an article whose slug already exists is rejected with 400.",
+    "content": "Before insert, the create route checks whether an article with the computed slug exists and raises ARTICLE_ALREADY_EXISTS. Two titles that slugify to the same value cannot coexist; no suffix is added.\nSource: app/app/api/routes/articles/articles_resource.py:65",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:duplicate-slug-rejected",
+    "slug": "duplicate-slug-rejected",
+    "quote": "    if await check_article_exists(articles_repo, slug):",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_322ae24ddc96ef3f87cf8d37",
+    "title": "Access tokens are signed with the symmetric HS256 algorithm.",
+    "content": "The JWT service signs and verifies every token with ALGORITHM, set to HS256, using the app secret_key. Decoding only accepts that one algorithm.\nSource: app/app/services/jwt.py:11",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:jwt-hs256",
+    "slug": "jwt-hs256",
+    "quote": "ALGORITHM = \"HS256\"",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_d6f5f3e52c761d179dab1c4e",
+    "title": "Access tokens expire one week after issue.",
+    "content": "ACCESS_TOKEN_EXPIRE_MINUTES is 60 * 24 * 7, and create_access_token_for_user uses it as the expiry delta. There is no refresh token in the code.\nSource: app/app/services/jwt.py:12",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:jwt-one-week-expiry",
+    "slug": "jwt-one-week-expiry",
+    "quote": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_c51656886d97aad1ed2a5364",
+    "title": "The token identifies the user by username, not by numeric id.",
+    "content": "The token payload holds only the username plus exp and sub. The current user is loaded by get_user_by_username, so a username change makes older tokens fail to resolve.\nSource: app/app/services/jwt.py:29",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:jwt-username-claim",
+    "slug": "jwt-username-claim",
+    "quote": "        jwt_content=JWTUser(username=user.username).dict(),",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_368dc29f6851ef236712ebda",
+    "title": "Login uses email and returns one generic 400 error for unknown email and wrong password.",
+    "content": "The login route looks up the user by email. Both a missing user and a failed password check raise the same wrong_login_error with INCORRECT_LOGIN_INPUT.\nSource: app/app/api/routes/authentication.py:30",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:login-generic-error",
+    "slug": "login-generic-error",
+    "quote": "        detail=strings.INCORRECT_LOGIN_INPUT,",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_b56dc0976128e05338d89a68",
+    "title": "Database queries are raw SQL files loaded with aiosql on the asyncpg driver, not an ORM.",
+    "content": "queries is built by aiosql.from_path over the sql folder with the asyncpg adapter. Repositories call these named queries directly.\nSource: app/app/db/queries/queries.py:5",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:raw-sql-aiosql",
+    "slug": "raw-sql-aiosql",
+    "quote": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_35376b4638d4cbbb6292402c",
+    "title": "A separate per-user salt is stored and prepended to the password before hashing.",
+    "content": "change_password generates a new bcrypt salt, stores it in the salt column, and hashes salt + password. check_password must prepend the same stored salt, so the salt column cannot be dropped.\nSource: app/app/models/domain/users.py:24",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:salt-prefixed-password",
+    "slug": "salt-prefixed-password",
+    "quote": "        self.hashed_password = security.get_password_hash(self.salt + password)",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_80d26a5527d68437fad2e264",
+    "title": "An article slug is derived from its title with slugify.",
+    "content": "get_slug_for_article returns slugify(title). The slug is regenerated when the title changes on update, and it is the article URL key.\nSource: app/app/services/articles.py:19",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:slug-from-title",
+    "slug": "slug-from-title",
+    "quote": "    return slugify(title)",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_56d872ce97eacb6250c6228c",
+    "title": "Tags are stored by their text as the primary key, with no numeric id.",
+    "content": "The tags table has a single tag Text primary key, and articles_to_tags references tags.tag directly with cascade delete.\nSource: app/app/db/migrations/versions/fdf8821871d7_main_tables.py:124",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:tag-text-primary-key",
+    "slug": "tag-text-primary-key",
+    "quote": "    op.create_table(\"tags\", sa.Column(\"tag\", sa.Text, primary_key=True))",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_eebf2269ae5318af0c17d90f",
+    "title": "User updates keep the old value when a field is empty, so bio cannot be cleared.",
+    "content": "update_user assigns each field with `new or old`. An empty string or None leaves the stored value unchanged.\nSource: app/app/db/repositories/users.py:64",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:update-user-falsy-keeps-old",
+    "slug": "update-user-falsy-keeps-old",
+    "quote": "        user_in_db.bio = bio or user_in_db.bio",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_dd3ca949d814c88dc7c1b56c",
+    "title": "updated_at is maintained by a PostgreSQL trigger, not by application code.",
+    "content": "The migration creates a plpgsql function that sets NEW.updated_at = now(), with BEFORE UPDATE triggers on users, articles and commentaries.\nSource: app/app/db/migrations/versions/fdf8821871d7_main_tables.py:27",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:updated-at-db-trigger",
+    "slug": "updated-at-db-trigger",
+    "quote": "        NEW.updated_at = now();",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  },
+  {
+    "id": "decision_c201918613c30a52a63882ee",
+    "title": "Datetimes are serialized as UTC ISO strings ending in Z.",
+    "content": "convert_datetime_to_realworld replaces tzinfo with UTC and swaps +00:00 for Z. It replaces rather than converts the timezone, so it assumes values are already UTC.\nSource: app/app/models/domain/rwmodel.py:7",
+    "ref": "final_report:b6ebaa8e-ccd1-45cb-b9f8-12143e2fad4a:decision:utc-z-datetimes",
+    "slug": "utc-z-datetimes",
+    "quote": "    return dt.replace(tzinfo=datetime.timezone.utc).isoformat().replace(\"+00:00\", \"Z\")",
+    "layer": "canonical",
+    "agent": "19a7a98b-5455-4d52-a055-bee9fd69261f"
+  }
+]

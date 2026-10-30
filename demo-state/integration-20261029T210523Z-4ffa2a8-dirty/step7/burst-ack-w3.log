@@ -1,0 +1,19 @@
+{"ev": "start", "i": 1, "slug": "burst-w3-0001", "t": 1793308395.31662}
+{"ev": "ack", "i": 1, "slug": "burst-w3-0001", "committed_at": "2026-10-29T21:13:15.728328Z", "t": 1793308396.091128}
+{"ev": "retry", "i": 2, "slug": "burst-w3-0002", "tool": "okto_pulse_kg_add_node_candidate", "attempt": 1, "t": 1793308396.398085}
+{"ev": "start", "i": 2, "slug": "burst-w3-0002", "t": 1793308396.980492}
+{"ev": "retry", "i": 2, "slug": "burst-w3-0002", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793308397.2468941}
+{"ev": "retry", "i": 2, "slug": "burst-w3-0002", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 2, "t": 1793308398.0206988}
+{"ev": "retry", "i": 2, "slug": "burst-w3-0002", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 3, "t": 1793308398.786859}
+{"ev": "ack", "i": 2, "slug": "burst-w3-0002", "committed_at": "2026-10-29T21:13:19.725245Z", "t": 1793308400.0770519}
+{"ev": "start", "i": 3, "slug": "burst-w3-0003", "t": 1793308400.192384}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793308400.751004}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 2, "t": 1793308401.509225}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 3, "t": 1793308402.278425}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 4, "t": 1793308403.042253}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 5, "t": 1793308403.804878}
+{"ev": "ack", "i": 3, "slug": "burst-w3-0003", "committed_at": "2026-10-29T21:13:24.732502Z", "t": 1793308405.1758232}
+{"ev": "start", "i": 4, "slug": "burst-w3-0004", "t": 1793308405.419313}
+{"ev": "retry", "i": 4, "slug": "burst-w3-0004", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793308405.6791549}
+{"ev": "retry", "i": 4, "slug": "burst-w3-0004", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 2, "t": 1793308406.44359}
+{"ev": "ack", "i": 4, "slug": "burst-w3-0004", "committed_at": "2026-10-29T21:13:27.564299Z", "t": 1793308408.036445}

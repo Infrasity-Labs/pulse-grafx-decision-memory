@@ -7,7 +7,7 @@ Identities use presets that ship with Pulse:
   REVIEWER -> Validator  (kg.session.* incl. commit, kg.power.cypher)
 Keys go to the keys file (0600) and are never printed.
 
-Env: PULSE_API_PORT, PULSE_KEYS_FILE, PULSE_HOME. Output: demo-state/step2/board.json
+Env: PULSE_API_PORT, PULSE_KEYS_FILE, PULSE_HOME, DEMO_STATE. Output: demo-state/step2/board.json (under DEMO_STATE if set)
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ import stepslib  # noqa: E402
 
 KEYS = Path(os.environ.get("PULSE_KEYS_FILE", ROOT / "agents" / ".keys.local"))
 HOME = Path(os.environ.get("PULSE_HOME", ROOT / ".work" / "pulse-home"))
-OUT = Path(os.environ.get("STEP_OUT", ROOT / "demo-state" / "step2"))
+OUT = Path(os.environ.get("STEP_OUT", stepslib.STATE / "step2"))
 
 ROLES = [
     ("MAINTAINER", "Full Control", "Maintainer", "Terminal identity: health reads, Cypher dumps and step scripts. Not an agent session."),

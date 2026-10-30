@@ -1,0 +1,239 @@
+{
+  "mode": "open",
+  "found": 19,
+  "citations_ok": 19,
+  "all_ok": true,
+  "reference_entries": 22,
+  "reference_covered": 9,
+  "reference_recall": 0.409,
+  "covered_by": {
+    "database-access-layer": "aiosql-raw-sql",
+    "pagination-parameters": "article-list-limit",
+    "auth-header-scheme": "auth-header-split",
+    "article-ownership": "author-only-modify",
+    "password-hashing": "bcrypt-hashing",
+    "connection-pool-size": "fixed-pool-size",
+    "jwt-algorithm": "jwt-hs256",
+    "token-expiry": "jwt-one-week-expiry",
+    "slug-rules": "slug-from-title"
+  },
+  "reference_not_covered": [
+    "error-response-shape",
+    "comment-ownership",
+    "favorites",
+    "tag-handling",
+    "settings-loading",
+    "test-layout",
+    "jwt-subject-claim",
+    "password-salt",
+    "validation-error-shape",
+    "duplicate-registration",
+    "cors-allowed-origins",
+    "tag-create-idempotent",
+    "article-slug-conflict"
+  ],
+  "nodes_matching_no_reference_entry": [
+    "article-author-set-null",
+    "articles-count-page-length",
+    "camelcase-aliases",
+    "jwt-username-identity",
+    "login-uniform-error",
+    "salt-prepended",
+    "slug-changes-on-title-update",
+    "slug-unique-key",
+    "token-prefix-token",
+    "updated-at-db-trigger"
+  ],
+  "results": [
+    {
+      "slug": "aiosql-raw-sql",
+      "title": "Database queries are raw SQL files loaded with aiosql for asyncpg, not an ORM.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/queries/queries.py",
+      "line": 5,
+      "line_text": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "article-author-set-null",
+      "title": "Deleting a user keeps their articles and sets author_id to NULL.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/migrations/versions/fdf8821871d7_main_tables.py",
+      "line": 108,
+      "line_text": "\"author_id\", sa.Integer, sa.ForeignKey(\"users.id\", ondelete=\"SET NULL\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "article-list-limit",
+      "title": "Article lists default to 20 items with limit at least 1 and no upper bound.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/schemas/articles.py",
+      "line": 42,
+      "line_text": "limit: int = Field(DEFAULT_ARTICLES_LIMIT, ge=1)",
+      "quote_checked": true
+    },
+    {
+      "slug": "articles-count-page-length",
+      "title": "articlesCount in list responses is the length of the returned page, not the total number of matches.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/routes/articles/articles_resource.py",
+      "line": 49,
+      "line_text": "articles_count=len(articles),",
+      "quote_checked": true
+    },
+    {
+      "slug": "auth-header-split",
+      "title": "The Authorization header is parsed by splitting on a single space and rejected with 403 if the prefix does not match.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/dependencies/authentication.py",
+      "line": 51,
+      "line_text": "token_prefix, token = api_key.split(\" \")",
+      "quote_checked": true
+    },
+    {
+      "slug": "author-only-modify",
+      "title": "Only the article author may update or delete an article, checked by username equality.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/articles.py",
+      "line": 23,
+      "line_text": "return article.author.username == user.username",
+      "quote_checked": true
+    },
+    {
+      "slug": "bcrypt-hashing",
+      "title": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/security.py",
+      "line": 4,
+      "line_text": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+      "quote_checked": true
+    },
+    {
+      "slug": "camelcase-aliases",
+      "title": "All domain models expose camelCase JSON field names through a pydantic alias generator.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/domain/rwmodel.py",
+      "line": 21,
+      "line_text": "alias_generator = convert_field_to_camel_case",
+      "quote_checked": true
+    },
+    {
+      "slug": "fixed-pool-size",
+      "title": "The asyncpg connection pool is fixed at 10 connections by default (min equals max).",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/core/settings/app.py",
+      "line": 23,
+      "line_text": "min_connection_count: int = 10",
+      "quote_checked": true
+    },
+    {
+      "slug": "jwt-hs256",
+      "title": "JWT access tokens are signed with the symmetric HS256 algorithm.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 11,
+      "line_text": "ALGORITHM = \"HS256\"",
+      "quote_checked": true
+    },
+    {
+      "slug": "jwt-one-week-expiry",
+      "title": "Access tokens expire one week after issue.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 12,
+      "line_text": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week",
+      "quote_checked": true
+    },
+    {
+      "slug": "jwt-username-identity",
+      "title": "The JWT payload identifies the user by username, not by numeric id.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/jwt.py",
+      "line": 29,
+      "line_text": "jwt_content=JWTUser(username=user.username).dict(),",
+      "quote_checked": true
+    },
+    {
+      "slug": "login-uniform-error",
+      "title": "Login returns the same 400 error for an unknown email and a wrong password.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/routes/authentication.py",
+      "line": 28,
+      "line_text": "wrong_login_error = HTTPException(",
+      "quote_checked": true
+    },
+    {
+      "slug": "salt-prepended",
+      "title": "A separate per-user salt is stored in its own column and prepended to the password before hashing.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/models/domain/users.py",
+      "line": 24,
+      "line_text": "self.hashed_password = security.get_password_hash(self.salt + password)",
+      "quote_checked": true
+    },
+    {
+      "slug": "slug-changes-on-title-update",
+      "title": "Updating an article title regenerates its slug, so the article URL changes.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/api/routes/articles/articles_resource.py",
+      "line": 100,
+      "line_text": "slug = get_slug_for_article(article_update.title) if article_update.title else None",
+      "quote_checked": true
+    },
+    {
+      "slug": "slug-from-title",
+      "title": "An article slug is derived from its title with python-slugify.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/services/articles.py",
+      "line": 19,
+      "line_text": "return slugify(title)",
+      "quote_checked": true
+    },
+    {
+      "slug": "slug-unique-key",
+      "title": "The article slug is a unique, indexed column and is the public key for articles.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/migrations/versions/fdf8821871d7_main_tables.py",
+      "line": 103,
+      "line_text": "sa.Column(\"slug\", sa.Text, unique=True, nullable=False, index=True),",
+      "quote_checked": true
+    },
+    {
+      "slug": "token-prefix-token",
+      "title": "The Authorization header scheme defaults to the word Token instead of Bearer.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/core/settings/app.py",
+      "line": 29,
+      "line_text": "jwt_token_prefix: str = \"Token\"",
+      "quote_checked": true
+    },
+    {
+      "slug": "updated-at-db-trigger",
+      "title": "updated_at is maintained by a PostgreSQL BEFORE UPDATE trigger, not by application code.",
+      "ok": true,
+      "problem": null,
+      "file": "app/app/db/migrations/versions/fdf8821871d7_main_tables.py",
+      "line": 27,
+      "line_text": "NEW.updated_at = now();",
+      "quote_checked": true
+    }
+  ]
+}

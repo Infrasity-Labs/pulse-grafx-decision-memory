@@ -1,0 +1,1017 @@
+{
+  "label": "before reviewer",
+  "decisions_total": 22,
+  "error_shape_nodes": [
+    [
+      "decision_cf289c08eda70b9d50319b48",
+      "HTTP errors are returned as JSON of the form {\"errors\": [detail]} with the exception status code.",
+      "final_report:d8d927e8-6cc2-4333-a5cc-bc40ea3db5ae:decision:error-response-shape",
+      null,
+      null
+    ]
+  ],
+  "contradictions": {
+    "ok": true,
+    "data": {
+      "pairs": [],
+      "count": 0
+    },
+    "envelope": {
+      "outcome": "success",
+      "data": {
+        "pairs": [],
+        "count": 0
+      },
+      "error_code": null,
+      "message": null,
+      "retryable": false,
+      "next_action": null,
+      "meta": {
+        "contract": "okto-pulse.mcp-tool-outcome",
+        "contract_version": "2.0",
+        "tool": "okto_pulse_kg_find_contradictions"
+      }
+    }
+  },
+  "supersedes_edges": [],
+  "contradicts_edges": [],
+  "chain_from_error-response-shape": {
+    "ok": true,
+    "data": {
+      "chain": [],
+      "depth": 0,
+      "current_active": "decision_cf289c08eda70b9d50319b48"
+    },
+    "envelope": {
+      "outcome": "success",
+      "data": {
+        "chain": [],
+        "depth": 0,
+        "current_active": "decision_cf289c08eda70b9d50319b48"
+      },
+      "error_code": null,
+      "message": null,
+      "retryable": false,
+      "next_action": null,
+      "meta": {
+        "contract": "okto-pulse.mcp-tool-outcome",
+        "contract_version": "2.0",
+        "tool": "okto_pulse_kg_get_supersedence_chain"
+      }
+    }
+  },
+  "related_context_error-response-shape": {
+    "ok": true,
+    "data": {
+      "context": [],
+      "count": 0,
+      "applied_graph_layer": "canonical"
+    },
+    "envelope": {
+      "outcome": "success",
+      "data": {
+        "context": [],
+        "count": 0,
+        "applied_graph_layer": "canonical"
+      },
+      "error_code": null,
+      "message": null,
+      "retryable": false,
+      "next_action": null,
+      "meta": {
+        "contract": "okto-pulse.mcp-tool-outcome",
+        "contract_version": "2.0",
+        "tool": "okto_pulse_kg_get_related_context"
+      }
+    }
+  },
+  "decision_history_default": {
+    "ok": true,
+    "data": {
+      "decisions": [],
+      "count": 0
+    },
+    "envelope": {
+      "outcome": "success",
+      "data": {
+        "decisions": [],
+        "count": 0
+      },
+      "error_code": null,
+      "message": null,
+      "retryable": false,
+      "next_action": null,
+      "meta": {
+        "contract": "okto-pulse.mcp-tool-outcome",
+        "contract_version": "2.0",
+        "tool": "okto_pulse_kg_get_decision_history"
+      }
+    }
+  },
+  "decision_history_no_semantic": {
+    "ok": true,
+    "data": {
+      "decisions": [],
+      "count": 0
+    },
+    "envelope": {
+      "outcome": "success",
+      "data": {
+        "decisions": [],
+        "count": 0
+      },
+      "error_code": null,
+      "message": null,
+      "retryable": false,
+      "next_action": null,
+      "meta": {
+        "contract": "okto-pulse.mcp-tool-outcome",
+        "contract_version": "2.0",
+        "tool": "okto_pulse_kg_get_decision_history"
+      }
+    }
+  },
+  "health": {
+    "ok": true,
+    "data": {
+      "board_id": "3beb4485-b422-4af1-824d-b32a63af5a74",
+      "graph_state": "healthy",
+      "discovery_state": "healthy",
+      "overall_state": "healthy",
+      "current_kg_generation_id": null,
+      "metric_status": "available",
+      "classification_reason": "board_graph_metadata_present",
+      "materialization_state": "materialized",
+      "materialization_generation": "mg_d99c96b78faf4bedba37f46d44049d55",
+      "probe_reason_codes": {
+        "board_graph": "board_graph_metadata_present",
+        "board_census": "board_census_available",
+        "global_discovery": "global_discovery_anchor_primary_present"
+      },
+      "correlation_id": "13d0a3d3889342728d0cd6d5eb69e4dd",
+      "recent_events": [],
+      "checked_at": "2026-10-29T21:48:56.888090+00:00",
+      "probe_diagnostics": {
+        "graph_snapshot": {
+          "status": "stale",
+          "reason": "refresh_scheduled",
+          "age_seconds": 40.34,
+          "refresh_in_progress": true
+        },
+        "artifact_snapshot": {
+          "status": "stale",
+          "reason": "refresh_scheduled",
+          "age_seconds": 40.321,
+          "refresh_in_progress": true
+        },
+        "parity_snapshot": {
+          "status": "stale",
+          "reason": "cache_expired_refresh_scheduled",
+          "age_seconds": 0.0,
+          "refresh_in_progress": false
+        },
+        "discovery_snapshot": {
+          "status": "available",
+          "reason": "global_discovery_anchor_primary_present",
+          "age_seconds": 0.0,
+          "refresh_in_progress": false
+        },
+        "graph_metrics": {
+          "status": "available",
+          "reason": "ok"
+        },
+        "schema_version": {
+          "status": "available",
+          "reason": "ok"
+        },
+        "discovery_telemetry": {
+          "status": "available",
+          "reason": "global_discovery_anchor_primary_present"
+        },
+        "current_generation": {
+          "status": "stale",
+          "reason": "refresh_scheduled",
+          "source_status": "available",
+          "snapshot_freshness": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "age_seconds": 40.321,
+            "refresh_in_progress": true,
+            "is_stale": true,
+            "max_age_seconds": 30.0
+          }
+        },
+        "storage_footprint": {
+          "status": "available",
+          "reason": null
+        },
+        "native_runtime_budget": {
+          "status": "available",
+          "reason": null
+        },
+        "layer_counts": {
+          "status": "ok",
+          "reason": null
+        },
+        "cognitive_items": {
+          "status": "stale",
+          "reason": "refresh_scheduled",
+          "source_status": "available",
+          "snapshot_freshness": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "age_seconds": 40.321,
+            "refresh_in_progress": true,
+            "is_stale": true,
+            "max_age_seconds": 30.0
+          }
+        },
+        "rebuild_source_diagnostics": {
+          "status": "stale",
+          "reason": "refresh_scheduled",
+          "source_status": "available",
+          "snapshot_freshness": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "age_seconds": 40.321,
+            "refresh_in_progress": true,
+            "is_stale": true,
+            "max_age_seconds": 30.0
+          }
+        },
+        "stale_canonical_parity": {
+          "status": "available",
+          "reason": "ok"
+        },
+        "digest_layer_parity": {
+          "status": "available",
+          "reason": "ok"
+        }
+      },
+      "queue_depth": 0,
+      "oldest_pending_age_s": 0.0,
+      "dead_letter_count": 0,
+      "global_outbox_dead_letter_count": 0,
+      "active_queue": {
+        "board_id": "3beb4485-b422-4af1-824d-b32a63af5a74",
+        "worker_mode": "running",
+        "worker_modes": {
+          "consolidation_queue": "running",
+          "global_update_outbox": "running"
+        },
+        "total_active_depth": 0,
+        "classification": "idle",
+        "next_action": "none",
+        "diagnostic": {
+          "bounded": true,
+          "worst_source": "global_update_outbox",
+          "classification": "idle",
+          "worker_mode": "running",
+          "reason": "no_active_work"
+        },
+        "alert_threshold": 5000,
+        "stuck_age_seconds": 300,
+        "drill_down_tool": null,
+        "sources": [
+          {
+            "source": "consolidation_queue",
+            "worker_family": "consolidation_worker",
+            "worker_mode": "running",
+            "queue_depth": 0,
+            "by_status": {
+              "pending": 0,
+              "claimed": 0
+            },
+            "by_category": {},
+            "oldest_age_seconds": 0.0,
+            "oldest_actionable_age_seconds": 0.0,
+            "state_counts": {
+              "ready": 0,
+              "scheduled_retry": 0,
+              "claimed": 0,
+              "overdue_claimed": 0
+            },
+            "by_work_kind": {},
+            "max_attempts": 0,
+            "next_retry_at": null,
+            "items": [],
+            "items_truncated": false,
+            "classification": "idle",
+            "reason": "no_active_work",
+            "next_action": "none"
+          },
+          {
+            "source": "global_update_outbox",
+            "worker_family": "outbox_worker",
+            "worker_mode": "running",
+            "queue_depth": 0,
+            "by_status": {
+              "pending": 0
+            },
+            "by_category": {},
+            "oldest_age_seconds": 0.0,
+            "classification": "idle",
+            "reason": "no_active_work",
+            "next_action": "none"
+          }
+        ]
+      },
+      "operational_domains": {
+        "active_queue": {
+          "domain": "active_queue",
+          "semantics": "transient_operational",
+          "count": 0,
+          "classification": "idle",
+          "drill_down_tool": null
+        },
+        "dead_letter": {
+          "domain": "dead_letter",
+          "semantics": "terminal_failure",
+          "count": 0,
+          "drill_down_tool": null
+        },
+        "global_outbox_dead_letter": {
+          "domain": "global_outbox_dead_letter",
+          "semantics": "terminal_global_discovery_delivery_failure",
+          "count": 0,
+          "oldest_age_seconds": 0.0,
+          "drill_down_tool": null,
+          "drill_down_signal": "global_outbox_dead_letter"
+        },
+        "canonical_debt": {
+          "domain": "canonical_debt",
+          "semantics": "semantic_canonicality_pending",
+          "count": 0,
+          "status": "available",
+          "drill_down_tool": null
+        },
+        "policy_constraint_projection": {
+          "domain": "policy_constraint_projection",
+          "semantics": "policy_constraint_event_delivery",
+          "handler_name": "PolicyConstraintProjectionHandler",
+          "pending_count": 0,
+          "processing_count": 0,
+          "retry_scheduled_count": 0,
+          "dlq_count": 0,
+          "active_count": 0,
+          "max_attempt_count": 0,
+          "oldest_pending_at": null,
+          "oldest_processing_at": null,
+          "oldest_retry_scheduled_at": null,
+          "oldest_retry_due_at": null,
+          "oldest_dlq_at": null,
+          "oldest_pending_age_seconds": 0.0,
+          "oldest_processing_age_seconds": 0.0,
+          "oldest_retry_scheduled_age_seconds": 0.0,
+          "retry_overdue_age_seconds": 0.0,
+          "oldest_dlq_age_seconds": 0.0,
+          "stuck_after_seconds": 300,
+          "classification": "idle",
+          "severity": "info",
+          "drill_down_tool": "okto_pulse_kg_health_readiness",
+          "drill_down_signal": "policy_constraint_projection_dlq"
+        }
+      },
+      "root_cause": {
+        "scope": "graph",
+        "classification_reasons": [],
+        "materialized_node_count": 36,
+        "source_count": null,
+        "queue_state": {
+          "queue_depth": 0,
+          "active_classification": "idle",
+          "active_depth": 0,
+          "dead_letter_count": 0
+        },
+        "last_safe_write_outcome": "applied",
+        "categories": {
+          "wal_or_commit_errors": {
+            "present": false,
+            "scope": "graph",
+            "present_scopes": []
+          },
+          "empty_after_materialized_history": {
+            "present": false,
+            "scope": "graph",
+            "applicable": true,
+            "materialized_node_count": 36,
+            "source_count": null
+          },
+          "source_enumeration_failure": {
+            "present": false,
+            "scope": "graph",
+            "applicable": true,
+            "error": null
+          },
+          "safe_write_drain_failure": {
+            "present": false,
+            "scope": "graph",
+            "applicable": true,
+            "outcomes": {
+              "applied": 10
+            }
+          }
+        },
+        "drilldown_unavailable": false,
+        "present_categories": []
+      },
+      "total_nodes": 36,
+      "default_score_count": 12,
+      "default_score_ratio": 0.3333,
+      "avg_relevance": 0.4168,
+      "source_count": null,
+      "health_schema_version": "1.3",
+      "graph_schema_version": "0.8.0",
+      "contradict_warn_count": 0,
+      "last_decay_tick_at": "2026-10-29T21:47:37.460484+00:00",
+      "last_tick_status": "completed",
+      "last_tick_error": null,
+      "nodes_recomputed_in_last_tick": 0,
+      "tick_in_progress": false,
+      "boards_processed_in_last_tick": 1,
+      "boards_failed_in_last_tick": 0,
+      "state": "healthy",
+      "memory_pressure_status": "unconfirmed",
+      "classification_reasons": [
+        "board_graph_metadata_present"
+      ],
+      "dlq_auto_drain_last_run_at": null,
+      "dlq_auto_drain_requeued_count": 0,
+      "decay_scheduler_diagnostics": {
+        "status": "ok",
+        "severity": "info",
+        "last_success_at": "2026-10-29T21:47:37.460484+00:00",
+        "last_failure_at": null,
+        "last_error": null,
+        "next_scheduled_at": "2026-10-30T21:47:36.349336+00:00",
+        "stale_tolerance_seconds": 86400,
+        "recommended_action": "none",
+        "operational_debt": false,
+        "graph_recovery_required": false,
+        "reason": "ok",
+        "running_started_at": null,
+        "source": "kg_tick_runs"
+      },
+      "storage_footprint_proxy": {
+        "source": "runtime_capability",
+        "status": "available",
+        "percentage": null,
+        "percentage_status": "not_applicable",
+        "percentage_reason": "no_capacity_limit_configured",
+        "high_water_mark_pct": null,
+        "graph_primary_bytes": 214347284,
+        "primary_bytes": 214347284,
+        "sidecar_bytes": 0,
+        "total_bytes": 214347284,
+        "configured_max_db_size_bytes": null,
+        "configured_max_db_size_gb": null,
+        "is_direct_memory_telemetry": false,
+        "description": "Storage footprint projection derived from the graph runtime adapter.",
+        "tooltip": "This is not live graph memory telemetry. It is an adapter-provided early warning signal.",
+        "unavailable_reason": null
+      },
+      "native_runtime_budget": {
+        "source": "runtime_capability",
+        "status": "available",
+        "requested": {
+          "board_buffer_pool_mb": 64,
+          "global_buffer_pool_mb": 64,
+          "read_participants": 2
+        },
+        "normalized": {},
+        "effective": {
+          "board_buffer_pool_mb": 64,
+          "global_buffer_pool_mb": 64,
+          "read_participants": 2
+        },
+        "sources": {},
+        "process_envelope": {
+          "buffer_pool_per_board_mb": 192,
+          "global_buffer_pool_mb": 192,
+          "total_process_bound_available": false
+        },
+        "is_direct_memory_telemetry": false,
+        "description": "Derived native graph runtime budget from configured limits and edition operational caps.",
+        "tooltip": "This is a deterministic, non-live capacity envelope; it is not process RSS or direct allocator telemetry.",
+        "unavailable_reason": null
+      },
+      "orphan_integrity": {
+        "classification_delta": "none",
+        "integrity_warning": false,
+        "orphan_count": 0,
+        "orphan_count_by_type": {},
+        "unresolved_reasons": {},
+        "allowlisted_root_count": 0,
+        "generation_id": null,
+        "correlation_id": "kg-orphan-scan-3a3489fb2b8646ba",
+        "zero_orphan_validation": "passed",
+        "reason": "zero_non_allowlisted_orphans"
+      },
+      "kg_layer_counts": {
+        "status": "ok",
+        "by_layer": {
+          "canonical": 24,
+          "working": 12,
+          "none": 0,
+          "legacy_unknown": 0,
+          "unclassified": 0
+        },
+        "by_maturity_status": {
+          "canonical_eligible": 24,
+          "working_immature": 12
+        },
+        "failed_node_types": 0
+      },
+      "canonical_debt": {
+        "open_count": 0,
+        "retryable_count": 0,
+        "blocked_count": 0,
+        "retry_scheduled_count": 0,
+        "terminal_count": 0,
+        "by_state": {},
+        "status": "available"
+      },
+      "rebuild_diagnostics": {
+        "last_outcome": "no_generation",
+        "canonical_open_debt_count": 0,
+        "layer_counts_status": "ok",
+        "operator_action": "inspect_kg_health"
+      },
+      "graph_read_status": "queryable",
+      "board_graph_queryable": true,
+      "board_graph_recovery_required": false,
+      "discovery_recovery_required": false,
+      "discovery_health_cause": "healthy",
+      "primary_health_cause": "stale_canonical_parity",
+      "operator_action": "inspect_kg_health",
+      "health_issues": [
+        {
+          "code": "board_graph_queryable",
+          "component": "board_graph",
+          "severity": "info",
+          "reason": "queryable",
+          "description": "The board graph opened and returned materialized content; this is not a board-graph recovery signal.",
+          "operator_action": "none"
+        },
+        {
+          "code": "stale_canonical_parity",
+          "component": "board_graph",
+          "severity": "warning",
+          "reason": "stale_canonical_parity_count_gt_zero",
+          "description": "10 canonical deterministic node(s) are stale because their SQL source regressed below canonical eligibility. Read-only diagnostic; the R2 reconciler demotes them on the next maturity/status event or sweep.",
+          "count": 10,
+          "operator_action": "inspect_kg_health",
+          "mutation_allowed": false,
+          "global_discovery_evaluation": "evaluated",
+          "precedence_explanation": "Ranked BELOW canonical_debt_open, cognitive_consolidation_pending, canonical_partition_integrity and DLQ/operational failures (never masks them) and ABOVE digest_vs_board_layer_mismatch; a distinct stale-source category (no double-count)."
+        }
+      ]
+    },
+    "envelope": {
+      "outcome": "success",
+      "data": {
+        "board_id": "3beb4485-b422-4af1-824d-b32a63af5a74",
+        "graph_state": "healthy",
+        "discovery_state": "healthy",
+        "overall_state": "healthy",
+        "current_kg_generation_id": null,
+        "metric_status": "available",
+        "classification_reason": "board_graph_metadata_present",
+        "materialization_state": "materialized",
+        "materialization_generation": "mg_d99c96b78faf4bedba37f46d44049d55",
+        "probe_reason_codes": {
+          "board_graph": "board_graph_metadata_present",
+          "board_census": "board_census_available",
+          "global_discovery": "global_discovery_anchor_primary_present"
+        },
+        "correlation_id": "13d0a3d3889342728d0cd6d5eb69e4dd",
+        "recent_events": [],
+        "checked_at": "2026-10-29T21:48:56.888090+00:00",
+        "probe_diagnostics": {
+          "graph_snapshot": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "age_seconds": 40.34,
+            "refresh_in_progress": true
+          },
+          "artifact_snapshot": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "age_seconds": 40.321,
+            "refresh_in_progress": true
+          },
+          "parity_snapshot": {
+            "status": "stale",
+            "reason": "cache_expired_refresh_scheduled",
+            "age_seconds": 0.0,
+            "refresh_in_progress": false
+          },
+          "discovery_snapshot": {
+            "status": "available",
+            "reason": "global_discovery_anchor_primary_present",
+            "age_seconds": 0.0,
+            "refresh_in_progress": false
+          },
+          "graph_metrics": {
+            "status": "available",
+            "reason": "ok"
+          },
+          "schema_version": {
+            "status": "available",
+            "reason": "ok"
+          },
+          "discovery_telemetry": {
+            "status": "available",
+            "reason": "global_discovery_anchor_primary_present"
+          },
+          "current_generation": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "source_status": "available",
+            "snapshot_freshness": {
+              "status": "stale",
+              "reason": "refresh_scheduled",
+              "age_seconds": 40.321,
+              "refresh_in_progress": true,
+              "is_stale": true,
+              "max_age_seconds": 30.0
+            }
+          },
+          "storage_footprint": {
+            "status": "available",
+            "reason": null
+          },
+          "native_runtime_budget": {
+            "status": "available",
+            "reason": null
+          },
+          "layer_counts": {
+            "status": "ok",
+            "reason": null
+          },
+          "cognitive_items": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "source_status": "available",
+            "snapshot_freshness": {
+              "status": "stale",
+              "reason": "refresh_scheduled",
+              "age_seconds": 40.321,
+              "refresh_in_progress": true,
+              "is_stale": true,
+              "max_age_seconds": 30.0
+            }
+          },
+          "rebuild_source_diagnostics": {
+            "status": "stale",
+            "reason": "refresh_scheduled",
+            "source_status": "available",
+            "snapshot_freshness": {
+              "status": "stale",
+              "reason": "refresh_scheduled",
+              "age_seconds": 40.321,
+              "refresh_in_progress": true,
+              "is_stale": true,
+              "max_age_seconds": 30.0
+            }
+          },
+          "stale_canonical_parity": {
+            "status": "available",
+            "reason": "ok"
+          },
+          "digest_layer_parity": {
+            "status": "available",
+            "reason": "ok"
+          }
+        },
+        "queue_depth": 0,
+        "oldest_pending_age_s": 0.0,
+        "dead_letter_count": 0,
+        "global_outbox_dead_letter_count": 0,
+        "active_queue": {
+          "board_id": "3beb4485-b422-4af1-824d-b32a63af5a74",
+          "worker_mode": "running",
+          "worker_modes": {
+            "consolidation_queue": "running",
+            "global_update_outbox": "running"
+          },
+          "total_active_depth": 0,
+          "classification": "idle",
+          "next_action": "none",
+          "diagnostic": {
+            "bounded": true,
+            "worst_source": "global_update_outbox",
+            "classification": "idle",
+            "worker_mode": "running",
+            "reason": "no_active_work"
+          },
+          "alert_threshold": 5000,
+          "stuck_age_seconds": 300,
+          "drill_down_tool": null,
+          "sources": [
+            {
+              "source": "consolidation_queue",
+              "worker_family": "consolidation_worker",
+              "worker_mode": "running",
+              "queue_depth": 0,
+              "by_status": {
+                "pending": 0,
+                "claimed": 0
+              },
+              "by_category": {},
+              "oldest_age_seconds": 0.0,
+              "oldest_actionable_age_seconds": 0.0,
+              "state_counts": {
+                "ready": 0,
+                "scheduled_retry": 0,
+                "claimed": 0,
+                "overdue_claimed": 0
+              },
+              "by_work_kind": {},
+              "max_attempts": 0,
+              "next_retry_at": null,
+              "items": [],
+              "items_truncated": false,
+              "classification": "idle",
+              "reason": "no_active_work",
+              "next_action": "none"
+            },
+            {
+              "source": "global_update_outbox",
+              "worker_family": "outbox_worker",
+              "worker_mode": "running",
+              "queue_depth": 0,
+              "by_status": {
+                "pending": 0
+              },
+              "by_category": {},
+              "oldest_age_seconds": 0.0,
+              "classification": "idle",
+              "reason": "no_active_work",
+              "next_action": "none"
+            }
+          ]
+        },
+        "operational_domains": {
+          "active_queue": {
+            "domain": "active_queue",
+            "semantics": "transient_operational",
+            "count": 0,
+            "classification": "idle",
+            "drill_down_tool": null
+          },
+          "dead_letter": {
+            "domain": "dead_letter",
+            "semantics": "terminal_failure",
+            "count": 0,
+            "drill_down_tool": null
+          },
+          "global_outbox_dead_letter": {
+            "domain": "global_outbox_dead_letter",
+            "semantics": "terminal_global_discovery_delivery_failure",
+            "count": 0,
+            "oldest_age_seconds": 0.0,
+            "drill_down_tool": null,
+            "drill_down_signal": "global_outbox_dead_letter"
+          },
+          "canonical_debt": {
+            "domain": "canonical_debt",
+            "semantics": "semantic_canonicality_pending",
+            "count": 0,
+            "status": "available",
+            "drill_down_tool": null
+          },
+          "policy_constraint_projection": {
+            "domain": "policy_constraint_projection",
+            "semantics": "policy_constraint_event_delivery",
+            "handler_name": "PolicyConstraintProjectionHandler",
+            "pending_count": 0,
+            "processing_count": 0,
+            "retry_scheduled_count": 0,
+            "dlq_count": 0,
+            "active_count": 0,
+            "max_attempt_count": 0,
+            "oldest_pending_at": null,
+            "oldest_processing_at": null,
+            "oldest_retry_scheduled_at": null,
+            "oldest_retry_due_at": null,
+            "oldest_dlq_at": null,
+            "oldest_pending_age_seconds": 0.0,
+            "oldest_processing_age_seconds": 0.0,
+            "oldest_retry_scheduled_age_seconds": 0.0,
+            "retry_overdue_age_seconds": 0.0,
+            "oldest_dlq_age_seconds": 0.0,
+            "stuck_after_seconds": 300,
+            "classification": "idle",
+            "severity": "info",
+            "drill_down_tool": "okto_pulse_kg_health_readiness",
+            "drill_down_signal": "policy_constraint_projection_dlq"
+          }
+        },
+        "root_cause": {
+          "scope": "graph",
+          "classification_reasons": [],
+          "materialized_node_count": 36,
+          "source_count": null,
+          "queue_state": {
+            "queue_depth": 0,
+            "active_classification": "idle",
+            "active_depth": 0,
+            "dead_letter_count": 0
+          },
+          "last_safe_write_outcome": "applied",
+          "categories": {
+            "wal_or_commit_errors": {
+              "present": false,
+              "scope": "graph",
+              "present_scopes": []
+            },
+            "empty_after_materialized_history": {
+              "present": false,
+              "scope": "graph",
+              "applicable": true,
+              "materialized_node_count": 36,
+              "source_count": null
+            },
+            "source_enumeration_failure": {
+              "present": false,
+              "scope": "graph",
+              "applicable": true,
+              "error": null
+            },
+            "safe_write_drain_failure": {
+              "present": false,
+              "scope": "graph",
+              "applicable": true,
+              "outcomes": {
+                "applied": 10
+              }
+            }
+          },
+          "drilldown_unavailable": false,
+          "present_categories": []
+        },
+        "total_nodes": 36,
+        "default_score_count": 12,
+        "default_score_ratio": 0.3333,
+        "avg_relevance": 0.4168,
+        "source_count": null,
+        "health_schema_version": "1.3",
+        "graph_schema_version": "0.8.0",
+        "contradict_warn_count": 0,
+        "last_decay_tick_at": "2026-10-29T21:47:37.460484+00:00",
+        "last_tick_status": "completed",
+        "last_tick_error": null,
+        "nodes_recomputed_in_last_tick": 0,
+        "tick_in_progress": false,
+        "boards_processed_in_last_tick": 1,
+        "boards_failed_in_last_tick": 0,
+        "state": "healthy",
+        "memory_pressure_status": "unconfirmed",
+        "classification_reasons": [
+          "board_graph_metadata_present"
+        ],
+        "dlq_auto_drain_last_run_at": null,
+        "dlq_auto_drain_requeued_count": 0,
+        "decay_scheduler_diagnostics": {
+          "status": "ok",
+          "severity": "info",
+          "last_success_at": "2026-10-29T21:47:37.460484+00:00",
+          "last_failure_at": null,
+          "last_error": null,
+          "next_scheduled_at": "2026-10-30T21:47:36.349336+00:00",
+          "stale_tolerance_seconds": 86400,
+          "recommended_action": "none",
+          "operational_debt": false,
+          "graph_recovery_required": false,
+          "reason": "ok",
+          "running_started_at": null,
+          "source": "kg_tick_runs"
+        },
+        "storage_footprint_proxy": {
+          "source": "runtime_capability",
+          "status": "available",
+          "percentage": null,
+          "percentage_status": "not_applicable",
+          "percentage_reason": "no_capacity_limit_configured",
+          "high_water_mark_pct": null,
+          "graph_primary_bytes": 214347284,
+          "primary_bytes": 214347284,
+          "sidecar_bytes": 0,
+          "total_bytes": 214347284,
+          "configured_max_db_size_bytes": null,
+          "configured_max_db_size_gb": null,
+          "is_direct_memory_telemetry": false,
+          "description": "Storage footprint projection derived from the graph runtime adapter.",
+          "tooltip": "This is not live graph memory telemetry. It is an adapter-provided early warning signal.",
+          "unavailable_reason": null
+        },
+        "native_runtime_budget": {
+          "source": "runtime_capability",
+          "status": "available",
+          "requested": {
+            "board_buffer_pool_mb": 64,
+            "global_buffer_pool_mb": 64,
+            "read_participants": 2
+          },
+          "normalized": {},
+          "effective": {
+            "board_buffer_pool_mb": 64,
+            "global_buffer_pool_mb": 64,
+            "read_participants": 2
+          },
+          "sources": {},
+          "process_envelope": {
+            "buffer_pool_per_board_mb": 192,
+            "global_buffer_pool_mb": 192,
+            "total_process_bound_available": false
+          },
+          "is_direct_memory_telemetry": false,
+          "description": "Derived native graph runtime budget from configured limits and edition operational caps.",
+          "tooltip": "This is a deterministic, non-live capacity envelope; it is not process RSS or direct allocator telemetry.",
+          "unavailable_reason": null
+        },
+        "orphan_integrity": {
+          "classification_delta": "none",
+          "integrity_warning": false,
+          "orphan_count": 0,
+          "orphan_count_by_type": {},
+          "unresolved_reasons": {},
+          "allowlisted_root_count": 0,
+          "generation_id": null,
+          "correlation_id": "kg-orphan-scan-3a3489fb2b8646ba",
+          "zero_orphan_validation": "passed",
+          "reason": "zero_non_allowlisted_orphans"
+        },
+        "kg_layer_counts": {
+          "status": "ok",
+          "by_layer": {
+            "canonical": 24,
+            "working": 12,
+            "none": 0,
+            "legacy_unknown": 0,
+            "unclassified": 0
+          },
+          "by_maturity_status": {
+            "canonical_eligible": 24,
+            "working_immature": 12
+          },
+          "failed_node_types": 0
+        },
+        "canonical_debt": {
+          "open_count": 0,
+          "retryable_count": 0,
+          "blocked_count": 0,
+          "retry_scheduled_count": 0,
+          "terminal_count": 0,
+          "by_state": {},
+          "status": "available"
+        },
+        "rebuild_diagnostics": {
+          "last_outcome": "no_generation",
+          "canonical_open_debt_count": 0,
+          "layer_counts_status": "ok",
+          "operator_action": "inspect_kg_health"
+        },
+        "graph_read_status": "queryable",
+        "board_graph_queryable": true,
+        "board_graph_recovery_required": false,
+        "discovery_recovery_required": false,
+        "discovery_health_cause": "healthy",
+        "primary_health_cause": "stale_canonical_parity",
+        "operator_action": "inspect_kg_health",
+        "health_issues": [
+          {
+            "code": "board_graph_queryable",
+            "component": "board_graph",
+            "severity": "info",
+            "reason": "queryable",
+            "description": "The board graph opened and returned materialized content; this is not a board-graph recovery signal.",
+            "operator_action": "none"
+          },
+          {
+            "code": "stale_canonical_parity",
+            "component": "board_graph",
+            "severity": "warning",
+            "reason": "stale_canonical_parity_count_gt_zero",
+            "description": "10 canonical deterministic node(s) are stale because their SQL source regressed below canonical eligibility. Read-only diagnostic; the R2 reconciler demotes them on the next maturity/status event or sweep.",
+            "count": 10,
+            "operator_action": "inspect_kg_health",
+            "mutation_allowed": false,
+            "global_discovery_evaluation": "evaluated",
+            "precedence_explanation": "Ranked BELOW canonical_debt_open, cognitive_consolidation_pending, canonical_partition_integrity and DLQ/operational failures (never masks them) and ABOVE digest_vs_board_layer_mismatch; a distinct stale-source category (no double-count)."
+          }
+        ]
+      },
+      "error_code": null,
+      "message": null,
+      "retryable": false,
+      "next_action": null,
+      "meta": {
+        "contract": "okto-pulse.mcp-tool-outcome",
+        "contract_version": "2.0",
+        "tool": "okto_pulse_kg_health"
+      }
+    }
+  }
+}

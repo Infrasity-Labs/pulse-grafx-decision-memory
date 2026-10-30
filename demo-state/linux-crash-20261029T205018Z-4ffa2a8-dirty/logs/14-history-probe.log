@@ -1,0 +1,11 @@
+$ python probe_history.py
+/usr/local/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+key_decisions intent (REST): 42 rows; exposed as MCP tool: False
+'password hashing' {} -> count 1
+'password hashing' {'min_confidence': 0.0, 'min_similarity': 0.0} -> count 1
+'password' {'use_semantic': False, 'min_confidence': 0.0} -> count 2
+'Passwords' {'use_semantic': False, 'min_confidence': 0.0} -> count 1
+'bcrypt' {'use_semantic': False, 'min_confidence': 0.0} -> count 3
+'hashed' {'use_semantic': False, 'min_confidence': 0.0} -> count 1

@@ -1,0 +1,158 @@
+{
+  "role": "reviewer",
+  "exit_code": 0,
+  "seconds": 38.9,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 10,
+  "tool_calls": [
+    "Read",
+    "ReadMcpResourceTool",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "ReadMcpResourceTool",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_query_natural",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_get_decision_history"
+  ],
+  "final": {
+    "duration_api_ms": 35512,
+    "stop_reason": "end_turn",
+    "session_id": "1b5a0bde-f89f-49a4-9337-38334d5ce83a",
+    "total_cost_usd": 0.9464576,
+    "usage": {
+      "input_tokens": 12,
+      "cache_creation_input_tokens": 151331,
+      "cache_read_input_tokens": 689373,
+      "output_tokens": 2594,
+      "output_tokens_details": {
+        "thinking_tokens": 369
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 151331
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 728,
+          "cache_read_input_tokens": 150459,
+          "cache_creation_input_tokens": 872,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 872,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 12,
+        "outputTokens": 2594,
+        "cacheReadInputTokens": 689373,
+        "cacheCreationInputTokens": 151331,
+        "webSearchRequests": 0,
+        "costUSD": 0.9464576,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 369,
+        "cacheCreationEphemeral5mInputTokens": 151331,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 11,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"recorded\": false, \"reason_for_decision\": \"The public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)\", \"old_decision_id\": null, \"new_decision_id\": null, \"what_i_did\": [], \"graph_after\": \"Nothing was written, so I read the graph as it already was. okto_pulse_kg_get_decision_history(topic='HTTP error response JSON body shape') returned {\\\"decisions\\\":[],\\\"count\\\":0}. okto_pulse_kg_get_decision_history(topic='error-response-shape', use_semantic=false) returned {\\\"decisions\\\":[],\\\"count\\\":0}. okto_pulse_kg_find_contradictions(board-wide) returned {\\\"pairs\\\":[],\\\"count\\\":0}. Cypher over canonical and working layers for source_artifact_ref containing 'error-response', content containing 'http_error', or title containing 'status code' returned 0 rows. Listing every canonical Decision returned 37 rows, and none has the slug error-response-shape. okto_pulse_kg_query_natural on the old choice returned only decision_b397c4feb5328b537836109b ('Request validation failures return HTTP 422 with an errors list...', slug validation-error-shape, similarity 0.5894) and decision_f508679a95161246291285f8 (duplicate-registration, similarity 0.303).\", \"problems\": [\"The note gives a clear reason, but the decision it reverses (slug error-response-shape, about HTTP errors returning {\\\"errors\\\": [detail]} from app/app/api/errors/http_error.py) is not in the board graph in either layer. The goal needs the old decision to stay in the graph and be marked as replaced, and that cannot be done for a node that does not exist.\", \"The closest node, decision_b397c4feb5328b537836109b (validation-error-shape), is a different decision about 422 request validation errors. Marking it as replaced would record something the note does not say.\", \"Creating the old decision myself would add history the graph never had, so I did not write anything. A Maintainer or upstream step needs to get error-response-shape into the graph, or confirm which node it maps to, before this reversal can be recorded.\"]}",
+    "ttft_ms": 5434,
+    "type": "result",
+    "duration_ms": 36660,
+    "uuid": "b061fd93-dedf-4e73-8a28-d8328a2b5a1c",
+    "ttft_stream_ms": 5138,
+    "time_to_request_ms": 757,
+    "first_content_frame_ms": 5139,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 12,
+        "outputTokens": 2594,
+        "cacheReadInputTokens": 689373,
+        "cacheCreationInputTokens": 151331,
+        "webSearchRequests": 0,
+        "costUSD": 0.9464576,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 369,
+        "cacheCreationEphemeral5mInputTokens": 151331,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "reviewer",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 38.9,
+    "duration_ms": 36660,
+    "duration_api_ms": 35512,
+    "num_turns": 11,
+    "tool_calls": 10,
+    "input_tokens": 12,
+    "output_tokens": 2594,
+    "cache_creation_input_tokens": 151331,
+    "cache_read_input_tokens": 689373,
+    "total_cost_usd": 0.9464576,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T22:15:39Z"
+}

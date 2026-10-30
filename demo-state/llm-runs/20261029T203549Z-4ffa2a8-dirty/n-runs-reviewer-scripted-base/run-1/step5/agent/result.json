@@ -1,0 +1,172 @@
+{
+  "role": "reviewer",
+  "exit_code": 0,
+  "seconds": 88.2,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 24,
+  "tool_calls": [
+    "Read",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_list_spec_evaluations",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_schema_info",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_propose_reconciliation",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_propose_reconciliation",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_decision_history"
+  ],
+  "final": {
+    "duration_api_ms": 84829,
+    "stop_reason": "end_turn",
+    "session_id": "90d938bb-7ea8-4375-9fce-f63e95e5db0f",
+    "total_cost_usd": 0.6454736,
+    "usage": {
+      "input_tokens": 30,
+      "cache_creation_input_tokens": 25225,
+      "cache_read_input_tokens": 1883743,
+      "output_tokens": 7124,
+      "output_tokens_details": {
+        "thinking_tokens": 1239
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 25225
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1525,
+          "cache_read_input_tokens": 135016,
+          "cache_creation_input_tokens": 309,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 309,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 30,
+        "outputTokens": 7124,
+        "cacheReadInputTokens": 1883743,
+        "cacheCreationInputTokens": 25225,
+        "webSearchRequests": 0,
+        "costUSD": 0.6454736,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1239,
+        "cacheCreationEphemeral5mInputTokens": 25225,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 25,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"recorded\": true, \"reason_for_decision\": \"The public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)\", \"old_decision_id\": \"decision_46209b9a9095d29316f9df1c\", \"new_decision_id\": \"decision_424ddec062cf4891f2e41b24\", \"what_i_did\": [\"okto_pulse_kg_begin_consolidation(board_id=60e4a661-586a-407a-9a0f-caf303e49d78, artifact_type=final_report, artifact_id=76c0dd72-e021-4308-be31-5b2f5b42b0c7:decision:error-response-shape-v2, raw_content=the Maintainer note text) -> session kgses_f1fe11e8f69d45e0\", \"okto_pulse_kg_add_node_candidate(candidate_id=new_decision, node_type=Decision, title='Error responses use RFC 7807 problem+json with type, title, status and detail', content=new_choice, justification=note reason, source_artifact_ref=final_report:76c0dd72-...:decision:error-response-shape-v2)\", \"okto_pulse_kg_add_edge_candidate(supersedes, to_node_id=decision_46209b9a9095d29316f9df1c) x2 (supersedes, contradicts) -> rejected: invalid_candidate, to_node_id not permitted, to_candidate_id required\", \"okto_pulse_kg_add_edge_candidate(supersedes, to_candidate_id=decision_46209b9a9095d29316f9df1c) -> rejected: edge references unknown candidate\", \"okto_pulse_kg_add_node_candidate(candidate_id=old_decision, an exact copy of the existing old node's title/content/justification/context/source_artifact_ref)\", \"okto_pulse_kg_add_edge_candidate(edge_supersedes: supersedes, from new_decision to old_decision)\", \"okto_pulse_kg_add_edge_candidate(edge_contradicts: contradicts, from new_decision to old_decision)\", \"okto_pulse_kg_propose_reconciliation -> new_decision ADD; old_decision UPDATE target decision_46209b9a9095d29316f9df1c (exact source ref match)\", \"okto_pulse_kg_commit_consolidation(session kgses_f1fe11e8f69d45e0, no overrides) -> nodes_added 1, nodes_updated 1, nodes_superseded 0, edges_added 2\"], \"graph_after\": \"find_contradictions(old id): 1 pair, decision_424ddec062cf4891f2e41b24 'Error responses use RFC 7807 problem+json...' vs decision_46209b9a9095d29316f9df1c 'HTTP errors are returned as JSON of the form {\\\"errors\\\": [detail]}...', confidence 1. get_supersedence_chain(old id): chain [], depth 0, current_active decision_46209b9a9095d29316f9df1c. get_supersedence_chain(new id): chain [old decision with superseded_by null, superseded_at null], depth 1, current_active decision_424ddec062cf4891f2e41b24. Cypher: edges supersedes__Decision__Decision and contradicts__Decision__Decision from new to old exist, and the old node has superseded_by null and superseded_at null. get_decision_history('error response shape') and get_decision_history('HTTP errors JSON errors detail RFC 7807 problem+json', min_similarity 0.1): decisions [], count 0.\", \"problems\": [\"The old decision is not fully marked as replaced. The supersedes edge exists, but the old node's superseded_by and superseded_at are still null. The commit reported nodes_superseded 0. Starting the chain from the old id says it is still current_active.\", \"The chain gives two different answers for current_active depending on which decision id you start from.\", \"get_decision_history returned an empty list for both topics, even for the old decision that already existed. It cannot be used to read this history.\", \"The new decision lives under its own source ref (error-response-shape-v2), not in the anchor spec itself.\", \"Edge candidates can only point to candidates inside the same session. To link to the existing old node I had to add a copy of it as a candidate, and the server reconciled that copy as an UPDATE of the old node.\", \"No tool here reads MCP resources, so I could not read okto-pulse://workflows/kg. I worked out the write steps from tool errors and outputs.\", \"The note marks its reason as '(Invented for this demo.)'. I recorded it word for word.\"]}",
+    "ttft_ms": 4887,
+    "type": "result",
+    "duration_ms": 86669,
+    "uuid": "8ba85feb-d60d-4316-b91f-62ddd1255805",
+    "ttft_stream_ms": 4773,
+    "time_to_request_ms": 296,
+    "first_content_frame_ms": 4773,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 30,
+        "outputTokens": 7124,
+        "cacheReadInputTokens": 1883743,
+        "cacheCreationInputTokens": 25225,
+        "webSearchRequests": 0,
+        "costUSD": 0.6454736,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1239,
+        "cacheCreationEphemeral5mInputTokens": 25225,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "reviewer",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 88.2,
+    "duration_ms": 86669,
+    "duration_api_ms": 84829,
+    "num_turns": 25,
+    "tool_calls": 24,
+    "input_tokens": 30,
+    "output_tokens": 7124,
+    "cache_creation_input_tokens": 25225,
+    "cache_read_input_tokens": 1883743,
+    "total_cost_usd": 0.6454736,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T21:30:51Z"
+}

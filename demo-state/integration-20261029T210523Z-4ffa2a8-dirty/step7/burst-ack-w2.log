@@ -1,0 +1,20 @@
+{"ev": "start", "i": 1, "slug": "burst-w2-0001", "t": 1793308395.344886}
+{"ev": "retry", "i": 1, "slug": "burst-w2-0001", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793308395.610376}
+{"ev": "ack", "i": 1, "slug": "burst-w2-0001", "committed_at": "2026-10-29T21:13:16.390860Z", "t": 1793308396.9378262}
+{"ev": "retry", "i": 2, "slug": "burst-w2-0002", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793308397.19381}
+{"ev": "retry", "i": 2, "slug": "burst-w2-0002", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 2, "t": 1793308397.958705}
+{"ev": "retry", "i": 2, "slug": "burst-w2-0002", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 3, "t": 1793308398.7197251}
+{"ev": "retry", "i": 2, "slug": "burst-w2-0002", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 4, "t": 1793308399.479879}
+{"ev": "start", "i": 2, "slug": "burst-w2-0002", "t": 1793308400.164472}
+{"ev": "ack", "i": 2, "slug": "burst-w2-0002", "committed_at": "2026-10-29T21:13:20.783555Z", "t": 1793308401.144314}
+{"ev": "start", "i": 3, "slug": "burst-w2-0003", "t": 1793308401.207413}
+{"ev": "ack", "i": 3, "slug": "burst-w2-0003", "committed_at": "2026-10-29T21:13:21.414886Z", "t": 1793308401.759949}
+{"ev": "start", "i": 4, "slug": "burst-w2-0004", "t": 1793308401.8738859}
+{"ev": "retry", "i": 4, "slug": "burst-w2-0004", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793308402.143436}
+{"ev": "retry", "i": 4, "slug": "burst-w2-0004", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 2, "t": 1793308402.905598}
+{"ev": "ack", "i": 4, "slug": "burst-w2-0004", "committed_at": "2026-10-29T21:13:23.926269Z", "t": 1793308404.361212}
+{"ev": "retry", "i": 5, "slug": "burst-w2-0005", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793308404.618191}
+{"ev": "start", "i": 5, "slug": "burst-w2-0005", "t": 1793308405.383701}
+{"ev": "retry", "i": 5, "slug": "burst-w2-0005", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793308405.641077}
+{"ev": "ack", "i": 5, "slug": "burst-w2-0005", "committed_at": "2026-10-29T21:13:26.644745Z", "t": 1793308407.1254048}
+{"ev": "retry", "i": 6, "slug": "burst-w2-0006", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793308407.3823411}

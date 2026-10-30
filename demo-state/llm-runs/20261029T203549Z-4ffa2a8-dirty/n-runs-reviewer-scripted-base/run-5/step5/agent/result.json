@@ -1,0 +1,166 @@
+{
+  "role": "reviewer",
+  "exit_code": 0,
+  "seconds": 77.4,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 18,
+  "tool_calls": [
+    "Read",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_propose_reconciliation",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_get_supersedence_chain",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_query_cypher"
+  ],
+  "final": {
+    "duration_api_ms": 73022,
+    "stop_reason": "end_turn",
+    "session_id": "cc3acdf1-e5d4-44f1-8223-2f7c6eacfec5",
+    "total_cost_usd": 0.5476282,
+    "usage": {
+      "input_tokens": 28,
+      "cache_creation_input_tokens": 18716,
+      "cache_read_input_tokens": 1699281,
+      "output_tokens": 5704,
+      "output_tokens_details": {
+        "thinking_tokens": 387
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 18716
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1622,
+          "cache_read_input_tokens": 128216,
+          "cache_creation_input_tokens": 600,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 600,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 28,
+        "outputTokens": 5704,
+        "cacheReadInputTokens": 1699281,
+        "cacheCreationInputTokens": 18716,
+        "webSearchRequests": 0,
+        "costUSD": 0.5476282,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 387,
+        "cacheCreationEphemeral5mInputTokens": 18716,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 19,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"recorded\": true, \"reason_for_decision\": \"The public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)\", \"old_decision_id\": \"decision_cf289c08eda70b9d50319b48\", \"new_decision_id\": \"decision_ba6037edb2f9ced641fe306a\", \"what_i_did\": [\"okto_pulse_kg_begin_consolidation(board_id=3beb4485-b422-4af1-824d-b32a63af5a74, artifact_type=spec, artifact_id=d8d927e8-6cc2-4333-a5cc-bc40ea3db5ae, raw_content=maintainer note text) -> session kgses_98119e5037ac400e\", \"okto_pulse_kg_add_node_candidate(candidate_id=error-response-shape-v2, node_type=Decision, title='Error responses use RFC 7807 problem+json with type, title, status and detail', justification=note reason, source_artifact_ref=final_report:d8d927e8-...:decision:error-response-shape-v2)\", \"okto_pulse_kg_add_edge_candidate(edge_type=supersedes, to_node_id=decision_cf289c08eda70b9d50319b48) -> rejected: to_candidate_id required, to_node_id not permitted\", \"okto_pulse_kg_add_edge_candidate(edge_type=contradicts, to_node_id=decision_cf289c08eda70b9d50319b48) -> rejected: same validation error\", \"okto_pulse_kg_add_edge_candidate(edge_type=supersedes, to_candidate_id=decision_cf289c08eda70b9d50319b48) -> rejected: unknown candidate\", \"okto_pulse_kg_add_edge_candidate(candidate_id=e-supersedes, edge_type=supersedes, from=error-response-shape-v2, to_candidate_id=kg:decision_cf289c08eda70b9d50319b48) -> accepted\", \"okto_pulse_kg_add_edge_candidate(candidate_id=e-contradicts, edge_type=contradicts, from=error-response-shape-v2, to_candidate_id=kg:decision_cf289c08eda70b9d50319b48) -> accepted\", \"okto_pulse_kg_propose_reconciliation(session) -> hint ADD for error-response-shape-v2, 'no semantic match in existing graph' (read-only)\", \"okto_pulse_kg_commit_consolidation(session, agent_overrides={error-response-shape-v2: SUPERSEDE target decision_cf289c08eda70b9d50319b48}) -> committed: nodes_added 0, nodes_superseded 1, edges_added 2, connectivity passed\"], \"graph_after\": \"Supersedence chain from old id decision_cf289c08eda70b9d50319b48: chain [], depth 0, current_active decision_cf289c08eda70b9d50319b48. Supersedence chain from new id decision_ba6037edb2f9ced641fe306a: depth 1, chain [decision_cf289c08eda70b9d50319b48 superseded_by decision_ba6037edb2f9ced641fe306a at 2026-10-29T21:49:45.409222], current_active decision_ba6037edb2f9ced641fe306a. find_contradictions(node_id=old): 1 pair, decision_ba6037edb2f9ced641fe306a 'Error responses use RFC 7807 problem+json with type, title, status and detail' vs decision_cf289c08eda70b9d50319b48 'HTTP errors are returned as JSON of the form {\\\"errors\\\": [detail]} with the exception status code.', confidence 0.9. Cypher: both nodes canonical, old node superseded_by=decision_ba6037edb2f9ced641fe306a, and the new node has edges supersedes__Decision__Decision and contradicts__Decision__Decision to the old node.\", \"problems\": [\"I had no tool to read okto-pulse://workflows/kg, so I worked out the edge format by trial and error. Three add_edge_candidate calls were rejected before the 'kg:' prefix for existing nodes worked.\", \"propose_reconciliation suggested ADD ('no semantic match in existing graph'), so I overrode it to SUPERSEDE at commit time.\", \"The commit reported nodes_added 0 and nodes_superseded 1, but the new node decision_ba6037edb2f9ced641fe306a does exist in the graph.\", \"get_supersedence_chain called on the old id returns an empty chain and says the old decision is current_active, even though its superseded_by field is set. The chain only shows correctly when called on the new id.\", \"One cypher query using startNode() failed with 'read_only_query failed in Okto Grafx (transaction_state)'. A simpler directed query worked.\"]}",
+    "ttft_ms": 4896,
+    "type": "result",
+    "duration_ms": 75556,
+    "uuid": "2c65195c-6bb5-4311-b1c9-cf6b65869ec5",
+    "ttft_stream_ms": 4755,
+    "time_to_request_ms": 663,
+    "first_content_frame_ms": 4755,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 28,
+        "outputTokens": 5704,
+        "cacheReadInputTokens": 1699281,
+        "cacheCreationInputTokens": 18716,
+        "webSearchRequests": 0,
+        "costUSD": 0.5476282,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 387,
+        "cacheCreationEphemeral5mInputTokens": 18716,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "reviewer",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 77.4,
+    "duration_ms": 75556,
+    "duration_api_ms": 73022,
+    "num_turns": 19,
+    "tool_calls": 18,
+    "input_tokens": 28,
+    "output_tokens": 5704,
+    "cache_creation_input_tokens": 18716,
+    "cache_read_input_tokens": 1699281,
+    "total_cost_usd": 0.5476282,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T21:50:14Z"
+}

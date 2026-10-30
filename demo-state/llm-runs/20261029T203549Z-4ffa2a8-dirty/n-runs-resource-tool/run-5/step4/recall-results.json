@@ -1,0 +1,554 @@
+{
+  "summary": {
+    "questions": 10,
+    "agent_choice_correct": 4,
+    "similar_top1_correct": 4,
+    "natural_top1_correct": 4,
+    "history_top1_correct": 0,
+    "similar_expected_in_results": 4,
+    "natural_expected_in_results": 4,
+    "history_expected_in_results": 0,
+    "write_probe": "{\"outcome\": \"error\", \"data\": {\"error\": {\"code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"required_permission\": \"kg.session.begin\"}}, \"error_code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"retryable\": false, \"next_action\": null, \"meta\": {\"contract\": \"okto-pulse.mcp-tool-outcome\", \"contract_version\": \"2.0\", \"tool\": \"okto_pulse_kg_begin_consolidation\"}, \"details\": {\"error\": {\"code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"required_permission\": \"kg.session.begin\"}}}",
+    "answerable_expected_on_board": 4,
+    "answerable_expected_missing_from_board": [
+      "l1",
+      "l4",
+      "l7",
+      "l8",
+      "l9",
+      "l10"
+    ],
+    "agent_choice_correct_where_expected_on_board": 4,
+    "tool_call_names": [
+      "mcp__pulse__okto_pulse_kg_begin_consolidation",
+      "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+      "mcp__pulse__okto_pulse_kg_get_decision_history",
+      "mcp__pulse__okto_pulse_kg_query_natural"
+    ],
+    "tool_usage": {
+      "mcp__pulse__okto_pulse_kg_begin_consolidation": 1,
+      "mcp__pulse__okto_pulse_kg_find_similar_decisions": 10,
+      "mcp__pulse__okto_pulse_kg_get_decision_history": 10,
+      "mcp__pulse__okto_pulse_kg_query_natural": 10
+    },
+    "scores_by_split": {
+      "legacy": {
+        "questions": 10,
+        "answered_by_arm": 10,
+        "answerable": 10,
+        "correct": 6,
+        "wrong": 2,
+        "missed_by_abstaining": 2,
+        "unanswerable": 0,
+        "correct_abstentions": 0,
+        "fabricated": 0,
+        "graph_only_total": 0,
+        "graph_only_correct": 0,
+        "near_duplicate_total": 0,
+        "near_duplicate_correct": 0
+      }
+    }
+  },
+  "per_question": [
+    {
+      "q": 1,
+      "id": "l1",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "How do clients send their login token on each request, and what prefix does the server expect?",
+      "expected_slug": "auth-header-scheme",
+      "tools": {
+        "similar": {
+          "top_id": "decision_d9ddf4a696b24a177cf2e9f6",
+          "top_title": "JWT access tokens are signed and verified with the symmetric HS256 algorithm.",
+          "top_slug": "jwt-algorithm",
+          "top_similarity": 0.3993744037145939,
+          "results_returned": 5,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_d9ddf4a696b24a177cf2e9f6",
+          "top_title": "JWT access tokens are signed and verified with the symmetric HS256 algorithm.",
+          "top_slug": "jwt-algorithm",
+          "top_similarity": 0.3994,
+          "results_returned": 5,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_d9ddf4a696b24a177cf2e9f6",
+        "decision_title": "JWT access tokens are signed and verified with the symmetric HS256 algorithm.",
+        "slug": "jwt-algorithm",
+        "answer": "JWT access tokens are signed and verified with the symmetric HS256 algorithm.",
+        "abstained": false,
+        "correct": false
+      },
+      "expected_on_board": false
+    },
+    {
+      "q": 2,
+      "id": "l2",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "How long does a login token stay valid before it expires?",
+      "expected_slug": "token-expiry",
+      "tools": {
+        "similar": {
+          "top_id": "decision_6f7bd9259fbcd77435697abd",
+          "top_title": "Access tokens expire one week after issue and there is no refresh token.",
+          "top_slug": "token-expiry",
+          "top_similarity": 0.6194499448488996,
+          "results_returned": 3,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_6f7bd9259fbcd77435697abd",
+          "top_title": "Access tokens expire one week after issue and there is no refresh token.",
+          "top_slug": "token-expiry",
+          "top_similarity": 0.6194,
+          "results_returned": 3,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_6f7bd9259fbcd77435697abd",
+        "decision_title": "Access tokens expire one week after issue and there is no refresh token.",
+        "slug": "token-expiry",
+        "answer": "Access tokens expire one week after issue and there is no refresh token.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": 3,
+      "id": "l3",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "What does the app use to store user passwords safely?",
+      "expected_slug": "password-hashing",
+      "tools": {
+        "similar": {
+          "top_id": "decision_777e82edb2cd2583af1385b1",
+          "top_title": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+          "top_slug": "password-hashing",
+          "top_similarity": 0.5060527391470638,
+          "results_returned": 2,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_777e82edb2cd2583af1385b1",
+          "top_title": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+          "top_slug": "password-hashing",
+          "top_similarity": 0.5061,
+          "results_returned": 2,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_777e82edb2cd2583af1385b1",
+        "decision_title": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+        "slug": "password-hashing",
+        "answer": "Passwords are hashed with bcrypt through a passlib CryptContext.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": 4,
+      "id": "l4",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "What does the body of an error response look like when a request fails?",
+      "expected_slug": "error-response-shape",
+      "tools": {
+        "similar": {
+          "top_id": "decision_179d9c894deea72dc740b12e",
+          "top_title": "Login returns the same 400 error for an unknown email and for a wrong password.",
+          "top_slug": null,
+          "top_similarity": 0.3438778070390001,
+          "results_returned": 2,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_179d9c894deea72dc740b12e",
+          "top_title": "Login returns the same 400 error for an unknown email and for a wrong password.",
+          "top_slug": null,
+          "top_similarity": 0.3439,
+          "results_returned": 2,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_179d9c894deea72dc740b12e",
+        "decision_title": "Login returns the same 400 error for an unknown email and for a wrong password.",
+        "slug": null,
+        "answer": "Login returns the same 400 error for an unknown email and for a wrong password.",
+        "abstained": false,
+        "correct": false
+      },
+      "expected_on_board": false
+    },
+    {
+      "q": 5,
+      "id": "l5",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "Which query parameters control paging through a list of articles?",
+      "expected_slug": "pagination-parameters",
+      "tools": {
+        "similar": {
+          "top_id": "decision_1a200f0cf98552224b77b0d9",
+          "top_title": "Article lists default to 20 items per page with limit >= 1 and offset >= 0 and no upper bound on limit.",
+          "top_slug": "pagination-parameters",
+          "top_similarity": 0.4761450742170915,
+          "results_returned": 2,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_1a200f0cf98552224b77b0d9",
+          "top_title": "Article lists default to 20 items per page with limit >= 1 and offset >= 0 and no upper bound on limit.",
+          "top_slug": "pagination-parameters",
+          "top_similarity": 0.4761,
+          "results_returned": 2,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_1a200f0cf98552224b77b0d9",
+        "decision_title": "Article lists default to 20 items per page with limit >= 1 and offset >= 0 and no upper bound on limit.",
+        "slug": "pagination-parameters",
+        "answer": "Article lists default to 20 items per page with limit >= 1 and offset >= 0 and no upper bound on limit.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": 6,
+      "id": "l6",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "How is the URL-friendly name of an article produced?",
+      "expected_slug": "slug-rules",
+      "tools": {
+        "similar": {
+          "top_id": "decision_3491195fb424d5644c77e746",
+          "top_title": "An article's slug is derived only from slugify(title) and must be unique, so two articles cannot share a title slug.",
+          "top_slug": "slug-rules",
+          "top_similarity": 0.4225112805101851,
+          "results_returned": 2,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_3491195fb424d5644c77e746",
+          "top_title": "An article's slug is derived only from slugify(title) and must be unique, so two articles cannot share a title slug.",
+          "top_slug": "slug-rules",
+          "top_similarity": 0.4225,
+          "results_returned": 2,
+          "top_is_expected": true,
+          "expected_in_results": true,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_3491195fb424d5644c77e746",
+        "decision_title": "An article's slug is derived only from slugify(title) and must be unique, so two articles cannot share a title slug.",
+        "slug": "slug-rules",
+        "answer": "An article's slug is derived only from slugify(title) and must be unique, so two articles cannot share a title slug.",
+        "abstained": false,
+        "correct": true
+      },
+      "expected_on_board": true
+    },
+    {
+      "q": 7,
+      "id": "l7",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "Who is allowed to delete a comment?",
+      "expected_slug": "comment-ownership",
+      "tools": {
+        "similar": {
+          "top_id": "decision_37548385c63109b0cab6c518",
+          "top_title": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+          "top_slug": null,
+          "top_similarity": 0.4472741065879316,
+          "results_returned": 1,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_37548385c63109b0cab6c518",
+          "top_title": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+          "top_slug": null,
+          "top_similarity": 0.4473,
+          "results_returned": 1,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_37548385c63109b0cab6c518",
+        "decision_title": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+        "slug": null,
+        "answer": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+        "abstained": false,
+        "correct": false
+      },
+      "expected_on_board": false
+    },
+    {
+      "q": 8,
+      "id": "l8",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "What happens when a user marks an article as a favourite?",
+      "expected_slug": "favorites",
+      "tools": {
+        "similar": {
+          "top_id": "decision_37548385c63109b0cab6c518",
+          "top_title": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+          "top_slug": null,
+          "top_similarity": 0.36551008236092125,
+          "results_returned": 2,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": "decision_37548385c63109b0cab6c518",
+          "top_title": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+          "top_slug": null,
+          "top_similarity": 0.3655,
+          "results_returned": 2,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": "decision_37548385c63109b0cab6c518",
+        "decision_title": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+        "slug": null,
+        "answer": "Deleting a user keeps their articles with a null author, while their comments, follows and favorites are cascade-deleted.",
+        "abstained": false,
+        "correct": false
+      },
+      "expected_on_board": false
+    },
+    {
+      "q": 9,
+      "id": "l9",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "Where does the app keep its settings and how are they read?",
+      "expected_slug": "settings-loading",
+      "tools": {
+        "similar": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "",
+        "abstained": true,
+        "correct": false
+      },
+      "expected_on_board": false
+    },
+    {
+      "q": 10,
+      "id": "l10",
+      "split": "legacy",
+      "kind": "answerable",
+      "question": "How are the automated tests laid out?",
+      "expected_slug": "test-layout",
+      "tools": {
+        "similar": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "natural": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        },
+        "history": {
+          "top_id": null,
+          "top_title": null,
+          "top_slug": null,
+          "top_similarity": null,
+          "results_returned": 0,
+          "top_is_expected": false,
+          "expected_in_results": false,
+          "outcome": "success"
+        }
+      },
+      "agent_choice": {
+        "tool_used": "okto_pulse_kg_find_similar_decisions",
+        "decision_id": null,
+        "decision_title": null,
+        "slug": null,
+        "answer": "",
+        "abstained": true,
+        "correct": false
+      },
+      "expected_on_board": false
+    }
+  ]
+}
