@@ -9,7 +9,7 @@ For each decision the checker verifies:
 Exit code 0 only if there are exactly the expected slugs and every citation holds.
 
 With --open the Recorder chose its own topics (the goal-based prompt). No slug list is required. Every decision must
-still cite a file and a line that exist, and the result also reports recall against the hand-made reference list in
+still cite a file and a line that exist, and the result also reports recall against the assistant-written reference list in
 corpus/reference_decisions.json: how many reference decisions at least one recorded node covers. Exit code 0 only if
 every citation holds. Recall is reported, not a pass condition.
 

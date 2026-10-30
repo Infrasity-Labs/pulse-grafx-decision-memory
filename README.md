@@ -37,6 +37,16 @@ Pulse alone flagged 0 contradiction pairs after the `SUPERSEDE`. The `contradict
 
 The source references look like `final_report:<spec id>:decision:<slug>`. No final report exists in this demo. In the installed 0.4.2 `okto_pulse/core/kg/connectivity_guard.py` (lines 480 to 513) `final_report:` is listed as a technical-root prefix for Decision nodes written by `commit_consolidation`, so it lets a decision pass the connectivity rule. It is a way past that rule, not a link to real work.
 
+### Relationship, reconciliation and active state
+
+Three different things, which are easy to read as one:
+
+- **Relationship edge.** A `supersedes` or `contradicts` edge records a link between two decision nodes. After the recorded `SUPERSEDE`, Pulse found no contradiction until an explicit `contradicts` edge existed ([observation 2](docs/PRODUCT-OBSERVATIONS.md)).
+- **Reconciliation action.** `SUPERSEDE` is the action given at commit. In the recorded run 1 the commit reported `nodes_added: 0` and the chain asked from the old decision still named it `current_active` ([observation 3](docs/PRODUCT-OBSERVATIONS.md)).
+- **Authoritative active or superseded state.** The old node's `superseded_by` and `superseded_at`. In the 5-run reviewer study on a board that held the old decision, 5 of 5 Reviewers added the edges and 1 of 5 marked the old node superseded; that one overrode the `ADD` hint with `SUPERSEDE` ([observation 14](docs/PRODUCT-OBSERVATIONS.md)). An edge alone did not change the state.
+
+The bounded end-to-end lifecycle run (original decision present, change request with a reason, supersession, edge and state both checked on a fresh read, no-rationale and unrelated cases) is planned and not yet recorded. See [`docs/EVIDENCE-AND-CONTROLS.md`](docs/EVIDENCE-AND-CONTROLS.md).
+
 ## The Problem
 
 Coding agents forget. A new session starts blank, and a decision made last week is either re-argued or silently broken. This repo tests three things directly, on a real run, instead of describing them:
@@ -254,16 +264,19 @@ Which results come from a test that runs now, and which only from files recorded
 | Result | Source | Re-checked by |
 | ------ | ------ | ------------- |
 | Scoreboard numbers, the ten recall questions, the 12 citations, the reversal, both SIGKILL tests, the direct read, the restore | **Recorded.** One real run (run 1, 2026-10-29, macOS arm64, `claude-opus-5-5`), committed in `demo-state/`. | `validate` workflow: the tests read the files. It catches edits to them, not a change in Pulse or Grafx. |
-| Steps 1, 2, 5 to 9 and the scripted replacement of the agent steps (the same decisions and the reversal as fixed tool calls) | **Live**, on a fresh data home and free ports, no model. Kept: a dated run with step 9 (48 of 48 assertions, `demo-state/integration-*/`), a Linux container run through step 8 (43 of 43, `demo-state/linux-crash-*/`) and the first scripted run (`demo-state/scripted-run/`, step 9 not run). CI output stays in `.work/integration/` and is not committed. | `integration` workflow, with assertions in `scripts/assert_runtime.py`. It fails when Pulse or Grafx return a different outcome. It runs on Linux, so its SIGKILL runs are Linux runs. As of this change it has not run on GitHub: the first run history will show up in the Actions tab. |
+| Steps 1, 2, 5 to 9 and the scripted replacement of the agent steps (the same decisions and the reversal as fixed tool calls) | **Live**, on a fresh data home and free ports, no model. Kept: a dated run with step 9 (48 of 48 assertions, `demo-state/integration-*/`), a Linux container run through step 8 (43 of 43, `demo-state/linux-crash-*/`) and the first scripted run (`demo-state/scripted-run/`, step 9 not run). CI output stays in `.work/integration/` and is not committed. | `integration` workflow, with assertions in `scripts/assert_runtime.py`. It fails when Pulse or Grafx return a different outcome. It runs on Linux, so its SIGKILL runs are Linux runs. Its run history is in the Actions tab. |
 | Steps 3 to 5 with a model (recall score, citations the model chose, the reversal the model recorded) | **Recorded**: run 1 (answer-key prompts), and one smoke run, three five-run studies and the LLM arms (five runs each) with the goal-based prompts, 48 sessions in one folder with a manifest: `demo-state/llm-runs/`, `demo-state/arms/`. | `llm-steps` workflow, run by hand with a secret. It records the model and the date. It has not run on GitHub; the recorded runs were made locally. |
 | External links | Live, weekly. | `links` workflow. |
 | Screenshots | **Recorded** after the run, so they show its final state. | Nothing. |
 
-`REQUIRE_EVIDENCE=1` is set in the `validate` workflow. With it a missing recorded output fails the test. Without it (a fork that has not run every step) the test is skipped.
+`REQUIRE_EVIDENCE=1` is set in the `validate` workflow. With it a missing recorded output fails the test. Without it (a fork that has not run every step) the test is skipped. One recomputation, the per-tool recall scores in `tests/test_llm_runs.py`, is skipped wherever `fastmcp` is not installed (the fast `validate` workflow); it runs in the integration environment and locally.
+
+**CI scope.** `validate` runs offline on the recorded files. `integration` runs real Pulse and Grafx with scripted steps and no model. The live model studies run only from the manual `llm-steps` workflow, so a push does not rerun them. Sprints are retired in Pulse 0.4.2; this repo describes no live spec, sprint, task path. Links point to `main`.
 
 ## What This Demo Does Not Show
 
-- **No measured advantage of the graph over plain notes.** An agent with the graph and an agent with a text file of the same 32 decisions scored the same in five runs each (10 of 10, 11 of 11 and 11 or 12 of 12 against 10, 11 and 12); the code-only agent found none of the 16 graph-only reasons, which exist only in the graph and the notes. The graph was three times dearer per run than the notes ($0.46 against $0.15). The corpus is 32 invented-reason notes that fit in one file, so this says nothing about a large memory. See [the table](docs/SCOREBOARD.md#arms-side-by-side) and [what each result proves](docs/EVIDENCE-AND-CONTROLS.md).
+- **No measured advantage of the graph over plain notes.** An agent with the graph and an agent with a text file of the same 32 decisions scored the same in five runs each (10 of 10, 11 of 11 and 11 or 12 of 12 against 10, 11 and 12); the code-only agent found none of the 16 graph-only reasons, which exist only in the graph and the notes. The corpus is 32 invented-reason notes that fit in one file, so this says nothing about a large memory. See [the table](docs/SCOREBOARD.md#arms-side-by-side) and [what each result proves](docs/EVIDENCE-AND-CONTROLS.md).
+- **The "three times" figure is agent-session cost under the tested tool configurations.** One session is 43 questions and 2 change proposals, n=5 per arm: $0.462 with the graph against $0.152 with the notes (3.05 times; model-reported cost, plus tokens, tool calls and latency in the [cost table](docs/SCOREBOARD.md#agent-session-cost-under-the-tested-tool-configurations)). It is not the cost of a Grafx query, and database query cost was not measured. It leaves out building and keeping up the sources (the board and the notes file were prepared before the arms ran). The arms had different access, and the large MCP tool catalog may contribute but was not isolated. Nothing here says Grafx retrieval costs more. A proper study is proposed in [`docs/SDD-COST-BENCHMARK-PROPOSAL.md`](docs/SDD-COST-BENCHMARK-PROPOSAL.md).
 - **One model, a few repeats.** Every model run used `claude-opus-5-5`. The goal-based Recorder covered 7 to 10 of the 22 reference decisions and never wrote the decision that the Maintainer then reverses, so the reversal was exercised with a model only on a board built by the scripted client (5 of 5 Reviewers recorded it, 1 of 5 flagged the old node as superseded). A different model may score differently.
 - **A crash in one setup.** Kill A and Kill B ran four times, on a Mac (three runs) and in a Linux container on a Docker Desktop VM on that Mac. The board refused writes for about 300 s after Kill B in three of the four runs. Power loss, disk faults, a bare-metal Linux host and Windows are not covered. Resuming after Kill A and retrying after Kill B exist in the scripted runs only, not in an agent run.
 - **No Pulse started on a restored store.** Step 9 restores a copy and runs `verify` on it. Pulse is never started on it.
@@ -280,5 +293,7 @@ To reproduce the run, fork this repo and follow the [walkthrough](docs/walkthrou
 | `app/` (the demo app) | [MIT](app/LICENSE), kept from the original project |
 | [Okto Pulse](https://github.com/OktoLabsAI/okto-pulse) | [Elastic License 2.0](https://github.com/OktoLabsAI/okto-pulse/blob/main/LICENSE) |
 | [Okto Grafx](https://github.com/OktoLabsAI/okto-grafx) | [Elastic License 2.0 with SaaS/Branding Addendum](https://github.com/OktoLabsAI/okto-grafx/blob/main/LICENSE) |
+
+The MIT license in `LICENSE` covers the demo code only: `run_demo.py`, `scripts/`, `tests/`, `agents/`, `docs/` and the files under `demo-state/` that the scripts generate. It does not cover `app/`, a copy of nsidnev/fastapi-realworld-example-app under its own MIT license (`app/LICENSE`), or Okto Pulse and Okto Grafx (Elastic License 2.0, linked above).
 
 Pulse and Grafx are installed from PyPI at pinned versions. Their source is not included in this repo.

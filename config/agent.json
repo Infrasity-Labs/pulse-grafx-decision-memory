@@ -3,5 +3,5 @@
   "why": "The model every recorded agent session reported in its init event (demo-state/step3/agent/transcript.jsonl, line 1). run_agent.py passes it with --model, so a later run uses the same model and not whatever the default of the installed Claude Code is.",
   "claude_code_of_the_recorded_run": "2.1.312 (demo-state/step1/versions.json)",
   "override": "Set AGENT_MODEL or pass --model to run_agent.py. The model that was requested and the model the session reported are both written to result.json.",
-  "not_verified_here": "The fix pass that added this file made no model call, so passing this name to --model was not exercised."
+  "verified": "Claude Code 2.1.312 accepted this name with --model. All 48 recorded live sessions requested it and reported it in their init event (demo-state/llm-runs/*/run-info.json)."
 }

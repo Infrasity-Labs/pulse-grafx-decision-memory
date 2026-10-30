@@ -38,19 +38,29 @@ PATH_PATTERNS = [
 SKIP_PARTS = {".venv", "venv", ".ci", "node_modules", "site-packages", "__pycache__", ".work"}
 
 
+def home_pattern(home: str | Path) -> re.Pattern | None:
+    """A regex for this machine's home folder as a real absolute path, or None if the home is too short to be told apart from a word.
+
+    The home must not continue a longer name before it ('source/root' is not '/root') and must not continue into a longer name after it
+    ('/rooted' is not '/root'). A home of '/' (nothing left after trimming the trailing slash) is never searched for."""
+    h = str(home).rstrip("/\\")
+    if not h:
+        return None
+    return re.compile(r"(?<![A-Za-z0-9_.\-])(?<![A-Za-z0-9_.\-]/)" + re.escape(h) + r"(?![A-Za-z0-9_\-])(?!\.[A-Za-z0-9_\-])")
+
+
 def files(root: Path) -> list[Path]:
     out = subprocess.run(["git", "ls-files", "-co", "--exclude-standard", "-z"], cwd=root, capture_output=True).stdout.decode()
     return [root / p for p in out.split("\0") if p and not SKIP_PARTS & set(Path(p).parts)]
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--root", default=str(Path(__file__).resolve().parent.parent))
-    root = Path(ap.parse_args().root).resolve()
+def scan(root: Path) -> tuple[list[str], int]:
+    """Return (hits, number of files scanned) for the files git would track under root."""
     exact: list[str] = []
     kf = root / "agents" / ".keys.local"
     if kf.exists():
         exact = [ln.partition("=")[2].strip() for ln in kf.read_text().splitlines() if "=" in ln and len(ln.partition("=")[2].strip()) >= 20]
+    home_re = home_pattern(Path.home())
     hits: list[str] = []
     scanned = 0
     for p in files(root):
@@ -72,13 +82,21 @@ def main() -> int:
             if any(k in line for k in exact):
                 hits.append(f"{rel}:{n}: exact agent key from the local keys file")
             if in_fork:
-                if str(Path.home()) in line:  # the fork is a plain copy; only flag this machine's own home path
+                if home_re and home_re.search(line):  # the fork is a plain copy; only flag this machine's own home path, as a path and not as a word
                     hits.append(f"{rel}:{n}: machine-local absolute path")
                 continue
             for pat in PATH_PATTERNS:
                 if pat.search(line):
                     hits.append(f"{rel}:{n}: machine-local absolute path")
                     break
+    return hits, scanned
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--root", default=str(Path(__file__).resolve().parent.parent))
+    root = Path(ap.parse_args().root).resolve()
+    hits, scanned = scan(root)
     for h in hits:
         print(h)
     print(f"scanned {scanned} files, {len(hits)} hit(s)")

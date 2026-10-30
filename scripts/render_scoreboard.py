@@ -146,7 +146,7 @@ def render_arms() -> str:
 
     head = "| Arm | Runs | " + " | ".join(f"Right: {sp.replace('_', '-')}" for sp in splits) + " |"
     tab1 = [head, "|---|---:|" + "---|" * len(splits)]
-    tab2 = ["| Arm | Abstained on unanswerable | Fabricated an answer | Graph-only reason right | Near-duplicate right | Conflict tasks: decision found | Conflict tasks: stance adapt or stop, decision found or not | Conflict tasks: decision found and stance adapt or stop | Cost and time |", "|---|---|---|---|---|---|---|---|---|"]
+    tab2 = ["| Arm | Abstained on unanswerable | Fabricated an answer | Graph-only reason right | Near-duplicate right | Conflict tasks: decision found | Conflict tasks: stance adapt or stop, decision found or not | Conflict tasks: decision found and stance adapt or stop | Agent-session cost and time |", "|---|---|---|---|---|---|---|---|---|"]
     for key, label, cmd in ARM_ROWS:
         a = arms.get(key)
         if a is None:

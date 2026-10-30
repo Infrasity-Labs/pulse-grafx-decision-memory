@@ -1,0 +1,948 @@
+{
+  "about": "Review sheet for the reference decisions (corpus/reference_decisions.json, key v1). Protocol: corpus/validation/README.md. All human fields are null until a named human reviewer fills them in.",
+  "reviewer": null,
+  "review_date": null,
+  "decisions": null,
+  "unresolved_disagreements": null,
+  "status": "not reviewed by a human",
+  "scope_rule_for_missing_decisions": null,
+  "model_completeness_note": {
+    "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+    "verdict": "not complete for important decisions visible in app/ (22 entries; mostly the 12 recorded + 10 added from the same code facts)."
+  },
+  "entries": [
+    {
+      "id": "auth-header-scheme",
+      "v1": {
+        "files": [
+          "app/app/api/dependencies/authentication.py"
+        ],
+        "lines": [
+          51
+        ],
+        "keywords": [
+          "prefix",
+          "authorization header"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "authentication.py:51 `token_prefix, token = api_key.split(\" \")`; :57 compares prefix to settings.jwt_token_prefix; wrong shape -> 403 (:54). Every client call depends on it.",
+        "flags": "Default prefix 'Token' lives at app/app/core/settings/app.py:29 (not in lines); a matching node citing that line would not match. Keyword 'prefix' is generic."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "token-expiry",
+      "v1": {
+        "files": [
+          "app/app/services/jwt.py"
+        ],
+        "lines": [
+          12,
+          31
+        ],
+        "keywords": [
+          "expire",
+          "one week"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "jwt.py:12 `ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week`; :31 passes it as timedelta.",
+        "flags": "Keyword 'expire' is generic."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "password-hashing",
+      "v1": {
+        "files": [
+          "app/app/services/security.py"
+        ],
+        "lines": [
+          4,
+          12,
+          16
+        ],
+        "keywords": [
+          "bcrypt",
+          "passlib"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "security.py:4 `CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")`; :12 verify; :16 hash.",
+        "flags": "The non-obvious part (salt is prepended to the password before hashing: users.py:20, :24) is not in lines; see missing list."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "error-response-shape",
+      "v1": {
+        "files": [
+          "app/app/api/errors/http_error.py"
+        ],
+        "lines": [
+          7
+        ],
+        "keywords": [
+          "errors"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "generic",
+        "new_maintainer_must_know": "yes",
+        "evidence": "http_error.py:7 `JSONResponse({\"errors\": [exc.detail]}, status_code=exc.status_code)`; clients must parse errors list, not FastAPI default `detail`.",
+        "flags": "Keyword 'errors' is very generic (will also match validation-error nodes); only used when line misses."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "pagination-parameters",
+      "v1": {
+        "files": [
+          "app/app/models/schemas/articles.py",
+          "app/app/api/dependencies/articles.py"
+        ],
+        "lines": [
+          8,
+          42,
+          25
+        ],
+        "keywords": [
+          "limit",
+          "offset"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "partly",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "schemas/articles.py:8 DEFAULT_ARTICLES_LIMIT = 20; :42 `limit: int = Field(DEFAULT_ARTICLES_LIMIT, ge=1)`; dependencies/articles.py:25 `limit: int = Query(DEFAULT_ARTICLES_LIMIT, ge=1)`.",
+        "flags": "lines is one flat list shared by both files, so 8, 25, 42 also match unrelated lines in the other file (dependencies/articles.py:8 is an import, :42 is inside get_article_by_slug_from_path; schemas/articles.py:25 is `tags: List[str]` in ArticleInCreate). Offset line (schemas :43, dependencies :26) not listed."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "slug-rules",
+      "v1": {
+        "files": [
+          "app/app/services/articles.py"
+        ],
+        "lines": [
+          19
+        ],
+        "keywords": [
+          "slugify"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "services/articles.py:19 `return slugify(title)`; slug is also the public id of an article.",
+        "flags": "Keyword 'slugify' only matches if a node title names the library."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "comment-ownership",
+      "v1": {
+        "files": [
+          "app/app/services/comments.py"
+        ],
+        "lines": [
+          6
+        ],
+        "keywords": [
+          "comment"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "generic",
+        "new_maintainer_must_know": "yes",
+        "evidence": "services/comments.py:6 `return comment.author.username == user.username`.",
+        "flags": "Keyword 'comment' is extremely generic (any comment-related node would match if its line misses)."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "favorites",
+      "v1": {
+        "files": [
+          "app/app/db/queries/sql/articles.sql"
+        ],
+        "lines": [
+          2
+        ],
+        "keywords": [
+          "favorit"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "articles.sql:2 `INSERT INTO favorites (user_id, article_id)` (statement starts at line 1 `-- name: add-article-to-favorites!`); :5 ON CONFLICT DO NOTHING. Duplicate favorites ignored; routine implementation, but the idempotence is an API-visible rule.",
+        "flags": "Line 2 is only the insert; the unfavorite (:8-12) and count (:22-25) queries are not covered."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "tag-handling",
+      "v1": {
+        "files": [
+          "app/app/db/repositories/articles.py"
+        ],
+        "lines": [
+          55,
+          56
+        ],
+        "keywords": [
+          "tags table",
+          "articles_to_tags"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "repositories/articles.py:55 `await self._tags_repo.create_tags_that_dont_exist(tags=tags)`; :56 `_link_article_with_tags`; both inside the transaction opened at :44.",
+        "flags": "Overlaps in content with tag-create-idempotent (same flow, SQL side). Keywords 'tags table' / 'articles_to_tags' are in articles.sql:31,72 not in the cited file; they only work on node titles."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "database-access-layer",
+      "v1": {
+        "files": [
+          "app/app/db/queries/queries.py"
+        ],
+        "lines": [
+          5
+        ],
+        "keywords": [
+          "aiosql",
+          "raw sql"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "queries/queries.py:5 `aiosql.from_path(... / \"sql\", \"asyncpg\")`.",
+        "flags": "Not the whole truth: articles filter query is built with pypika (repositories/articles.py:115,125,146). Keyword 'raw sql' is not in the code, only in node titles."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "settings-loading",
+      "v1": {
+        "files": [
+          "app/app/core/config.py"
+        ],
+        "lines": [
+          19,
+          16
+        ],
+        "keywords": [
+          "basesettings",
+          "app_env"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "partly",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "core/config.py:19 `app_env = BaseAppSettings().app_env`; :20 picks class; :17-18 lru_cache.",
+        "flags": "Line 16 is a BLANK line (wrong; the decorator is :17, def :18). Per-env classes and defaults are in core/settings/{base,development,production,test}.py, not cited."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "test-layout",
+      "v1": {
+        "files": [
+          "app/pyproject.toml"
+        ],
+        "lines": [
+          46
+        ],
+        "keywords": [
+          "tests folder",
+          "testpaths"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "pyproject.toml:46 `testpaths = \"tests\"`; :48-61 addopts incl. --cov-fail-under=100.",
+        "flags": "Citing :46 only; the 100% coverage gate (:58) is a stronger must-know rule and is not in lines. Keyword 'tests folder' not literal code."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "jwt-algorithm",
+      "v1": {
+        "files": [
+          "app/app/services/jwt.py"
+        ],
+        "lines": [
+          11
+        ],
+        "keywords": [
+          "algorithm"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "jwt.py:11 `ALGORITHM = \"HS256\"`; used at :24 and :37.",
+        "flags": "Near-duplicate of token-expiry (HS256 is also in that decision's text)."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "jwt-subject-claim",
+      "v1": {
+        "files": [
+          "app/app/services/jwt.py"
+        ],
+        "lines": [
+          10
+        ],
+        "keywords": [
+          "subject"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "no",
+        "evidence": "jwt.py:10 `JWT_SUBJECT = \"access\"`. A fixed constant; a maintainer can read it in one line and nothing else depends on it being known.",
+        "flags": "Low value; a decoy-like entry."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "password-salt",
+      "v1": {
+        "files": [
+          "app/app/services/security.py"
+        ],
+        "lines": [
+          8
+        ],
+        "keywords": [
+          "salt"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "security.py:8 `return bcrypt.gensalt().decode()`; consumed in users.py:23.",
+        "flags": "Important point is that the salt is stored separately AND prepended to the password (users.py:20,24); bcrypt already embeds its own salt, so this is redundant but changing it breaks existing hashes. Entry cites only the helper."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "validation-error-shape",
+      "v1": {
+        "files": [
+          "app/app/api/errors/validation_error.py"
+        ],
+        "lines": [
+          17
+        ],
+        "keywords": [
+          "422",
+          "validation"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "validation_error.py:17 `{\"errors\": exc.errors()},` with 422 at :18; registered main.py:38.",
+        "flags": "Keyword '422' also matches a recorder's title text for other things; fine."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "duplicate-registration",
+      "v1": {
+        "files": [
+          "app/app/api/routes/authentication.py"
+        ],
+        "lines": [
+          70,
+          75
+        ],
+        "keywords": [
+          "already taken",
+          "username"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "partly",
+        "keywords_ok": "partly wrong",
+        "new_maintainer_must_know": "yes",
+        "evidence": "routes/authentication.py:67-71 username check -> 400 with detail=strings.USERNAME_TAKEN (:70); :73-77 email check -> 400 (:76).",
+        "flags": "Line 75 is the `status_code=HTTP_400_BAD_REQUEST` of the email branch; the email detail is :76 and the check is :73. Keyword 'already taken' appears nowhere in code (strings.py says 'already exists'); it works only on a node title. 'username' is generic."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "article-ownership",
+      "v1": {
+        "files": [
+          "app/app/services/articles.py"
+        ],
+        "lines": [
+          23
+        ],
+        "keywords": [
+          "author"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "generic",
+        "new_maintainer_must_know": "yes",
+        "evidence": "services/articles.py:23 `return article.author.username == user.username`; used by dependencies/articles.py:55 to give 403.",
+        "flags": "Keyword 'author' is generic."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "cors-allowed-origins",
+      "v1": {
+        "files": [
+          "app/app/core/settings/app.py",
+          "app/app/main.py"
+        ],
+        "lines": [
+          31,
+          20
+        ],
+        "keywords": [
+          "cors",
+          "origin"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "partly",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "settings/app.py:31 `allowed_hosts: List[str] = [\"*\"]`; main.py:22 `allow_origins=settings.allowed_hosts` (CORS block starts :20).",
+        "flags": "Lines are flat across two files: 31 in main.py is the `)` closing the startup handler call, and 20 in settings/app.py is blank. main.py:22-23 (origins, allow_credentials=True with wildcard) is the real spot; :20 only opens the block."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "connection-pool-size",
+      "v1": {
+        "files": [
+          "app/app/core/settings/app.py",
+          "app/app/db/events.py"
+        ],
+        "lines": [
+          22,
+          23,
+          13,
+          14
+        ],
+        "keywords": [
+          "pool",
+          "connection"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "partly",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "settings/app.py:22-23 max/min_connection_count = 10; db/events.py:13-14 pass them to asyncpg.create_pool.",
+        "flags": "Only true for default/dev/prod: core/settings/test.py:16-17 sets 5, and pyproject.toml:64-65 sets MAX_CONNECTIONS_COUNT=1 / MIN_CONNECTIONS_COUNT=1, names that do not match the field names max_connection_count/min_connection_count, so those env entries look inert [INFERENCE: pydantic env names follow field names]. Flat lines also match unrelated lines in the other file (events.py:22-23, settings/app.py:13-14)."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "tag-create-idempotent",
+      "v1": {
+        "files": [
+          "app/app/db/queries/sql/tags.sql"
+        ],
+        "lines": [
+          9
+        ],
+        "keywords": [
+          "on conflict"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "borderline",
+        "evidence": "tags.sql:7-9 `INSERT INTO tags (tag) VALUES (:tag) ON CONFLICT DO NOTHING;` (9 is the ON CONFLICT line).",
+        "flags": "Same flow as tag-handling; low-value detail on its own."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "article-slug-conflict",
+      "v1": {
+        "files": [
+          "app/app/api/routes/articles/articles_resource.py"
+        ],
+        "lines": [
+          65,
+          66,
+          67,
+          68
+        ],
+        "keywords": [
+          "already exists"
+        ]
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "decision_in_code": "yes",
+        "lines_correct": "yes",
+        "keywords_ok": "ok",
+        "new_maintainer_must_know": "yes",
+        "evidence": "articles_resource.py:65 `if await check_article_exists(articles_repo, slug):` -> :66-68 400 detail=ARTICLE_ALREADY_EXISTS; no numeric suffix.",
+        "flags": "The update route (articles_resource.py:100 regenerates the slug from a changed title) does NOT call check_article_exists, so the rule is create-only; see missing list."
+      },
+      "human": {
+        "is_a_decision_not_a_code_fact": null,
+        "evidence_file_correct": null,
+        "evidence_lines_correct": null,
+        "corrected_files": null,
+        "corrected_lines": null,
+        "rationale_supported_by_source": null,
+        "decision": null,
+        "notes": null
+      }
+    }
+  ],
+  "missing_decisions_to_consider": [
+    {
+      "id": "salt-prepended-to-password",
+      "v1_where": "app/app/models/domain/users.py:20 and :24",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "`salt + password` is what gets hashed and verified; a maintainer who 'fixes' it to hash the plain password locks out all users. Only partly in password-hashing text; no entry has this line."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "auth-failures-are-403",
+      "v1_where": "app/app/api/dependencies/authentication.py:54,59,90,98",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "Every auth failure returns 403 (not 401), including bad prefix, bad token and unknown user."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "default-token-prefix",
+      "v1_where": "app/app/core/settings/app.py:29",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "`jwt_token_prefix = \"Token\"`, clients must send `Token <jwt>` (not Bearer). Only in auth-header-scheme content, not its lines."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "article-hard-delete-and-fk-cascade",
+      "v1_where": "app/app/db/repositories/articles.py:93-99; app/app/db/queries/sql/articles.sql:89-90; app/app/db/migrations/versions/fdf8821871d7_main_tables.py:82,133,160,181 (ON DELETE CASCADE), :108 (author_id ON DELETE SET NULL)",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "Deletes are real SQL DELETEs with cascading foreign keys; the hard-delete board decision (graph-only, invented reason) has a real code fact behind it that the reference list does not list."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "update-article-regenerates-slug-without-conflict-check",
+      "v1_where": "app/app/api/routes/articles/articles_resource.py:100",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "Renaming an article changes its URL slug and, unlike create (:65), is not checked for an existing slug."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "camelCase-json-aliases",
+      "v1_where": "app/app/models/domain/rwmodel.py:10 and :21",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "All request/response fields are camelCase via alias_generator (tagList, favoritesCount)."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "login-failure-is-400",
+      "v1_where": "app/app/api/routes/authentication.py:29-30",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "Wrong email/password returns 400 incorrect email or password."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "test-settings-override",
+      "v1_where": "app/app/core/settings/test.py:16-17; app/pyproject.toml:64-65",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "Test environment uses pool 5 and different env names; see connection-pool-size flag."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "coverage-gate-100",
+      "v1_where": "app/pyproject.toml:58",
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/reference_decisions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "why": "--cov-fail-under=100 makes every new code path need a test."
+      },
+      "human": {
+        "include_in_reference_list": null,
+        "scope_rule_applied": null,
+        "files": null,
+        "lines": null,
+        "keywords": null,
+        "notes": null
+      }
+    }
+  ]
+}

@@ -2,14 +2,6 @@ MIT License
 
 Copyright (c) 2026 OktoLabs AI
 
-This license covers the demo code written for this repository: run_demo.py, scripts/, tests/, agents/,
-docs/ and the files under demo-state/ that the scripts generate.
-
-It does not cover app/, which is a copy of nsidnev/fastapi-realworld-example-app under its own MIT
-license (app/LICENSE). It does not cover Okto Pulse or Okto Grafx, which are installed from PyPI and
-are licensed by Okto Labs under the Elastic License 2.0 (Okto Grafx adds a SaaS/Branding Addendum).
-Their licenses are linked from README.md and are not copied here.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

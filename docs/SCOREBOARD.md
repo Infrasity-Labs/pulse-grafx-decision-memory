@@ -204,7 +204,7 @@ Run `20261029T203549Z-4ffa2a8-dirty`. Model requested with `--model`: `claude-op
 How to read this:
 
 - **The Recorder cites real code every time.** All 197 decisions the Recorder wrote across the smoke run and the two Recorder studies (11 runs) cite a file, a line and a quote that exist. The number of decisions varies from 16 to 21.
-- **Recall against the reference list is about 8 or 9 of 22, not 12.** The answer-key run covered 12 of 22 because the prompt named the topics. With a goal-based prompt the Recorder chose its own: 7 to 10 covered in the main study, 8 in every run of the resource-tool study. Six reference decisions were found in all 11 runs (pagination, article ownership, password hashing, JWT algorithm, token expiry, slug rules). 104 of the 197 nodes match no entry of the list, so the list is not a full inventory either. It was made by hand by the author of the repo and **has not been reviewed by a person**.
+- **Recall against the reference list is about 8 or 9 of 22, not 12.** The answer-key run covered 12 of 22 because the prompt named the topics. With a goal-based prompt the Recorder chose its own: 7 to 10 covered in the main study, 8 in every run of the resource-tool study. Six reference decisions were found in all 11 runs (pagination, article ownership, password hashing, JWT algorithm, token expiry, slug rules). 104 of the 197 nodes match no entry of the list, so the list is not a full inventory either. It was written by an assistant model after the first recorded run and **has not been reviewed by a person**.
 - **No Recorder ever wrote the decision the Maintainer then reverses.** The reversal target (the shape of HTTP error bodies) was not on the board in any of the 11 runs. The Reviewer then wrote nothing, 11 times of 11, and said why: the decision to replace is not in the graph. That is the right output for the prompt, and it is why the study `reviewer-scripted-base` exists.
 - **The Reviewer without an answer key (scripted base).** In 5 of 5 runs the Reviewer recorded the new decision with a `supersedes` and a `contradicts` edge to the old one, and Pulse then reported one contradiction pair. It flagged the old node as superseded (`superseded_by` set) in 1 of 5 runs, the one where it overrode Pulse's `ADD` hint with `SUPERSEDE` at commit. In the other four the old node still reads as the current decision when asked from its own id, as in the answer-key run. Pulse's hint was `ADD` ("no semantic match") in the runs that asked for it.
 - **The Recaller is stable on this board.** Over five runs it chose the expected decision for the same questions in each: 41 of 43 by the strict count (the decision it names is the expected one), and it abstained on all 10 unanswerable questions in every run. The two misses are the same in every run. `d9` asks about the tag tables, and the expected decision (`tag-handling`) is one that no Recorder wrote. `m6` was answered from a decision the Recorder wrote itself, whose id the corpus mapping cannot name. The shared scorer then falls back on a keyword in the answer text, and that keyword (`next to`, written by the question-writing model) matches the wording of some runs and not of others. That is why the shared-scorer counts move by one (dev 9 or 10, model-authored 11 or 12) while the strict count does not. It is a limit of the scorer on a board the Recorder wrote itself, not a change in what the Recaller did.
@@ -228,7 +228,7 @@ Does the graph help? This table puts every way of answering the same questions n
 
 **Everything else the scorer measures**
 
-| Arm | Abstained on unanswerable | Fabricated an answer | Graph-only reason right | Near-duplicate right | Conflict tasks: decision found | Conflict tasks: stance adapt or stop, decision found or not | Conflict tasks: decision found and stance adapt or stop | Cost and time |
+| Arm | Abstained on unanswerable | Fabricated an answer | Graph-only reason right | Near-duplicate right | Conflict tasks: decision found | Conflict tasks: stance adapt or stop, decision found or not | Conflict tasks: decision found and stance adapt or stop | Agent-session cost and time |
 |---|---|---|---|---|---|---|---|---|
 | Lexical baseline: tf-idf, no model | 9 of 10 | 1 of 10 | 10 of 16 | 16 of 30 | 0 of 2 | no stance (not an agent) | no stance (not an agent) | no model |
 | Pulse and Grafx retrieval, scripted client, no LLM | 7 of 10 | 3 of 10 | 13 of 16 | 23 of 30 | 2 of 2 | no stance (not an agent) | no stance (not an agent) | no model |
@@ -243,12 +243,32 @@ Each LLM arm was run 5, 5, 5 times (memory, no-memory, code-notes). With several
 
 What the table shows:
 
-- **The graph and plain notes did not differ.** On the 43 questions and the two conflict proposals, an agent with the graph and an agent with a text file of the same 32 decisions scored the same on every split except one question (model-authored: 11 of 12 against 12 of 12), in all five runs of each. Both found the decision and stopped or adapted on both conflict proposals in every run. The notes arm was cheaper ($0.15 and 39 s per run, against $0.46 and 65 s for the graph).
+- **The graph and plain notes did not differ.** On the 43 questions and the two conflict proposals, an agent with the graph and an agent with a text file of the same 32 decisions scored the same on every split except one question (model-authored: 11 of 12 against 12 of 12), in all five runs of each. Both found the decision and stopped or adapted on both conflict proposals in every run. The agent session with the notes cost less ($0.15 and 39 s per session, against $0.46 and 65 s with the graph). That is agent-session cost under the tested tool configurations, not the cost of Grafx retrieval; see [the cost table](#agent-session-cost-under-the-tested-tool-configurations) for what it leaves out.
 - **Both beat the agent with only the code, where the knowledge is in the memory and nowhere else.** The code-only agent found 0 of 16 graph-only reasons (they are invented and written only in the graph and in the notes, so this is by construction), cited the decision on 0 of 2 conflict proposals, and still chose `adapt` on most of them from what it saw in the code. The gap is a measure of what the corpus holds outside the code, not of how well Pulse retrieves it.
 - **The code-only agent "fabricated" 4 answers, all on the model-authored unanswerable questions.** It answered "No, the app has no rate limiting" or "no WebSocket routes" from the absence of a feature in the code. The scorer counts any answer to an unanswerable question as fabricated, so these are counted as such. Whether a negative read from the code is a fabrication is a question about the scorer, not about the model. The question sets dev and held-out, whose unanswerable questions ask for things like a cloud region, got abstentions (6 of 6).
 - **Pulse's search alone is far from the agent.** The scripted retrieval got 9 of 10, 6 of 11 and 11 of 12 on dev, held-out and model-authored. The agent with the graph got 10, 11 and 11 by calling the read tools itself. The agent never fabricated an answer; the scripted search fabricated one on each split.
 - **The model-authored questions are easy for a plain match.** The lexical baseline got 11 of 12 on them, against 4 of 10 and 3 of 11 on dev and held-out. A different model wrote them from the decision texts, and they reuse the decisions' own words (`bcrypt`, `fancyhash`, `PostgreSQL`, `LR-77`). They are scored separately and are not the harder test.
 - **What this does not show.** One model. A corpus of 32 notes that fits in one file read, where a plain text file is a strong control. Reasons that are invented. Two conflict proposals. Five runs per arm on one board, so the identical scores say the model is stable on these questions, not that the arm is always right. No larger corpus, no real team, no time saved or mistakes avoided. The questions of dev and held-out were written by an assistant model and a person has not reviewed them.
+
+## Agent-session cost under the tested tool configurations
+
+Unit: one agent session, which answers 43 questions (dev, held-out, model-authored) and 2 change proposals. Each cell is the mean of 5 sessions with `claude-opus-5-5`, recomputed from `run_stats` in the committed arm files [`demo-state/arms/llm-*.json`](../demo-state/arms/). Cost is the model-reported `total_cost_usd`. Database query cost was not measured.
+
+| Per session (mean of 5) | Graph (read-only Recaller) | Code + notes | Code only |
+|---|---:|---:|---:|
+| Model-reported cost | $0.462 | $0.152 | $0.310 |
+| Wall time | 65.0 s | 39.2 s | 65.1 s |
+| Tool calls | 6.0 | 4.4 | 25.6 |
+| Output tokens | 4,865 | 4,080 | 6,208 |
+| Cache-read input tokens | 820,118 | 39,559 | 157,935 |
+
+Graph over notes is 3.05 times in cost for these sessions. What it does and does not include:
+
+- It excludes building and maintaining the knowledge sources. The 32-decision board and the notes file were prepared before the arms ran.
+- The arms had different access. Graph arm: the read-only Recaller, no source code. Notes arm: Read, Grep and Glob on `app/` plus the notes file. Code-only arm: the files only.
+- The cache-read counters are cumulative across turns. They do not show which part of the interface caused the cost.
+- The large MCP tool catalog may contribute. It was not isolated, for example with a restricted tool surface.
+- Nothing here says that Grafx retrieval costs more than a document search or that a memory built from SDD artifacts costs more over its lifetime. A benchmark that would measure those is only proposed: [`SDD-COST-BENCHMARK-PROPOSAL.md`](SDD-COST-BENCHMARK-PROPOSAL.md).
 
 ## Crash tests side by side
 

@@ -1,0 +1,2020 @@
+{
+  "about": "Review sheet for the evaluation questions (corpus/questions.json, corpus/questions-model-authored.json and the ten legacy questions in scripts/questions.py, key v1). Protocol: corpus/validation/README.md. All human fields are null until a named human reviewer fills them in.",
+  "reviewer": null,
+  "review_date": null,
+  "decisions": null,
+  "unresolved_disagreements": null,
+  "status": "not reviewed by a human",
+  "questions": [
+    {
+      "id": "d1",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "jwt-algorithm",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "token-expiry",
+          "jwt-subject-claim"
+        ],
+        "answer_keywords": [
+          "HS256"
+        ],
+        "text": "Which signing algorithm protects the session tokens the API hands out?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "jwt-algorithm title 'signed with the HS256 algorithm'; the question only shares 'algorithm','tokens' (signing~signed). But token-expiry's text also says 'HS256 JWTs' (answer keyword HS256 is in both texts), so a retriever returning token-expiry also answers it."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d2",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "article-ownership",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "comment-ownership"
+        ],
+        "answer_keywords": [
+          "author"
+        ],
+        "text": "Who may edit or remove a published piece of writing?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "none",
+        "reuses_decision_words": "none",
+        "overlap_table_agreement": "agree",
+        "evidence": "article-ownership: 'Only an article's author ... may modify'; comment-ownership is about comments. Pure paraphrase (piece of writing=article, edit or remove=modify); zero shared words, agree with 0.0. Semantically easy though."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d3",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "validation-error-shape",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "error-response-shape"
+        ],
+        "answer_keywords": [
+          "422"
+        ],
+        "text": "What status code does the API answer with when a request body fails validation?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "Title has 'Request validation failures return HTTP 422'; question reuses 'request','validation','API'. Only this text gives 422 (answer keyword unique)."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d4",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "article-slug-conflict",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "slug-rules"
+        ],
+        "answer_keywords": [
+          "400"
+        ],
+        "text": "What happens when two pieces of writing end up with the same URL name?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "none",
+        "reuses_decision_words": "none",
+        "overlap_table_agreement": "agree",
+        "evidence": "article-slug-conflict says slug exists -> 400, no suffix. slug-rules text also says 'no extra suffix' and unique slug but not the outcome. 'URL name'=slug paraphrase, 0 shared words, agree. Keyword '400' also in duplicate-registration."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d5",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "no-refresh-tokens",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "token-expiry",
+          "reset-link-lifetime"
+        ],
+        "answer_keywords": [
+          "SR-2025-14",
+          "stolen"
+        ],
+        "text": "Why can a user not renew a session without logging in again?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "no-refresh-tokens: 'no refresh endpoint. A client ... logs in again'; question shares 'again'. token-expiry does not discuss renewal. Reason (SR-2025-14) only in this decision."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d6",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "hard-delete-articles",
+        "tags": [
+          "graph_only"
+        ],
+        "distractors": [
+          "comment-ownership"
+        ],
+        "answer_keywords": [
+          "LR-77",
+          "24 hours"
+        ],
+        "text": "Why are removed pieces of writing erased instead of being flagged as deleted?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low-moderate",
+        "reuses_decision_words": "low-moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "hard-delete-articles: 'removed from the database, with no soft-delete flag'; question reuses 'removed','deleted'. Unique."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d7",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "reset-link-lifetime",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "token-expiry",
+          "no-refresh-tokens"
+        ],
+        "answer_keywords": [
+          "30 minutes"
+        ],
+        "text": "How long does a link for choosing a new password keep working?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "reset-link-lifetime: 'Password reset links stay valid for 30 minutes' vs question 'link ... new password ... keep working'; shares link, long(-lived), password. Unique; 30 minutes only here."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d8",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "reject-fancyhash",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "password-hashing",
+          "bcrypt-work-factor"
+        ],
+        "answer_keywords": [
+          "licence",
+          "network-use clause"
+        ],
+        "text": "Which hashing package was ruled out, and on what grounds?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "reject-fancyhash: 'fancyhash package is not used for password hashing because of its licence'; question shares 'hashing','package'. Unique (ruled out ~ rejected)."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d9",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "tag-handling",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "tag-create-idempotent"
+        ],
+        "answer_keywords": [
+          "articles_to_tags",
+          "tags table"
+        ],
+        "text": "Which tables hold a tag name and its link to an article?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low-moderate",
+        "reuses_decision_words": "low-moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "tag-handling title names 'tags table' and 'articles_to_tags'. tag-create-idempotent does not name tables. Unique."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d10",
+      "split": "dev",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "favorites-no-notification",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "favorites"
+        ],
+        "answer_keywords": [
+          "PD-8",
+          "2027"
+        ],
+        "text": "Does the author hear about it when a reader likes their article, and why not?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "favorites-no-notification: 'sends no notification to its author' with PD-8 reason; question 'author hear about it ... likes' is paraphrase; shares article, author. Unique (favorites decision does not mention notifications)."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d11",
+      "split": "dev",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Which cloud region hosts the production database?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "absent_terms region, cloud: not in any of the 32 decision texts nor any app/*.py|*.sql (checked case-insensitively). Database url is a setting (settings/app.py:21), no hosting info."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d12",
+      "split": "dev",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "How many requests per minute may one client send?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "per minute / rate limit / throttl: absent from decisions and app code."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "d13",
+      "split": "dev",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Who is on call when the API returns server errors at night?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "on call / pager: absent from decisions and app code."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h1",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "jwt-subject-claim",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "jwt-algorithm",
+          "token-expiry"
+        ],
+        "answer_keywords": [
+          "access"
+        ],
+        "text": "What constant string do signed credentials carry to say what they are for?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "jwt-subject-claim: 'fixed subject claim access'; question shares 'constant'. token-expiry text also says 'subject \"access\"' (answer keyword 'access' is in 4 decision texts), so ambiguous by keyword."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h2",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "password-salt",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "password-hashing",
+          "bcrypt-work-factor"
+        ],
+        "answer_keywords": [
+          "gensalt"
+        ],
+        "text": "Where does the random value mixed into each account's secret come from?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "password-salt: 'random salt created with bcrypt.gensalt'; question shares 'random','each'. password-hashing text also describes per-user salt from bcrypt.gensalt (answer keyword gensalt in both), so two decisions answer it."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h3",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "duplicate-registration",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "error-response-shape"
+        ],
+        "answer_keywords": [
+          "400"
+        ],
+        "text": "What does the server reply when someone signs up under a name that is already in use?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "duplicate-registration: 'username or email already taken ... HTTP 400'; question shares 'already'. 'name' = username. Answer '400' appears also in article-slug-conflict but the question is about sign-up."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h4",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "cors-allowed-origins",
+        "tags": [],
+        "distractors": [
+          "settings-loading"
+        ],
+        "answer_keywords": [
+          "every origin",
+          "wildcard"
+        ],
+        "text": "Which browser origins may call the API from another website?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "cors-allowed-origins: 'allowed from the origins in allowed_hosts, which default to every origin'; question shares 'origins'. Unique. Note allowed_hosts is overridden by env in real deployments."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h5",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "connection-pool-size",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "settings-loading",
+          "database-access-layer"
+        ],
+        "answer_keywords": [
+          "10"
+        ],
+        "text": "How many simultaneous database connections can the service open?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "connection-pool-size: 'pool is fixed at 10 connections'; question shares 'database','connections'. Unique among decisions, but code says test settings use 5 (settings/test.py:16-17), so '10' is the default only. Answer keyword '10' is a weak substring (also in 3 other decision texts)."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h6",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "tag-create-idempotent",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "tag-handling"
+        ],
+        "answer_keywords": [
+          "ON CONFLICT",
+          "ignored"
+        ],
+        "text": "What does saving a post do with a label that is already in the database?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "tag-create-idempotent: 'already exists is ignored ... saving an article with a known tag'; shares 'already','saving'. tag-handling text ('first creates any tags that do not exist') partly answers too."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h7",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "bcrypt-work-factor",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "password-hashing",
+          "password-salt"
+        ],
+        "answer_keywords": [
+          "LT-9",
+          "300 ms"
+        ],
+        "text": "Why was the cost of password hashing not raised?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "bcrypt-work-factor: 'keeps the default passlib work factor' with LT-9 reason; question 'cost of password hashing not raised' is paraphrase; shares 'password'. Reason only here."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h8",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "page-size-default-reason",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "pagination-parameters"
+        ],
+        "answer_keywords": [
+          "DR-31",
+          "mobile"
+        ],
+        "text": "Why does a listing show twenty items by default?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "page-size-default-reason: 'defaults to 20 items per page' + DR-31. pagination-parameters also states default 20 but gives no reason; question asks why, so one right decision."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h9",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "postgres-over-mongodb",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "database-access-layer",
+          "aiosql-over-orm"
+        ],
+        "answer_keywords": [
+          "ADR-3",
+          "supports only PostgreSQL"
+        ],
+        "text": "What made the team pass on a document-oriented database?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "postgres-over-mongodb: 'MongoDB was not chosen'; question says 'document-oriented database' (needs world knowledge), shares 'team'. Reason ADR-3 only here."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h10",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "tokens-header-only",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "auth-header-scheme"
+        ],
+        "answer_keywords": [
+          "ADR-5",
+          "CSRF"
+        ],
+        "text": "What rules out browser-stored session identifiers for authentication?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "none",
+        "reuses_decision_words": "none",
+        "overlap_table_agreement": "agree",
+        "evidence": "tokens-header-only: 'never in cookies' + CSRF reason; question 'browser-stored session identifiers' = cookies, 0 shared words, agree. no-refresh-tokens mentions 'stolen browser profile' but is not about transport."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h11",
+      "split": "held_out",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "aiosql-over-orm",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "database-access-layer",
+          "postgres-over-mongodb"
+        ],
+        "answer_keywords": [
+          "ADR-4",
+          "reviewed"
+        ],
+        "text": "What is the argument against letting a library produce our SQL automatically?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "aiosql-over-orm: 'hand-written SQL files, not generated by an ORM' + ADR-4; question 'library produce our SQL automatically' paraphrase; shares 'sql'. Note: code itself uses pypika for the article filter query (repositories/articles.py:115), so title 'Queries are hand-written SQL files' is not fully true of app/."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h12",
+      "split": "held_out",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Which service sends the welcome message to new users?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "welcome / smtp / mail provider absent from decisions and app code. No email sending exists."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h13",
+      "split": "held_out",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "What is the largest profile picture a user may upload?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "megabyte / upload absent; User model has only `image: Optional[str]` (users.py:12), a URL, no upload route."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "h14",
+      "split": "held_out",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Which payment provider handles subscriptions?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "payment / subscription / billing absent from decisions and code. (profile follow is called 'subscribe' only in strings.py: UNABLE_TO_UNSUBSCRIBE_FROM_YOURSELF; not payment.)"
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m1",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "no-refresh-tokens",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "token-expiry",
+          "jwt-algorithm",
+          "jwt-subject-claim",
+          "reset-link-lifetime",
+          "tokens-header-only"
+        ],
+        "answer_keywords": [
+          "SR-2025-14",
+          "stolen"
+        ],
+        "text": "Why did the team decide against issuing a second token for renewing sessions?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "no-refresh-tokens: 'no refresh tokens' + stolen-token reason; question shares sessions/team/token. Unique; 0.38/0.5 matches my count."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m2",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "hard-delete-articles",
+        "tags": [
+          "graph_only"
+        ],
+        "distractors": [],
+        "answer_keywords": [
+          "LR-77",
+          "24 hours"
+        ],
+        "text": "Which compliance requirement is behind removing deleted posts from storage completely?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low-moderate",
+        "reuses_decision_words": "low-moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "hard-delete-articles rationale 'Legal review LR-77 ... gone from live storage'; question shares deleted, storage ('compliance'=legal)."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m3",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "reject-fancyhash",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "password-hashing",
+          "password-salt",
+          "bcrypt-work-factor"
+        ],
+        "answer_keywords": [
+          "licence",
+          "network-use clause"
+        ],
+        "text": "What licensing objection rules out fancyhash for password hashing?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question copies 'fancyhash', 'password hashing' from the decision title; 'licensing objection' ~ 'licence'. Agree 0.43/0.57; fancyhash name makes it near-lexical."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m4",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "bcrypt-work-factor",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "password-hashing",
+          "password-salt",
+          "reject-fancyhash"
+        ],
+        "answer_keywords": [
+          "LT-9",
+          "300 ms"
+        ],
+        "text": "Why was the bcrypt cost left at its default rather than raised?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question reuses 'bcrypt' and 'default' from the title 'bcrypt keeps the default passlib work factor'. Unique."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m5",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "tokens-header-only",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "token-expiry",
+          "jwt-algorithm",
+          "jwt-subject-claim",
+          "no-refresh-tokens",
+          "reset-link-lifetime"
+        ],
+        "answer_keywords": [
+          "ADR-5",
+          "CSRF"
+        ],
+        "text": "Why does the API refuse to accept tokens through cookies?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate-high",
+        "reuses_decision_words": "moderate-high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question reuses 'API','tokens','cookies' of 'Tokens travel only in Authorization header and never in cookies'. Unique."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m6",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "password-salt",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "password-hashing",
+          "reject-fancyhash",
+          "bcrypt-work-factor"
+        ],
+        "answer_keywords": [
+          "next to"
+        ],
+        "text": "Where does the stored user row keep each user's random salt?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question 'stored user row keep each user's random salt' is almost the decision's own sentence ('Each user gets a random salt', 'The user row stores the salt next to the hashed password'); I recounted 5 of 8 content words shared = 0.62, agree. password-hashing text mentions per-user salt but not the user row storage."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m7",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "validation-error-shape",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "error-response-shape"
+        ],
+        "answer_keywords": [
+          "422"
+        ],
+        "text": "What shape does the response take when a request fails validation?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "validation-error-shape: 'Request validation failures return HTTP 422 with an errors list'; question reuses request, validation. error-response-shape (errors list for HTTP errors) is a near-duplicate, but the question is about validation."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m8",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "token-expiry",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "jwt-algorithm",
+          "jwt-subject-claim",
+          "no-refresh-tokens",
+          "reset-link-lifetime",
+          "tokens-header-only"
+        ],
+        "answer_keywords": [
+          "week"
+        ],
+        "text": "How long is an access token valid after it is issued?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "no_two_decisions_answer",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "token-expiry says 'expire one week after issue', but no-refresh-tokens also says 'single access token that is valid for one week' (answer keyword 'week' in both; QUESTIONS.md counts 2 decisions sharing more words). Question words 'access token valid' reuse no-refresh-tokens wording directly. The 'one right decision' is not unique."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m9",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "tag-create-idempotent",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "tag-handling"
+        ],
+        "answer_keywords": [
+          "ignored"
+        ],
+        "text": "What happens when an article is saved with a tag that already exists in the tags table?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question reuses 'already exists', 'tags table', 'article', 'tag' from tag-create-idempotent; tag-handling (title says 'tags table', content creates only missing tags) also answers partly."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m10",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "database-access-layer",
+        "tags": [
+          "near_duplicate"
+        ],
+        "distractors": [
+          "postgres-over-mongodb",
+          "aiosql-over-orm"
+        ],
+        "answer_keywords": [
+          "asyncpg"
+        ],
+        "text": "Which library loads the SQL query files, and which driver runs them?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question 'library loads the SQL query files ... driver' near-copies 'raw SQL files loaded by aiosql on the asyncpg driver' (0.71, agree). answer_keywords has only asyncpg (the driver); library half (aiosql) not checked. 'asyncpg' is also in test-layout text."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m11",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "postgres-over-mongodb",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "database-access-layer",
+          "aiosql-over-orm"
+        ],
+        "answer_keywords": [
+          "ADR-3",
+          "supports only PostgreSQL"
+        ],
+        "text": "Why was PostgreSQL chosen over a document store for articles, tags and favorites?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question copies 'PostgreSQL', 'articles, tags and favorites' from the decision content (0.75 agree). Near-lexical."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m12",
+      "split": "model_authored",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "aiosql-over-orm",
+        "tags": [
+          "graph_only",
+          "near_duplicate"
+        ],
+        "distractors": [
+          "database-access-layer",
+          "postgres-over-mongodb"
+        ],
+        "answer_keywords": [
+          "ADR-4",
+          "reviewed"
+        ],
+        "text": "What review process is the reason queries are written by hand rather than generated by an ORM?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "Question reuses 'queries ... written by hand ... generated ... ORM' from title 'hand-written SQL files, not generated by an ORM'; reason is DBA review. Agree 0.6/0.7. 'DBA' keyword also in postgres-over-mongodb text."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m13",
+      "split": "model_authored",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Does the API limit how many login attempts a client can make per minute?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "rate limiting / throttling absent from decisions and code (checked). Login code only compares credentials (routes/authentication.py:29)."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m14",
+      "split": "model_authored",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Can clients subscribe to real-time updates over a WebSocket connection?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "WebSocket / real-time absent."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m15",
+      "split": "model_authored",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Can users upload a profile photo that is stored with their account?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "avatar upload / profile photo absent; only image URL string field."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "m16",
+      "split": "model_authored",
+      "v1": {
+        "kind": "unanswerable",
+        "expected_slug": null,
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [],
+        "text": "Is a GraphQL endpoint offered alongside the REST routes?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "none_correct",
+        "overlap_judgement": "n/a",
+        "reuses_decision_words": "n/a",
+        "overlap_table_agreement": "agree",
+        "evidence": "GraphQL absent from decisions and code."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l1",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "auth-header-scheme",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "prefix"
+        ],
+        "text": "How do clients send their login token on each request, and what prefix does the server expect?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "Only auth-header-scheme gives the prefix rule (split on space, jwt_token_prefix, default 'Token'); tokens-header-only covers transport only. Shares 'prefix','token'."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l2",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "token-expiry",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "week"
+        ],
+        "text": "How long does a login token stay valid before it expires?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "no_two_decisions_answer",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "token-expiry ('expire one week') and no-refresh-tokens ('valid for one week') both answer. 0 exact shared words (login vs access), agree with table; paraphrase."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l3",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "password-hashing",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "bcrypt"
+        ],
+        "text": "What does the app use to store user passwords safely?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "no_two_decisions_answer",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "password-hashing (bcrypt via passlib) answers; reject-fancyhash content 'Password hashing stays on passlib with bcrypt' also does; shares passwords/user/app."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l4",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "error-response-shape",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "errors"
+        ],
+        "text": "What does the body of an error response look like when a request fails?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "error-response-shape '{\"errors\": [detail]}'. validation-error-shape also gives a failure body (errors list) and 'a request fails' could mean validation. Table 0.0 exact agree."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l5",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "pagination-parameters",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "limit",
+          "offset"
+        ],
+        "text": "Which query parameters control paging through a list of articles?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "pagination-parameters names limit and offset; page-size-default-reason only the default 20. Shares articles, parameters, query."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l6",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "slug-rules",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "slugify"
+        ],
+        "text": "How is the URL-friendly name of an article produced?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "slug-rules: slugify(title). article-slug-conflict content also says slug built from title (but names no library). Shares 'article'."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l7",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "comment-ownership",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "author"
+        ],
+        "text": "Who is allowed to delete a comment?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "high",
+        "reuses_decision_words": "high",
+        "overlap_table_agreement": "agree",
+        "evidence": "comment-ownership: 'Only the comment's author ... may delete a comment'; question reuses comment, delete (0.67). hard-delete-articles mentions deleting comments but not who may."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l8",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "favorites",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "favorites"
+        ],
+        "text": "What happens when a user marks an article as a favourite?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes_with_caveat",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "favorites: insert row ignoring duplicates. favorites-no-notification ('Adding a favorite writes a database row and nothing else') also partly answers. Shares article, user."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l9",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "settings-loading",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "BaseSettings",
+          "lru_cache"
+        ],
+        "text": "Where does the app keep its settings and how are they read?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "moderate",
+        "reuses_decision_words": "moderate",
+        "overlap_table_agreement": "agree",
+        "evidence": "settings-loading: BaseSettings chosen by APP_ENV, lru_cache. cors / pool decisions mention single settings, not loading. Shares app, settings."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "l10",
+      "split": "legacy",
+      "v1": {
+        "kind": "answerable",
+        "expected_slug": "test-layout",
+        "tags": [],
+        "distractors": [],
+        "answer_keywords": [
+          "tests"
+        ],
+        "text": "How are the automated tests laid out?"
+      },
+      "model_note": {
+        "label": "MODEL DRAFT, not a human judgement. Copied for convenience from corpus/questions_model_review.json. Decide for yourself; do not copy it into a v2 key unchecked.",
+        "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+        "exactly_one_right_decision": "yes",
+        "overlap_judgement": "low",
+        "reuses_decision_words": "low",
+        "overlap_table_agreement": "agree",
+        "evidence": "test-layout: tests folder split into test_api, test_db... Unique. Shares 'tests'."
+      },
+      "human": {
+        "answerable_from_permitted_source": null,
+        "valid_decision_ids": null,
+        "equivalent_supported_facts": null,
+        "sufficient_evidence": null,
+        "abstention_required": null,
+        "abstention_reason": null,
+        "artificially_easy": null,
+        "artificially_easy_reason": null,
+        "notes": null
+      }
+    }
+  ],
+  "conflict_tasks": [
+    {
+      "id": "t1",
+      "split": "held_out",
+      "v1": {
+        "expected_slug": "no-refresh-tokens",
+        "reason_keywords": [
+          "SR-2025-14",
+          "stolen"
+        ],
+        "proposal": "A teammate proposes to cut the access token lifetime to 15 minutes and add a refresh endpoint that issues a new access token from a long-lived refresh token."
+      },
+      "human": {
+        "valid_decision_ids": null,
+        "notes": null
+      }
+    },
+    {
+      "id": "t2",
+      "split": "held_out",
+      "v1": {
+        "expected_slug": "hard-delete-articles",
+        "reason_keywords": [
+          "LR-77",
+          "24 hours"
+        ],
+        "proposal": "A teammate proposes to add a deleted_at column to articles and comments and to mark rows as deleted instead of removing them."
+      },
+      "human": {
+        "valid_decision_ids": null,
+        "notes": null
+      }
+    }
+  ]
+}

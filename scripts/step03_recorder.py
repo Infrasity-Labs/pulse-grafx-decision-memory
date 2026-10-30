@@ -3,7 +3,7 @@
 Two ways to run it:
   default    the goal-based Recorder prompt (docs/prompts/step3-recorder.md) in a headless Claude Code session. The Recorder
              chooses its own topics. The citation checker runs in open mode: every citation must hold, and recall is
-             reported against the hand-made reference list. The committed demo-state/step3 was recorded with the earlier
+             reported against the assistant-written reference list. The committed demo-state/step3 was recorded with the earlier
              answer-key prompt in docs/prompts/recorded-run-1/, not with this one.
   --scripted a scripted client replays the 12 recorded decisions and 3 edges. No LLM. The checker runs in exact mode.
 

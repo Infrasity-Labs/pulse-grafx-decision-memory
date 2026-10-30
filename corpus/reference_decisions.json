@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "about": "Hand-made reference list of the design decisions the code of app/ shows. It is the scorer's list for the goal-based Recorder and is never put in a prompt. A recorded node matches an entry when its cited file is one of files and either its cited line is one of lines, or (only if its line matches no entry) a keyword appears in its title. An entry is matched by at most one node. Written by an assistant model after the first recorded run, so the first run is scored against it only as a measurement of what that run covered, not as a blind test. It was fixed before any run with the goal-based prompt.",
+  "about": "Assistant-written reference list of the design decisions the code of app/ shows. It is the scorer's list for the goal-based Recorder and is never put in a prompt. A recorded node matches an entry when its cited file is one of files and either its cited line is one of lines, or (only if its line matches no entry) a keyword appears in its title. An entry is matched by at most one node. Written by an assistant model after the first recorded run, so the first run is scored against it only as a measurement of what that run covered, not as a blind test. It was fixed before any run with the goal-based prompt.",
   "entries": [
     {"id": "auth-header-scheme", "files": ["app/app/api/dependencies/authentication.py"], "lines": [51], "keywords": ["prefix", "authorization header"]},
     {"id": "token-expiry", "files": ["app/app/services/jwt.py"], "lines": [12, 31], "keywords": ["expire", "one week"]},

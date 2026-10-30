@@ -111,21 +111,23 @@ def parse_source(content: str | None) -> tuple[str, int] | None:
     return None
 
 
-def match_reference(title: str, content: str, taken: set[str] | None = None) -> str | None:
+def match_reference(title: str, content: str, taken: set[str] | None = None, entries: list[dict] | None = None) -> str | None:
     """The reference entry a recorded node covers, or None. Line match first, keyword in the title only as a fallback.
 
-    taken holds the entries other nodes already cover, so one entry is matched by at most one node."""
+    taken holds the entries other nodes already cover, so one entry is matched by at most one node.
+    entries is the reference list to match against; the default is corpus/reference_decisions.json (key v1)."""
     taken = taken or set()
+    all_entries = entries if entries is not None else reference_entries()
     src = parse_source(content)
     if src is None:
         return None
     path, line = src
-    entries = [e for e in reference_entries() if path in e["files"] and e["id"] not in taken]
+    entries = [e for e in all_entries if path in e["files"] and e["id"] not in taken]
     for e in entries:
         if line in e["lines"]:
             return e["id"]
     low = (title or "").lower()
-    if any(path in e["files"] and line in e["lines"] for e in reference_entries()):
+    if any(path in e["files"] and line in e["lines"] for e in all_entries):
         return None  # the line belongs to an entry that another node already covers
     for e in entries:
         if any(k in low for k in e["keywords"]):

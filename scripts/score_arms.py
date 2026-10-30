@@ -54,11 +54,16 @@ def _hit(text: str, words: list[str]) -> bool:
     return any(w.lower() in low for w in words)
 
 
+def accepted_slugs(item: dict) -> set[str]:
+    """The decision ids that count as right for a question or task: its expected slug and, if a reviewed key lists them, the accepted alternatives."""
+    return {item["expected_slug"], *item.get("accepted_slugs", [])} - {None}
+
+
 def _answer_correct(q: dict, a: dict) -> bool:
     if a.get("abstain"):
         return False
     if a.get("decision"):
-        return a["decision"] == q["expected_slug"]
+        return a["decision"] in accepted_slugs(q)
     return _hit(a.get("answer", ""), q.get("answer_keywords", []))
 
 
@@ -99,7 +104,7 @@ def score_tasks(tasks: list[dict], answers: list[dict]) -> dict:
         a = by_id.get(t["id"])
         if a is None:
             continue
-        cited = a.get("cited") == t["expected_slug"] or _hit(a.get("answer", ""), t["reason_keywords"])
+        cited = a.get("cited") in accepted_slugs(t) or _hit(a.get("answer", ""), t["reason_keywords"])
         res["cited"] += cited
         if a.get("stance"):
             res["stance_recorded"] += 1
