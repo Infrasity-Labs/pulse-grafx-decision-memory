@@ -1,0 +1,88 @@
+{
+  "what": "One scripted integration run (scripts/run_integration.py): fixed tool calls, no LLM, a fresh Pulse data home. Not an agent run.",
+  "recorded_at": "2026-10-29T19:42:11+00:00",
+  "platform": "Darwin arm64",
+  "python": "3.12.13",
+  "okto_pulse": "0.4.2",
+  "okto_grafx": "0.0.8",
+  "sentence_transformers": "5.7.0",
+  "torch": "2.15.0",
+  "repo_base_commit": "4ffa2a8a5378f7f1838e7c954df187cb0075d5eb",
+  "working_tree_had_uncommitted_changes": true,
+  "assertions": {
+    "checks": 43,
+    "failed": 0,
+    "skipped": [
+      "step 9 (backup and restore) did not run"
+    ]
+  },
+  "step_8_summary": {
+    "decision_board": {
+      "nodes_match": true,
+      "edges_match": true,
+      "reader_nodes": {
+        "BoardMeta": 1,
+        "Decision": 43,
+        "Entity": 4,
+        "Alternative": 20
+      },
+      "data_files_unchanged_by_read": true
+    },
+    "crash_test_board_a": {
+      "nodes_match": true,
+      "edges_match": true,
+      "reader_nodes": {
+        "BoardMeta": 1,
+        "Decision": 7,
+        "Entity": 2
+      },
+      "data_files_unchanged_by_read": true
+    },
+    "crash_test_board": {
+      "nodes_match": true,
+      "edges_match": true,
+      "reader_nodes": {
+        "BoardMeta": 1,
+        "Decision": 26,
+        "Entity": 2
+      },
+      "data_files_unchanged_by_read": true
+    }
+  },
+  "files": [
+    "step1/versions.json",
+    "step1/embedding.json",
+    "step3/citations.json",
+    "step3/decisions-from-graph.json",
+    "step3/decision-edges.json",
+    "step3/agent/result.json",
+    "step3/agent/transcript.jsonl",
+    "step3b/spec-flow.json",
+    "step3b/node-map.json",
+    "step4/recall-results.json",
+    "step4/agent/transcript.jsonl",
+    "step4/history-probe.json",
+    "step5/maintainer-reversal.json",
+    "step5/before.json",
+    "step5/after.json",
+    "step5/agent/transcript.jsonl",
+    "step5/maintainer-reversal-no-rationale/before.json",
+    "step5/maintainer-reversal-no-rationale/after.json",
+    "step5/maintainer-reversal-no-rationale/agent/result.json",
+    "step6/global-discovery.json",
+    "step7/killA.json",
+    "step7/killB.json",
+    "step7/decision-board-check.json",
+    "step7/burst-ack-w1.log",
+    "step7/burst-ack-w2.log",
+    "step7/burst-ack-w3.log",
+    "roles/role-denials.json",
+    "arms/pulse-retrieval.json",
+    "arms/lexical-tfidf.json",
+    "assert-report.json"
+  ],
+  "files_missing_in_the_run": [],
+  "not_run": [
+    "step 9 (backup and restore): needs Linux or Docker; Docker was not running on the recording machine"
+  ]
+}

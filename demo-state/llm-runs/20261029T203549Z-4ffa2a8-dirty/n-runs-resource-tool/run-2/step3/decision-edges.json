@@ -1,0 +1,22 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "Authentication failures return HTTP 403, not 401.",
+    "The Authorization header must use the prefix \"Token\" instead of \"Bearer\"."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "A separately stored per-user salt is prepended to the password before bcrypt hashing.",
+    "Passwords are hashed with bcrypt through a passlib CryptContext."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Creating an article whose title slugifies to an existing slug is rejected with HTTP 400.",
+    "An article slug is derived from its title with slugify and is the article's public identifier."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Updating an article's title regenerates its slug, so its URL changes.",
+    "An article slug is derived from its title with slugify and is the article's public identifier."
+  ]
+]

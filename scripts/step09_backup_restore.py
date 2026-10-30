@@ -4,11 +4,12 @@ Procedure (documented in Grafx docs/BACKUP_RESTORE.md):
   1. copy the store folder to a work area       2. verify the original and the copy, read-only
   3. create_backup of the copy (writable open of the copy only)
   4. restore_backup to a new folder, original participants stopped (confirm_original_offline=True)
-  5. verify the restored folder                  6. compare counts. Pulse is never pointed at the restored folder.
+  5. verify the restored folder                  6. compare counts and the content of every Decision node (id, title, text, source
+     reference, quote) between the original, the copy and the restored folder. Pulse is never pointed at the restored folder.
 
 Grafx 0.0.8 publishes a backup directory with an atomic no-replace rename. It supports Windows and Linux and
 refuses other hosts. If the host run is refused with unsupported_operation, the same procedure is repeated in a
-Linux container (python:3.12-slim, okto-grafx==0.0.8) with the original store mounted read-only.
+Linux container (IMAGE, okto-grafx==0.0.8) with the original store mounted read-only.
 
 Usage:
   python scripts/step09_backup_restore.py                       host run, then the container run if the host refuses
@@ -34,6 +35,10 @@ from okto_grafx import connect  # noqa: E402
 from okto_grafx.backup import create_backup, restore_backup  # noqa: E402
 
 STATE = Path(os.environ.get("DEMO_STATE", ROOT / "demo-state"))
+# python:3.12-slim pinned by the digest of its multi-platform index, read on 2026-10-30 with `docker buildx imagetools inspect python:3.12-slim`.
+# That index lists python 3.12.16 on Debian trixie for linux/amd64 and linux/arm64. The recorded run of 2026-10-29 reported python 3.12.16 but
+# did not record an image digest, so the recorded run cannot be tied to this digest. A re-run can.
+IMAGE = "python:3.12-slim@sha256:aa943ce411423c7582288f18707ff66eddcbaeb510502d747a72aeb34f30d159"
 CLI = str(ROOT / ".venv" / "bin" / "oktografx") if (ROOT / ".venv" / "bin" / "oktografx").exists() else (shutil.which("oktografx") or "oktografx")
 HERE = Path(__file__).resolve().parent
 
@@ -48,8 +53,13 @@ def verify_cli(path: Path) -> dict:
 
 
 def counts(path: Path, out: Path) -> dict:
-    subprocess.run([sys.executable, str(HERE / "read_store_counts.py"), str(path), "--out", str(out)], capture_output=True, text=True)
+    subprocess.run([sys.executable, str(HERE / "read_store_counts.py"), str(path), "--out", str(out), "--decisions"], capture_output=True, text=True)
     return json.loads(out.read_text())
+
+
+def decision_view(c: dict) -> list[dict]:
+    """What a reader of the store sees of each decision, without the graph id, which a restore keeps but a comparison does not need."""
+    return [{k: d[k] for k in ("title", "content", "source_artifact_ref", "quote")} for d in c.get("decisions", [])]
 
 
 def exc_info(exc: BaseException) -> dict:
@@ -102,6 +112,13 @@ def procedure(original: Path, lab: Path, out: Path, label: str, ro_source: bool 
     res["counts"] = {"original": strip(c_orig), "copy": strip(c_copy), "restored": strip(c_rest)}
     res["counts_match"] = {"original_vs_copy": strip(c_orig) == strip(c_copy),
                            "original_vs_restored": bool(c_rest.get("opened")) and strip(c_orig) == strip(c_rest)}
+    d_orig, d_copy, d_rest = decision_view(c_orig), decision_view(c_copy), decision_view(c_rest)
+    res["decisions"] = {
+        "original_count": len(d_orig), "restored_count": len(d_rest),
+        "titles_restored": [d["title"] for d in d_rest], "source_lines_restored": [d["content"].rsplit("Source: ", 1)[-1].strip() for d in d_rest if "Source: " in (d["content"] or "")],
+        "original_vs_copy": bool(d_orig) and d_orig == d_copy, "original_vs_restored": bool(d_orig) and d_orig == d_rest,
+        "ids_original_vs_restored": [d["id"] for d in c_orig.get("decisions", [])] == [d["id"] for d in c_rest.get("decisions", [])],
+    }
     res["original_untouched"] = data_file_hashes(original) == orig_hashes
     res["uuid_original_equals_restored"] = bool(c_rest.get("database_uuid")) and c_orig.get("database_uuid") == c_rest.get("database_uuid")
     res["note"] = "Pulse was not started against the restored folder. The restored store keeps the original database identity."
@@ -116,9 +133,9 @@ def docker_ready() -> bool:
 
 
 def run_in_linux_container(original: Path, out: Path) -> dict:
-    cmd = ["docker", "run", "--rm", "-v", f"{original}:/in:ro", "-v", f"{HERE}:/scripts:ro", "-v", f"{out}:/out",
-           "python:3.12-slim", "bash", "-c",
-           "pip install -q --disable-pip-version-check 'okto-grafx[accel]==0.0.8' 2>&1 | tail -2 && "
+    cmd = ["docker", "run", "--rm", "-v", f"{original}:/in:ro", "-v", f"{HERE}:/scripts:ro", "-v", f"{ROOT / 'constraints.txt'}:/constraints.txt:ro", "-v", f"{out}:/out",
+           IMAGE, "bash", "-c",
+           "pip install -q --disable-pip-version-check -c /constraints.txt 'okto-grafx[accel]==0.0.8' 2>&1 | tail -2 && "
            "python /scripts/step09_backup_restore.py --store /in --lab /work/lab --out /out --label linux-container --ro-source --no-timing --no-port-check"]
     p = subprocess.run(cmd, capture_output=True, text=True)
     print(scrub(p.stdout[-1500:]))
@@ -130,7 +147,7 @@ def run_in_linux_container(original: Path, out: Path) -> dict:
 
 def summary(res: dict) -> str:
     return (f"[{res.get('label')}] backup_ok={res.get('backup', {}).get('ok')} restore_ok={res.get('restore', {}).get('ok')} "
-            f"counts_match={res.get('counts_match')} original_untouched={res.get('original_untouched')} "
+            f"counts_match={res.get('counts_match')} decisions_match={ {k: v for k, v in res.get('decisions', {}).items() if k.startswith('original_vs')} } original_untouched={res.get('original_untouched')} "
             f"verify_exit original={res.get('verify_original', {}).get('exit_code')} copy={res.get('verify_copy_before_backup', {}).get('exit_code')} "
             f"restored={res.get('verify_restored', {}).get('exit_code')}")
 

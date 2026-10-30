@@ -2,7 +2,7 @@
 
 Details behind the README. The numbers are in [SCOREBOARD.md](SCOREBOARD.md) and the surprises are in [FINDINGS.md](FINDINGS.md).
 
-The codebase is a plain copy of [`nsidnev/fastapi-realworld-example-app`](https://github.com/nsidnev/fastapi-realworld-example-app) in [`app/`](../app/). It is never run, so Postgres is not needed. Agents only read it.
+The codebase is a trimmed copy of [`nsidnev/fastapi-realworld-example-app`](https://github.com/nsidnev/fastapi-realworld-example-app) in [`app/`](../app/). It is never run, so Postgres is not needed. Agents only read it.
 
 ## The cast
 
@@ -179,5 +179,5 @@ requirements.txt      pinned okto-pulse and okto-grafx
 | 4 | Network to PyPI, GitHub, Hugging Face | Pulse downloads the embedding model on first start and falls back to a stub if that fails. Step 1 stops if it sees a stub. |
 | 5 | About 1.5 GiB of disk | The run measured 1.42 GiB by free-space change and 1.3 GB for the virtual environment. |
 | 6 | Ports 8100 and 8101 free | |
-| 7 | Docker, on macOS only | Grafx 0.0.8 refuses backups on macOS, so step 9 repeats the procedure in a `python:3.12-slim` container. |
-| 8 | Model usage | A full run starts three agent sessions: Recorder, Recaller and Reviewer. |
+| 7 | Docker, on macOS only | Grafx 0.0.8 refuses backups on macOS, so step 9 repeats the procedure in a `python:3.12-slim` container. Also needed for `scripts/run_linux_crash.py`. |
+| 8 | Model usage | A full run starts three agent sessions: Recorder, Recaller and Reviewer, about $3 and 4 minutes with `claude-opus-5-5` (mean of five recorded runs). `scripts/run_n.py` and `scripts/run_arms.py` start more. |

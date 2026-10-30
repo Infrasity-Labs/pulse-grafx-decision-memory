@@ -33,8 +33,9 @@ def main() -> int:
         "provider": type(p).__name__, "metadata_after_load": p.embedding_metadata(), "vector_length": len(a),
         "similarity_related_pair": round(dot(a, b), 3), "similarity_unrelated_pair": round(dot(a, c), 3),
     }
-    (ROOT / "demo-state" / "step1").mkdir(parents=True, exist_ok=True)
-    (ROOT / "demo-state" / "step1" / "embedding.json").write_text(json.dumps(out, indent=2) + "\n")
+    state = Path(os.environ.get("DEMO_STATE", ROOT / "demo-state")) / "step1"
+    state.mkdir(parents=True, exist_ok=True)
+    (state / "embedding.json").write_text(json.dumps(out, indent=2) + "\n")
     print(json.dumps(out, indent=2))
     return 0 if out["similarity_related_pair"] > out["similarity_unrelated_pair"] + 0.2 else 1
 

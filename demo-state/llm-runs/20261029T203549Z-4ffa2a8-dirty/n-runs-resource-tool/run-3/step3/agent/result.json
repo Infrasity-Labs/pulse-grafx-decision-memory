@@ -1,0 +1,197 @@
+{
+  "role": "recorder",
+  "exit_code": 0,
+  "seconds": 143.1,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 49,
+  "tool_calls": [
+    "ReadMcpResourceTool",
+    "Glob",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "ReadMcpResourceTool",
+    "mcp__pulse__okto_pulse_kg_schema_info",
+    "mcp__pulse__okto_pulse_kg_query_natural",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_node_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_add_edge_candidate",
+    "mcp__pulse__okto_pulse_kg_propose_reconciliation",
+    "mcp__pulse__okto_pulse_kg_commit_consolidation",
+    "mcp__pulse__okto_pulse_kg_query_cypher"
+  ],
+  "final": {
+    "duration_api_ms": 138384,
+    "stop_reason": "end_turn",
+    "session_id": "857158eb-2860-4800-9609-5dfa1e21840e",
+    "total_cost_usd": 1.1921846,
+    "usage": {
+      "input_tokens": 30,
+      "cache_creation_input_tokens": 85044,
+      "cache_read_input_tokens": 2438823,
+      "output_tokens": 13954,
+      "output_tokens_details": {
+        "thinking_tokens": 1655
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 85044
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 2034,
+          "cache_read_input_tokens": 195481,
+          "cache_creation_input_tokens": 1661,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 1661,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 30,
+        "outputTokens": 13954,
+        "cacheReadInputTokens": 2438823,
+        "cacheCreationInputTokens": 85044,
+        "webSearchRequests": 0,
+        "costUSD": 1.1921846,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1655,
+        "cacheCreationEphemeral5mInputTokens": 85044,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 50,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"session_id\": \"kgses_5dbd207588d14f3e\", \"commit_status\": \"committed\", \"nodes_added\": 17, \"edges_added\": 3, \"decisions\": [{\"slug\": \"jwt-hs256\", \"title\": \"Access tokens are signed with the symmetric HS256 algorithm.\", \"file\": \"app/app/services/jwt.py\", \"line\": 11, \"quote\": \"ALGORITHM = \\\"HS256\\\"\"}, {\"slug\": \"jwt-one-week-expiry\", \"title\": \"Access tokens expire one week after issue.\", \"file\": \"app/app/services/jwt.py\", \"line\": 12, \"quote\": \"ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week\"}, {\"slug\": \"jwt-username-claim\", \"title\": \"The JWT identifies the user by username only, not by user id.\", \"file\": \"app/app/services/jwt.py\", \"line\": 29, \"quote\": \"        jwt_content=JWTUser(username=user.username).dict(),\"}, {\"slug\": \"token-header-prefix\", \"title\": \"The Authorization header must use the prefix \\\"Token\\\", not \\\"Bearer\\\".\", \"file\": \"app/app/core/settings/app.py\", \"line\": 29, \"quote\": \"    jwt_token_prefix: str = \\\"Token\\\"\"}, {\"slug\": \"bcrypt-passlib\", \"title\": \"Passwords are hashed with bcrypt through a passlib CryptContext.\", \"file\": \"app/app/services/security.py\", \"line\": 4, \"quote\": \"pwd_context = CryptContext(schemes=[\\\"bcrypt\\\"], deprecated=\\\"auto\\\")\"}, {\"slug\": \"extra-salt-prefix\", \"title\": \"A separately stored per-user salt is prepended to the password before bcrypt hashing.\", \"file\": \"app/app/models/domain/users.py\", \"line\": 24, \"quote\": \"        self.hashed_password = security.get_password_hash(self.salt + password)\"}, {\"slug\": \"generic-login-error\", \"title\": \"Login returns the same 400 error for an unknown email and a wrong password.\", \"file\": \"app/app/api/routes/authentication.py\", \"line\": 30, \"quote\": \"        detail=strings.INCORRECT_LOGIN_INPUT,\"}, {\"slug\": \"slug-from-title\", \"title\": \"An article slug is derived from its title with slugify and nothing else.\", \"file\": \"app/app/services/articles.py\", \"line\": 19, \"quote\": \"    return slugify(title)\"}, {\"slug\": \"duplicate-slug-rejected\", \"title\": \"Creating an article whose slug already exists is rejected with 400 instead of generating a new slug.\", \"file\": \"app/app/api/routes/articles/articles_resource.py\", \"line\": 65, \"quote\": \"    if await check_article_exists(articles_repo, slug):\"}, {\"slug\": \"title-update-changes-slug\", \"title\": \"Updating an article title regenerates its slug, so the article URL changes.\", \"file\": \"app/app/api/routes/articles/articles_resource.py\", \"line\": 100, \"quote\": \"    slug = get_slug_for_article(article_update.title) if article_update.title else None\"}, {\"slug\": \"ownership-by-username\", \"title\": \"Article ownership is checked by comparing author username with the current user's username.\", \"file\": \"app/app/services/articles.py\", \"line\": 23, \"quote\": \"    return article.author.username == user.username\"}, {\"slug\": \"article-author-set-null\", \"title\": \"Deleting a user keeps their articles and sets author_id to NULL.\", \"file\": \"app/app/db/migrations/versions/fdf8821871d7_main_tables.py\", \"line\": 108, \"quote\": \"            \\\"author_id\\\", sa.Integer, sa.ForeignKey(\\\"users.id\\\", ondelete=\\\"SET NULL\\\")\"}, {\"slug\": \"default-page-size-20\", \"title\": \"Article lists default to 20 items per page with limit/offset paging and no maximum.\", \"file\": \"app/app/models/schemas/articles.py\", \"line\": 8, \"quote\": \"DEFAULT_ARTICLES_LIMIT = 20\"}, {\"slug\": \"articles-count-page-length\", \"title\": \"articlesCount in list responses is the length of the returned page, not the total match count.\", \"file\": \"app/app/api/routes/articles/articles_resource.py\", \"line\": 49, \"quote\": \"        articles_count=len(articles),\"}, {\"slug\": \"camelcase-aliases\", \"title\": \"API models expose camelCase JSON field names generated from snake_case attributes.\", \"file\": \"app/app/models/domain/rwmodel.py\", \"line\": 21, \"quote\": \"        alias_generator = convert_field_to_camel_case\"}, {\"slug\": \"updated-at-db-trigger\", \"title\": \"updated_at is maintained by a PostgreSQL trigger, not by application code.\", \"file\": \"app/app/db/migrations/versions/fdf8821871d7_main_tables.py\", \"line\": 27, \"quote\": \"        NEW.updated_at = now();\"}, {\"slug\": \"raw-sql-aiosql\", \"title\": \"Database access uses raw SQL files loaded with aiosql on asyncpg, not an ORM.\", \"file\": \"app/app/db/queries/queries.py\", \"line\": 5, \"quote\": \"queries = aiosql.from_path(pathlib.Path(__file__).parent / \\\"sql\\\", \\\"asyncpg\\\")\"}], \"problems\": [\"The commit response reported kg_health_state=recovery_needed_graph_readable. The graph could still be read: Cypher found all 17 nodes by source_artifact_ref. I did not run okto_pulse_kg_health afterwards.\", \"begin_consolidation returned previous_session_id kgses_def7a4b8054b4f44 for the same anchor spec, so an earlier session existed for this artifact. It had no effect: all 17 reconciliation hints were ADD with no match.\", \"The commit used artifact_type 'spec' with the anchor spec id, because the schema only lists 'spec' and 'card' as typed artifact kinds.\", \"None of the 17 justifications are stated in the code, so each one reads 'not stated in code'.\"]}",
+    "ttft_ms": 5621,
+    "type": "result",
+    "duration_ms": 141187,
+    "uuid": "f41e3355-7a17-453e-bd57-57d3701b2ce0",
+    "ttft_stream_ms": 4997,
+    "time_to_request_ms": 283,
+    "first_content_frame_ms": 4997,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 30,
+        "outputTokens": 13954,
+        "cacheReadInputTokens": 2438823,
+        "cacheCreationInputTokens": 85044,
+        "webSearchRequests": 0,
+        "costUSD": 1.1921846,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1655,
+        "cacheCreationEphemeral5mInputTokens": 85044,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "recorder",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 143.1,
+    "duration_ms": 141187,
+    "duration_api_ms": 138384,
+    "num_turns": 50,
+    "tool_calls": 49,
+    "input_tokens": 30,
+    "output_tokens": 13954,
+    "cache_creation_input_tokens": 85044,
+    "cache_read_input_tokens": 2438823,
+    "total_cost_usd": 1.1921846,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T22:12:46Z"
+}

@@ -1,0 +1,2 @@
+$ start_pulse.sh
+pulse up pid 58 ready_after_s=26 api=32835 mcp=43109

@@ -4,7 +4,9 @@ Checks every file git would track (tracked or untracked, not ignored):
   1. em dashes (U+2014) outside app/ (the fork is a plain copy)
   2. key-like strings: Pulse agent keys (dash_...), bearer tokens, common API key shapes
   3. the exact key values stored in agents/.keys.local, if that file exists
-  4. absolute paths from a user machine (/Users/<name>, /home/<name>, C:\\Users). In app/ only this machine's home path.
+  4. absolute paths from a user machine (/Users/<name>, /home/<name>, C:\\Users) and their dash-encoded form (a leading dash, Users or home, then the name). In app/ only this machine's home path.
+Files that hold verbatim output of a model, of Pulse or of a read file (demo-state transcript.jsonl and logs/*.log) are treated like app/: this machine's home
+path and every key shape are flagged, but not the em dashes and example paths (an upstream README quotes a home folder of a stranger) that the quoted text contains.
 Exit code 0 if clean. Prints file:line for each hit and never prints a matched secret.
 
 Usage: python scripts/scan_repo.py [--root DIR]
@@ -26,7 +28,11 @@ KEY_PATTERNS = [
     ("bearer literal", re.compile(r"Bearer\s+(?!\$\{)[A-Za-z0-9._~+/-]{24,}")),
     ("assigned secret", re.compile(r"(?i)\b(api[_-]?key|secret|passwd|password|token)\b\s*[:=]\s*['\"][A-Za-z0-9_\-]{24,}['\"]")),
 ]
-PATH_PATTERNS = [re.compile(r"/Users/[A-Za-z0-9._-]+"), re.compile(r"/home/[A-Za-z0-9._-]+"), re.compile(r"[A-Za-z]:\\Users\\")]
+PATH_PATTERNS = [
+    re.compile(r"/Users/[A-Za-z0-9._-]+"), re.compile(r"/home/[A-Za-z0-9._-]+"), re.compile(r"[A-Za-z]:\\Users\\"),
+    # the dash-encoded form Claude Code uses for a project folder name: the slashes and dots of the path turned into dashes
+    re.compile(r"(?<![A-Za-z0-9])-(?:Users|home)-[A-Za-z0-9_]+-[A-Za-z0-9_-]+"),
+]
 
 
 SKIP_PARTS = {".venv", "venv", ".ci", "node_modules", "site-packages", "__pycache__", ".work"}
@@ -56,7 +62,7 @@ def main() -> int:
         except (UnicodeDecodeError, OSError):
             continue
         scanned += 1
-        in_fork = rel.parts[0] == "app"
+        in_fork = rel.parts[0] == "app" or (rel.parts[0] == "demo-state" and (rel.name == "transcript.jsonl" or "logs" in rel.parts))
         for n, line in enumerate(text.splitlines(), 1):
             if not in_fork and EM_DASH in line:
                 hits.append(f"{rel}:{n}: em dash")

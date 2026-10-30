@@ -1,0 +1,432 @@
+{
+  "version": 1,
+  "about": "Questions written after the 32-decision board existed, by an assistant model (not the Recorder model, not a human), from the decision texts only. Split dev is for tuning prompts and the abstention threshold. Split held_out is scored once and separately. Split legacy is the original ten questions in scripts/questions.py. kind answerable: one decision answers it. kind unanswerable: no decision answers it and the right output is to abstain. tags: graph_only means the answer is a reason that exists only in the graph. near_duplicate lists the sibling decision a tool could confuse it with. absent_terms are words that must not appear in any decision text.",
+  "questions": [
+    {
+      "id": "d1",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "jwt-algorithm",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "token-expiry",
+        "jwt-subject-claim"
+      ],
+      "text": "Which signing algorithm protects the session tokens the API hands out?",
+      "answer_keywords": [
+        "HS256"
+      ]
+    },
+    {
+      "id": "d2",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "article-ownership",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "comment-ownership"
+      ],
+      "text": "Who may edit or remove a published piece of writing?",
+      "answer_keywords": [
+        "author"
+      ]
+    },
+    {
+      "id": "d3",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "validation-error-shape",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "error-response-shape"
+      ],
+      "text": "What status code does the API answer with when a request body fails validation?",
+      "answer_keywords": [
+        "422"
+      ]
+    },
+    {
+      "id": "d4",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "article-slug-conflict",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "slug-rules"
+      ],
+      "text": "What happens when two pieces of writing end up with the same URL name?",
+      "answer_keywords": [
+        "400"
+      ]
+    },
+    {
+      "id": "d5",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "no-refresh-tokens",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "token-expiry",
+        "reset-link-lifetime"
+      ],
+      "text": "Why can a user not renew a session without logging in again?"
+    },
+    {
+      "id": "d6",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "hard-delete-articles",
+      "tags": [
+        "graph_only"
+      ],
+      "distractors": [
+        "comment-ownership"
+      ],
+      "text": "Why are removed pieces of writing erased instead of being flagged as deleted?"
+    },
+    {
+      "id": "d7",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "reset-link-lifetime",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "token-expiry",
+        "no-refresh-tokens"
+      ],
+      "text": "How long does a link for choosing a new password keep working?",
+      "answer_keywords": [
+        "30 minutes"
+      ]
+    },
+    {
+      "id": "d8",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "reject-fancyhash",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "password-hashing",
+        "bcrypt-work-factor"
+      ],
+      "text": "Which hashing package was ruled out, and on what grounds?"
+    },
+    {
+      "id": "d9",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "tag-handling",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "tag-create-idempotent"
+      ],
+      "text": "Which tables hold a tag name and its link to an article?",
+      "answer_keywords": [
+        "articles_to_tags",
+        "tags table"
+      ]
+    },
+    {
+      "id": "d10",
+      "split": "dev",
+      "kind": "answerable",
+      "expected_slug": "favorites-no-notification",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "favorites"
+      ],
+      "text": "Does the author hear about it when a reader likes their article, and why not?"
+    },
+    {
+      "id": "d11",
+      "split": "dev",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "tags": [],
+      "absent_terms": [
+        "region",
+        "cloud"
+      ],
+      "text": "Which cloud region hosts the production database?"
+    },
+    {
+      "id": "d12",
+      "split": "dev",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "tags": [],
+      "absent_terms": [
+        "per minute",
+        "rate limit",
+        "throttl"
+      ],
+      "text": "How many requests per minute may one client send?"
+    },
+    {
+      "id": "d13",
+      "split": "dev",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "tags": [],
+      "absent_terms": [
+        "on call",
+        "on-call",
+        "pager"
+      ],
+      "text": "Who is on call when the API returns server errors at night?"
+    },
+    {
+      "id": "h1",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "jwt-subject-claim",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "jwt-algorithm",
+        "token-expiry"
+      ],
+      "text": "What constant string do signed credentials carry to say what they are for?",
+      "answer_keywords": [
+        "access"
+      ]
+    },
+    {
+      "id": "h2",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "password-salt",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "password-hashing",
+        "bcrypt-work-factor"
+      ],
+      "text": "Where does the random value mixed into each account's secret come from?",
+      "answer_keywords": [
+        "gensalt"
+      ]
+    },
+    {
+      "id": "h3",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "duplicate-registration",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "error-response-shape"
+      ],
+      "text": "What does the server reply when someone signs up under a name that is already in use?",
+      "answer_keywords": [
+        "400"
+      ]
+    },
+    {
+      "id": "h4",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "cors-allowed-origins",
+      "tags": [],
+      "distractors": [
+        "settings-loading"
+      ],
+      "text": "Which browser origins may call the API from another website?",
+      "answer_keywords": [
+        "every origin",
+        "wildcard"
+      ]
+    },
+    {
+      "id": "h5",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "connection-pool-size",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "settings-loading",
+        "database-access-layer"
+      ],
+      "text": "How many simultaneous database connections can the service open?",
+      "answer_keywords": [
+        "10"
+      ]
+    },
+    {
+      "id": "h6",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "tag-create-idempotent",
+      "tags": [
+        "near_duplicate"
+      ],
+      "distractors": [
+        "tag-handling"
+      ],
+      "text": "What does saving a post do with a label that is already in the database?",
+      "answer_keywords": [
+        "ON CONFLICT",
+        "ignored"
+      ]
+    },
+    {
+      "id": "h7",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "bcrypt-work-factor",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "password-hashing",
+        "password-salt"
+      ],
+      "text": "Why was the cost of password hashing not raised?"
+    },
+    {
+      "id": "h8",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "page-size-default-reason",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "pagination-parameters"
+      ],
+      "text": "Why does a listing show twenty items by default?"
+    },
+    {
+      "id": "h9",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "postgres-over-mongodb",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "database-access-layer",
+        "aiosql-over-orm"
+      ],
+      "text": "What made the team pass on a document-oriented database?"
+    },
+    {
+      "id": "h10",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "tokens-header-only",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "auth-header-scheme"
+      ],
+      "text": "What rules out browser-stored session identifiers for authentication?"
+    },
+    {
+      "id": "h11",
+      "split": "held_out",
+      "kind": "answerable",
+      "expected_slug": "aiosql-over-orm",
+      "tags": [
+        "graph_only",
+        "near_duplicate"
+      ],
+      "distractors": [
+        "database-access-layer",
+        "postgres-over-mongodb"
+      ],
+      "text": "What is the argument against letting a library produce our SQL automatically?"
+    },
+    {
+      "id": "h12",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "tags": [],
+      "absent_terms": [
+        "welcome",
+        "smtp",
+        "mail provider"
+      ],
+      "text": "Which service sends the welcome message to new users?"
+    },
+    {
+      "id": "h13",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "tags": [],
+      "absent_terms": [
+        "megabyte",
+        "upload"
+      ],
+      "text": "What is the largest profile picture a user may upload?"
+    },
+    {
+      "id": "h14",
+      "split": "held_out",
+      "kind": "unanswerable",
+      "expected_slug": null,
+      "tags": [],
+      "absent_terms": [
+        "payment",
+        "subscription",
+        "billing"
+      ],
+      "text": "Which payment provider handles subscriptions?"
+    }
+  ],
+  "conflict_tasks": [
+    {
+      "id": "t1",
+      "split": "held_out",
+      "expected_slug": "no-refresh-tokens",
+      "reason_keywords": [
+        "SR-2025-14",
+        "stolen"
+      ],
+      "proposal": "A teammate proposes to cut the access token lifetime to 15 minutes and add a refresh endpoint that issues a new access token from a long-lived refresh token."
+    },
+    {
+      "id": "t2",
+      "split": "held_out",
+      "expected_slug": "hard-delete-articles",
+      "reason_keywords": [
+        "LR-77",
+        "24 hours"
+      ],
+      "proposal": "A teammate proposes to add a deleted_at column to articles and comments and to mark rows as deleted instead of removing them."
+    }
+  ]
+}

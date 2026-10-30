@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 pulse-grafx-decision-memory-demo contributors
+Copyright (c) 2026 OktoLabs AI
 
 This license covers the demo code written for this repository: run_demo.py, scripts/, tests/, agents/,
 docs/ and the files under demo-state/ that the scripts generate.

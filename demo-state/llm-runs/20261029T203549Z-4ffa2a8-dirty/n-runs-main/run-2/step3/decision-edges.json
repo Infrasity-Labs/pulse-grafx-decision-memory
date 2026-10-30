@@ -1,0 +1,12 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "A separate per-user salt is stored and prepended to the password before hashing.",
+    "Passwords are hashed with bcrypt through passlib."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Creating an article whose slug already exists is rejected with 400.",
+    "An article slug is derived from its title with slugify."
+  ]
+]

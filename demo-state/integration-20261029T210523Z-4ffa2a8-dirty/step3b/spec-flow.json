@@ -1,0 +1,1071 @@
+{
+  "note": "Scripted run, no LLM. Scores in lint, evaluation and validation are fixed values that exercise the gate.",
+  "spec_id": "3bca9b0f-2f47-4ab6-bc29-2a0a541b969a",
+  "decisions": 10,
+  "decision_ids": {
+    "no-refresh-tokens": "dec_934948e6",
+    "hard-delete-articles": "dec_669a3b01",
+    "reset-link-lifetime": "dec_6e03cc36",
+    "reject-fancyhash": "dec_3ee3d0ad",
+    "bcrypt-work-factor": "dec_b0e5bcd4",
+    "page-size-default-reason": "dec_67dd0e1f",
+    "favorites-no-notification": "dec_6faf68d2",
+    "postgres-over-mongodb": "dec_81a05a5b",
+    "aiosql-over-orm": "dec_85033125",
+    "tokens-header-only": "dec_961073b1"
+  },
+  "gate": {
+    "tool": "okto_pulse_submit_spec_validation",
+    "blocked_components_before_fix": [
+      {
+        "key": "spec_validation",
+        "state": "blocked",
+        "reason_codes": [
+          "spec_validation_required"
+        ],
+        "message": null
+      },
+      {
+        "key": "decomposition",
+        "state": "blocked",
+        "reason_codes": [
+          "decomposition_approval_missing"
+        ],
+        "message": null
+      },
+      {
+        "key": "requirement_lint",
+        "state": "blocked",
+        "reason_codes": [
+          "requirement_lint_required"
+        ],
+        "message": "Requirement Lint is required for the current Spec edition."
+      },
+      {
+        "key": "decision_verification",
+        "state": "blocked",
+        "reason_codes": [
+          "decision_verification_required"
+        ],
+        "message": "decision_verification_plan_incomplete: dec_934948e6: decision_verification_required"
+      }
+    ],
+    "refusal": {
+      "ok": false,
+      "error_code": "spec_validation_gate_not_ready",
+      "message": "decision_verification_plan_incomplete: dec_934948e6: decision_verification_required"
+    },
+    "pass": {
+      "ok": true,
+      "outcome": "success",
+      "spec_status": "validated",
+      "planning_result": "ready",
+      "validation_edition": 2
+    },
+    "blocked_components_after_fix": [],
+    "spec_status_at_end": "validated",
+    "spec_edition_at_end": 2
+  },
+  "role_denial": {
+    "actor": "RECORDER",
+    "preset": "Spec",
+    "tool": "okto_pulse_move_spec",
+    "ok": false,
+    "error_code": "permission_denied",
+    "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.move.approved_to_draft\", \"detail\": \"Agent does not have the 'spec.move.approved_to_draft' permission.\"}"
+  },
+  "graph_before_closeout": {
+    "decision_nodes_by_layer": {
+      "working": 10
+    },
+    "recaller_found_a_register_decision_by_similarity": "0 of 10",
+    "recaller_found_a_register_decision_by_natural_search": "0 of 10",
+    "recaller_natural_layer_audit_example": {
+      "applied_graph_layer": "canonical",
+      "counts_by_layer": {
+        "canonical": 4,
+        "working": 3,
+        "legacy_unknown": 0,
+        "metadata": 0
+      },
+      "non_artifact_excluded": 0
+    }
+  },
+  "closeout": {
+    "refused_without_edge": {
+      "ok": false,
+      "error_code": "kg_node_connectivity_violation",
+      "message": "KG node connectivity guard rejected the commit before graph mutation."
+    },
+    "hints_by_operation": {
+      "ADD": 20,
+      "SUPERSEDE": 10
+    },
+    "commit": {
+      "status": "committed",
+      "nodes_added": 20,
+      "nodes_updated": 0,
+      "nodes_superseded": 10,
+      "edges_added": 60
+    }
+  },
+  "system_consolidation_settle": {
+    "before_closeout": {
+      "waited_s": 60.9,
+      "system_sessions_seen": 2,
+      "quiet_for_s": 30.1,
+      "timed_out": false
+    },
+    "after_closeout": {
+      "waited_s": 30.1,
+      "system_sessions_seen": 2,
+      "quiet_for_s": 30.1,
+      "timed_out": false
+    },
+    "active_decision_nodes_by_layer_after_settle": {
+      "canonical": 10
+    }
+  },
+  "recaller_finds_after_closeout": "10 of 10",
+  "decision_nodes_by_layer_after_closeout": {
+    "canonical": 10,
+    "working": 10
+  },
+  "events": [
+    {
+      "n": 1,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "no-refresh-tokens (no verification plan)",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 2,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "hard-delete-articles",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 3,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "reset-link-lifetime",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 4,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "reject-fancyhash",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 5,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "bcrypt-work-factor",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 6,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "page-size-default-reason",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 7,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "favorites-no-notification",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 8,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "postgres-over-mongodb",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 9,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "aiosql-over-orm",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 10,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_add_decision",
+      "note": "tokens-header-only",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 11,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_move_spec",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 12,
+      "phase": "author",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_move_spec",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 13,
+      "phase": "role",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_move_spec",
+      "note": "expected refusal",
+      "retries_on_transient_error": 0,
+      "ok": false,
+      "error_code": "permission_denied",
+      "message": "{\"error\": \"Permission denied\", \"reason\": \"permission_missing\", \"required_permission\": \"spec.move.approved_to_draft\", \"detail\": \"Agent does not have the 'spec.move.approved_to_draft' permission.\"}"
+    },
+    {
+      "n": 14,
+      "phase": "gate",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_move_spec",
+      "note": "direct move, expected refusal",
+      "retries_on_transient_error": 0,
+      "ok": false,
+      "error_code": "validation_failed",
+      "message": "decision_verification_plan_incomplete: dec_934948e6: decision_verification_required"
+    },
+    {
+      "n": 15,
+      "phase": "gate",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_get_requirement_lint_preflight",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 16,
+      "phase": "gate",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_record_requirement_lint",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 17,
+      "phase": "gate",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_submit_spec_evaluation",
+      "note": "",
+      "retries_on_transient_error": 1,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 18,
+      "phase": "gate",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_get_spec_validation_cycle",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 19,
+      "phase": "gate",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_submit_spec_validation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": false,
+      "error_code": "spec_validation_gate_not_ready",
+      "message": "decision_verification_plan_incomplete: dec_934948e6: decision_verification_required"
+    },
+    {
+      "n": 20,
+      "phase": "fix",
+      "actor": "MAINTAINER",
+      "tool": "okto_pulse_move_spec",
+      "note": "reopen: a new edition",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 21,
+      "phase": "fix",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_update_spec_entity",
+      "note": "add the missing plan",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 22,
+      "phase": "fix",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_move_spec",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 23,
+      "phase": "fix",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_move_spec",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 24,
+      "phase": "pass",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_get_requirement_lint_preflight",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 25,
+      "phase": "pass",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_record_requirement_lint",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 26,
+      "phase": "pass",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_submit_spec_evaluation",
+      "note": "",
+      "retries_on_transient_error": 1,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 27,
+      "phase": "pass",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_get_spec_validation_cycle",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 28,
+      "phase": "pass",
+      "actor": "REVIEWER",
+      "tool": "okto_pulse_submit_spec_validation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 29,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_begin_consolidation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 30,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 31,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_commit_consolidation",
+      "note": "expected refusal: no Alternative or Decision edge",
+      "retries_on_transient_error": 0,
+      "ok": false,
+      "error_code": "kg_node_connectivity_violation",
+      "message": "KG node connectivity guard rejected the commit before graph mutation."
+    },
+    {
+      "n": 32,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_abort_consolidation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 33,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_begin_consolidation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 34,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 35,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 36,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 37,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 38,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 39,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 40,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 41,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 42,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 43,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 44,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 45,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 46,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 47,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 48,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 49,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 50,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 51,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 52,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 53,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 54,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 55,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 56,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 57,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 58,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 59,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 60,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 61,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 62,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 63,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 64,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 65,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 66,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 67,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 68,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 69,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 70,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 71,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 72,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 73,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 74,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 75,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 76,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 77,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 78,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 79,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 80,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 81,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 82,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_node_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 83,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_add_edge_candidate",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 84,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_propose_reconciliation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    },
+    {
+      "n": 85,
+      "phase": "closeout",
+      "actor": "RECORDER",
+      "tool": "okto_pulse_kg_commit_consolidation",
+      "note": "",
+      "retries_on_transient_error": 0,
+      "ok": true,
+      "error_code": null,
+      "message": null
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 """Step 1: the pairing and the embedding mode, from recorded proof."""
 from importlib.metadata import PackageNotFoundError, requires, version
 
-import pytest
+from conftest import missing
 
 
 def test_recorded_pulse_requires_the_installed_grafx(loadj):
@@ -26,7 +26,7 @@ def test_installed_pulse_metadata_pins_grafx_if_pulse_is_installed(root):
         reqs = requires("okto-pulse")
         pulse_version = version("okto-pulse")
     except PackageNotFoundError:
-        pytest.skip("okto-pulse not installed")
+        missing("okto-pulse is not installed (CI installs its metadata with --no-deps)")
     pinned = [ln.split("==")[1] for ln in (root / "requirements.txt").read_text().splitlines() if ln.startswith("okto-pulse==")][0]
     assert pulse_version == pinned
     assert any(r.replace(" ", "").startswith("okto-grafx[accel]==0.0.8") for r in reqs)

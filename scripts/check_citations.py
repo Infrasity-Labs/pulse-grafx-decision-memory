@@ -8,7 +8,12 @@ For each decision the checker verifies:
   - the quoted text, if given, appears on that line (whitespace trimmed)
 Exit code 0 only if there are exactly the expected slugs and every citation holds.
 
-Usage: python scripts/check_citations.py DECISIONS_JSON [--out RESULT_JSON] [--root REPO_ROOT]
+With --open the Recorder chose its own topics (the goal-based prompt). No slug list is required. Every decision must
+still cite a file and a line that exist, and the result also reports recall against the hand-made reference list in
+corpus/reference_decisions.json: how many reference decisions at least one recorded node covers. Exit code 0 only if
+every citation holds. Recall is reported, not a pass condition.
+
+Usage: python scripts/check_citations.py DECISIONS_JSON [--out RESULT_JSON] [--root REPO_ROOT] [--open]
 """
 from __future__ import annotations
 
@@ -17,6 +22,9 @@ import json
 import re
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import corpus  # noqa: E402
 
 EXPECTED_SLUGS = [
     "auth-header-scheme", "token-expiry", "password-hashing", "error-response-shape",
@@ -71,13 +79,46 @@ def check(rows: list[dict], root: Path) -> dict:
     }
 
 
+def check_open(rows: list[dict], root: Path) -> dict:
+    """Open mode: every citation must hold, and recall is measured against the reference list."""
+    results = [check_one(r, root) for r in rows]
+    taken: set[str] = set()
+    matched: dict[str, str] = {}
+    unmatched = []
+    for r in rows:
+        ref = corpus.match_reference(r.get("title") or "", r.get("content") or "", taken)
+        if ref:
+            taken.add(ref)
+            matched[ref] = r.get("slug")
+        else:
+            unmatched.append(r.get("slug"))
+    entries = [e["id"] for e in corpus.reference_entries()]
+    return {
+        "mode": "open", "found": len(rows), "citations_ok": sum(r["ok"] for r in results), "all_ok": bool(rows) and all(r["ok"] for r in results),
+        "reference_entries": len(entries), "reference_covered": len(matched), "reference_recall": round(len(matched) / len(entries), 3),
+        "covered_by": matched, "reference_not_covered": [e for e in entries if e not in matched], "nodes_matching_no_reference_entry": unmatched,
+        "results": results,
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("decisions_json")
     ap.add_argument("--out")
     ap.add_argument("--root", default=str(Path(__file__).resolve().parent.parent))
+    ap.add_argument("--open", action="store_true", help="the Recorder chose its own topics: no slug list, recall against the reference list")
     a = ap.parse_args()
     rows = json.loads(Path(a.decisions_json).read_text())
+    if a.open:
+        result = check_open(rows, Path(a.root))
+        if a.out:
+            Path(a.out).write_text(json.dumps(result, indent=2) + "\n")
+        print(f"decisions={result['found']} citations_ok={result['citations_ok']} all_ok={result['all_ok']} "
+              f"reference_recall={result['reference_covered']}/{result['reference_entries']}")
+        for r in result["results"]:
+            if not r["ok"]:
+                print(f"  FAIL {r['slug']}: {r['problem']}")
+        return 0 if result["all_ok"] else 1
     result = check(rows, Path(a.root))
     if a.out:
         Path(a.out).write_text(json.dumps(result, indent=2) + "\n")

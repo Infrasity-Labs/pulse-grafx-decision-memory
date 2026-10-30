@@ -1,0 +1,161 @@
+{
+  "role": "recaller",
+  "exit_code": 0,
+  "seconds": 102.8,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 13,
+  "tool_calls": [
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_get_related_context",
+    "mcp__pulse__okto_pulse_kg_query_natural",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_export_jsonld",
+    "mcp__pulse__okto_pulse_kg_begin_consolidation"
+  ],
+  "final": {
+    "duration_api_ms": 93165,
+    "stop_reason": "end_turn",
+    "session_id": "8cb6a237-752a-4b35-9170-8a8a53837212",
+    "total_cost_usd": 1.3022746,
+    "usage": {
+      "input_tokens": 28,
+      "cache_creation_input_tokens": 158799,
+      "cache_read_input_tokens": 1708838,
+      "output_tokens": 8320,
+      "output_tokens_details": {
+        "thinking_tokens": 648
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 158799
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5898,
+          "cache_read_input_tokens": 158170,
+          "cache_creation_input_tokens": 629,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 629,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 28,
+        "outputTokens": 8320,
+        "cacheReadInputTokens": 1708838,
+        "cacheCreationInputTokens": 158799,
+        "webSearchRequests": 0,
+        "costUSD": 1.3022746,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 648,
+        "cacheCreationEphemeral5mInputTokens": 158799,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 14,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "{\"answers\": [\n{\"id\": \"d1\", \"decision_id\": \"decision_a0c51a6523919bd5d1d1a450\", \"answer\": \"Access tokens are JWTs signed and verified with HS256, using one shared secret key from the application settings.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_query_cypher\", \"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d2\", \"decision_id\": \"decision_137bcacf9b27d23f7d582eab\", \"answer\": \"Only the article's author may update or delete it. The check compares the author's username with the current user's username, and anyone else gets a 403.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d3\", \"decision_id\": \"decision_fc5448e3f6387771827f4a30\", \"answer\": \"HTTP 422, with an errors list made of the validator's error objects.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d4\", \"decision_id\": \"decision_64d462d55fbc55709dd1a34e\", \"answer\": \"The slug is built from the title. If an article with that slug already exists, creation is refused with HTTP 400 and no numeric suffix is added.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d5\", \"decision_id\": \"decision_82a3026c3c572d8cddc81b9a\", \"answer\": \"There are no refresh tokens. The API issues one access token valid for a week, and a client that needs a new one logs in again. Reason: security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months, while a one-week token expires on its own.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_query_natural\", \"okto_pulse_kg_get_decision_history\", \"okto_pulse_kg_get_related_context\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d6\", \"decision_id\": \"decision_519e57adbd272f9249ea1f26\", \"answer\": \"Deleting an article or comment runs a SQL DELETE, with no deleted_at flag. Reason: legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours, and a deleted_at column would leave the rows in the table.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d7\", \"decision_id\": \"decision_8dfb37db51338fb03939f6aa\", \"answer\": \"30 minutes, and the link works once. There is no reset flow yet; this is the rule for when it is built. Reason: users open reset mail within 10 minutes, and 30 minutes covers slow delivery without leaving a long-lived link in an inbox.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d8\", \"decision_id\": \"decision_914b810969143d4232f61394\", \"answer\": \"fancyhash was rejected because its licence has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d9\", \"decision_id\": \"decision_56d872ce97eacb6250c6228c\", \"answer\": \"The tags table has the tag text as its primary key, and articles_to_tags links articles to tags by referencing tags.tag directly, with cascade delete.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d10\", \"decision_id\": \"decision_7cb461e7ff5dfff02ef49011\", \"answer\": \"No. A favorite only writes a database row and nothing is sent to the author. Reason: product decision PD-8 puts all notifications out of scope until the 2027 roadmap.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d11\", \"decision_id\": null, \"answer\": \"The graph has nothing on cloud regions or where the production database is hosted.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d12\", \"decision_id\": null, \"answer\": \"The graph has no decision on rate limits or requests per minute.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"d13\", \"decision_id\": null, \"answer\": \"The graph has no on-call or incident response information.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h1\", \"decision_id\": \"decision_bc9b1927403ec8ab4998883c\", \"answer\": \"Every access token carries the fixed subject claim access, a constant in the JWT service.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h2\", \"decision_id\": \"decision_6da143bc41f052136cfa1f58\", \"answer\": \"Each user gets a fresh random salt from bcrypt.gensalt, stored in the user row next to the hashed password.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h3\", \"decision_id\": \"decision_b49e20a052b5c686670c6bf2\", \"answer\": \"HTTP 400. The register route checks username first, then email, and each taken value gets its own error message.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h4\", \"decision_id\": \"decision_0583a52720efa658c0714b0c\", \"answer\": \"The origins listed in the allowed_hosts setting. By default that list is a single wildcard, so every origin is allowed.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h5\", \"decision_id\": \"decision_b95db2eb85dad9e460f93312\", \"answer\": \"10. The asyncpg pool's min_connection_count and max_connection_count both default to 10.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h6\", \"decision_id\": \"decision_0b2178c7631d8ddbc5d3074a\", \"answer\": \"Nothing new is stored. The tag insert uses ON CONFLICT DO NOTHING, so a known tag adds no new tag row.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h7\", \"decision_id\": \"decision_d7509dfddd131496dc2193dd\", \"answer\": \"Load test LT-9 put login at a p95 of 240 ms with the default bcrypt factor. One step higher pushed it past the 300 ms login budget.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h8\", \"decision_id\": \"decision_dc06af8c56fbb489509ac4b7\", \"answer\": \"Design review DR-31 found that the mobile list screen fits 20 rows without scrolling.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h9\", \"decision_id\": \"decision_1796a8a398e32215eda997be\", \"answer\": \"MongoDB was not chosen because the data is relational and the DBA team supports only PostgreSQL (ADR-3).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h10\", \"decision_id\": \"decision_762b2f8de4c427c891cfcaac\", \"answer\": \"Tokens travel only in the Authorization header, because cookie transport would need CSRF protection that this API does not have (ADR-5).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h11\", \"decision_id\": \"decision_b8c794dffa728d66b2f9806f\", \"answer\": \"The DBA team reviews every query. A SQL file can be reviewed in a pull request, but ORM output cannot (ADR-4).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h12\", \"decision_id\": null, \"answer\": \"The graph has nothing on welcome messages or an email service. It only says notifications are out of scope under PD-8, in the context of favorites.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h13\", \"decision_id\": null, \"answer\": \"The graph has no decision on profile picture uploads or size limits.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"h14\", \"decision_id\": null, \"answer\": \"The graph has nothing on payments or subscriptions.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m1\", \"decision_id\": \"decision_82a3026c3c572d8cddc81b9a\", \"answer\": \"Security review SR-2025-14 found that a stored refresh token let a stolen browser profile keep access for months. So the team chose a one-week access token with no refresh token, and a stolen token expires on its own.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_query_natural\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m2\", \"decision_id\": \"decision_519e57adbd272f9249ea1f26\", \"answer\": \"Legal review LR-77, which requires that content its author deleted is gone from live storage within 24 hours.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m3\", \"decision_id\": \"decision_914b810969143d4232f61394\", \"answer\": \"fancyhash's licence has a network-use clause that is not compatible with distributing the API.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m4\", \"decision_id\": \"decision_d7509dfddd131496dc2193dd\", \"answer\": \"Load test LT-9 measured login at a p95 of 240 ms with the default factor, and one step higher went past the 300 ms login budget.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m5\", \"decision_id\": \"decision_762b2f8de4c427c891cfcaac\", \"answer\": \"Cookie transport would need CSRF protection that the API does not have (ADR-5), so tokens are read only from the Authorization header.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m6\", \"decision_id\": \"decision_35376b4638d4cbbb6292402c\", \"answer\": \"In a salt column on the user row, next to the hashed password. The salt is prepended to the password before hashing, so the column cannot be dropped.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m7\", \"decision_id\": \"decision_fc5448e3f6387771827f4a30\", \"answer\": \"HTTP 422 with an errors list holding the validator's own error objects, rather than the single detail string used for other HTTP errors.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m8\", \"decision_id\": \"decision_d6f5f3e52c761d179dab1c4e\", \"answer\": \"One week. ACCESS_TOKEN_EXPIRE_MINUTES is 60 * 24 * 7.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m9\", \"decision_id\": \"decision_0b2178c7631d8ddbc5d3074a\", \"answer\": \"The insert uses ON CONFLICT DO NOTHING, so no new tag row is added.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m10\", \"decision_id\": \"decision_b56dc0976128e05338d89a68\", \"answer\": \"aiosql loads the SQL files with aiosql.from_path, and the asyncpg driver runs them.\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m11\", \"decision_id\": \"decision_1796a8a398e32215eda997be\", \"answer\": \"The data is relational, with articles, tags and favorites joined by foreign keys, and the DBA team supports only PostgreSQL (ADR-3).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m12\", \"decision_id\": \"decision_b8c794dffa728d66b2f9806f\", \"answer\": \"The DBA team reviews every query in pull requests. A SQL file can be reviewed there and ORM output cannot (ADR-4).\", \"abstain\": false, \"tools_used\": [\"okto_pulse_kg_find_similar_decisions\", \"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m13\", \"decision_id\": null, \"answer\": \"The graph has no decision on login attempt limits or rate limiting.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m14\", \"decision_id\": null, \"answer\": \"The graph has nothing on WebSockets or real-time updates.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m15\", \"decision_id\": null, \"answer\": \"The graph has no decision on profile photo uploads or storing them.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]},\n{\"id\": \"m16\", \"decision_id\": null, \"answer\": \"The graph has nothing on a GraphQL endpoint.\", \"abstain\": true, \"tools_used\": [\"okto_pulse_kg_export_jsonld\"]}\n], \"write_probe\": \"permission_denied: {\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\"}",
+    "ttft_ms": 6019,
+    "type": "result",
+    "duration_ms": 101132,
+    "uuid": "7bf918e7-63e7-451d-9a02-e088482b4ab3",
+    "ttft_stream_ms": 5115,
+    "time_to_request_ms": 702,
+    "first_content_frame_ms": 5115,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 28,
+        "outputTokens": 8320,
+        "cacheReadInputTokens": 1708838,
+        "cacheCreationInputTokens": 158799,
+        "webSearchRequests": 0,
+        "costUSD": 1.3022746,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 648,
+        "cacheCreationEphemeral5mInputTokens": 158799,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "recaller",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 102.8,
+    "duration_ms": 101132,
+    "duration_api_ms": 93165,
+    "num_turns": 14,
+    "tool_calls": 13,
+    "input_tokens": 28,
+    "output_tokens": 8320,
+    "cache_creation_input_tokens": 158799,
+    "cache_read_input_tokens": 1708838,
+    "total_cost_usd": 1.3022746,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T21:01:42Z"
+}

@@ -1,0 +1,2 @@
+$ python build_closeout.py --state state --out closeout-result.json
+wrote closeout-result.json: 18 top-level sections

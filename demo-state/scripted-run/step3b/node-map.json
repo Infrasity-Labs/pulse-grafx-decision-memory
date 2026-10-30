@@ -1,0 +1,12 @@
+{
+  "decision_94010b91e358aca46ea443d9": "no-refresh-tokens",
+  "decision_0be5cfca516df8b2e77f1e48": "hard-delete-articles",
+  "decision_34b66e4ecd3509217a663121": "reset-link-lifetime",
+  "decision_f1ff44ca708a77a773898a59": "reject-fancyhash",
+  "decision_de47f8c30c2b98424c3dd186": "bcrypt-work-factor",
+  "decision_5db18b57ca08400b8c2c9a8a": "page-size-default-reason",
+  "decision_2126a74b2df8091224ebd468": "favorites-no-notification",
+  "decision_5f37ed704ab9744477c06bf2": "postgres-over-mongodb",
+  "decision_02c2c36b03cd567b4bf9a08f": "aiosql-over-orm",
+  "decision_1b42f6bc19cbff0ada54cf73": "tokens-header-only"
+}

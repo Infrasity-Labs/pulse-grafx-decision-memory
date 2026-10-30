@@ -286,5 +286,9 @@
     "step8": 12.2,
     "step9": 54.8,
     "step10": 0.01
+  },
+  "run": {
+    "recorded": false,
+    "note": "Run 1 (2026-10-29, macOS arm64) was made before this field existed. No run id and no commit of that run were recorded, and none is filled in here. The date is generated_at, the versions are in machine and versions. Runs built after this change carry a run section from build_closeout.py."
   }
 }

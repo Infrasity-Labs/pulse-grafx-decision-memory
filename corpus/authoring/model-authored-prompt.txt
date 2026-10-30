@@ -1,0 +1,184 @@
+You are writing test questions for a memory system that stores design decisions about a blogging API. Below are 32 decision notes, each under a heading that is its identifier.
+
+### auth-header-scheme
+The Authorization header must hold a prefix and a token separated by one space, and the prefix must equal the configured jwt_token_prefix.
+The API reads the Authorization header, splits it on a single space into a prefix and a token, and rejects it with 403 WRONG_TOKEN_PREFIX if the split fails or the prefix differs from settings.jwt_token_prefix. The default prefix is "Token" (app/app/core/settings/app.py:29). An optional variant returns an empty token when the header is missing.
+Source: app/app/api/dependencies/authentication.py:51
+
+### comment-ownership
+Only the comment's author, matched by username, may delete a comment.
+check_user_can_modify_comment returns true only when comment.author.username equals the current user's username. The delete route depends on check_comment_modification_permissions, which raises 403 when this check fails (app/app/api/dependencies/comments.py:43).
+Source: app/app/services/comments.py:6
+
+### database-access-layer
+The code talks to PostgreSQL through raw SQL files loaded by aiosql on the asyncpg driver, wrapped in repository classes.
+queries.py loads every .sql file under the sql folder with aiosql.from_path using the asyncpg adapter. Repository classes built on BaseRepository call these named queries on an asyncpg connection, and the article filter query is built with pypika Query objects in ArticlesRepository.
+Source: app/app/db/queries/queries.py:5
+
+### error-response-shape
+HTTP errors are returned as JSON of the form {"errors": [detail]} with the exception status code.
+http_error_handler wraps the HTTPException detail in a list under the key "errors" and returns it as a JSONResponse with the exception's status code. A separate handler exists for validation errors in app/app/api/errors/validation_error.py.
+Source: app/app/api/errors/http_error.py:7
+
+### favorites
+Favoriting inserts a (user_id, article_id) row into a favorites join table and ignores duplicates.
+The add-article-to-favorites SQL inserts user and article ids resolved from username and slug, with ON CONFLICT DO NOTHING; unfavoriting deletes the row. The favorites table has a composite primary key on (user_id, article_id), and favorites_count and favorited are computed per read by counting rows.
+Source: app/app/db/queries/sql/articles.sql:2
+
+### pagination-parameters
+Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.
+DEFAULT_ARTICLES_LIMIT is 20 and DEFAULT_ARTICLES_OFFSET is 0. The articles filter dependency and the feed route take limit as Query(default, ge=1) and offset as Query(default, ge=0), and the feed SQL applies LIMIT :limit OFFSET :offset.
+Source: app/app/models/schemas/articles.py:8
+
+### password-hashing
+Passwords are hashed with bcrypt through passlib CryptContext, with a per-user bcrypt salt prepended to the password.
+security.py builds a passlib CryptContext with schemes ["bcrypt"] and deprecated="auto". UserInDB.change_password generates a salt with bcrypt.gensalt and stores get_password_hash(salt + password); check_password verifies salt + password against the stored hash (app/app/models/domain/users.py:20).
+Source: app/app/services/security.py:4
+
+### settings-loading
+Settings are pydantic BaseSettings classes chosen by the APP_ENV value and cached with lru_cache.
+get_app_settings reads app_env from BaseAppSettings, maps it to DevAppSettings, ProdAppSettings or TestAppSettings, and returns an instance; the function is wrapped in functools.lru_cache. BaseAppSettings defaults app_env to prod and reads a .env file.
+Source: app/app/core/config.py:19
+
+### slug-rules
+Article slugs are generated from the title with the slugify library.
+get_slug_for_article returns slugify(title) with no extra suffix or uniqueness token. check_article_exists looks up an existing article by slug, and the articles table enforces a unique slug column (app/app/db/migrations/versions/fdf8821871d7_main_tables.py:103).
+Source: app/app/services/articles.py:19
+
+### tag-handling
+Tags are stored as unique text rows in a tags table and linked to articles through an articles_to_tags join table.
+When an article is created with tags, inside one transaction the repository first creates any tags that do not exist, then links them via add-tags-to-article into articles_to_tags. The tags table uses the tag text as its primary key and articles_to_tags has a composite primary key on (article_id, tag).
+Source: app/app/db/repositories/articles.py:55
+
+### test-layout
+Tests live in a top-level tests folder split into test_api, test_db, test_schemas and test_services, with shared fixtures in conftest.py.
+pytest is configured with testpaths set to tests. Route and error tests sit under tests/test_api/test_routes and tests/test_api/test_errors, and conftest.py sets APP_ENV to test and swaps the app pool for FakeAsyncPGPool.
+Source: app/pyproject.toml:46
+
+### token-expiry
+Access tokens are HS256 JWTs that expire one week after issue.
+ACCESS_TOKEN_EXPIRE_MINUTES is set to 60 * 24 * 7 minutes. create_access_token_for_user passes it as a timedelta, and create_jwt_token adds an exp claim of utcnow plus that delta with subject "access", signed with HS256.
+Source: app/app/services/jwt.py:12
+
+### jwt-algorithm
+Access tokens are signed with the HS256 algorithm using one shared secret key.
+Tokens are JWTs signed and verified with HS256. The secret comes from the application settings.
+Source: app/app/services/jwt.py:11
+
+### jwt-subject-claim
+Every access token carries the fixed subject claim access.
+The token payload holds the username plus an expiry and the subject value access, which is a constant in the JWT service.
+Source: app/app/services/jwt.py:10
+
+### password-salt
+Each user gets a random salt created with bcrypt.gensalt.
+A helper returns a fresh bcrypt salt as text. The user row stores the salt next to the hashed password.
+Source: app/app/services/security.py:8
+
+### validation-error-shape
+Request validation failures return HTTP 422 with an errors list of the validator's error objects.
+A separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.
+Source: app/app/api/errors/validation_error.py:17
+
+### duplicate-registration
+Registering with a username or email that is already taken is answered with HTTP 400.
+The register route checks the username first and the email second. Each taken value raises a 400 error with its own message from the strings module.
+Source: app/app/api/routes/authentication.py:70
+
+### article-ownership
+Only an article's author, matched by username, may modify the article.
+The service compares the article author's username with the current user's username. Other users get a refusal.
+Source: app/app/services/articles.py:23
+
+### cors-allowed-origins
+Cross-origin calls are allowed from the origins in allowed_hosts, which default to every origin.
+The CORS middleware reads allowed_hosts from the settings. The default list holds a single wildcard entry.
+Source: app/app/core/settings/app.py:31
+
+### connection-pool-size
+The database pool is fixed at 10 connections through min_connection_count and max_connection_count.
+Both pool bounds default to 10 in the application settings, and the pool is created with those two values at start-up.
+Source: app/app/core/settings/app.py:22
+
+### tag-create-idempotent
+Creating a tag that already exists is ignored by the insert statement.
+The tag insert uses ON CONFLICT DO NOTHING, so saving an article with a known tag adds no new tag row.
+Source: app/app/db/queries/sql/tags.sql:9
+
+### article-slug-conflict
+Creating an article whose generated slug already exists is refused with HTTP 400.
+The create route builds the slug from the title and checks whether an article with that slug exists. If it does, the route raises a 400 error and does not add a numeric suffix.
+Source: app/app/api/routes/articles/articles_resource.py:65
+
+### no-refresh-tokens
+Sessions use one long-lived access token and the API has no refresh tokens.
+The API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.
+Invented for this demo.
+Reason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.
+
+### hard-delete-articles
+Deleted articles and comments are removed from the database, with no soft-delete flag.
+Deleting an article or a comment runs a SQL DELETE. No deleted_at column exists.
+Invented for this demo.
+Reason: Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.
+
+### reset-link-lifetime
+Password reset links stay valid for 30 minutes.
+The API has no password reset flow yet. This fixes the rule for when it is built: a reset link works once and expires 30 minutes after it is sent.
+Invented for this demo.
+Reason: Support tickets showed that users open a reset mail within 10 minutes. A link that lives 30 minutes covers slow mail delivery without leaving a long-lived link in an inbox. Invented for this demo.
+
+### reject-fancyhash
+The fancyhash package is not used for password hashing because of its licence.
+Password hashing stays on passlib with bcrypt. The fancyhash package was evaluated and rejected.
+Invented for this demo.
+Reason: The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.
+
+### bcrypt-work-factor
+bcrypt keeps the default passlib work factor.
+No custom rounds value is set on the password context, so passlib's default applies.
+Invented for this demo.
+Reason: Load test LT-9 put the login endpoint at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget. Invented for this demo.
+
+### page-size-default-reason
+The article list defaults to 20 items per page.
+The default limit of the article list is 20 items.
+Invented for this demo.
+Reason: Design review DR-31 found that the mobile list screen fits 20 rows without scrolling. Invented for this demo.
+
+### favorites-no-notification
+Favoriting an article sends no notification to its author.
+Adding a favorite writes a database row and nothing else. No message is sent to the author.
+Invented for this demo.
+Reason: Product decision PD-8 puts all notifications out of scope until the 2027 roadmap. Invented for this demo.
+
+### postgres-over-mongodb
+PostgreSQL is the data store and MongoDB was not chosen.
+Articles, tags and favorites are stored in PostgreSQL tables joined by foreign keys.
+Invented for this demo.
+Reason: The data is relational, and the DBA team supports only PostgreSQL (ADR-3). Invented for this demo.
+
+### aiosql-over-orm
+Queries are hand-written SQL files, not generated by an ORM.
+Every query lives in a SQL file that the repositories call by name.
+Invented for this demo.
+Reason: The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.
+
+### tokens-header-only
+Tokens travel only in the Authorization header and never in cookies.
+The API reads the token from the Authorization header. It does not set or read any cookie.
+Invented for this demo.
+Reason: Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.
+
+
+Write 16 questions as a JSON object and nothing else.
+
+Rules:
+- 12 questions are answerable: exactly one decision above answers each. Give that decision's identifier as "expected_slug". At least 5 of the 12 must ask for the REASON a decision was taken (a "why" that is answered by the Reason line of a note), and at least 4 must be about a topic where several notes are close (for example tokens, passwords, errors, tags, databases, tests) so a careless reader could pick the neighbour.
+- 4 questions are unanswerable: a plausible question about this API that NO note answers. Give 2 to 4 words that must not appear in any note as "absent_terms".
+- Do not copy the wording of a note's title. Paraphrase. A question is one sentence.
+- "answer_keywords": 1 to 3 short words or numbers that a correct answer must contain and that appear in the expected note (empty list for unanswerable).
+- Do not use em dashes.
+
+Format:
+{"questions": [{"kind": "answerable", "expected_slug": "<identifier>", "text": "...", "answer_keywords": ["..."]}, {"kind": "unanswerable", "expected_slug": null, "text": "...", "absent_terms": ["..."]}]}

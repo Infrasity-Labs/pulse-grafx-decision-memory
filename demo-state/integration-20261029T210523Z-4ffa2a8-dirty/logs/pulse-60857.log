@@ -1,0 +1,1562 @@
+=== start 2026-10-29T21:05:34Z ===
+  Data home: <work>/pulse-home
+  Source: DATA_DIR
+Terms-of-Use pre-accepted via --accept-terms (version 0.2.0).
+Starting Okto Pulse Community...
+  App:  http://127.0.0.1:60857  (API + Frontend)
+  MCP:  http://127.0.0.1:60858/mcp
+  Press Ctrl+C to stop.
+
+<venv>/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+INFO:     Started server process [11328]
+INFO:     Waiting for application startup.
+INFO:     Started server process [11328]
+INFO:     Waiting for application startup.
+INFO:     Uvicorn running on http://127.0.0.1:60858 (Press CTRL+C to quit)
+INFO:     kg.native_runtime_budget effective={'board_buffer_pool_mb': 64, 'global_buffer_pool_mb': 64, 'read_participants': 2} process_envelope={'buffer_pool_per_board_mb': 192, 'global_buffer_pool_mb': 192, 'total_process_bound_available': False}
+W1030 02:35:43.555000 11328 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8541.36it/s]
+INFO:     kg.tick.scheduler_started interval_minutes=1440
+INFO:     Uvicorn running on http://127.0.0.1:60857 (Press CTRL+C to quit)
+INFO:     API Server initialized successfully - http://127.0.0.1:60857/api/v1
+INFO:     UI Server initialized successfully - http://127.0.0.1:60857
+INFO:     MCP Server initialized successfully - http://127.0.0.1:60858/mcp
+INFO:     Startup complete - The application is ready
+INFO:     127.0.0.1:61163 - "GET /api/v1/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61168 - "POST /api/v1/boards HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61205 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61206 - "POST /api/v1/agents/bc5580d5-559b-4ec6-a9b1-b267f3be7394/boards/97abf222-9e88-403e-bc15-edc14c419aea HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61207 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61208 - "POST /api/v1/agents/09b1de26-3a95-43a6-beca-7cc488e9e698/boards/97abf222-9e88-403e-bc15-edc14c419aea HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61209 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61210 - "POST /api/v1/agents/a8ac9446-3985-4737-b26e-ee34d4430ec8/boards/97abf222-9e88-403e-bc15-edc14c419aea HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61211 - "POST /api/v1/agents HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61213 - "POST /api/v1/agents/bf4d90db-0584-4aef-83a1-ccf1d64a035e/boards/97abf222-9e88-403e-bc15-edc14c419aea HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61214 - "POST /api/v1/boards/97abf222-9e88-403e-bc15-edc14c419aea/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61216 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61217 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61218 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61219 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61221 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61246 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61269 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+consolidation failed for spec:741f2f1d-c61e-4d36-bb86-4ed011ddf62b: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+Traceback (most recent call last):
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 4819, in _process_batch
+    outcome = await _process_queue_entry_serialized(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1783, in _process_queue_entry_serialized
+    return await _process_queue_entry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 3477, in _process_queue_entry
+    commit_resp = await _commit_consolidation_with_board_graph_lifecycle(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1748, in _commit_consolidation_with_board_graph_lifecycle
+    return await _commit_with_lease(enter_graph_write(mutation_ref))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1675, in _commit_with_lease
+    commit_resp = await commit_consolidation(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5358, in commit_consolidation
+    _validate_degraded_connectivity_before_open(
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 2444, in _validate_degraded_connectivity_before_open
+    raise KGPrimitiveError(
+okto_pulse.core.kg.primitives.KGPrimitiveError: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+INFO:     127.0.0.1:61296 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61321 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61345 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61380 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61457 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61458 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61465 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61466 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61467 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61468 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61469 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61470 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61471 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61473 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61474 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61475 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61476 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61477 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61478 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61481 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61486 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61487 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61488 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61489 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61490 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61491 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61493 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61494 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61495 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61496 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61498 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61500 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61502 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61503 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61504 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61505 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61506 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61507 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61508 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.first_write_acknowledged board=97abf222-9e88-403e-bc15-edc14c419aea generation=2736e88bad6bb0ce
+INFO:     127.0.0.1:61511 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61517 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61518 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61519 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61520 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61521 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61522 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61523 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61524 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61525 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61526 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61527 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.first_write_convergence board=97abf222-9e88-403e-bc15-edc14c419aea outcome=converged elapsed_ms=909
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61528 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61529 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61535 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61536 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61537 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61538 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61540 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61541 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61545 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61546 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61547 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61548 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61551 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61552 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     127.0.0.1:61557 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61558 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:61559 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61566 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61567 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61568 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61573 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61575 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61577 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61578 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61579 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61581 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61583 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61584 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61585 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61591 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61592 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61593 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61594 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61595 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61596 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61599 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61600 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61601 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61602 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61603 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61604 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61605 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61606 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61607 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61616 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61617 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61618 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61619 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61620 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61621 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61622 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61623 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61624 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61625 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61626 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61627 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61628 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61629 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61631 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61632 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61633 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61634 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61635 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61636 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61637 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61639 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61640 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61641 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61642 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61643 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61644 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:61651 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61657 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61658 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61659 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:61663 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61684 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:61716 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:61764 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:61770 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61771 - "POST /api/v1/boards/97abf222-9e88-403e-bc15-edc14c419aea/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:61772 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61773 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61774 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61775 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61776 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61777 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61780 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61781 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61783 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61784 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61785 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61786 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61787 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61788 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61790 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61791 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61792 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61793 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61794 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61795 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61796 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61798 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61799 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61801 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61802 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61804 - "POST /mcp HTTP/1.1" 200 OK
+[10/30/26 02:37:16] Error calling tool 'okto_pulse_submit_spec_evaluation'      
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ <venv>/lib/python3.12/site-packages/sqlalc │
+                    │ hemy/engine/base.py:1967 in _exec_single_context         │
+                    │                                                          │
+                    │   1964 │   │   │   │   │   │   │   evt_handled = True    │
+                    │   1965 │   │   │   │   │   │   │   break                 │
+                    │   1966 │   │   │   │   if not evt_handled:               │
+                    │ ❱ 1967 │   │   │   │   │   self.dialect.do_execute(      │
+                    │   1968 │   │   │   │   │   │   cursor, str_statement, ef │
+                    │   1969 │   │   │   │   │   )                             │
+                    │   1970                                                   │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/sqlalc │
+                    │ hemy/engine/default.py:952 in do_execute                 │
+                    │                                                          │
+                    │    949 │   │   cursor.executemany(statement, parameters) │
+                    │    950 │                                                 │
+                    │    951 │   def do_execute(self, cursor, statement, param │
+                    │ ❱  952 │   │   cursor.execute(statement, parameters)     │
+                    │    953 │                                                 │
+                    │    954 │   def do_execute_no_params(self, cursor, statem │
+                    │    955 │   │   cursor.execute(statement)                 │
+                    │                                                          │
+                    │                 ... 7 frames hidden ...                  │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:160 in _execute                              │
+                    │                                                          │
+                    │   157 │   │                                              │
+                    │   158 │   │   self._tx.put_nowait((future, function))    │
+                    │   159 │   │                                              │
+                    │ ❱ 160 │   │   return await future                        │
+                    │   161 │                                                  │
+                    │   162 │   async def _connect(self) -> "Connection":      │
+                    │   163 │   │   """Connect to the actual sqlite database." │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:63 in _connection_worker_thread              │
+                    │                                                          │
+                    │    60 │   │                                              │
+                    │    61 │   │   try:                                       │
+                    │    62 │   │   │   LOG.debug("executing %s", function)    │
+                    │ ❱  63 │   │   │   result = function()                    │
+                    │    64 │   │   │                                          │
+                    │    65 │   │   │   if future:                             │
+                    │    66 │   │   │   │   future.get_loop().call_soon_thread │
+                    ╰──────────────────────────────────────────────────────────╯
+                    OperationalError: database is locked                        
+                                                                                
+                    The above exception was the direct cause of the following   
+                    exception:                                                  
+                                                                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ <venv>/lib/python3.12/site-packages/fastmc │
+                    │ p/tools/tool_manager.py:160 in call_tool                 │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/fastmc │
+                    │ p/tools/tool.py:383 in run                               │
+                    │                                                          │
+                    │                 ... 33 frames hidden ...                 │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:160 in _execute                              │
+                    │                                                          │
+                    │   157 │   │                                              │
+                    │   158 │   │   self._tx.put_nowait((future, function))    │
+                    │   159 │   │                                              │
+                    │ ❱ 160 │   │   return await future                        │
+                    │   161 │                                                  │
+                    │   162 │   async def _connect(self) -> "Connection":      │
+                    │   163 │   │   """Connect to the actual sqlite database." │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:63 in _connection_worker_thread              │
+                    │                                                          │
+                    │    60 │   │                                              │
+                    │    61 │   │   try:                                       │
+                    │    62 │   │   │   LOG.debug("executing %s", function)    │
+                    │ ❱  63 │   │   │   result = function()                    │
+                    │    64 │   │   │                                          │
+                    │    65 │   │   │   if future:                             │
+                    │    66 │   │   │   │   future.get_loop().call_soon_thread │
+                    ╰──────────────────────────────────────────────────────────╯
+                    OperationalError: (sqlite3.OperationalError) database is    
+                    locked                                                      
+                    [SQL: INSERT INTO activity_logs (id, board_id, card_id,     
+                    action, actor_type, actor_id, actor_name, details) VALUES   
+                    (?, ?, ?, ?, ?, ?, ?, ?) RETURNING created_at]              
+                    [parameters: ('e2eede4c-b88c-49fe-946a-65ff64eb8b99',       
+                    '97abf222-9e88-403e-bc15-edc14c419aea', None,               
+                    'critical_context_guard_decision', 'agent',                 
+                    'bf4d90db-0584-4aef-83a1-ccf1d64a035e', 'Reviewer (demo)',  
+                    '{"metric_name": "critical_context_guard_decision_total",   
+                    "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",         
+                    "actor_id": "bf4d90db-0584-4aef-83a1-ccf ... (247 characters
+                    truncated) ... rprint":                                     
+                    "ctx_sha256_v1:d2b12ea4a0b88e54dbb96ddefb9773864173fc595b240
+                    70fb43b7fa4df5f0791", "context_resolved_at":                
+                    "2026-10-29T21:07:16.166097+00:00"}')]                      
+                    (Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:61834 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61838 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61840 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61841 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61842 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61843 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61844 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61846 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61847 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61850 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61853 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61854 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61855 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61858 - "POST /mcp HTTP/1.1" 200 OK
+[10/30/26 02:37:22] Error calling tool 'okto_pulse_submit_spec_evaluation'      
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ <venv>/lib/python3.12/site-packages/sqlalc │
+                    │ hemy/engine/base.py:1967 in _exec_single_context         │
+                    │                                                          │
+                    │   1964 │   │   │   │   │   │   │   evt_handled = True    │
+                    │   1965 │   │   │   │   │   │   │   break                 │
+                    │   1966 │   │   │   │   if not evt_handled:               │
+                    │ ❱ 1967 │   │   │   │   │   self.dialect.do_execute(      │
+                    │   1968 │   │   │   │   │   │   cursor, str_statement, ef │
+                    │   1969 │   │   │   │   │   )                             │
+                    │   1970                                                   │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/sqlalc │
+                    │ hemy/engine/default.py:952 in do_execute                 │
+                    │                                                          │
+                    │    949 │   │   cursor.executemany(statement, parameters) │
+                    │    950 │                                                 │
+                    │    951 │   def do_execute(self, cursor, statement, param │
+                    │ ❱  952 │   │   cursor.execute(statement, parameters)     │
+                    │    953 │                                                 │
+                    │    954 │   def do_execute_no_params(self, cursor, statem │
+                    │    955 │   │   cursor.execute(statement)                 │
+                    │                                                          │
+                    │                 ... 7 frames hidden ...                  │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:160 in _execute                              │
+                    │                                                          │
+                    │   157 │   │                                              │
+                    │   158 │   │   self._tx.put_nowait((future, function))    │
+                    │   159 │   │                                              │
+                    │ ❱ 160 │   │   return await future                        │
+                    │   161 │                                                  │
+                    │   162 │   async def _connect(self) -> "Connection":      │
+                    │   163 │   │   """Connect to the actual sqlite database." │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:63 in _connection_worker_thread              │
+                    │                                                          │
+                    │    60 │   │                                              │
+                    │    61 │   │   try:                                       │
+                    │    62 │   │   │   LOG.debug("executing %s", function)    │
+                    │ ❱  63 │   │   │   result = function()                    │
+                    │    64 │   │   │                                          │
+                    │    65 │   │   │   if future:                             │
+                    │    66 │   │   │   │   future.get_loop().call_soon_thread │
+                    ╰──────────────────────────────────────────────────────────╯
+                    OperationalError: database is locked                        
+                                                                                
+                    The above exception was the direct cause of the following   
+                    exception:                                                  
+                                                                                
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ <venv>/lib/python3.12/site-packages/fastmc │
+                    │ p/tools/tool_manager.py:160 in call_tool                 │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/fastmc │
+                    │ p/tools/tool.py:383 in run                               │
+                    │                                                          │
+                    │                 ... 33 frames hidden ...                 │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:160 in _execute                              │
+                    │                                                          │
+                    │   157 │   │                                              │
+                    │   158 │   │   self._tx.put_nowait((future, function))    │
+                    │   159 │   │                                              │
+                    │ ❱ 160 │   │   return await future                        │
+                    │   161 │                                                  │
+                    │   162 │   async def _connect(self) -> "Connection":      │
+                    │   163 │   │   """Connect to the actual sqlite database." │
+                    │                                                          │
+                    │ <venv>/lib/python3.12/site-packages/aiosql │
+                    │ ite/core.py:63 in _connection_worker_thread              │
+                    │                                                          │
+                    │    60 │   │                                              │
+                    │    61 │   │   try:                                       │
+                    │    62 │   │   │   LOG.debug("executing %s", function)    │
+                    │ ❱  63 │   │   │   result = function()                    │
+                    │    64 │   │   │                                          │
+                    │    65 │   │   │   if future:                             │
+                    │    66 │   │   │   │   future.get_loop().call_soon_thread │
+                    ╰──────────────────────────────────────────────────────────╯
+                    OperationalError: (sqlite3.OperationalError) database is    
+                    locked                                                      
+                    [SQL: INSERT INTO activity_logs (id, board_id, card_id,     
+                    action, actor_type, actor_id, actor_name, details) VALUES   
+                    (?, ?, ?, ?, ?, ?, ?, ?) RETURNING created_at]              
+                    [parameters: ('35e26fec-5e49-4378-8480-190d4d4ba03f',       
+                    '97abf222-9e88-403e-bc15-edc14c419aea', None,               
+                    'critical_context_guard_decision', 'agent',                 
+                    'bf4d90db-0584-4aef-83a1-ccf1d64a035e', 'Reviewer (demo)',  
+                    '{"metric_name": "critical_context_guard_decision_total",   
+                    "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",         
+                    "actor_id": "bf4d90db-0584-4aef-83a1-ccf ... (247 characters
+                    truncated) ... rprint":                                     
+                    "ctx_sha256_v1:2be10d5fb15276b596a67636f94abe92dbb0093d8dc0c
+                    3ab4b6b4424294ddb01", "context_resolved_at":                
+                    "2026-10-29T21:07:22.491387+00:00"}')]                      
+                    (Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+kg.connectivity.auto_provenance_self_loop_skipped candidate=board_97abf222_entity node=entity_d7f0a09e92d51525e1da9cb9 type=Entity
+consolidation failed for spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a: commit failed and was compensated: projection_precommit_claim_lost entry_id=3bb5cba4-967c-4f18-a755-fe76ff94e7c0
+Traceback (most recent call last):
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 4717, in _do_graph_commit
+    projection_precommit(
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5136, in stage_precommit
+    future.result()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1646, in _stage_projection_precommit
+    raise _QueueClaimLostOrFenced(
+okto_pulse.core.application.processors.consolidation._QueueClaimLostOrFenced: projection_precommit_claim_lost entry_id=3bb5cba4-967c-4f18-a755-fe76ff94e7c0
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 4819, in _process_batch
+    outcome = await _process_queue_entry_serialized(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1783, in _process_queue_entry_serialized
+    return await _process_queue_entry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 3477, in _process_queue_entry
+    commit_resp = await _commit_consolidation_with_board_graph_lifecycle(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1748, in _commit_consolidation_with_board_graph_lifecycle
+    return await _commit_with_lease(enter_graph_write(mutation_ref))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1675, in _commit_with_lease
+    commit_resp = await commit_consolidation(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5367, in commit_consolidation
+    return await _run_cancellation_atomic(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 234, in _run_cancellation_atomic
+    return await asyncio.shield(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5139, in _complete_commit
+    graph_result = await observe_consolidation_phase(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/consolidation_timing.py", line 46, in observe_consolidation_phase
+    result = await operation
+             ^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 207, in _run_graph_io
+    return await executor.run(operation)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/community/adapters/worker_runners.py", line 75, in run
+    result = await asyncio.shield(task)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 4850, in _do_graph_commit
+    raise KGPrimitiveError(
+okto_pulse.core.kg.primitives.KGPrimitiveError: commit failed and was compensated: projection_precommit_claim_lost entry_id=3bb5cba4-967c-4f18-a755-fe76ff94e7c0
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+kg.connectivity.auto_provenance_self_loop_skipped candidate=board_97abf222_entity node=entity_d7f0a09e92d51525e1da9cb9 type=Entity
+INFO:     127.0.0.1:61881 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61885 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61886 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61887 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61888 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61889 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61890 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61891 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:61892 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61893 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61894 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61895 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61896 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61897 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61898 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61899 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61900 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61902 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61908 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61909 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61912 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61916 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61918 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61919 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61921 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61922 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61923 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61924 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61926 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61930 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61939 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61960 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61983 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62011 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+kg.takedown.slo_evaluation_insufficient_data board_id=97abf222-9e88-403e-bc15-edc14c419aea status=insufficient_data breached=False
+kg.takedown.slo_evaluation_insufficient_data board_id=bb074e26-9edc-4f45-aa5b-2b079f2729dc status=insufficient_data breached=False
+INFO:     127.0.0.1:62033 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62064 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+kg.rebuild_sources.legacy_unknown board=97abf222-9e88-403e-bc15-edc14c419aea count=10 breakdown=[{"artifact_type":"decision","count":10,"reason_code":"unknown_artifact_type"}]
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+kg.connectivity.auto_provenance_self_loop_skipped candidate=board_97abf222_entity node=entity_d7f0a09e92d51525e1da9cb9 type=Entity
+kg.connectivity.auto_provenance_self_loop_skipped candidate=ent_postgresql node=entity_1546da75327d706e73beeb8f type=Entity
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_af39ad94a3292b98f51863c2 field=created_at rederived=2026-10-29T21:07:25.647622Z sealed=2026-10-29T21:07:25.647622
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_d813354a5d21d2537d9837da field=created_at rederived=2026-10-29T21:07:25.664794Z sealed=2026-10-29T21:07:25.664794
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_b8fbd9d368f166882758cdf8 field=created_at rederived=2026-10-29T21:07:25.679461Z sealed=2026-10-29T21:07:25.679461
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_e675824a7f754a7ede60e2d6 field=created_at rederived=2026-10-29T21:07:25.692784Z sealed=2026-10-29T21:07:25.692784
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_46185231fe4d4dde84ecad5d field=created_at rederived=2026-10-29T21:07:25.707129Z sealed=2026-10-29T21:07:25.707129
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_f3af9a4daa2446e691d3e2e0 field=created_at rederived=2026-10-29T21:07:25.719514Z sealed=2026-10-29T21:07:25.719514
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_60f3f9cd42de0397d29a9487 field=created_at rederived=2026-10-29T21:07:25.731849Z sealed=2026-10-29T21:07:25.731849
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_f1ccf051cd899145204582d9 field=created_at rederived=2026-10-29T21:07:25.745224Z sealed=2026-10-29T21:07:25.745224
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_467aa0f1f0310448a4dc20eb field=created_at rederived=2026-10-29T21:07:25.775327Z sealed=2026-10-29T21:07:25.775327
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_e49f08ce6b7a492a node_id=decision_ebb14997217eccae435520c8 field=created_at rederived=2026-10-29T21:07:25.787786Z sealed=2026-10-29T21:07:25.787786
+INFO:     127.0.0.1:62086 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62115 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62135 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62166 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62193 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62224 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62245 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62246 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62247 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62248 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+kg.rebuild_sources.legacy_unknown board=97abf222-9e88-403e-bc15-edc14c419aea count=10 breakdown=[{"artifact_type":"decision","count":10,"reason_code":"unknown_artifact_type"}]
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62250 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62251 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62252 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62254 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62256 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62257 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62258 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62259 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62260 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62261 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62262 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62263 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62264 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62265 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62266 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62267 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62268 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62269 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62270 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62271 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62272 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62273 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62274 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62275 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62276 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62277 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62278 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62281 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62282 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62283 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62284 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62285 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62286 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62287 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62288 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62289 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62290 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62291 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62292 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62293 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62294 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62295 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62296 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62297 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62298 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62299 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62300 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62301 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62302 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62304 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62305 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_af39ad94a3292b98f51863c2 field=created_at rederived=2026-10-29T21:07:25.647622Z sealed=2026-10-29T21:07:25.647622
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_d813354a5d21d2537d9837da field=created_at rederived=2026-10-29T21:07:25.664794Z sealed=2026-10-29T21:07:25.664794
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_b8fbd9d368f166882758cdf8 field=created_at rederived=2026-10-29T21:07:25.679461Z sealed=2026-10-29T21:07:25.679461
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_e675824a7f754a7ede60e2d6 field=created_at rederived=2026-10-29T21:07:25.692784Z sealed=2026-10-29T21:07:25.692784
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_46185231fe4d4dde84ecad5d field=created_at rederived=2026-10-29T21:07:25.707129Z sealed=2026-10-29T21:07:25.707129
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_f3af9a4daa2446e691d3e2e0 field=created_at rederived=2026-10-29T21:07:25.719514Z sealed=2026-10-29T21:07:25.719514
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_60f3f9cd42de0397d29a9487 field=created_at rederived=2026-10-29T21:07:25.731849Z sealed=2026-10-29T21:07:25.731849
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_f1ccf051cd899145204582d9 field=created_at rederived=2026-10-29T21:07:25.745224Z sealed=2026-10-29T21:07:25.745224
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_467aa0f1f0310448a4dc20eb field=created_at rederived=2026-10-29T21:07:25.775327Z sealed=2026-10-29T21:07:25.775327
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_07c6419006c54645 node_id=decision_ebb14997217eccae435520c8 field=created_at rederived=2026-10-29T21:07:25.787786Z sealed=2026-10-29T21:07:25.787786
+INFO:     127.0.0.1:62313 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62330 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62362 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62385 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62410 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62435 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62439 - "GET /api/v1/kg/boards/97abf222-9e88-403e-bc15-edc14c419aea/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62440 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62441 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62442 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62443 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62444 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62445 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62446 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62447 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62448 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62449 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62450 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62452 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62454 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62455 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62456 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62457 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62463 - "POST /api/v1/boards HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62477 - "POST /api/v1/agents/bc5580d5-559b-4ec6-a9b1-b267f3be7394/boards/f3dc7472-2e23-4456-a472-b962be2e7d14 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62478 - "POST /api/v1/agents/09b1de26-3a95-43a6-beca-7cc488e9e698/boards/f3dc7472-2e23-4456-a472-b962be2e7d14 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62479 - "POST /api/v1/agents/a8ac9446-3985-4737-b26e-ee34d4430ec8/boards/f3dc7472-2e23-4456-a472-b962be2e7d14 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62480 - "POST /api/v1/agents/bf4d90db-0584-4aef-83a1-ccf1d64a035e/boards/f3dc7472-2e23-4456-a472-b962be2e7d14 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62481 - "POST /api/v1/boards/f3dc7472-2e23-4456-a472-b962be2e7d14/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62482 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62483 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62484 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62485 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:62487 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62565 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:62607 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     127.0.0.1:62620 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+consolidation failed for spec:b9fa209e-d4d3-4231-9a67-8e869698e076: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+Traceback (most recent call last):
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 4819, in _process_batch
+    outcome = await _process_queue_entry_serialized(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1783, in _process_queue_entry_serialized
+    return await _process_queue_entry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 3477, in _process_queue_entry
+    commit_resp = await _commit_consolidation_with_board_graph_lifecycle(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1748, in _commit_consolidation_with_board_graph_lifecycle
+    return await _commit_with_lease(enter_graph_write(mutation_ref))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1675, in _commit_with_lease
+    commit_resp = await commit_consolidation(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5358, in commit_consolidation
+    _validate_degraded_connectivity_before_open(
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 2444, in _validate_degraded_connectivity_before_open
+    raise KGPrimitiveError(
+okto_pulse.core.kg.primitives.KGPrimitiveError: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+INFO:     127.0.0.1:62641 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:62649 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:62663 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:62678 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62679 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62680 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62681 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62682 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62683 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62684 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62685 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62686 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62687 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62688 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62689 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62692 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62693 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62694 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62695 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62696 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62697 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62698 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62699 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62700 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62701 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62702 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62703 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62704 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62705 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62707 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62708 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62709 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62710 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62711 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62712 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62713 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62714 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62715 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62716 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62717 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62718 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62719 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62720 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62721 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62722 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62723 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62724 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62725 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62726 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62727 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62728 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62729 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62731 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62732 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62735 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62736 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62737 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62738 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62739 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62740 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62741 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62742 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62743 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62744 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62745 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62746 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62747 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62748 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62749 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62750 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62751 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62752 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62753 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62754 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62755 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62756 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62757 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62758 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62759 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62760 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62765 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62768 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62770 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62772 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62775 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62777 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62778 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62779 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62781 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62784 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62785 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62786 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62788 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62789 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62790 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62791 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62792 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62793 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62794 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62795 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62796 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62797 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62798 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62800 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62801 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62806 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62807 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62809 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62810 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62811 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62812 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62813 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62815 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62816 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62817 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62818 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62819 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62820 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62821 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62830 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62831 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62832 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62833 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62834 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62835 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62836 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62838 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62839 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62840 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62841 - "GET /api/v1/discovery/intents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62842 - "POST /api/v1/discovery/intents/02d8893a-0bbb-479d-9478-1b28090aa29c/execute HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62846 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62847 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62848 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62849 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62853 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62854 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62855 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62856 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62857 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62860 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62861 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62862 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62863 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=f3dc7472-2e23-4456-a472-b962be2e7d14 outcome=unavailable changed=0
+INFO:     127.0.0.1:62864 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62865 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=f3dc7472-2e23-4456-a472-b962be2e7d14 classification=materialized state=materialized metric_status=available
+kg.rebuild_sources.legacy_unknown board=97abf222-9e88-403e-bc15-edc14c419aea count=10 breakdown=[{"artifact_type":"decision","count":10,"reason_code":"unknown_artifact_type"}]
+outbox.reconcile_board_read_failed board=97abf222-9e88-403e-bc15-edc14c419aea err=read_only_query failed in Okto Grafx (query_deadline_exceeded).
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62867 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62868 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62869 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62870 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62871 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62872 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62873 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62874 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62875 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62876 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62877 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62878 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62879 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+kg.cognitive_source.birth_stamp_restored board=97abf222-9e88-403e-bc15-edc14c419aea session=kgses_9a9962c97210408c node_id=decision_d61e0c257f256371e5ce06dd field=created_at rederived=2026-10-29T21:06:46.105346Z sealed=2026-10-29T21:06:46.105346
+INFO:     127.0.0.1:62886 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.first_write_acknowledged board=f3dc7472-2e23-4456-a472-b962be2e7d14 generation=37bac77fd5c509cb
+INFO:     127.0.0.1:62887 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62888 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62889 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62890 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+kg.scoring.contradict_penalty_capped node_type=Decision node_id=decision_d61e0c257f256371e5ce06dd raw_sum=0.9000 applied_cap=0.50 edge_count_estimate=2
+kg.scoring.clamp_applied raw=-0.0684 source=0.90 degree=2 decayed_hits=0.00 penalty=0.50 boost=0.00
+INFO:     127.0.0.1:62898 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62899 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62900 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62901 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62902 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62904 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62905 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62906 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62907 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62908 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62909 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62910 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62911 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62912 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62913 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62914 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62915 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62916 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62917 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62918 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62919 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62925 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62926 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62927 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62928 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62929 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62930 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62931 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62932 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62933 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62934 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62935 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62936 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62937 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62938 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62939 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62941 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62942 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62946 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62948 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62951 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62952 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62953 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62954 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62955 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62956 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62957 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62958 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62959 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62960 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62961 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62962 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62963 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62966 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:62975 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62979 - "POST /api/v1/boards HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62990 - "POST /api/v1/agents/bc5580d5-559b-4ec6-a9b1-b267f3be7394/boards/4323e30a-d989-479a-a551-050ee2974407 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62991 - "POST /api/v1/boards/4323e30a-d989-479a-a551-050ee2974407/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62992 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62993 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62994 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62995 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:62996 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63008 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63020 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63040 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.first_write_acknowledged board=4323e30a-d989-479a-a551-050ee2974407 generation=6604ccee2bbe2df4
+INFO:     127.0.0.1:63054 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.first_write_convergence board=4323e30a-d989-479a-a551-050ee2974407 outcome=converged elapsed_ms=1980
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63061 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63070 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63075 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63078 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63079 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63080 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63081 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63082 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63083 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63084 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63085 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63086 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63087 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=4323e30a-d989-479a-a551-050ee2974407 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=4323e30a-d989-479a-a551-050ee2974407 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63089 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63090 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63113 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63114 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63115 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63116 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63120 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=97abf222-9e88-403e-bc15-edc14c419aea outcome=unavailable changed=0
+kg.rebuild_sources.legacy_unknown board=97abf222-9e88-403e-bc15-edc14c419aea count=10 breakdown=[{"artifact_type":"decision","count":10,"reason_code":"unknown_artifact_type"}]
+INFO:     kg.health.materialization_classified board=97abf222-9e88-403e-bc15-edc14c419aea classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63121 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63122 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63123 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63125 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63128 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63129 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63134 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63135 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63136 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63137 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63138 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63139 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63140 - "POST /api/v1/boards HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63160 - "POST /api/v1/agents/bc5580d5-559b-4ec6-a9b1-b267f3be7394/boards/2b4927a5-be07-4854-9d43-b55dcbd469fa HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63161 - "POST /api/v1/agents/09b1de26-3a95-43a6-beca-7cc488e9e698/boards/2b4927a5-be07-4854-9d43-b55dcbd469fa HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63162 - "POST /api/v1/boards/2b4927a5-be07-4854-9d43-b55dcbd469fa/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63163 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63164 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63165 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63166 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63167 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63219 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63244 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63267 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63293 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63317 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+consolidation failed for spec:7468ee71-ccd1-416a-bf8a-cc93ca08608c: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+Traceback (most recent call last):
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 4819, in _process_batch
+    outcome = await _process_queue_entry_serialized(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1783, in _process_queue_entry_serialized
+    return await _process_queue_entry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 3477, in _process_queue_entry
+    commit_resp = await _commit_consolidation_with_board_graph_lifecycle(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1748, in _commit_consolidation_with_board_graph_lifecycle
+    return await _commit_with_lease(enter_graph_write(mutation_ref))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/application/processors/consolidation.py", line 1675, in _commit_with_lease
+    commit_resp = await commit_consolidation(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 5358, in commit_consolidation
+    _validate_degraded_connectivity_before_open(
+  File "<venv>/lib/python3.12/site-packages/okto_pulse/core/kg/primitives.py", line 2444, in _validate_degraded_connectivity_before_open
+    raise KGPrimitiveError(
+okto_pulse.core.kg.primitives.KGPrimitiveError: KG graph is degraded; connectivity validation was deferred and no graph mutation was attempted.
+INFO:     127.0.0.1:63344 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63364 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63411 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63440 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63462 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63485 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63491 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63493 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63494 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63495 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63496 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63497 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63498 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63499 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63500 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.first_write_acknowledged board=2b4927a5-be07-4854-9d43-b55dcbd469fa generation=9bd3f082aa1fc127
+INFO:     127.0.0.1:63501 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.first_write_convergence board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=converged elapsed_ms=219
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63504 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63505 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63506 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63507 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63508 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63511 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63512 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63513 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63515 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63517 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63518 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63519 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63520 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63521 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63522 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63527 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63528 - "DELETE /mcp HTTP/1.1" 200 OK
+=== start 2026-10-29T21:12:12Z ===
+  Data home: <work>/pulse-home
+  Source: DATA_DIR
+Terms-of-Use pre-accepted via --accept-terms (version 0.2.0).
+Starting Okto Pulse Community...
+  App:  http://127.0.0.1:60857  (API + Frontend)
+  MCP:  http://127.0.0.1:60858/mcp
+  Press Ctrl+C to stop.
+
+<venv>/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+INFO:     Started server process [14290]
+INFO:     Waiting for application startup.
+INFO:     Started server process [14290]
+INFO:     Waiting for application startup.
+INFO:     Uvicorn running on http://127.0.0.1:60858 (Press CTRL+C to quit)
+INFO:     kg.native_runtime_budget effective={'board_buffer_pool_mb': 64, 'global_buffer_pool_mb': 64, 'read_participants': 2} process_envelope={'buffer_pool_per_board_mb': 192, 'global_buffer_pool_mb': 192, 'total_process_bound_available': False}
+W1030 02:42:21.555000 14290 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6179.92it/s]
+INFO:     kg.tick.scheduler_started interval_minutes=1440
+INFO:     Uvicorn running on http://127.0.0.1:60857 (Press CTRL+C to quit)
+INFO:     API Server initialized successfully - http://127.0.0.1:60857/api/v1
+INFO:     UI Server initialized successfully - http://127.0.0.1:60857
+INFO:     MCP Server initialized successfully - http://127.0.0.1:60858/mcp
+INFO:     Startup complete - The application is ready
+INFO:     127.0.0.1:63647 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63648 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63649 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63651 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63653 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63654 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63655 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63656 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63663 - "GET /api/v1/boards/2b4927a5-be07-4854-9d43-b55dcbd469fa/specs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63664 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63665 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63666 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63667 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63668 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63670 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63677 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63678 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63679 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63680 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63681 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63683 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63684 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63685 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63686 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63687 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63688 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63689 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63692 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63694 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=2b4927a5-be07-4854-9d43-b55dcbd469fa outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=2b4927a5-be07-4854-9d43-b55dcbd469fa classification=materialized state=materialized metric_status=available
+kg.cognitive_source.birth_stamp_restored board=2b4927a5-be07-4854-9d43-b55dcbd469fa session=kgses_2095e235252f4523 node_id=decision_4d4001ec57f51bb4c0092510 field=created_at rederived=2026-10-29T21:12:09.750896Z sealed=2026-10-29T21:12:09.750896
+kg.cognitive_source.birth_stamp_restored board=2b4927a5-be07-4854-9d43-b55dcbd469fa session=kgses_2095e235252f4523 node_id=decision_b3b13c5aa3a6e11b348465a1 field=created_at rederived=2026-10-29T21:12:09.778755Z sealed=2026-10-29T21:12:09.778755
+kg.cognitive_source.birth_stamp_restored board=2b4927a5-be07-4854-9d43-b55dcbd469fa session=kgses_2095e235252f4523 node_id=decision_4d850a9bf7655685fd9ee38e field=created_at rederived=2026-10-29T21:12:09.795699Z sealed=2026-10-29T21:12:09.795699
+INFO:     127.0.0.1:63701 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63702 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63703 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63704 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63705 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63706 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63707 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63708 - "POST /api/v1/boards HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63729 - "POST /api/v1/agents/bc5580d5-559b-4ec6-a9b1-b267f3be7394/boards/128f236e-ba86-4969-a026-19551a7c05b7 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63730 - "POST /api/v1/agents/09b1de26-3a95-43a6-beca-7cc488e9e698/boards/128f236e-ba86-4969-a026-19551a7c05b7 HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63731 - "POST /api/v1/boards/128f236e-ba86-4969-a026-19551a7c05b7/specs HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63732 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63733 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63734 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63735 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63738 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63748 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63759 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63766 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     kg.health.first_write_acknowledged board=128f236e-ba86-4969-a026-19551a7c05b7 generation=667d5c857d294439
+INFO:     127.0.0.1:63783 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.first_write_convergence board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=converged elapsed_ms=986
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63801 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63886 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=unavailable
+INFO:     127.0.0.1:63895 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63897 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63914 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63915 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63916 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63917 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63920 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63919 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63918 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63922 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63921 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63923 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63924 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63925 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63926 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63927 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63928 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63929 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63930 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63931 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63932 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63933 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63934 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63935 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63936 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63937 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63938 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_add_node_candidate class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63941 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63942 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63943 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63944 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=1
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63946 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63947 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63948 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63949 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     127.0.0.1:63950 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63956 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63957 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63958 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     127.0.0.1:63959 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63960 - "POST /mcp HTTP/1.1" 200 OK
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63962 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63963 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63964 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:63965 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63966 - "POST /mcp HTTP/1.1" 200 OK
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=1
+INFO:     127.0.0.1:63967 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63968 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63969 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63970 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63971 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63972 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63973 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63975 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63976 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63977 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63978 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63979 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63981 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63982 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63983 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63984 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63985 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63986 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     127.0.0.1:63987 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:63993 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63994 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63995 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     127.0.0.1:63996 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63997 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     127.0.0.1:64000 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64002 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64003 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64007 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64008 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64009 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64010 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64011 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64012 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64013 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64014 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64015 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64016 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64018 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64019 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64026 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64027 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64028 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_commit_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64031 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64032 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64033 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=1
+mcp.admission.rejected tool=okto_pulse_kg_begin_consolidation class=writer reason=wait_timeout active=1 queued=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64037 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64039 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64041 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64043 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64044 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64045 - "POST /mcp HTTP/1.1" 200 OK
+=== start 2026-10-29T21:14:29Z ===
+  Data home: <work>/pulse-home
+  Source: DATA_DIR
+Terms-of-Use pre-accepted via --accept-terms (version 0.2.0).
+Starting Okto Pulse Community...
+  App:  http://127.0.0.1:60857  (API + Frontend)
+  MCP:  http://127.0.0.1:60858/mcp
+  Press Ctrl+C to stop.
+
+<venv>/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+INFO:     Started server process [15310]
+INFO:     Waiting for application startup.
+INFO:     Started server process [15310]
+INFO:     Waiting for application startup.
+INFO:     Uvicorn running on http://127.0.0.1:60858 (Press CTRL+C to quit)
+INFO:     kg.native_runtime_budget effective={'board_buffer_pool_mb': 64, 'global_buffer_pool_mb': 64, 'read_participants': 2} process_envelope={'buffer_pool_per_board_mb': 192, 'global_buffer_pool_mb': 192, 'total_process_bound_available': False}
+W1030 02:44:39.413000 15310 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 8434.14it/s]
+INFO:     kg.tick.scheduler_started interval_minutes=1440
+INFO:     Uvicorn running on http://127.0.0.1:60857 (Press CTRL+C to quit)
+INFO:     API Server initialized successfully - http://127.0.0.1:60857/api/v1
+INFO:     UI Server initialized successfully - http://127.0.0.1:60857
+INFO:     MCP Server initialized successfully - http://127.0.0.1:60858/mcp
+INFO:     Startup complete - The application is ready
+INFO:     127.0.0.1:64527 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64528 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64529 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64530 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64532 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64533 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64535 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64536 - "GET /api/v1/boards/128f236e-ba86-4969-a026-19551a7c05b7/specs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64539 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64540 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64541 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64542 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64543 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64544 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64548 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64562 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64563 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64564 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64565 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64566 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+INFO:     127.0.0.1:64567 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64568 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64569 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64570 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64571 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64572 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64573 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64574 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64575 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64576 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64577 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64578 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64579 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64580 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64581 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64582 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     kg.health.read_side_mutation_guard board=128f236e-ba86-4969-a026-19551a7c05b7 outcome=unavailable changed=0
+INFO:     kg.health.materialization_classified board=128f236e-ba86-4969-a026-19551a7c05b7 classification=materialized state=materialized metric_status=available
+kg.cognitive_source.birth_stamp_restored board=128f236e-ba86-4969-a026-19551a7c05b7 session=kgses_dc50e1075cc04640 node_id=decision_c4757f182016d6563ea1aced field=created_at rederived=2026-10-29T21:13:17.220689Z sealed=2026-10-29T21:13:17.220689
+INFO:     127.0.0.1:64587 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64588 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64589 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64590 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64591 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64594 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64595 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64596 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64597 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64598 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64599 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64605 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64606 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64616 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64617 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:64618 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64619 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64626 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64627 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64628 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64632 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64633 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64635 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64636 - "DELETE /mcp HTTP/1.1" 200 OK
+INFO:     shutdown signal received (signum=15) — starting ordered shutdown
+INFO:     Shutting down
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15310]
+INFO:     kg.shutdown.graphs_closed {'boards_closed': 3, 'boards_failed': 0, 'global_failed': 0, 'duration_ms': 17}
+INFO:     KG graphs closed on shutdown (boards_closed=3 boards_failed=0 duration_ms=17)
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15310]

@@ -1,6 +1,6 @@
 """Step 8: stop Pulse cleanly, read the board stores directly, compare with Pulse's own counts.
 
-Boards read: the decision board and the Kill B crash-test board. Nothing here writes into a store.
+Boards read: the decision board and the crash-test boards of Kill A and Kill B. Nothing here writes into a store.
 A SHA-256 of every data file is taken before and after to show that the read-only passes wrote nothing.
 Output in demo-state/step8/.
 """
@@ -39,6 +39,9 @@ def main() -> int:
     info = sl.board_info()
     crash = sl.load_json(sl.STATE / "step7" / "killB.json")["board_id"]
     boards = {"decision_board": info["board_id"], "crash_test_board": crash}
+    crash_a = sl.load_json(sl.STATE / "step7" / "killA.json").get("board_id")  # absent in a run recorded before Kill A had its own board
+    if crash_a:
+        boards = {"decision_board": info["board_id"], "crash_test_board_a": crash_a, "crash_test_board": crash}
     OUT.mkdir(parents=True, exist_ok=True)
     with sl.StepTimer("step8"):
         counts_before = {}

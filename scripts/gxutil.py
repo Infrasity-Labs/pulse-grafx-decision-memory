@@ -3,15 +3,25 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def _replace_path(text: str, base: str, tag: str) -> str:
+    """Replace a path only where it ends: /repo must not eat the start of /repositories (the repo sits at /repo in the Linux container)."""
+    return re.sub(re.escape(base) + r"(?![A-Za-z0-9_.-])", lambda _: tag, text)
+
+
 def scrub(text: str) -> str:
+    for base, tag in ((ROOT, "<dash-encoded-project-path>"), (Path.home(), "<dash-encoded-home>")):  # Claude Code project folder names
+        encoded = re.sub(r"[/.]", "-", str(base))
+        if encoded not in ("-", ""):
+            text = _replace_path(text, encoded, tag)
     for base, tag in ((ROOT, "<repo>"), (Path.home(), "<home>")):
         if str(base) not in ("/", ""):  # inside a container the root can be "/"; never replace every slash
-            text = text.replace(str(base), tag)
+            text = _replace_path(text, str(base), tag)
     return text
 
 

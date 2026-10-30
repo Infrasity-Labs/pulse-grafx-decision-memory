@@ -1,0 +1,60 @@
+$ python assert_runtime.py --state state --require-step9
+  [arm] lexical-tfidf
+  dev       answerable 4/10 correct (4 wrong, 2 missed by abstaining); unanswerable 2/3 abstained (1 fabricated); graph-only 2/4; near-duplicate 3/9
+  held_out  answerable 3/11 correct (1 wrong, 7 missed by abstaining); unanswerable 3/3 abstained (0 fabricated); graph-only 1/5; near-duplicate 3/10
+  legacy    answerable 4/10 correct (3 wrong, 3 missed by abstaining); unanswerable 0/0 abstained (0 fabricated); graph-only 0/0; near-duplicate 0/0
+  model_authored answerable 11/12 correct (1 wrong, 0 missed by abstaining); unanswerable 4/4 abstained (0 fabricated); graph-only 7/7; near-duplicate 10/11
+  [arm] pulse-retrieval
+  dev       answerable 9/10 correct (1 wrong, 0 missed by abstaining); unanswerable 2/3 abstained (1 fabricated); graph-only 4/4; near-duplicate 8/9
+  held_out  answerable 6/11 correct (5 wrong, 0 missed by abstaining); unanswerable 2/3 abstained (1 fabricated); graph-only 2/5; near-duplicate 5/10
+  legacy    answerable 7/10 correct (3 wrong, 0 missed by abstaining); unanswerable 0/0 abstained (0 fabricated); graph-only 0/0; near-duplicate 0/0
+  model_authored answerable 11/12 correct (1 wrong, 0 missed by abstaining); unanswerable 3/4 abstained (1 fabricated); graph-only 7/7; near-duplicate 10/11
+PASS  claim       installed versions equal the pins in requirements.txt                                                                                                 pulse 0.4.2, grafx 0.0.8
+PASS  claim       the installed Pulse requires exactly the installed Grafx                                                                                              Requires-Dist: okto-grafx[accel]==0.0.8
+PASS  claim       Pulse loads the real embedding model, not the stub                                                                                                    sentence-transformers/all-MiniLM-L6-v2
+PASS  claim       step 2: four identities and a board graph that reaches healthy                                                                                        MAINTAINER=Full Control, RECORDER=Spec, RECALLER=Reporter, REVIEWER=Validator
+PASS  claim       step 3 (scripted): 12 decisions committed, every cited file and line exists                                                                           found 12, citations ok 12
+PASS  claim       step 3: the three depends_on edges are in the graph                                                                                                   3 edges
+PASS  claim       step 4 (scripted, 12-decision board): similarity and natural-language search put the right decision first for all ten questions                       similar 10/10, natural 10/10
+PASS  claim       step 4: the read-only identity is refused a write session                                                                                             kg.session.begin
+PASS  observation step 4: the numbers equal the numbers of the recorded agent run (similar, natural, history top-1)                                                     live 10/10/0, recorded 10/10/0. A different history number means the decision-history tool changed.
+PASS  claim       Pulse gate: the spec validation is refused while a decision has no verification plan                                                                  spec_validation_gate_not_ready: decision_verification_plan_incomplete: dec_934948e6: decision_verification_required
+PASS  claim       Pulse gate: after the plan is added the same spec is promoted to validated                                                                            status validated, edition 2
+PASS  claim       role: the Spec preset is refused a move it has no permission for                                                                                      {"error": "Permission denied", "reason": "permission_missing", "required_permission": "spec.move.approved_to_draft", "de
+PASS  claim       spec decisions: 10 Decision nodes exist in the working layer and the Recaller finds none of them                                                      {'working': 10}
+PASS  claim       closeout: a Decision with no Alternative or judgement edge is refused by the connectivity rule                                                        kg_node_connectivity_violation
+PASS  claim       closeout: one consolidation makes the 10 decisions canonical and the Recaller finds all of them                                                       10 of 10, layers {'canonical': 10, 'working': 10}
+PASS  observation closeout: after Pulse's own consolidation worker goes quiet, the 10 canonical nodes are still active and none was superseded by a working-layer node  active by layer {'canonical': 10}; waited 60.9 s before and 30.1 s after the closeout
+PASS  claim       role RECALLER (Reporter): at least 2 permission denials, all denials as expected, controls succeed                                                    denied 10/10 (permission 5, ownership 5), controls 2/2
+PASS  claim       role RECORDER (Spec): at least 2 permission denials, all denials as expected, controls succeed                                                        denied 4/4 (permission 4, ownership 0), controls 4/4
+PASS  claim       role REVIEWER (Validator): at least 2 permission denials, all denials as expected, controls succeed                                                   denied 5/5 (permission 5, ownership 0), controls 2/2
+PASS  claim       arm lexical-tfidf: every question was answered or abstained and scored by the shared scorer                                                           53 of 53 questions
+PASS  claim       arm pulse-retrieval: every question was answered or abstained and scored by the shared scorer                                                         53 of 53 questions
+PASS  claim       the corpus board holds 32 decisions that the retrieval arm could map to corpus slugs                                                                  
+PASS  claim       step 5: one decision is added by the reversal                                                                                                         22 -> 23
+PASS  observation step 5: Pulse flags no contradiction after the supersede alone, and one pair after the explicit contradicts edge                                      find_contradictions counts [0, 0, 1]
+PASS  claim       step 5: the supersedence chain from the new decision has length 1 and ends at it                                                                      depth 1
+PASS  observation step 5: the chain from the old decision has length 0 and still names the old decision                                                                 
+PASS  claim       step 5: one supersedes edge and one contradicts edge                                                                                                  
+PASS  claim       failing path: a note without a reason leaves the graph unchanged                                                                                      23 -> 23
+PASS  claim       step 6: both queries find the expected convention on the other board                                                                                  2 attempts, 1 attempts
+PASS  claim       step 6: an identity without access to the second board does not see it                                                                                
+PASS  claim       Kill A: the uncommitted draft is gone and the committed baseline is present                                                                           3 -> 3
+PASS  observation Kill A: the old session cannot be committed after the restart (session_not_found)                                                                     session_not_found
+PASS  claim       Kill A resume: after a new session replays all six decisions, each exists exactly once                                                                {'killa-base-1': 'UPDATE', 'killa-base-2': 'UPDATE', 'killa-base-3': 'UPDATE', 'killa-draft-1': 'ADD', 'killa-draft-2': 'ADD', 'killa-draft-3': 'ADD'}
+PASS  claim       Kill A: the board accepted a write within the writer-lock TTL plus 90 s                                                                               20.4
+PASS  claim       Kill B: every acknowledged commit is present after the restart                                                                                        16 of 16 present
+PASS  claim       Kill B: commits were in flight at the kill (parallel workers)                                                                                         1 in flight
+PASS  claim       Kill B retry: after the in-flight commits are committed again, no slug exists twice                                                                   retried 1
+PASS  claim       Kill B: the board accepted a write within the writer-lock TTL plus 90 s                                                                               81.4
+PASS  claim       the decision board holds no synthetic crash-test decision and was not changed by step 7                                                               23 before, 23 after
+PASS  claim       step 8: the decision board and both crash boards were read                                                                                            crash_test_board, crash_test_board_a, decision_board
+PASS  claim       step 8 decision_board: the direct read opens read-only, matches Pulse's counts and writes nothing                                                     nodes 68
+PASS  claim       step 8 crash_test_board_a: the direct read opens read-only, matches Pulse's counts and writes nothing                                                 nodes 10
+PASS  claim       step 8 crash_test_board: the direct read opens read-only, matches Pulse's counts and writes nothing                                                   nodes 21
+PASS  claim       step 9: one platform completed backup and restore                                                                                                     darwin: backup False, linux-container: backup True
+PASS  claim       step 9 linux-container: original, copy and restored folder verify clean                                                                               
+PASS  claim       step 9 linux-container: counts match and the original was not touched                                                                                 
+PASS  claim       step 9 linux-container: the restored store holds the same decisions, with the same text and citations, as the original                                43 decisions compared by title, text, source reference and quote
+PASS  claim       the scoreboard builder reads the live outputs of all steps                                                                                            18 sections
+48 of 48 checks passed

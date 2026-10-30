@@ -1,0 +1,418 @@
+{
+  "path_name": "copy",
+  "read_only_requested": true,
+  "opened": true,
+  "db_read_only": true,
+  "database_uuid": "b'\\xff\\x12\\xcd\\x8b.+M\\xb8\\xa4\\x8a\\xb8\\xc3\\x10\\xe1\\xcf\\xc2'",
+  "node_counts": {
+    "BoardMeta": 1,
+    "Decision": 43,
+    "Criterion": 0,
+    "Constraint": 0,
+    "Assumption": 0,
+    "Requirement": 0,
+    "Entity": 4,
+    "APIContract": 0,
+    "TestScenario": 0,
+    "Bug": 0,
+    "Learning": 0,
+    "Alternative": 20
+  },
+  "rel_counts": {
+    "supersedes__Decision__Decision": 11,
+    "contradicts__Decision__Decision": 1,
+    "derives_from__Decision__Requirement": 0,
+    "relates_to__Decision__Alternative": 20,
+    "mentions__Decision__Entity": 1,
+    "depends_on__Decision__Decision": 3,
+    "violates__Bug__Constraint": 0,
+    "implements__APIContract__Requirement": 0,
+    "tests__TestScenario__Criterion": 0,
+    "validates__Learning__Bug": 0,
+    "precedes__Entity__Entity": 0,
+    "precedes__Entity__Bug": 0,
+    "precedes__Bug__Entity": 0,
+    "precedes__Bug__Bug": 0,
+    "implements__APIContract__Constraint": 0,
+    "supports__Entity__Requirement": 0,
+    "supports__Entity__Constraint": 0,
+    "supports__Entity__Criterion": 0,
+    "supports__Entity__APIContract": 0,
+    "supports__Entity__Decision": 0,
+    "supports__Entity__TestScenario": 0,
+    "supports__Entity__Entity": 0,
+    "supports__Bug__Requirement": 0,
+    "supports__Bug__Constraint": 0,
+    "supports__Bug__Criterion": 0,
+    "supports__Bug__TestScenario": 0,
+    "supports__Bug__APIContract": 0,
+    "supports__Bug__Decision": 0,
+    "derives_from__Entity__Entity": 0,
+    "derives_from__Constraint__Requirement": 0,
+    "derives_from__Requirement__Requirement": 0,
+    "derives_from__Decision__Constraint": 0,
+    "derives_from__Constraint__Constraint": 0,
+    "derives_from__Requirement__Constraint": 0,
+    "violates__Bug__Requirement": 0,
+    "violates__Bug__Criterion": 0,
+    "overlaps__Entity__Entity": 0,
+    "supersedes__Criterion__Criterion": 0,
+    "supersedes__Constraint__Constraint": 0,
+    "supersedes__Assumption__Assumption": 0,
+    "supersedes__Requirement__Requirement": 0,
+    "supersedes__Entity__Entity": 0,
+    "supersedes__APIContract__APIContract": 0,
+    "supersedes__TestScenario__TestScenario": 0,
+    "supersedes__Bug__Bug": 0,
+    "supersedes__Learning__Learning": 0,
+    "supersedes__Alternative__Alternative": 0,
+    "relates_to__Decision__Entity": 0,
+    "relates_to__Decision__Bug": 0,
+    "relates_to__Learning__Entity": 0,
+    "relates_to__Learning__Decision": 0,
+    "relates_to__Learning__Requirement": 0,
+    "relates_to__Learning__Constraint": 0,
+    "relates_to__Learning__TestScenario": 0,
+    "relates_to__Learning__APIContract": 0,
+    "relates_to__Learning__Criterion": 0,
+    "relates_to__Alternative__Entity": 0,
+    "relates_to__Alternative__Decision": 0,
+    "relates_to__Alternative__Requirement": 0,
+    "relates_to__Alternative__Constraint": 0,
+    "relates_to__Alternative__TestScenario": 0,
+    "relates_to__Alternative__APIContract": 0,
+    "relates_to__Alternative__Criterion": 0,
+    "relates_to__Assumption__Entity": 0,
+    "relates_to__Assumption__Decision": 0,
+    "relates_to__Assumption__Requirement": 0,
+    "relates_to__Assumption__Constraint": 0,
+    "relates_to__Assumption__TestScenario": 0,
+    "relates_to__Assumption__APIContract": 0,
+    "relates_to__Assumption__Criterion": 0,
+    "belongs_to__Entity__Entity": 2,
+    "belongs_to__Entity__Bug": 0,
+    "belongs_to__Requirement__Entity": 0,
+    "belongs_to__Constraint__Entity": 0,
+    "belongs_to__Criterion__Entity": 0,
+    "belongs_to__TestScenario__Entity": 0,
+    "belongs_to__APIContract__Entity": 0,
+    "belongs_to__Decision__Entity": 20,
+    "belongs_to__Bug__Entity": 0,
+    "belongs_to__Alternative__Entity": 20,
+    "belongs_to__Assumption__Entity": 0,
+    "belongs_to__Learning__Entity": 0,
+    "originates_from__Bug__Entity": 0,
+    "covered_by__Bug__Entity": 0,
+    "covered_by__Bug__TestScenario": 0
+  },
+  "node_total": 68,
+  "rel_total": 78,
+  "tables_total": 97,
+  "decisions": [
+    {
+      "id": "decision_67d3f299be93fda1112ee724",
+      "title": "Only an article's author, matched by username, may modify the article.",
+      "content": "The service compares the article author's username with the current user's username. Other users get a refusal.\nSource: app/app/services/articles.py:23",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:article-ownership",
+      "quote": "return article.author.username == user.username"
+    },
+    {
+      "id": "decision_c6f94c4038d0a35a423ab323",
+      "title": "Creating an article whose generated slug already exists is refused with HTTP 400.",
+      "content": "The create route builds the slug from the title and checks whether an article with that slug exists. If it does, the route raises a 400 error and does not add a numeric suffix.\nSource: app/app/api/routes/articles/articles_resource.py:65",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:article-slug-conflict",
+      "quote": "if await check_article_exists(articles_repo, slug):"
+    },
+    {
+      "id": "decision_eae1215d63fdf930fcdc5998",
+      "title": "The Authorization header must hold a prefix and a token separated by one space, and the prefix must equal the configured jwt_token_prefix.",
+      "content": "The API reads the Authorization header, splits it on a single space into a prefix and a token, and rejects it with 403 WRONG_TOKEN_PREFIX if the split fails or the prefix differs from settings.jwt_token_prefix. The default prefix is \"Token\" (app/app/core/settings/app.py:29). An optional variant returns an empty token when the header is missing.\nSource: app/app/api/dependencies/authentication.py:51",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:auth-header-scheme",
+      "quote": "token_prefix, token = api_key.split(\" \")"
+    },
+    {
+      "id": "decision_6a8754a882fed2c56a587c58",
+      "title": "Only the comment's author, matched by username, may delete a comment.",
+      "content": "check_user_can_modify_comment returns true only when comment.author.username equals the current user's username. The delete route depends on check_comment_modification_permissions, which raises 403 when this check fails (app/app/api/dependencies/comments.py:43).\nSource: app/app/services/comments.py:6",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:comment-ownership",
+      "quote": "return comment.author.username == user.username"
+    },
+    {
+      "id": "decision_8c9ad47a14340a691d9ad7f2",
+      "title": "The database pool is fixed at 10 connections through min_connection_count and max_connection_count.",
+      "content": "Both pool bounds default to 10 in the application settings, and the pool is created with those two values at start-up.\nSource: app/app/core/settings/app.py:22",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:connection-pool-size",
+      "quote": "max_connection_count: int = 10"
+    },
+    {
+      "id": "decision_851cd62db4625527c2a03c70",
+      "title": "Cross-origin calls are allowed from the origins in allowed_hosts, which default to every origin.",
+      "content": "The CORS middleware reads allowed_hosts from the settings. The default list holds a single wildcard entry.\nSource: app/app/core/settings/app.py:31",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:cors-allowed-origins",
+      "quote": "allowed_hosts: List[str] = [\"*\"]"
+    },
+    {
+      "id": "decision_8c7e56c2d1b28c093a125d0a",
+      "title": "The code talks to PostgreSQL through raw SQL files loaded by aiosql on the asyncpg driver, wrapped in repository classes.",
+      "content": "queries.py loads every .sql file under the sql folder with aiosql.from_path using the asyncpg adapter. Repository classes built on BaseRepository call these named queries on an asyncpg connection, and the article filter query is built with pypika Query objects in ArticlesRepository.\nSource: app/app/db/queries/queries.py:5",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:database-access-layer",
+      "quote": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")"
+    },
+    {
+      "id": "decision_cc18129b065303eff8bb4d11",
+      "title": "Registering with a username or email that is already taken is answered with HTTP 400.",
+      "content": "The register route checks the username first and the email second. Each taken value raises a 400 error with its own message from the strings module.\nSource: app/app/api/routes/authentication.py:70",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:duplicate-registration",
+      "quote": "detail=strings.USERNAME_TAKEN,"
+    },
+    {
+      "id": "decision_d61e0c257f256371e5ce06dd",
+      "title": "HTTP errors are returned as JSON of the form {\"errors\": [detail]} with the exception status code.",
+      "content": "http_error_handler wraps the HTTPException detail in a list under the key \"errors\" and returns it as a JSONResponse with the exception's status code. A separate handler exists for validation errors in app/app/api/errors/validation_error.py.\nSource: app/app/api/errors/http_error.py:7",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:error-response-shape",
+      "quote": "return JSONResponse({\"errors\": [exc.detail]}, status_code=exc.status_code)"
+    },
+    {
+      "id": "decision_9f5ef44a18fde57f9d721c43",
+      "title": "Error responses use RFC 7807 problem+json with type, title, status and detail",
+      "content": "Error responses return RFC 7807 application/problem+json with the fields type, title, status and detail.\nThe public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)\nSource: maintainer-reversal.json",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:error-response-shape-v2",
+      "quote": null
+    },
+    {
+      "id": "decision_35023c41b3b6a98f01f86a98",
+      "title": "Favoriting inserts a (user_id, article_id) row into a favorites join table and ignores duplicates.",
+      "content": "The add-article-to-favorites SQL inserts user and article ids resolved from username and slug, with ON CONFLICT DO NOTHING; unfavoriting deletes the row. The favorites table has a composite primary key on (user_id, article_id), and favorites_count and favorited are computed per read by counting rows.\nSource: app/app/db/queries/sql/articles.sql:2",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:favorites",
+      "quote": "INSERT INTO favorites (user_id, article_id)"
+    },
+    {
+      "id": "decision_666f0ae9b8da2830b984cbc5",
+      "title": "Access tokens are signed with the HS256 algorithm using one shared secret key.",
+      "content": "Tokens are JWTs signed and verified with HS256. The secret comes from the application settings.\nSource: app/app/services/jwt.py:11",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:jwt-algorithm",
+      "quote": "ALGORITHM = \"HS256\""
+    },
+    {
+      "id": "decision_f4333e5beb160335abc9218a",
+      "title": "Every access token carries the fixed subject claim access.",
+      "content": "The token payload holds the username plus an expiry and the subject value access, which is a constant in the JWT service.\nSource: app/app/services/jwt.py:10",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:jwt-subject-claim",
+      "quote": "JWT_SUBJECT = \"access\""
+    },
+    {
+      "id": "decision_e1c30c4b48704305663e8b38",
+      "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+      "content": "DEFAULT_ARTICLES_LIMIT is 20 and DEFAULT_ARTICLES_OFFSET is 0. The articles filter dependency and the feed route take limit as Query(default, ge=1) and offset as Query(default, ge=0), and the feed SQL applies LIMIT :limit OFFSET :offset.\nSource: app/app/models/schemas/articles.py:8",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:pagination-parameters",
+      "quote": "DEFAULT_ARTICLES_LIMIT = 20"
+    },
+    {
+      "id": "decision_3fc44eac8dcbfa1ffc7e2b23",
+      "title": "Passwords are hashed with bcrypt through passlib CryptContext, with a per-user bcrypt salt prepended to the password.",
+      "content": "security.py builds a passlib CryptContext with schemes [\"bcrypt\"] and deprecated=\"auto\". UserInDB.change_password generates a salt with bcrypt.gensalt and stores get_password_hash(salt + password); check_password verifies salt + password against the stored hash (app/app/models/domain/users.py:20).\nSource: app/app/services/security.py:4",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:password-hashing",
+      "quote": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")"
+    },
+    {
+      "id": "decision_77c6423178f08654417bb6b4",
+      "title": "Each user gets a random salt created with bcrypt.gensalt.",
+      "content": "A helper returns a fresh bcrypt salt as text. The user row stores the salt next to the hashed password.\nSource: app/app/services/security.py:8",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:password-salt",
+      "quote": "return bcrypt.gensalt().decode()"
+    },
+    {
+      "id": "decision_2aeb1b5f7210912c788110ff",
+      "title": "Settings are pydantic BaseSettings classes chosen by the APP_ENV value and cached with lru_cache.",
+      "content": "get_app_settings reads app_env from BaseAppSettings, maps it to DevAppSettings, ProdAppSettings or TestAppSettings, and returns an instance; the function is wrapped in functools.lru_cache. BaseAppSettings defaults app_env to prod and reads a .env file.\nSource: app/app/core/config.py:19",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:settings-loading",
+      "quote": "app_env = BaseAppSettings().app_env"
+    },
+    {
+      "id": "decision_42f826abe6c9573e98aac415",
+      "title": "Article slugs are generated from the title with the slugify library.",
+      "content": "get_slug_for_article returns slugify(title) with no extra suffix or uniqueness token. check_article_exists looks up an existing article by slug, and the articles table enforces a unique slug column (app/app/db/migrations/versions/fdf8821871d7_main_tables.py:103).\nSource: app/app/services/articles.py:19",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:slug-rules",
+      "quote": "return slugify(title)"
+    },
+    {
+      "id": "decision_cf5dc5fcb01d6b472576435e",
+      "title": "Creating a tag that already exists is ignored by the insert statement.",
+      "content": "The tag insert uses ON CONFLICT DO NOTHING, so saving an article with a known tag adds no new tag row.\nSource: app/app/db/queries/sql/tags.sql:9",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:tag-create-idempotent",
+      "quote": "ON CONFLICT DO NOTHING;"
+    },
+    {
+      "id": "decision_aac502108d62f49a5cf6266f",
+      "title": "Tags are stored as unique text rows in a tags table and linked to articles through an articles_to_tags join table.",
+      "content": "When an article is created with tags, inside one transaction the repository first creates any tags that do not exist, then links them via add-tags-to-article into articles_to_tags. The tags table uses the tag text as its primary key and articles_to_tags has a composite primary key on (article_id, tag).\nSource: app/app/db/repositories/articles.py:55",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:tag-handling",
+      "quote": "await self._tags_repo.create_tags_that_dont_exist(tags=tags)"
+    },
+    {
+      "id": "decision_8cad0bfb4e135955b7a42ace",
+      "title": "Tests live in a top-level tests folder split into test_api, test_db, test_schemas and test_services, with shared fixtures in conftest.py.",
+      "content": "pytest is configured with testpaths set to tests. Route and error tests sit under tests/test_api/test_routes and tests/test_api/test_errors, and conftest.py sets APP_ENV to test and swaps the app pool for FakeAsyncPGPool.\nSource: app/pyproject.toml:46",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:test-layout",
+      "quote": "testpaths = \"tests\""
+    },
+    {
+      "id": "decision_557b26e1eb8ff7973d751012",
+      "title": "Access tokens are HS256 JWTs that expire one week after issue.",
+      "content": "ACCESS_TOKEN_EXPIRE_MINUTES is set to 60 * 24 * 7 minutes. create_access_token_for_user passes it as a timedelta, and create_jwt_token adds an exp claim of utcnow plus that delta with subject \"access\", signed with HS256.\nSource: app/app/services/jwt.py:12",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:token-expiry",
+      "quote": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week"
+    },
+    {
+      "id": "decision_e0ece735e5862d1d586418cd",
+      "title": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.",
+      "content": "A separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.\nSource: app/app/api/errors/validation_error.py:17",
+      "source_artifact_ref": "final_report:741f2f1d-c61e-4d36-bb86-4ed011ddf62b:decision:validation-error-shape",
+      "quote": "{\"errors\": exc.errors()},"
+    },
+    {
+      "id": "decision_92fb95c6961c9efd476f5545",
+      "title": "The fancyhash package is not used for password hashing because of its licence.",
+      "content": "The fancyhash package is not used for password hashing because of its licence.\nPassword hashing stays on passlib with bcrypt. The fancyhash package was evaluated and rejected.\nInvented for this demo.\nReason: The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_3ee3d0ad",
+      "quote": null
+    },
+    {
+      "id": "decision_e675824a7f754a7ede60e2d6",
+      "title": "The fancyhash package is not used for password hashing because of its licence.",
+      "content": "The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_3ee3d0ad",
+      "quote": null
+    },
+    {
+      "id": "decision_2dab750469e56e796ce7fcfe",
+      "title": "Deleted articles and comments are removed from the database, with no soft-delete flag.",
+      "content": "Deleted articles and comments are removed from the database, with no soft-delete flag.\nDeleting an article or a comment runs a SQL DELETE. No deleted_at column exists.\nInvented for this demo.\nReason: Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_669a3b01",
+      "quote": null
+    },
+    {
+      "id": "decision_d813354a5d21d2537d9837da",
+      "title": "Deleted articles and comments are removed from the database, with no soft-delete flag.",
+      "content": "Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_669a3b01",
+      "quote": null
+    },
+    {
+      "id": "decision_2309e9b7857bc8a81f730f26",
+      "title": "The article list defaults to 20 items per page.",
+      "content": "The article list defaults to 20 items per page.\nThe default limit of the article list is 20 items.\nInvented for this demo.\nReason: Design review DR-31 found that the mobile list screen fits 20 rows without scrolling. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_67dd0e1f",
+      "quote": null
+    },
+    {
+      "id": "decision_f3af9a4daa2446e691d3e2e0",
+      "title": "The article list defaults to 20 items per page.",
+      "content": "Design review DR-31 found that the mobile list screen fits 20 rows without scrolling. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_67dd0e1f",
+      "quote": null
+    },
+    {
+      "id": "decision_aa3ffd151aff84b34d3848ed",
+      "title": "Password reset links stay valid for 30 minutes.",
+      "content": "Password reset links stay valid for 30 minutes.\nThe API has no password reset flow yet. This fixes the rule for when it is built: a reset link works once and expires 30 minutes after it is sent.\nInvented for this demo.\nReason: Support tickets showed that users open a reset mail within 10 minutes. A link that lives 30 minutes covers slow mail delivery without leaving a long-lived link in an inbox. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_6e03cc36",
+      "quote": null
+    },
+    {
+      "id": "decision_b8fbd9d368f166882758cdf8",
+      "title": "Password reset links stay valid for 30 minutes.",
+      "content": "Support tickets showed that users open a reset mail within 10 minutes. A link that lives 30 minutes covers slow mail delivery without leaving a long-lived link in an inbox. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_6e03cc36",
+      "quote": null
+    },
+    {
+      "id": "decision_60f3f9cd42de0397d29a9487",
+      "title": "Favoriting an article sends no notification to its author.",
+      "content": "Product decision PD-8 puts all notifications out of scope until the 2027 roadmap. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_6faf68d2",
+      "quote": null
+    },
+    {
+      "id": "decision_7a5bf5c9abf3dfa2fb0ac8f2",
+      "title": "Favoriting an article sends no notification to its author.",
+      "content": "Favoriting an article sends no notification to its author.\nAdding a favorite writes a database row and nothing else. No message is sent to the author.\nInvented for this demo.\nReason: Product decision PD-8 puts all notifications out of scope until the 2027 roadmap. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_6faf68d2",
+      "quote": null
+    },
+    {
+      "id": "decision_6c6df3b8c4719063e99be09c",
+      "title": "PostgreSQL is the data store and MongoDB was not chosen.",
+      "content": "PostgreSQL is the data store and MongoDB was not chosen.\nArticles, tags and favorites are stored in PostgreSQL tables joined by foreign keys.\nInvented for this demo.\nReason: The data is relational, and the DBA team supports only PostgreSQL (ADR-3). Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_81a05a5b",
+      "quote": null
+    },
+    {
+      "id": "decision_f1ccf051cd899145204582d9",
+      "title": "PostgreSQL is the data store and MongoDB was not chosen.",
+      "content": "The data is relational, and the DBA team supports only PostgreSQL (ADR-3). Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_81a05a5b",
+      "quote": null
+    },
+    {
+      "id": "decision_467aa0f1f0310448a4dc20eb",
+      "title": "Queries are hand-written SQL files, not generated by an ORM.",
+      "content": "The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_85033125",
+      "quote": null
+    },
+    {
+      "id": "decision_61ab570165de67bb073aac8e",
+      "title": "Queries are hand-written SQL files, not generated by an ORM.",
+      "content": "Queries are hand-written SQL files, not generated by an ORM.\nEvery query lives in a SQL file that the repositories call by name.\nInvented for this demo.\nReason: The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_85033125",
+      "quote": null
+    },
+    {
+      "id": "decision_7e071a70dfb1c61f4b461a88",
+      "title": "Sessions use one long-lived access token and the API has no refresh tokens.",
+      "content": "Sessions use one long-lived access token and the API has no refresh tokens.\nThe API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.\nReason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_934948e6",
+      "quote": null
+    },
+    {
+      "id": "decision_af39ad94a3292b98f51863c2",
+      "title": "Sessions use one long-lived access token and the API has no refresh tokens.",
+      "content": "Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_934948e6",
+      "quote": null
+    },
+    {
+      "id": "decision_b9d70a99ac6c0115a5049850",
+      "title": "Tokens travel only in the Authorization header and never in cookies.",
+      "content": "Tokens travel only in the Authorization header and never in cookies.\nThe API reads the token from the Authorization header. It does not set or read any cookie.\nInvented for this demo.\nReason: Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_961073b1",
+      "quote": null
+    },
+    {
+      "id": "decision_ebb14997217eccae435520c8",
+      "title": "Tokens travel only in the Authorization header and never in cookies.",
+      "content": "Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_961073b1",
+      "quote": null
+    },
+    {
+      "id": "decision_46185231fe4d4dde84ecad5d",
+      "title": "bcrypt keeps the default passlib work factor.",
+      "content": "Load test LT-9 put the login endpoint at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_b0e5bcd4",
+      "quote": null
+    },
+    {
+      "id": "decision_96dcbd2be2c1503f5bb10ecb",
+      "title": "bcrypt keeps the default passlib work factor.",
+      "content": "bcrypt keeps the default passlib work factor.\nNo custom rounds value is set on the password context, so passlib's default applies.\nInvented for this demo.\nReason: Load test LT-9 put the login endpoint at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget. Invented for this demo.",
+      "source_artifact_ref": "spec:3bca9b0f-2f47-4ab6-bc29-2a0a541b969a:decision:dec_b0e5bcd4",
+      "quote": null
+    }
+  ],
+  "commit_history": {
+    "enabled": true,
+    "entries_on_first_page": 1
+  }
+}

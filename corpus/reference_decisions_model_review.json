@@ -1,0 +1,257 @@
+{
+ "labeler": "claude-sonnet-5-5 (omp subagent), model-labelled, not human",
+ "labeled_at": "2026-10-30T06:33:37Z",
+ "method": "For each of the 22 entries in corpus/reference_decisions.json I opened the cited file under app/ with line numbers (awk NR), checked the cited line(s) against the decision text and keywords, then judged must-know for a new maintainer. 'lines_correct': yes = every listed line within its file holds the decision; partly = some wrong, or flat lines list also hits unrelated lines of the other file. The scorer treats lines as one flat list across files (per about text), which I checked by reading both files. No code was run. DRAFT. Reviewer is a different model from the evidence authors (reference list: an assistant model after the first recorded run; questions: an assistant model / claude-haiku-5-5) but the same vendor family, so shared blind spots are possible. A person must spot-check.",
+ "limits": "DRAFT. Reviewer is a different model from the evidence authors (reference list: an assistant model after the first recorded run; questions: an assistant model / claude-haiku-5-5) but the same vendor family, so shared blind spots are possible. A person must spot-check.",
+ "completeness": {
+  "verdict": "not complete for important decisions visible in app/ (22 entries; mostly the 12 recorded + 10 added from the same code facts).",
+  "missing": [
+   {
+    "id": "salt-prepended-to-password",
+    "where": "app/app/models/domain/users.py:20 and :24",
+    "why": "`salt + password` is what gets hashed and verified; a maintainer who 'fixes' it to hash the plain password locks out all users. Only partly in password-hashing text; no entry has this line."
+   },
+   {
+    "id": "auth-failures-are-403",
+    "where": "app/app/api/dependencies/authentication.py:54,59,90,98",
+    "why": "Every auth failure returns 403 (not 401), including bad prefix, bad token and unknown user."
+   },
+   {
+    "id": "default-token-prefix",
+    "where": "app/app/core/settings/app.py:29",
+    "why": "`jwt_token_prefix = \"Token\"`, clients must send `Token <jwt>` (not Bearer). Only in auth-header-scheme content, not its lines."
+   },
+   {
+    "id": "article-hard-delete-and-fk-cascade",
+    "where": "app/app/db/repositories/articles.py:93-99; app/app/db/queries/sql/articles.sql:89-90; app/app/db/migrations/versions/fdf8821871d7_main_tables.py:82,133,160,181 (ON DELETE CASCADE), :108 (author_id ON DELETE SET NULL)",
+    "why": "Deletes are real SQL DELETEs with cascading foreign keys; the hard-delete board decision (graph-only, invented reason) has a real code fact behind it that the reference list does not list."
+   },
+   {
+    "id": "update-article-regenerates-slug-without-conflict-check",
+    "where": "app/app/api/routes/articles/articles_resource.py:100",
+    "why": "Renaming an article changes its URL slug and, unlike create (:65), is not checked for an existing slug."
+   },
+   {
+    "id": "camelCase-json-aliases",
+    "where": "app/app/models/domain/rwmodel.py:10 and :21",
+    "why": "All request/response fields are camelCase via alias_generator (tagList, favoritesCount)."
+   },
+   {
+    "id": "login-failure-is-400",
+    "where": "app/app/api/routes/authentication.py:29-30",
+    "why": "Wrong email/password returns 400 incorrect email or password."
+   },
+   {
+    "id": "test-settings-override",
+    "where": "app/app/core/settings/test.py:16-17; app/pyproject.toml:64-65",
+    "why": "Test environment uses pool 5 and different env names; see connection-pool-size flag."
+   },
+   {
+    "id": "coverage-gate-100",
+    "where": "app/pyproject.toml:58",
+    "why": "--cov-fail-under=100 makes every new code path need a test."
+   }
+  ],
+  "note": "'Hand-made' in the file's about text is wrong: it says it was written by an assistant model after the first recorded run. No graph-only (invented) decision is in the list, which is correct since they have no code line, except the hard-delete one which does have code evidence (above)."
+ },
+ "verdicts": [
+  {
+   "id": "auth-header-scheme",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "authentication.py:51 `token_prefix, token = api_key.split(\" \")`; :57 compares prefix to settings.jwt_token_prefix; wrong shape -> 403 (:54). Every client call depends on it.",
+   "flags": "Default prefix 'Token' lives at app/app/core/settings/app.py:29 (not in lines); a matching node citing that line would not match. Keyword 'prefix' is generic."
+  },
+  {
+   "id": "token-expiry",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "jwt.py:12 `ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week`; :31 passes it as timedelta.",
+   "flags": "Keyword 'expire' is generic."
+  },
+  {
+   "id": "password-hashing",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "security.py:4 `CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")`; :12 verify; :16 hash.",
+   "flags": "The non-obvious part (salt is prepended to the password before hashing: users.py:20, :24) is not in lines; see missing list."
+  },
+  {
+   "id": "error-response-shape",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "generic",
+   "new_maintainer_must_know": "yes",
+   "evidence": "http_error.py:7 `JSONResponse({\"errors\": [exc.detail]}, status_code=exc.status_code)`; clients must parse errors list, not FastAPI default `detail`.",
+   "flags": "Keyword 'errors' is very generic (will also match validation-error nodes); only used when line misses."
+  },
+  {
+   "id": "pagination-parameters",
+   "decision_in_code": "yes",
+   "lines_correct": "partly",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "schemas/articles.py:8 DEFAULT_ARTICLES_LIMIT = 20; :42 `limit: int = Field(DEFAULT_ARTICLES_LIMIT, ge=1)`; dependencies/articles.py:25 `limit: int = Query(DEFAULT_ARTICLES_LIMIT, ge=1)`.",
+   "flags": "lines is one flat list shared by both files, so 8, 25, 42 also match unrelated lines in the other file (dependencies/articles.py:8 is an import, :42 is inside get_article_by_slug_from_path; schemas/articles.py:25 is `tags: List[str]` in ArticleInCreate). Offset line (schemas :43, dependencies :26) not listed."
+  },
+  {
+   "id": "slug-rules",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "services/articles.py:19 `return slugify(title)`; slug is also the public id of an article.",
+   "flags": "Keyword 'slugify' only matches if a node title names the library."
+  },
+  {
+   "id": "comment-ownership",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "generic",
+   "new_maintainer_must_know": "yes",
+   "evidence": "services/comments.py:6 `return comment.author.username == user.username`.",
+   "flags": "Keyword 'comment' is extremely generic (any comment-related node would match if its line misses)."
+  },
+  {
+   "id": "favorites",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "articles.sql:2 `INSERT INTO favorites (user_id, article_id)` (statement starts at line 1 `-- name: add-article-to-favorites!`); :5 ON CONFLICT DO NOTHING. Duplicate favorites ignored; routine implementation, but the idempotence is an API-visible rule.",
+   "flags": "Line 2 is only the insert; the unfavorite (:8-12) and count (:22-25) queries are not covered."
+  },
+  {
+   "id": "tag-handling",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "repositories/articles.py:55 `await self._tags_repo.create_tags_that_dont_exist(tags=tags)`; :56 `_link_article_with_tags`; both inside the transaction opened at :44.",
+   "flags": "Overlaps in content with tag-create-idempotent (same flow, SQL side). Keywords 'tags table' / 'articles_to_tags' are in articles.sql:31,72 not in the cited file; they only work on node titles."
+  },
+  {
+   "id": "database-access-layer",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "queries/queries.py:5 `aiosql.from_path(... / \"sql\", \"asyncpg\")`.",
+   "flags": "Not the whole truth: articles filter query is built with pypika (repositories/articles.py:115,125,146). Keyword 'raw sql' is not in the code, only in node titles."
+  },
+  {
+   "id": "settings-loading",
+   "decision_in_code": "yes",
+   "lines_correct": "partly",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "core/config.py:19 `app_env = BaseAppSettings().app_env`; :20 picks class; :17-18 lru_cache.",
+   "flags": "Line 16 is a BLANK line (wrong; the decorator is :17, def :18). Per-env classes and defaults are in core/settings/{base,development,production,test}.py, not cited."
+  },
+  {
+   "id": "test-layout",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "pyproject.toml:46 `testpaths = \"tests\"`; :48-61 addopts incl. --cov-fail-under=100.",
+   "flags": "Citing :46 only; the 100% coverage gate (:58) is a stronger must-know rule and is not in lines. Keyword 'tests folder' not literal code."
+  },
+  {
+   "id": "jwt-algorithm",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "jwt.py:11 `ALGORITHM = \"HS256\"`; used at :24 and :37.",
+   "flags": "Near-duplicate of token-expiry (HS256 is also in that decision's text)."
+  },
+  {
+   "id": "jwt-subject-claim",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "no",
+   "evidence": "jwt.py:10 `JWT_SUBJECT = \"access\"`. A fixed constant; a maintainer can read it in one line and nothing else depends on it being known.",
+   "flags": "Low value; a decoy-like entry."
+  },
+  {
+   "id": "password-salt",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "security.py:8 `return bcrypt.gensalt().decode()`; consumed in users.py:23.",
+   "flags": "Important point is that the salt is stored separately AND prepended to the password (users.py:20,24); bcrypt already embeds its own salt, so this is redundant but changing it breaks existing hashes. Entry cites only the helper."
+  },
+  {
+   "id": "validation-error-shape",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "validation_error.py:17 `{\"errors\": exc.errors()},` with 422 at :18; registered main.py:38.",
+   "flags": "Keyword '422' also matches a recorder's title text for other things; fine."
+  },
+  {
+   "id": "duplicate-registration",
+   "decision_in_code": "yes",
+   "lines_correct": "partly",
+   "keywords_ok": "partly wrong",
+   "new_maintainer_must_know": "yes",
+   "evidence": "routes/authentication.py:67-71 username check -> 400 with detail=strings.USERNAME_TAKEN (:70); :73-77 email check -> 400 (:76).",
+   "flags": "Line 75 is the `status_code=HTTP_400_BAD_REQUEST` of the email branch; the email detail is :76 and the check is :73. Keyword 'already taken' appears nowhere in code (strings.py says 'already exists'); it works only on a node title. 'username' is generic."
+  },
+  {
+   "id": "article-ownership",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "generic",
+   "new_maintainer_must_know": "yes",
+   "evidence": "services/articles.py:23 `return article.author.username == user.username`; used by dependencies/articles.py:55 to give 403.",
+   "flags": "Keyword 'author' is generic."
+  },
+  {
+   "id": "cors-allowed-origins",
+   "decision_in_code": "yes",
+   "lines_correct": "partly",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "settings/app.py:31 `allowed_hosts: List[str] = [\"*\"]`; main.py:22 `allow_origins=settings.allowed_hosts` (CORS block starts :20).",
+   "flags": "Lines are flat across two files: 31 in main.py is the `)` closing the startup handler call, and 20 in settings/app.py is blank. main.py:22-23 (origins, allow_credentials=True with wildcard) is the real spot; :20 only opens the block."
+  },
+  {
+   "id": "connection-pool-size",
+   "decision_in_code": "yes",
+   "lines_correct": "partly",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "settings/app.py:22-23 max/min_connection_count = 10; db/events.py:13-14 pass them to asyncpg.create_pool.",
+   "flags": "Only true for default/dev/prod: core/settings/test.py:16-17 sets 5, and pyproject.toml:64-65 sets MAX_CONNECTIONS_COUNT=1 / MIN_CONNECTIONS_COUNT=1, names that do not match the field names max_connection_count/min_connection_count, so those env entries look inert [INFERENCE: pydantic env names follow field names]. Flat lines also match unrelated lines in the other file (events.py:22-23, settings/app.py:13-14)."
+  },
+  {
+   "id": "tag-create-idempotent",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "borderline",
+   "evidence": "tags.sql:7-9 `INSERT INTO tags (tag) VALUES (:tag) ON CONFLICT DO NOTHING;` (9 is the ON CONFLICT line).",
+   "flags": "Same flow as tag-handling; low-value detail on its own."
+  },
+  {
+   "id": "article-slug-conflict",
+   "decision_in_code": "yes",
+   "lines_correct": "yes",
+   "keywords_ok": "ok",
+   "new_maintainer_must_know": "yes",
+   "evidence": "articles_resource.py:65 `if await check_article_exists(articles_repo, slug):` -> :66-68 400 detail=ARTICLE_ALREADY_EXISTS; no numeric suffix.",
+   "flags": "The update route (articles_resource.py:100 regenerates the slug from a changed title) does NOT call check_article_exists, so the rule is create-only; see missing list."
+  }
+ ]
+}

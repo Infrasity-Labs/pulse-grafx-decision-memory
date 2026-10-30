@@ -1,0 +1,40 @@
+{
+  "note": "HOME was a temporary folder with a sentinel in HOME/.okto-pulse. No LLM was called.",
+  "ran": [
+    "init",
+    "start",
+    "setup_board (step 2)",
+    "scripted recorder (step 3, one graph commit)",
+    "stop"
+  ],
+  "run_failed": null,
+  "stop_output": "clean exit after 4s",
+  "okto_pulse_dir": {
+    "files_before": 1,
+    "files_after": 1,
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "unchanged": true
+  },
+  "files_written_to_the_data_dir": 1784,
+  "home_top_level_before": {
+    ".okto-pulse": {
+      "files": 1,
+      "bytes": 40
+    }
+  },
+  "home_top_level_after": {
+    ".cache": {
+      "files": 35,
+      "bytes": 91627375
+    },
+    ".okto-pulse": {
+      "files": 1,
+      "bytes": 40
+    }
+  },
+  "new_top_level_entries_in_home": [
+    ".cache"
+  ]
+}

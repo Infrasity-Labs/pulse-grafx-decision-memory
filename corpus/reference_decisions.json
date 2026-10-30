@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "about": "Hand-made reference list of the design decisions the code of app/ shows. It is the scorer's list for the goal-based Recorder and is never put in a prompt. A recorded node matches an entry when its cited file is one of files and either its cited line is one of lines, or (only if its line matches no entry) a keyword appears in its title. An entry is matched by at most one node. Written by an assistant model after the first recorded run, so the first run is scored against it only as a measurement of what that run covered, not as a blind test. It was fixed before any run with the goal-based prompt.",
+  "entries": [
+    {"id": "auth-header-scheme", "files": ["app/app/api/dependencies/authentication.py"], "lines": [51], "keywords": ["prefix", "authorization header"]},
+    {"id": "token-expiry", "files": ["app/app/services/jwt.py"], "lines": [12, 31], "keywords": ["expire", "one week"]},
+    {"id": "password-hashing", "files": ["app/app/services/security.py"], "lines": [4, 12, 16], "keywords": ["bcrypt", "passlib"]},
+    {"id": "error-response-shape", "files": ["app/app/api/errors/http_error.py"], "lines": [7], "keywords": ["errors"]},
+    {"id": "pagination-parameters", "files": ["app/app/models/schemas/articles.py", "app/app/api/dependencies/articles.py"], "lines": [8, 42, 25], "keywords": ["limit", "offset"]},
+    {"id": "slug-rules", "files": ["app/app/services/articles.py"], "lines": [19], "keywords": ["slugify"]},
+    {"id": "comment-ownership", "files": ["app/app/services/comments.py"], "lines": [6], "keywords": ["comment"]},
+    {"id": "favorites", "files": ["app/app/db/queries/sql/articles.sql"], "lines": [2], "keywords": ["favorit"]},
+    {"id": "tag-handling", "files": ["app/app/db/repositories/articles.py"], "lines": [55, 56], "keywords": ["tags table", "articles_to_tags"]},
+    {"id": "database-access-layer", "files": ["app/app/db/queries/queries.py"], "lines": [5], "keywords": ["aiosql", "raw sql"]},
+    {"id": "settings-loading", "files": ["app/app/core/config.py"], "lines": [19, 16], "keywords": ["basesettings", "app_env"]},
+    {"id": "test-layout", "files": ["app/pyproject.toml"], "lines": [46], "keywords": ["tests folder", "testpaths"]},
+    {"id": "jwt-algorithm", "files": ["app/app/services/jwt.py"], "lines": [11], "keywords": ["algorithm"]},
+    {"id": "jwt-subject-claim", "files": ["app/app/services/jwt.py"], "lines": [10], "keywords": ["subject"]},
+    {"id": "password-salt", "files": ["app/app/services/security.py"], "lines": [8], "keywords": ["salt"]},
+    {"id": "validation-error-shape", "files": ["app/app/api/errors/validation_error.py"], "lines": [17], "keywords": ["422", "validation"]},
+    {"id": "duplicate-registration", "files": ["app/app/api/routes/authentication.py"], "lines": [70, 75], "keywords": ["already taken", "username"]},
+    {"id": "article-ownership", "files": ["app/app/services/articles.py"], "lines": [23], "keywords": ["author"]},
+    {"id": "cors-allowed-origins", "files": ["app/app/core/settings/app.py", "app/app/main.py"], "lines": [31, 20], "keywords": ["cors", "origin"]},
+    {"id": "connection-pool-size", "files": ["app/app/core/settings/app.py", "app/app/db/events.py"], "lines": [22, 23, 13, 14], "keywords": ["pool", "connection"]},
+    {"id": "tag-create-idempotent", "files": ["app/app/db/queries/sql/tags.sql"], "lines": [9], "keywords": ["on conflict"]},
+    {"id": "article-slug-conflict", "files": ["app/app/api/routes/articles/articles_resource.py"], "lines": [65, 66, 67, 68], "keywords": ["already exists"]}
+  ]
+}

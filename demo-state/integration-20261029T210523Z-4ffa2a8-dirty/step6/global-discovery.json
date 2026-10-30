@@ -1,0 +1,172 @@
+{
+  "second_board_id": "4323e30a-d989-479a-a551-050ee2974407",
+  "queries": [
+    {
+      "query": "What is the largest number of items a list endpoint may return in one page?",
+      "expected_slug": "page-size-cap",
+      "attempts": 2,
+      "seconds_until_result_or_timeout": 5.6,
+      "result_all_boards": {
+        "outcome": "success",
+        "data": {
+          "results": [
+            {
+              "board_id": "4323e30a-d989-479a-a551-050ee2974407",
+              "id": "decision_f8eb5bdfe3a469a0d94bc2ca",
+              "title": "List endpoints cap the page size at 100 items",
+              "similarity": 0.6963012039348028,
+              "graph_layer": "canonical"
+            },
+            {
+              "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",
+              "id": "decision_2309e9b7857bc8a81f730f26",
+              "title": "The article list defaults to 20 items per page.",
+              "similarity": 0.5645740637499791,
+              "graph_layer": "canonical"
+            },
+            {
+              "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",
+              "id": "decision_e1c30c4b48704305663e8b38",
+              "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+              "similarity": 0.37530219821529126,
+              "graph_layer": "canonical"
+            }
+          ],
+          "count": 3,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      },
+      "top_board_is_second_board": true,
+      "top_title": "List endpoints cap the page size at 100 items",
+      "expected_title": "List endpoints cap the page size at 100 items",
+      "top_is_expected": true,
+      "result_restricted_to_first_board": {
+        "outcome": "success",
+        "data": {
+          "results": [
+            {
+              "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",
+              "id": "decision_2309e9b7857bc8a81f730f26",
+              "title": "The article list defaults to 20 items per page.",
+              "similarity": 0.5645740637499791,
+              "graph_layer": "canonical"
+            },
+            {
+              "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",
+              "id": "decision_e1c30c4b48704305663e8b38",
+              "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+              "similarity": 0.37530219821529126,
+              "graph_layer": "canonical"
+            }
+          ],
+          "count": 2,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      }
+    },
+    {
+      "query": "How can a monitor check that a service is alive?",
+      "expected_slug": "health-endpoint",
+      "attempts": 1,
+      "seconds_until_result_or_timeout": 0.2,
+      "result_all_boards": {
+        "outcome": "success",
+        "data": {
+          "results": [
+            {
+              "board_id": "4323e30a-d989-479a-a551-050ee2974407",
+              "id": "decision_711efafe1ea887028a4cafe4",
+              "title": "Every service exposes GET /healthz that returns status ok",
+              "similarity": 0.31243689207052594,
+              "graph_layer": "canonical"
+            }
+          ],
+          "count": 1,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      },
+      "top_board_is_second_board": true,
+      "top_title": "Every service exposes GET /healthz that returns status ok",
+      "expected_title": "Every service exposes GET /healthz that returns status ok",
+      "top_is_expected": true,
+      "result_restricted_to_first_board": {
+        "outcome": "success",
+        "data": {
+          "results": [],
+          "count": 0,
+          "applied_graph_layer": "canonical"
+        },
+        "error_code": null,
+        "message": null,
+        "retryable": false,
+        "next_action": null,
+        "meta": {
+          "contract": "okto-pulse.mcp-tool-outcome",
+          "contract_version": "2.0",
+          "tool": "okto_pulse_kg_query_global"
+        }
+      }
+    }
+  ],
+  "recaller_first_board_only_view": {
+    "outcome": "success",
+    "data": {
+      "results": [
+        {
+          "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",
+          "id": "decision_2309e9b7857bc8a81f730f26",
+          "title": "The article list defaults to 20 items per page.",
+          "similarity": 0.5645740637499791,
+          "graph_layer": "canonical"
+        },
+        {
+          "board_id": "97abf222-9e88-403e-bc15-edc14c419aea",
+          "id": "decision_e1c30c4b48704305663e8b38",
+          "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+          "similarity": 0.37530219821529126,
+          "graph_layer": "canonical"
+        }
+      ],
+      "count": 2,
+      "applied_graph_layer": "canonical"
+    },
+    "error_code": null,
+    "message": null,
+    "retryable": false,
+    "next_action": null,
+    "meta": {
+      "contract": "okto-pulse.mcp-tool-outcome",
+      "contract_version": "2.0",
+      "tool": "okto_pulse_kg_query_global"
+    }
+  },
+  "first_board_health_discovery_state": "healthy",
+  "first_board_global_outbox": 0
+}

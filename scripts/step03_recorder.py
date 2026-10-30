@@ -1,10 +1,18 @@
 """Step 3: run the Recorder session, then dump what the graph holds and check citations.
 
-Output in demo-state/step3/: prompt.rendered.md, agent/ (transcript.jsonl, result.json), decisions-from-graph.json,
+Two ways to run it:
+  default    the goal-based Recorder prompt (docs/prompts/step3-recorder.md) in a headless Claude Code session. The Recorder
+             chooses its own topics. The citation checker runs in open mode: every citation must hold, and recall is
+             reported against the hand-made reference list. The committed demo-state/step3 was recorded with the earlier
+             answer-key prompt in docs/prompts/recorded-run-1/, not with this one.
+  --scripted a scripted client replays the 12 recorded decisions and 3 edges. No LLM. The checker runs in exact mode.
+
+Output in demo-state/step3/: prompt.rendered.md (agent run only), agent/ (transcript.jsonl, result.json), decisions-from-graph.json,
 pulse-counts.json, health.json, schema-info.json, citations.json
 """
 from __future__ import annotations
 
+import argparse
 import subprocess
 import sys
 from pathlib import Path
@@ -40,16 +48,25 @@ def graph_dump(board_id: str, spec_id: str, out: Path) -> list[dict]:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--scripted", action="store_true", help="replay the recorded decisions with a scripted client instead of running an agent")
+    a = ap.parse_args()
     info = sl.board_info()
     with sl.StepTimer("step3"):
-        prompt_file = OUT / "prompt.rendered.md"
-        sl.render_prompt(ROOT / "docs/prompts/step3-recorder.md", prompt_file,
-                         BOARD_ID=info["board_id"], SPEC_ID=info["anchor_spec_id"])
-        rc = subprocess.call([sys.executable, str(ROOT / "scripts/run_agent.py"), "recorder", str(prompt_file),
-                              str(OUT / "agent"), "--add-dir", "app"])
+        if a.scripted:
+            import scripted_steps
+
+            scripted_steps.recorder(info, OUT / "agent")
+            rc = 0
+        else:
+            prompt_file = OUT / "prompt.rendered.md"
+            sl.render_prompt(ROOT / "docs/prompts/step3-recorder.md", prompt_file,
+                             BOARD_ID=info["board_id"], SPEC_ID=info["anchor_spec_id"])
+            rc = subprocess.call([sys.executable, str(ROOT / "scripts/run_agent.py"), "recorder", str(prompt_file),
+                                  str(OUT / "agent"), "--add-dir", "app", "--mcp-resources"])
         decisions = graph_dump(info["board_id"], info["anchor_spec_id"], OUT)
-        crc = subprocess.call([sys.executable, str(ROOT / "scripts/check_citations.py"),
-                               str(OUT / "decisions-from-graph.json"), "--out", str(OUT / "citations.json")])
+        check = [sys.executable, str(ROOT / "scripts/check_citations.py"), str(OUT / "decisions-from-graph.json"), "--out", str(OUT / "citations.json")]
+        crc = subprocess.call(check + ([] if a.scripted else ["--open"]))
     print(f"agent_exit={rc} decisions_in_graph={len(decisions)} citations_exit={crc}")
     return 0 if rc == 0 and crc == 0 else 1
 

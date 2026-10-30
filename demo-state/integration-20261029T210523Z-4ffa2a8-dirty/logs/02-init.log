@@ -1,0 +1,14 @@
+$ init_pulse.sh MAINTAINER keys
+Okto Pulse Community initialized at: <work>/pulse-home
+  Database: <work>/pulse-home/data/pulse.db
+  Uploads:  <work>/pulse-home/uploads
+
+  Board created: My Board
+  Agent created: Local Agent
+  API Key: reserved for one-time automation handoff
+  Knowledge Graph: board:bb074e26-9edc-4f45-aa5b-2b079f2729dc (schema 0.8.0)
+  Global Discovery: materialized
+  Bootstrap credential handoff ready: <repo>/.work/handoff-11276
+
+Run 'okto-pulse serve' to start the server.
+key for MAINTAINER stored in keys

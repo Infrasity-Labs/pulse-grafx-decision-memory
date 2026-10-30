@@ -1,0 +1,21 @@
+$ python check_embedding.py
+W1030 02:35:54.362000 11417 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 13234.08it/s]
+{
+  "configured_mode": "sentence-transformers",
+  "configured_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "configured_dim": 384,
+  "provider": "CommunitySentenceTransformerProvider",
+  "metadata_after_load": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_dimension": 384,
+    "is_loaded": true,
+    "is_stub": false
+  },
+  "vector_length": 384,
+  "similarity_related_pair": 0.487,
+  "similarity_unrelated_pair": -0.063
+}

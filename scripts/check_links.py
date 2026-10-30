@@ -25,7 +25,7 @@ SKIP_TOP = {"app", ".venv", ".work", ".git"}
 
 def tracked() -> list[Path]:
     out = subprocess.run(["git", "ls-files", "-co", "--exclude-standard", "-z"], cwd=ROOT, capture_output=True).stdout.decode()
-    return [ROOT / p for p in out.split("\0") if p and Path(p).parts[0] not in SKIP_TOP]
+    return [ROOT / p for p in out.split("\0") if p and Path(p).parts[0] not in SKIP_TOP and (ROOT / p).exists()]  # tracked but deleted in the working tree: skip
 
 
 def check_external(url: str) -> str | None:

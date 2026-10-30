@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -155,6 +157,25 @@ def build(state: Path) -> dict:
     return res
 
 
+def run_info(res: dict) -> dict:
+    """Who and what produced this file: run id, date, commit and tool versions. Taken from the environment of the build, never from memory.
+
+    On GitHub Actions the run id and commit come from GITHUB_RUN_ID, GITHUB_RUN_ATTEMPT and GITHUB_SHA. Locally there is no run id (it stays null)
+    and the commit is `git rev-parse HEAD`, with `commit_dirty` true when the working tree has uncommitted changes. This is kept out of build(),
+    so the committed-file test compares only the values read from the recorded outputs.
+    """
+    def git(*args: str) -> str | None:
+        p = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+        return p.stdout.strip() if p.returncode == 0 else None
+
+    sha = os.environ.get("GITHUB_SHA") or git("rev-parse", "HEAD")
+    m, v = res["machine"], res["versions"]
+    return {"recorded": True, "date": res["generated_at"], "run_id": os.environ.get("GITHUB_RUN_ID"), "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+            "commit": sha, "commit_dirty": None if os.environ.get("GITHUB_SHA") else bool(git("status", "--porcelain")),
+            "tool_versions": {"okto_pulse": v["okto_pulse"], "okto_pulse_core": v["okto_pulse_core"], "okto_grafx": v["okto_grafx"], "python": m["python"],
+                              "claude_code": m["claude_code"], "agent_model": m["agent_model"], "embedding_model": m["embedding_model"], "platform": m["platform"]}}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default=str(ROOT / "demo-state"))
@@ -167,6 +188,7 @@ def main() -> int:
     timings["step10"] = max(0.01, round(time.time() - t0, 2))
     (state / "timings.json").write_text(json.dumps(timings, indent=2) + "\n")
     res = build(state)
+    res = {**res, "run": run_info(res)}
     out = Path(a.out) if a.out else state / "closeout-result.json"
     out.write_text(json.dumps(res, indent=2) + "\n")
     print(f"wrote {out.name}: {len(res)} top-level sections")

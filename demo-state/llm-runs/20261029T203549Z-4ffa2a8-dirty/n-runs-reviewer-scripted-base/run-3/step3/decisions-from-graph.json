@@ -1,0 +1,122 @@
+[
+  {
+    "id": "decision_b957b8963ef47795ca8f073c",
+    "title": "The Authorization header must hold a prefix and a token separated by one space, and the prefix must equal the configured jwt_token_prefix.",
+    "content": "The API reads the Authorization header, splits it on a single space into a prefix and a token, and rejects it with 403 WRONG_TOKEN_PREFIX if the split fails or the prefix differs from settings.jwt_token_prefix. The default prefix is \"Token\" (app/app/core/settings/app.py:29). An optional variant returns an empty token when the header is missing.\nSource: app/app/api/dependencies/authentication.py:51",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:auth-header-scheme",
+    "slug": "auth-header-scheme",
+    "quote": "token_prefix, token = api_key.split(\" \")",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_37f165eb15c5b41c40de0ff5",
+    "title": "Only the comment's author, matched by username, may delete a comment.",
+    "content": "check_user_can_modify_comment returns true only when comment.author.username equals the current user's username. The delete route depends on check_comment_modification_permissions, which raises 403 when this check fails (app/app/api/dependencies/comments.py:43).\nSource: app/app/services/comments.py:6",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:comment-ownership",
+    "slug": "comment-ownership",
+    "quote": "return comment.author.username == user.username",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_2090fa1a906a3e6b16540a32",
+    "title": "The code talks to PostgreSQL through raw SQL files loaded by aiosql on the asyncpg driver, wrapped in repository classes.",
+    "content": "queries.py loads every .sql file under the sql folder with aiosql.from_path using the asyncpg adapter. Repository classes built on BaseRepository call these named queries on an asyncpg connection, and the article filter query is built with pypika Query objects in ArticlesRepository.\nSource: app/app/db/queries/queries.py:5",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:database-access-layer",
+    "slug": "database-access-layer",
+    "quote": "queries = aiosql.from_path(pathlib.Path(__file__).parent / \"sql\", \"asyncpg\")",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_08882c0ea1a012aa555d7d4e",
+    "title": "HTTP errors are returned as JSON of the form {\"errors\": [detail]} with the exception status code.",
+    "content": "http_error_handler wraps the HTTPException detail in a list under the key \"errors\" and returns it as a JSONResponse with the exception's status code. A separate handler exists for validation errors in app/app/api/errors/validation_error.py.\nSource: app/app/api/errors/http_error.py:7",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:error-response-shape",
+    "slug": "error-response-shape",
+    "quote": "return JSONResponse({\"errors\": [exc.detail]}, status_code=exc.status_code)",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_bc362a3cd0dc75c84aab0c00",
+    "title": "Favoriting inserts a (user_id, article_id) row into a favorites join table and ignores duplicates.",
+    "content": "The add-article-to-favorites SQL inserts user and article ids resolved from username and slug, with ON CONFLICT DO NOTHING; unfavoriting deletes the row. The favorites table has a composite primary key on (user_id, article_id), and favorites_count and favorited are computed per read by counting rows.\nSource: app/app/db/queries/sql/articles.sql:2",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:favorites",
+    "slug": "favorites",
+    "quote": "INSERT INTO favorites (user_id, article_id)",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_b8893f784b70dc4f7a683078",
+    "title": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.",
+    "content": "DEFAULT_ARTICLES_LIMIT is 20 and DEFAULT_ARTICLES_OFFSET is 0. The articles filter dependency and the feed route take limit as Query(default, ge=1) and offset as Query(default, ge=0), and the feed SQL applies LIMIT :limit OFFSET :offset.\nSource: app/app/models/schemas/articles.py:8",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:pagination-parameters",
+    "slug": "pagination-parameters",
+    "quote": "DEFAULT_ARTICLES_LIMIT = 20",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_930e62be897290140473e49c",
+    "title": "Passwords are hashed with bcrypt through passlib CryptContext, with a per-user bcrypt salt prepended to the password.",
+    "content": "security.py builds a passlib CryptContext with schemes [\"bcrypt\"] and deprecated=\"auto\". UserInDB.change_password generates a salt with bcrypt.gensalt and stores get_password_hash(salt + password); check_password verifies salt + password against the stored hash (app/app/models/domain/users.py:20).\nSource: app/app/services/security.py:4",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:password-hashing",
+    "slug": "password-hashing",
+    "quote": "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_ec84839e84bd5017d19dbf6b",
+    "title": "Settings are pydantic BaseSettings classes chosen by the APP_ENV value and cached with lru_cache.",
+    "content": "get_app_settings reads app_env from BaseAppSettings, maps it to DevAppSettings, ProdAppSettings or TestAppSettings, and returns an instance; the function is wrapped in functools.lru_cache. BaseAppSettings defaults app_env to prod and reads a .env file.\nSource: app/app/core/config.py:19",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:settings-loading",
+    "slug": "settings-loading",
+    "quote": "app_env = BaseAppSettings().app_env",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_51687bea3997974ad46d2d7f",
+    "title": "Article slugs are generated from the title with the slugify library.",
+    "content": "get_slug_for_article returns slugify(title) with no extra suffix or uniqueness token. check_article_exists looks up an existing article by slug, and the articles table enforces a unique slug column (app/app/db/migrations/versions/fdf8821871d7_main_tables.py:103).\nSource: app/app/services/articles.py:19",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:slug-rules",
+    "slug": "slug-rules",
+    "quote": "return slugify(title)",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_fb2b5a4def84807941c89256",
+    "title": "Tags are stored as unique text rows in a tags table and linked to articles through an articles_to_tags join table.",
+    "content": "When an article is created with tags, inside one transaction the repository first creates any tags that do not exist, then links them via add-tags-to-article into articles_to_tags. The tags table uses the tag text as its primary key and articles_to_tags has a composite primary key on (article_id, tag).\nSource: app/app/db/repositories/articles.py:55",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:tag-handling",
+    "slug": "tag-handling",
+    "quote": "await self._tags_repo.create_tags_that_dont_exist(tags=tags)",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_c420b689a5d2abcadde09464",
+    "title": "Tests live in a top-level tests folder split into test_api, test_db, test_schemas and test_services, with shared fixtures in conftest.py.",
+    "content": "pytest is configured with testpaths set to tests. Route and error tests sit under tests/test_api/test_routes and tests/test_api/test_errors, and conftest.py sets APP_ENV to test and swaps the app pool for FakeAsyncPGPool.\nSource: app/pyproject.toml:46",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:test-layout",
+    "slug": "test-layout",
+    "quote": "testpaths = \"tests\"",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  },
+  {
+    "id": "decision_ecfaca446674649095e5f84e",
+    "title": "Access tokens are HS256 JWTs that expire one week after issue.",
+    "content": "ACCESS_TOKEN_EXPIRE_MINUTES is set to 60 * 24 * 7 minutes. create_access_token_for_user passes it as a timedelta, and create_jwt_token adds an exp claim of utcnow plus that delta with subject \"access\", signed with HS256.\nSource: app/app/services/jwt.py:12",
+    "ref": "final_report:e5fd0a4f-21fd-4045-a9b6-25119901ddca:decision:token-expiry",
+    "slug": "token-expiry",
+    "quote": "ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # one week",
+    "layer": "canonical",
+    "agent": "80cdb59e-6cf0-49a9-9811-2b060cda0081"
+  }
+]

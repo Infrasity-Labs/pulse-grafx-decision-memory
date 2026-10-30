@@ -1,0 +1,12 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "A separate per-user salt is stored and prepended to the password before bcrypt hashing.",
+    "Passwords are hashed with bcrypt through a passlib CryptContext."
+  ],
+  [
+    "depends_on__Decision__Decision",
+    "Changing an article title regenerates its slug, so its URL changes.",
+    "An article slug is derived from its title with slugify and must be unique."
+  ]
+]

@@ -1,0 +1,341 @@
+{
+  "generated_at": "2026-10-29T21:16:14+00:00",
+  "scope": "One run on one machine. Not a general accuracy or speed claim.",
+  "machine": {
+    "platform": "Darwin arm64",
+    "python": "3.12.13",
+    "claude_code": "2.1.312 (Claude Code)",
+    "agent_model": "scripted-agent (no LLM)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_is_stub": false
+  },
+  "versions": {
+    "okto_pulse": "0.4.2",
+    "okto_pulse_core": "0.4.2",
+    "okto_grafx": "0.0.8",
+    "requires_dist_grafx_line": "Requires-Dist: okto-grafx[accel]==0.0.8",
+    "installed_pulse_requires_installed_grafx": true
+  },
+  "decisions": {
+    "expected": 12,
+    "committed_to_graph": 12,
+    "found_by_slug": 12,
+    "citations_checked_and_valid": 12,
+    "recorder_commit": "committed",
+    "recorder_nodes_added": 12,
+    "recorder_edges_added": 3
+  },
+  "recall": {
+    "questions": 10,
+    "agent_choice_correct": 10,
+    "similar_top1_correct": 10,
+    "natural_top1_correct": 10,
+    "history_top1_correct": 0,
+    "read_only_identity_write_probe": "{\"outcome\": \"error\", \"data\": {\"error\": {\"code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"required_permission\": \"kg.session.begin\"}}, \"error_code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"retryable\": false, \"next_action\": null, \"meta\": {\"contract\": \"okto-pulse.mcp-tool-outcome\", \"contract_version\": \"2.0\", \"tool\": \"okto_pulse_kg_begin_consolidation\"}, \"details\": {\"error\": {\"code\": \"permission_denied\", \"message\": \"{\\\"error\\\": \\\"Permission denied\\\", \\\"reason\\\": \\\"permission_missing\\\", \\\"required_permission\\\": \\\"kg.session.begin\\\", \\\"detail\\\": \\\"Agent does not have the 'kg.session.begin' permission.\\\"}\", \"required_permission\": \"kg.session.begin\"}}}",
+    "key_decisions_list_exposed_as_mcp_tool": false,
+    "key_decisions_list_rows_via_rest": 42,
+    "decision_history_probes_with_results": "6 of 6"
+  },
+  "reversal": {
+    "contradiction_pairs_before": 0,
+    "contradiction_pairs_after_supersede_only": 0,
+    "contradiction_pairs_after_explicit_flag": 1,
+    "pulse_flagged_a_contradiction_without_an_agent_edge": false,
+    "supersedence_chain_length_from_new_decision": 1,
+    "chain_end_decision_id": "decision_9f5ef44a18fde57f9d721c43",
+    "chain_end_decision_title": "Error responses use RFC 7807 problem+json with type, title, status and detail",
+    "superseded_decision_title": "HTTP errors are returned as JSON of the form {\"errors\": [detail]} with the exception status code.",
+    "supersedence_chain_length_when_queried_from_old_decision": 0,
+    "decision_history_returned_decisions": 0
+  },
+  "global_discovery": {
+    "queries": [
+      {
+        "query": "What is the largest number of items a list endpoint may return in one page?",
+        "found_on_other_board": true,
+        "top_is_expected": true,
+        "attempts": 2,
+        "seconds_until_result": 5.6
+      },
+      {
+        "query": "How can a monitor check that a service is alive?",
+        "found_on_other_board": true,
+        "top_is_expected": true,
+        "attempts": 1,
+        "seconds_until_result": 0.2
+      }
+    ],
+    "second_board_decisions": 3,
+    "identity_without_access_saw_second_board": false
+  },
+  "kill_a": {
+    "uncommitted_consolidation_absent_after_restart": true,
+    "earlier_decisions_all_present": true,
+    "decisions_before": 3,
+    "decisions_after": 3,
+    "late_commit_of_old_session": "session_not_found",
+    "restart_seconds_to_ready": 14.7,
+    "board_accepted_a_new_commit_seconds_after_kill": 20.4
+  },
+  "kill_b": {
+    "workers": 3,
+    "acknowledged_before_kill": 16,
+    "acknowledged_and_present_after_restart": 16,
+    "acknowledged_missing_after_restart": 0,
+    "commits_started": 17,
+    "unacknowledged_but_present": 0,
+    "in_flight_at_kill": 1,
+    "retries_on_busy": 29,
+    "random_delay_s_after_first_ack": 11.93,
+    "restart_seconds_to_ready": 16.9,
+    "board_accepted_a_new_commit_seconds_after_kill": 81.4,
+    "refusal_seen_while_waiting": [],
+    "writer_lock_default_ttl_seconds": 300
+  },
+  "health_after_restart_as_returned": {
+    "kill_a": {
+      "graph_state": "healthy",
+      "discovery_state": "healthy",
+      "overall_state": "at_risk",
+      "metric_status": "unavailable",
+      "classification_reason": "board_graph_metadata_present;health_probe_unavailable:digest_layer_parity",
+      "checked_at": "2026-10-29T21:12:27.555468+00:00",
+      "health_issues": [
+        {
+          "code": "board_graph_queryable",
+          "severity": "info",
+          "description": "The board graph opened and returned materialized content; this is not a board-graph recovery signal."
+        },
+        {
+          "code": "health_probe_unavailable",
+          "severity": "warning",
+          "description": "One or more bounded KG Health probes did not complete within the read budget; the endpoint returned fail-safe projections."
+        },
+        {
+          "code": "active_queue_transient",
+          "severity": "info",
+          "description": "2 active operational-queue item(s) (transient) across consolidation_queue + global_update_outbox. Distinct from dead-letter and canonical debt."
+        }
+      ],
+      "queue_depth": 0,
+      "dead_letter_count": 0
+    },
+    "kill_b": {
+      "graph_state": "healthy",
+      "discovery_state": "healthy",
+      "overall_state": "healthy",
+      "metric_status": "available",
+      "classification_reason": "board_graph_metadata_present",
+      "checked_at": "2026-10-29T21:14:47.041838+00:00",
+      "health_issues": [
+        {
+          "code": "board_graph_queryable",
+          "severity": "info",
+          "description": "The board graph opened and returned materialized content; this is not a board-graph recovery signal."
+        },
+        {
+          "code": "active_queue_transient",
+          "severity": "info",
+          "description": "16 active operational-queue item(s) (transient) across consolidation_queue + global_update_outbox. Distinct from dead-letter and canonical debt."
+        }
+      ],
+      "queue_depth": 0,
+      "dead_letter_count": 0
+    }
+  },
+  "node_counts": {
+    "decision_board": {
+      "pulse": {
+        "BoardMeta": 1,
+        "Decision": 43,
+        "Entity": 4,
+        "Alternative": 20
+      },
+      "direct_read": {
+        "BoardMeta": 1,
+        "Decision": 43,
+        "Entity": 4,
+        "Alternative": 20
+      },
+      "nodes_match": true,
+      "pulse_edges": {
+        "depends_on__Decision__Decision": 3,
+        "supersedes__Decision__Decision": 11,
+        "relates_to__Decision__Alternative": 20,
+        "belongs_to__Decision__Entity": 20,
+        "mentions__Decision__Entity": 1,
+        "contradicts__Decision__Decision": 1,
+        "belongs_to__Entity__Entity": 2,
+        "belongs_to__Alternative__Entity": 20
+      },
+      "direct_read_edges": {
+        "supersedes__Decision__Decision": 11,
+        "contradicts__Decision__Decision": 1,
+        "relates_to__Decision__Alternative": 20,
+        "mentions__Decision__Entity": 1,
+        "depends_on__Decision__Decision": 3,
+        "belongs_to__Entity__Entity": 2,
+        "belongs_to__Decision__Entity": 20,
+        "belongs_to__Alternative__Entity": 20
+      },
+      "edges_match": true,
+      "read_only_open_refused": false,
+      "data_files_unchanged_by_read": true
+    },
+    "crash_test_board_a": {
+      "pulse": {
+        "BoardMeta": 1,
+        "Decision": 7,
+        "Entity": 2
+      },
+      "direct_read": {
+        "BoardMeta": 1,
+        "Decision": 7,
+        "Entity": 2
+      },
+      "nodes_match": true,
+      "pulse_edges": {
+        "belongs_to__Entity__Entity": 1
+      },
+      "direct_read_edges": {
+        "belongs_to__Entity__Entity": 1
+      },
+      "edges_match": true,
+      "read_only_open_refused": false,
+      "data_files_unchanged_by_read": true
+    },
+    "crash_test_board": {
+      "pulse": {
+        "BoardMeta": 1,
+        "Decision": 18,
+        "Entity": 2
+      },
+      "direct_read": {
+        "BoardMeta": 1,
+        "Decision": 18,
+        "Entity": 2
+      },
+      "nodes_match": true,
+      "pulse_edges": {
+        "supersedes__Decision__Decision": 1,
+        "belongs_to__Entity__Entity": 1
+      },
+      "direct_read_edges": {
+        "supersedes__Decision__Decision": 1,
+        "belongs_to__Entity__Entity": 1
+      },
+      "edges_match": true,
+      "read_only_open_refused": false,
+      "data_files_unchanged_by_read": true
+    }
+  },
+  "commit_history_enabled_on_board_store": {
+    "decision_board": true,
+    "crash_test_board_a": true,
+    "crash_test_board": true
+  },
+  "verify": {
+    "stopped_original_store": {
+      "darwin": {
+        "exit_code": 0,
+        "clean": true,
+        "verdict": "clean",
+        "findings": 0,
+        "pages_checked": 14096,
+        "records_checked": 187,
+        "index_entries_checked": 637
+      },
+      "linux-container": {
+        "exit_code": 0,
+        "clean": true,
+        "verdict": "clean",
+        "findings": 0,
+        "pages_checked": 14096,
+        "records_checked": 187,
+        "index_entries_checked": 637
+      }
+    },
+    "copy_before_backup": {
+      "darwin": {
+        "exit_code": 0,
+        "clean": true,
+        "verdict": "clean",
+        "findings": 0,
+        "pages_checked": 14096,
+        "records_checked": 187,
+        "index_entries_checked": 637
+      },
+      "linux-container": {
+        "exit_code": 0,
+        "clean": true,
+        "verdict": "clean",
+        "findings": 0,
+        "pages_checked": 14096,
+        "records_checked": 187,
+        "index_entries_checked": 637
+      }
+    },
+    "restored_copy": {
+      "linux-container": {
+        "exit_code": 0,
+        "clean": true,
+        "verdict": "clean",
+        "findings": 0,
+        "pages_checked": 14096,
+        "records_checked": 187,
+        "index_entries_checked": 637
+      }
+    }
+  },
+  "backup_restore": {
+    "darwin": {
+      "platform": "Darwin arm64",
+      "backup_ok": false,
+      "restore_ok": false,
+      "backup_refusal": "This platform has no supported atomic no-replace directory publication. [code=unsupported_operation retryable=False]",
+      "counts_match_original_vs_restored": false,
+      "uuid_original_equals_restored": false,
+      "original_untouched": true
+    },
+    "linux-container": {
+      "platform": "Linux aarch64",
+      "backup_ok": true,
+      "restore_ok": true,
+      "backup_refusal": null,
+      "counts_match_original_vs_restored": true,
+      "uuid_original_equals_restored": true,
+      "original_untouched": true
+    }
+  },
+  "backup_restore_exercised_on": "linux-container",
+  "step_seconds": {
+    "step2": 41.5,
+    "step3": 3.5,
+    "step4": 6.7,
+    "step5": 6.0,
+    "step5-maintainer-reversal-no-rationale": 1.2,
+    "step6": 49.2,
+    "step7": 231.8,
+    "step8": 20.4,
+    "step9": 59.9,
+    "step10": 0.01
+  },
+  "run": {
+    "recorded": true,
+    "date": "2026-10-29T21:16:14+00:00",
+    "run_id": null,
+    "run_attempt": null,
+    "commit": "4ffa2a8a5378f7f1838e7c954df187cb0075d5eb",
+    "commit_dirty": true,
+    "tool_versions": {
+      "okto_pulse": "0.4.2",
+      "okto_pulse_core": "0.4.2",
+      "okto_grafx": "0.0.8",
+      "python": "3.12.13",
+      "claude_code": "2.1.312 (Claude Code)",
+      "agent_model": "scripted-agent (no LLM)",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "platform": "Darwin arm64"
+    }
+  }
+}

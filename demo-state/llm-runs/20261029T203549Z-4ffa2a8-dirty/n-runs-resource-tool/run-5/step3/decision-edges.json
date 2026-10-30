@@ -1,0 +1,7 @@
+[
+  [
+    "depends_on__Decision__Decision",
+    "A separate per-user salt is stored in its own column and prepended to the password before hashing.",
+    "Passwords are hashed with bcrypt through a passlib CryptContext."
+  ]
+]

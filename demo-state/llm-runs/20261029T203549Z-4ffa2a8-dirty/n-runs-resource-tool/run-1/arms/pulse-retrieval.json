@@ -1,0 +1,918 @@
+{
+  "arm": "pulse-retrieval",
+  "kind": "retrieval",
+  "description": "Scripted client, no LLM. find_similar_decisions top-1 on the 32-decision board, abstaining below a similarity threshold chosen on dev.",
+  "environment": {
+    "platform": "Darwin arm64",
+    "python": "3.12.13",
+    "okto_pulse": "0.4.2",
+    "okto_grafx": "0.0.8",
+    "sentence_transformers": "5.7.0"
+  },
+  "decisions_on_board": 28,
+  "abstention_threshold_chosen_on_dev": 0.3385,
+  "answers": [
+    {
+      "id": "d1",
+      "decision": "tokens-header-only",
+      "abstain": false,
+      "answer": "Tokens travel only in the Authorization header and never in cookies.\nThe API reads the token from the Authorization header. It does not set or read any cookie.\nInvented for this demo.\nReason: Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.",
+      "score": 0.5378
+    },
+    {
+      "id": "d2",
+      "decision": "article-ownership",
+      "abstain": false,
+      "answer": "Only an article's author, matched by username, may modify the article.\nThe service compares the article author's username with the current user's username. Other users get a refusal.\nSource: app/app/services/articles.py:23",
+      "score": 0.3613
+    },
+    {
+      "id": "d3",
+      "decision": "validation-error-shape",
+      "abstain": false,
+      "answer": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.\nA separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.\nSource: app/app/api/errors/validation_error.py:17",
+      "score": 0.6529
+    },
+    {
+      "id": "d4",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.4841
+    },
+    {
+      "id": "d5",
+      "decision": "no-refresh-tokens",
+      "abstain": false,
+      "answer": "Sessions use one long-lived access token and the API has no refresh tokens.\nThe API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.\nReason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "score": 0.6147
+    },
+    {
+      "id": "d6",
+      "decision": "hard-delete-articles",
+      "abstain": false,
+      "answer": "Deleted articles and comments are removed from the database, with no soft-delete flag.\nDeleting an article or a comment runs a SQL DELETE. No deleted_at column exists.\nInvented for this demo.\nReason: Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "score": 0.5137
+    },
+    {
+      "id": "d7",
+      "decision": "reset-link-lifetime",
+      "abstain": false,
+      "answer": "Password reset links stay valid for 30 minutes.\nThe API has no password reset flow yet. This fixes the rule for when it is built: a reset link works once and expires 30 minutes after it is sent.\nInvented for this demo.\nReason: Support tickets showed that users open a reset mail within 10 minutes. A link that lives 30 minutes covers slow mail delivery without leaving a long-lived link in an inbox. Invented for this demo.",
+      "score": 0.6861
+    },
+    {
+      "id": "d8",
+      "decision": "reject-fancyhash",
+      "abstain": false,
+      "answer": "The fancyhash package is not used for password hashing because of its licence.\nPassword hashing stays on passlib with bcrypt. The fancyhash package was evaluated and rejected.\nInvented for this demo.\nReason: The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.",
+      "score": 0.4979
+    },
+    {
+      "id": "d9",
+      "decision": "favorites",
+      "abstain": false,
+      "answer": "Favoriting inserts a (user_id, article_id) row into a favorites join table and ignores duplicates.\nThe add-article-to-favorites SQL inserts user and article ids resolved from username and slug, with ON CONFLICT DO NOTHING; unfavoriting deletes the row. The favorites table has a composite primary key on (user_id, article_id), and favorites_count and favorited are computed per read by counting rows.\nSource: app/app/db/queries/sql/articles.sql:2",
+      "score": 0.461
+    },
+    {
+      "id": "d10",
+      "decision": "favorites-no-notification",
+      "abstain": false,
+      "answer": "Favoriting an article sends no notification to its author.\nAdding a favorite writes a database row and nothing else. No message is sent to the author.\nInvented for this demo.\nReason: Product decision PD-8 puts all notifications out of scope until the 2027 roadmap. Invented for this demo.",
+      "score": 0.3868
+    },
+    {
+      "id": "d11",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.3005
+    },
+    {
+      "id": "d12",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.3156
+    },
+    {
+      "id": "d13",
+      "decision": "validation-error-shape",
+      "abstain": false,
+      "answer": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.\nA separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.\nSource: app/app/api/errors/validation_error.py:17",
+      "score": 0.4585
+    },
+    {
+      "id": "h1",
+      "decision": "jwt-algorithm",
+      "abstain": false,
+      "answer": "Access tokens are signed with the HS256 algorithm using one shared secret key.\nTokens are JWTs signed and verified with HS256. The secret comes from the application settings.\nSource: app/app/services/jwt.py:11",
+      "score": 0.4107
+    },
+    {
+      "id": "h2",
+      "decision": "jwt-algorithm",
+      "abstain": false,
+      "answer": "Access tokens are signed with the HS256 algorithm using one shared secret key.\nTokens are JWTs signed and verified with HS256. The secret comes from the application settings.\nSource: app/app/services/jwt.py:11",
+      "score": 0.3899
+    },
+    {
+      "id": "h3",
+      "decision": "duplicate-registration",
+      "abstain": false,
+      "answer": "Registering with a username or email that is already taken is answered with HTTP 400.\nThe register route checks the username first and the email second. Each taken value raises a 400 error with its own message from the strings module.\nSource: app/app/api/routes/authentication.py:70",
+      "score": 0.3995
+    },
+    {
+      "id": "h4",
+      "decision": "cors-allowed-origins",
+      "abstain": false,
+      "answer": "Cross-origin calls are allowed from the origins in allowed_hosts, which default to every origin.\nThe CORS middleware reads allowed_hosts from the settings. The default list holds a single wildcard entry.\nSource: app/app/core/settings/app.py:31",
+      "score": 0.4805
+    },
+    {
+      "id": "h5",
+      "decision": "connection-pool-size",
+      "abstain": false,
+      "answer": "The database pool is fixed at 10 connections through min_connection_count and max_connection_count.\nBoth pool bounds default to 10 in the application settings, and the pool is created with those two values at start-up.\nSource: app/app/core/settings/app.py:22",
+      "score": 0.5969
+    },
+    {
+      "id": "h6",
+      "decision": "tag-create-idempotent",
+      "abstain": false,
+      "answer": "Creating a tag that already exists is ignored by the insert statement.\nThe tag insert uses ON CONFLICT DO NOTHING, so saving an article with a known tag adds no new tag row.\nSource: app/app/db/queries/sql/tags.sql:9",
+      "score": 0.4224
+    },
+    {
+      "id": "h7",
+      "decision": "reject-fancyhash",
+      "abstain": false,
+      "answer": "The fancyhash package is not used for password hashing because of its licence.\nPassword hashing stays on passlib with bcrypt. The fancyhash package was evaluated and rejected.\nInvented for this demo.\nReason: The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.",
+      "score": 0.5461
+    },
+    {
+      "id": "h8",
+      "decision": "page-size-default-reason",
+      "abstain": false,
+      "answer": "The article list defaults to 20 items per page.\nThe default limit of the article list is 20 items.\nInvented for this demo.\nReason: Design review DR-31 found that the mobile list screen fits 20 rows without scrolling. Invented for this demo.",
+      "score": 0.5551
+    },
+    {
+      "id": "h9",
+      "decision": "aiosql-over-orm",
+      "abstain": false,
+      "answer": "Queries are hand-written SQL files, not generated by an ORM.\nEvery query lives in a SQL file that the repositories call by name.\nInvented for this demo.\nReason: The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "score": 0.3637
+    },
+    {
+      "id": "h10",
+      "decision": "no-refresh-tokens",
+      "abstain": false,
+      "answer": "Sessions use one long-lived access token and the API has no refresh tokens.\nThe API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.\nReason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "score": 0.4416
+    },
+    {
+      "id": "h11",
+      "decision": "aiosql-over-orm",
+      "abstain": false,
+      "answer": "Queries are hand-written SQL files, not generated by an ORM.\nEvery query lives in a SQL file that the repositories call by name.\nInvented for this demo.\nReason: The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "score": 0.4649
+    },
+    {
+      "id": "h12",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.3292
+    },
+    {
+      "id": "h13",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    },
+    {
+      "id": "h14",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    },
+    {
+      "id": "m1",
+      "decision": "no-refresh-tokens",
+      "abstain": false,
+      "answer": "Sessions use one long-lived access token and the API has no refresh tokens.\nThe API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.\nReason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "score": 0.6279
+    },
+    {
+      "id": "m2",
+      "decision": "hard-delete-articles",
+      "abstain": false,
+      "answer": "Deleted articles and comments are removed from the database, with no soft-delete flag.\nDeleting an article or a comment runs a SQL DELETE. No deleted_at column exists.\nInvented for this demo.\nReason: Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "score": 0.5468
+    },
+    {
+      "id": "m3",
+      "decision": "reject-fancyhash",
+      "abstain": false,
+      "answer": "The fancyhash package is not used for password hashing because of its licence.\nPassword hashing stays on passlib with bcrypt. The fancyhash package was evaluated and rejected.\nInvented for this demo.\nReason: The licence of fancyhash has a network-use clause that is not compatible with distributing the API. Passlib with bcrypt was kept. Invented for this demo.",
+      "score": 0.7357
+    },
+    {
+      "id": "m4",
+      "decision": "bcrypt-work-factor",
+      "abstain": false,
+      "answer": "bcrypt keeps the default passlib work factor.\nNo custom rounds value is set on the password context, so passlib's default applies.\nInvented for this demo.\nReason: Load test LT-9 put the login endpoint at a p95 of 240 ms with the default factor. One step higher pushed it past the 300 ms login budget. Invented for this demo.",
+      "score": 0.5687
+    },
+    {
+      "id": "m5",
+      "decision": "tokens-header-only",
+      "abstain": false,
+      "answer": "Tokens travel only in the Authorization header and never in cookies.\nThe API reads the token from the Authorization header. It does not set or read any cookie.\nInvented for this demo.\nReason: Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.",
+      "score": 0.7466
+    },
+    {
+      "id": "m6",
+      "decision": "password-salt",
+      "abstain": false,
+      "answer": "Each user gets a random salt created with bcrypt.gensalt.\nA helper returns a fresh bcrypt salt as text. The user row stores the salt next to the hashed password.\nSource: app/app/services/security.py:8",
+      "score": 0.6456
+    },
+    {
+      "id": "m7",
+      "decision": "validation-error-shape",
+      "abstain": false,
+      "answer": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.\nA separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.\nSource: app/app/api/errors/validation_error.py:17",
+      "score": 0.6265
+    },
+    {
+      "id": "m8",
+      "decision": "token-expiry",
+      "abstain": false,
+      "answer": "Access tokens are HS256 JWTs that expire one week after issue.\nACCESS_TOKEN_EXPIRE_MINUTES is set to 60 * 24 * 7 minutes. create_access_token_for_user passes it as a timedelta, and create_jwt_token adds an exp claim of utcnow plus that delta with subject \"access\", signed with HS256.\nSource: app/app/services/jwt.py:12",
+      "score": 0.6574
+    },
+    {
+      "id": "m9",
+      "decision": "tag-create-idempotent",
+      "abstain": false,
+      "answer": "Creating a tag that already exists is ignored by the insert statement.\nThe tag insert uses ON CONFLICT DO NOTHING, so saving an article with a known tag adds no new tag row.\nSource: app/app/db/queries/sql/tags.sql:9",
+      "score": 0.8178
+    },
+    {
+      "id": "m10",
+      "decision": "aiosql-over-orm",
+      "abstain": false,
+      "answer": "Queries are hand-written SQL files, not generated by an ORM.\nEvery query lives in a SQL file that the repositories call by name.\nInvented for this demo.\nReason: The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "score": 0.5479
+    },
+    {
+      "id": "m11",
+      "decision": "postgres-over-mongodb",
+      "abstain": false,
+      "answer": "PostgreSQL is the data store and MongoDB was not chosen.\nArticles, tags and favorites are stored in PostgreSQL tables joined by foreign keys.\nInvented for this demo.\nReason: The data is relational, and the DBA team supports only PostgreSQL (ADR-3). Invented for this demo.",
+      "score": 0.7498
+    },
+    {
+      "id": "m12",
+      "decision": "aiosql-over-orm",
+      "abstain": false,
+      "answer": "Queries are hand-written SQL files, not generated by an ORM.\nEvery query lives in a SQL file that the repositories call by name.\nInvented for this demo.\nReason: The DBA team reviews every query. A SQL file can be reviewed in a pull request and ORM output cannot (ADR-4). Invented for this demo.",
+      "score": 0.6817
+    },
+    {
+      "id": "m13",
+      "decision": "no-refresh-tokens",
+      "abstain": false,
+      "answer": "Sessions use one long-lived access token and the API has no refresh tokens.\nThe API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.\nReason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "score": 0.4827
+    },
+    {
+      "id": "m14",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    },
+    {
+      "id": "m15",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    },
+    {
+      "id": "m16",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    },
+    {
+      "id": "l1",
+      "decision": "tokens-header-only",
+      "abstain": false,
+      "answer": "Tokens travel only in the Authorization header and never in cookies.\nThe API reads the token from the Authorization header. It does not set or read any cookie.\nInvented for this demo.\nReason: Cookie transport would need CSRF protection that this API does not have (ADR-5). Invented for this demo.",
+      "score": 0.4706
+    },
+    {
+      "id": "l2",
+      "decision": "token-expiry",
+      "abstain": false,
+      "answer": "Access tokens are HS256 JWTs that expire one week after issue.\nACCESS_TOKEN_EXPIRE_MINUTES is set to 60 * 24 * 7 minutes. create_access_token_for_user passes it as a timedelta, and create_jwt_token adds an exp claim of utcnow plus that delta with subject \"access\", signed with HS256.\nSource: app/app/services/jwt.py:12",
+      "score": 0.5848
+    },
+    {
+      "id": "l3",
+      "decision": "password-hashing",
+      "abstain": false,
+      "answer": "Passwords are hashed with bcrypt through passlib CryptContext, with a per-user bcrypt salt prepended to the password.\nsecurity.py builds a passlib CryptContext with schemes [\"bcrypt\"] and deprecated=\"auto\". UserInDB.change_password generates a salt with bcrypt.gensalt and stores get_password_hash(salt + password); check_password verifies salt + password against the stored hash (app/app/models/domain/users.py:20).\nSource: app/app/services/security.py:4",
+      "score": 0.5476
+    },
+    {
+      "id": "l4",
+      "decision": "validation-error-shape",
+      "abstain": false,
+      "answer": "Request validation failures return HTTP 422 with an errors list of the validator's error objects.\nA separate handler catches validation errors and answers with the validator's own error list, not the single detail string used for other HTTP errors.\nSource: app/app/api/errors/validation_error.py:17",
+      "score": 0.5838
+    },
+    {
+      "id": "l5",
+      "decision": "pagination-parameters",
+      "abstain": false,
+      "answer": "Article lists page with limit and offset query parameters, defaulting to limit 20 and offset 0.\nDEFAULT_ARTICLES_LIMIT is 20 and DEFAULT_ARTICLES_OFFSET is 0. The articles filter dependency and the feed route take limit as Query(default, ge=1) and offset as Query(default, ge=0), and the feed SQL applies LIMIT :limit OFFSET :offset.\nSource: app/app/models/schemas/articles.py:8",
+      "score": 0.6655
+    },
+    {
+      "id": "l6",
+      "decision": "article-slug-conflict",
+      "abstain": false,
+      "answer": "Creating an article whose generated slug already exists is refused with HTTP 400.\nThe create route builds the slug from the title and checks whether an article with that slug exists. If it does, the route raises a 400 error and does not add a numeric suffix.\nSource: app/app/api/routes/articles/articles_resource.py:65",
+      "score": 0.495
+    },
+    {
+      "id": "l7",
+      "decision": "hard-delete-articles",
+      "abstain": false,
+      "answer": "Deleted articles and comments are removed from the database, with no soft-delete flag.\nDeleting an article or a comment runs a SQL DELETE. No deleted_at column exists.\nInvented for this demo.\nReason: Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "score": 0.5374
+    },
+    {
+      "id": "l8",
+      "decision": "favorites-no-notification",
+      "abstain": false,
+      "answer": "Favoriting an article sends no notification to its author.\nAdding a favorite writes a database row and nothing else. No message is sent to the author.\nInvented for this demo.\nReason: Product decision PD-8 puts all notifications out of scope until the 2027 roadmap. Invented for this demo.",
+      "score": 0.5731
+    },
+    {
+      "id": "l9",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    },
+    {
+      "id": "l10",
+      "decision": null,
+      "abstain": true,
+      "answer": "",
+      "score": 0.0
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "stance": null,
+      "cited": "no-refresh-tokens",
+      "answer": "Sessions use one long-lived access token and the API has no refresh tokens.\nThe API issues a single access token that is valid for one week and has no refresh endpoint. A client that needs a new token logs in again.\nInvented for this demo.\nReason: Security review SR-2025-14 of the pilot found that a stored refresh token let a stolen browser profile keep access for months. The team chose a one-week access token and no refresh token, so a stolen token expires on its own. Invented for this demo.",
+      "score": 0.6826
+    },
+    {
+      "id": "t2",
+      "stance": null,
+      "cited": "hard-delete-articles",
+      "answer": "Deleted articles and comments are removed from the database, with no soft-delete flag.\nDeleting an article or a comment runs a SQL DELETE. No deleted_at column exists.\nInvented for this demo.\nReason: Legal review LR-77 requires that content its author deleted is gone from live storage within 24 hours. A deleted_at column was rejected because the rows would stay in the table. Invented for this demo.",
+      "score": 0.7221
+    }
+  ],
+  "rows": [
+    {
+      "id": "d1",
+      "top": "tokens-header-only",
+      "score": 0.5378,
+      "top5": [
+        "tokens-header-only",
+        "jwt-algorithm",
+        "no-refresh-tokens",
+        "jwt-algorithm"
+      ]
+    },
+    {
+      "id": "d2",
+      "top": "article-ownership",
+      "score": 0.3613,
+      "top5": [
+        "article-ownership",
+        "article-ownership"
+      ]
+    },
+    {
+      "id": "d3",
+      "top": "validation-error-shape",
+      "score": 0.6529,
+      "top5": [
+        "validation-error-shape",
+        "duplicate-registration"
+      ]
+    },
+    {
+      "id": "d4",
+      "top": null,
+      "score": 0.4841,
+      "top5": [
+        "slug-rules",
+        "article-slug-conflict"
+      ]
+    },
+    {
+      "id": "d5",
+      "top": "no-refresh-tokens",
+      "score": 0.6147,
+      "top5": [
+        "no-refresh-tokens",
+        "reset-link-lifetime",
+        "token-expiry"
+      ]
+    },
+    {
+      "id": "d6",
+      "top": "hard-delete-articles",
+      "score": 0.5137,
+      "top5": [
+        "hard-delete-articles"
+      ]
+    },
+    {
+      "id": "d7",
+      "top": "reset-link-lifetime",
+      "score": 0.6861,
+      "top5": [
+        "reset-link-lifetime",
+        "no-refresh-tokens",
+        "reject-fancyhash",
+        "password-hashing"
+      ]
+    },
+    {
+      "id": "d8",
+      "top": "reject-fancyhash",
+      "score": 0.4979,
+      "top5": [
+        "reject-fancyhash"
+      ]
+    },
+    {
+      "id": "d9",
+      "top": "favorites",
+      "score": 0.461,
+      "top5": [
+        "favorites",
+        "tag-create-idempotent",
+        "postgres-over-mongodb",
+        "page-size-default-reason"
+      ]
+    },
+    {
+      "id": "d10",
+      "top": "favorites-no-notification",
+      "score": 0.3868,
+      "top5": [
+        "favorites-no-notification",
+        "article-ownership"
+      ]
+    },
+    {
+      "id": "d11",
+      "top": "postgres-over-mongodb",
+      "score": 0.3005,
+      "top5": [
+        "postgres-over-mongodb"
+      ]
+    },
+    {
+      "id": "d12",
+      "top": "no-refresh-tokens",
+      "score": 0.3156,
+      "top5": [
+        "no-refresh-tokens"
+      ]
+    },
+    {
+      "id": "d13",
+      "top": "validation-error-shape",
+      "score": 0.4585,
+      "top5": [
+        "validation-error-shape",
+        "duplicate-registration",
+        "no-refresh-tokens"
+      ]
+    },
+    {
+      "id": "h1",
+      "top": "jwt-algorithm",
+      "score": 0.4107,
+      "top5": [
+        "jwt-algorithm",
+        "password-hashing",
+        "duplicate-registration",
+        "jwt-subject-claim",
+        "bcrypt-work-factor"
+      ]
+    },
+    {
+      "id": "h2",
+      "top": "jwt-algorithm",
+      "score": 0.3899,
+      "top5": [
+        "jwt-algorithm",
+        "password-salt",
+        "jwt-subject-claim",
+        "no-refresh-tokens"
+      ]
+    },
+    {
+      "id": "h3",
+      "top": "duplicate-registration",
+      "score": 0.3995,
+      "top5": [
+        "duplicate-registration",
+        "article-ownership",
+        "no-refresh-tokens"
+      ]
+    },
+    {
+      "id": "h4",
+      "top": "cors-allowed-origins",
+      "score": 0.4805,
+      "top5": [
+        "cors-allowed-origins",
+        "tokens-header-only",
+        "no-refresh-tokens",
+        "duplicate-registration"
+      ]
+    },
+    {
+      "id": "h5",
+      "top": "connection-pool-size",
+      "score": 0.5969,
+      "top5": [
+        "connection-pool-size"
+      ]
+    },
+    {
+      "id": "h6",
+      "top": "tag-create-idempotent",
+      "score": 0.4224,
+      "top5": [
+        "tag-create-idempotent"
+      ]
+    },
+    {
+      "id": "h7",
+      "top": "reject-fancyhash",
+      "score": 0.5461,
+      "top5": [
+        "reject-fancyhash",
+        "password-hashing",
+        "bcrypt-work-factor"
+      ]
+    },
+    {
+      "id": "h8",
+      "top": "page-size-default-reason",
+      "score": 0.5551,
+      "top5": [
+        "page-size-default-reason",
+        "pagination-parameters"
+      ]
+    },
+    {
+      "id": "h9",
+      "top": "aiosql-over-orm",
+      "score": 0.3637,
+      "top5": [
+        "aiosql-over-orm",
+        "postgres-over-mongodb",
+        "database-access-layer"
+      ]
+    },
+    {
+      "id": "h10",
+      "top": "no-refresh-tokens",
+      "score": 0.4416,
+      "top5": [
+        "no-refresh-tokens",
+        "duplicate-registration",
+        "jwt-algorithm",
+        "tokens-header-only",
+        "jwt-subject-claim"
+      ]
+    },
+    {
+      "id": "h11",
+      "top": "aiosql-over-orm",
+      "score": 0.4649,
+      "top5": [
+        "aiosql-over-orm",
+        "database-access-layer"
+      ]
+    },
+    {
+      "id": "h12",
+      "top": "article-ownership",
+      "score": 0.3292,
+      "top5": [
+        "article-ownership",
+        "no-refresh-tokens",
+        "duplicate-registration",
+        "favorites-no-notification"
+      ]
+    },
+    {
+      "id": "h13",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    },
+    {
+      "id": "h14",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    },
+    {
+      "id": "m1",
+      "top": "no-refresh-tokens",
+      "score": 0.6279,
+      "top5": [
+        "no-refresh-tokens",
+        "token-expiry",
+        "tokens-header-only",
+        "jwt-algorithm"
+      ]
+    },
+    {
+      "id": "m2",
+      "top": "hard-delete-articles",
+      "score": 0.5468,
+      "top5": [
+        "hard-delete-articles"
+      ]
+    },
+    {
+      "id": "m3",
+      "top": "reject-fancyhash",
+      "score": 0.7357,
+      "top5": [
+        "reject-fancyhash",
+        "password-hashing"
+      ]
+    },
+    {
+      "id": "m4",
+      "top": "bcrypt-work-factor",
+      "score": 0.5687,
+      "top5": [
+        "bcrypt-work-factor",
+        "password-hashing",
+        "password-salt"
+      ]
+    },
+    {
+      "id": "m5",
+      "top": "tokens-header-only",
+      "score": 0.7466,
+      "top5": [
+        "tokens-header-only",
+        "no-refresh-tokens",
+        "jwt-algorithm"
+      ]
+    },
+    {
+      "id": "m6",
+      "top": "password-salt",
+      "score": 0.6456,
+      "top5": [
+        "password-salt"
+      ]
+    },
+    {
+      "id": "m7",
+      "top": "validation-error-shape",
+      "score": 0.6265,
+      "top5": [
+        "validation-error-shape",
+        "duplicate-registration"
+      ]
+    },
+    {
+      "id": "m8",
+      "top": "token-expiry",
+      "score": 0.6574,
+      "top5": [
+        "token-expiry",
+        "no-refresh-tokens",
+        "reset-link-lifetime",
+        "jwt-subject-claim",
+        "jwt-algorithm"
+      ]
+    },
+    {
+      "id": "m9",
+      "top": "tag-create-idempotent",
+      "score": 0.8178,
+      "top5": [
+        "tag-create-idempotent",
+        "favorites",
+        "hard-delete-articles"
+      ]
+    },
+    {
+      "id": "m10",
+      "top": "aiosql-over-orm",
+      "score": 0.5479,
+      "top5": [
+        "aiosql-over-orm",
+        "database-access-layer"
+      ]
+    },
+    {
+      "id": "m11",
+      "top": "postgres-over-mongodb",
+      "score": 0.7498,
+      "top5": [
+        "postgres-over-mongodb",
+        "favorites"
+      ]
+    },
+    {
+      "id": "m12",
+      "top": "aiosql-over-orm",
+      "score": 0.6817,
+      "top5": [
+        "aiosql-over-orm",
+        "database-access-layer"
+      ]
+    },
+    {
+      "id": "m13",
+      "top": "no-refresh-tokens",
+      "score": 0.4827,
+      "top5": [
+        "no-refresh-tokens",
+        "reset-link-lifetime",
+        "duplicate-registration"
+      ]
+    },
+    {
+      "id": "m14",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    },
+    {
+      "id": "m15",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    },
+    {
+      "id": "m16",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    },
+    {
+      "id": "l1",
+      "top": "tokens-header-only",
+      "score": 0.4706,
+      "top5": [
+        "tokens-header-only",
+        "jwt-algorithm",
+        "jwt-subject-claim",
+        "duplicate-registration",
+        "no-refresh-tokens"
+      ]
+    },
+    {
+      "id": "l2",
+      "top": "token-expiry",
+      "score": 0.5848,
+      "top5": [
+        "token-expiry",
+        "reset-link-lifetime",
+        "no-refresh-tokens",
+        "tokens-header-only",
+        "jwt-subject-claim"
+      ]
+    },
+    {
+      "id": "l3",
+      "top": "password-hashing",
+      "score": 0.5476,
+      "top5": [
+        "password-hashing",
+        "password-salt",
+        "reject-fancyhash",
+        "no-refresh-tokens"
+      ]
+    },
+    {
+      "id": "l4",
+      "top": "validation-error-shape",
+      "score": 0.5838,
+      "top5": [
+        "validation-error-shape",
+        "duplicate-registration"
+      ]
+    },
+    {
+      "id": "l5",
+      "top": "pagination-parameters",
+      "score": 0.6655,
+      "top5": [
+        "pagination-parameters",
+        "page-size-default-reason",
+        "database-access-layer"
+      ]
+    },
+    {
+      "id": "l6",
+      "top": "article-slug-conflict",
+      "score": 0.495,
+      "top5": [
+        "article-slug-conflict",
+        "slug-rules",
+        "article-ownership"
+      ]
+    },
+    {
+      "id": "l7",
+      "top": "hard-delete-articles",
+      "score": 0.5374,
+      "top5": [
+        "hard-delete-articles"
+      ]
+    },
+    {
+      "id": "l8",
+      "top": "favorites-no-notification",
+      "score": 0.5731,
+      "top5": [
+        "favorites-no-notification",
+        "favorites",
+        "article-ownership"
+      ]
+    },
+    {
+      "id": "l9",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    },
+    {
+      "id": "l10",
+      "top": null,
+      "score": 0.0,
+      "top5": []
+    }
+  ],
+  "task_rows": [
+    {
+      "id": "t1",
+      "top": "no-refresh-tokens",
+      "score": 0.6826,
+      "top5": [
+        "no-refresh-tokens",
+        "token-expiry",
+        "reset-link-lifetime",
+        "jwt-subject-claim"
+      ]
+    },
+    {
+      "id": "t2",
+      "top": "hard-delete-articles",
+      "score": 0.7221,
+      "top5": [
+        "hard-delete-articles",
+        "article-ownership",
+        "favorites"
+      ]
+    }
+  ]
+}

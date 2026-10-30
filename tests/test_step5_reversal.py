@@ -1,6 +1,7 @@
 """Step 5: the reversal, as returned by Pulse to the Maintainer identity after the Reviewer ran."""
 import json
-import pathlib
+
+from conftest import STATE, missing
 
 OLD = "error-response-shape"
 NEW = "error-response-shape-v2"
@@ -23,9 +24,9 @@ def test_no_contradiction_existed_before(loadj):
 
 def test_supersede_alone_did_not_create_a_contradiction_pair(loadj):
     """Read from the Reviewer's transcript: find_contradictions is called three times, in this order."""
-    lines = pathlib.Path(__file__).resolve().parent.parent.joinpath("demo-state/step5/agent/transcript.jsonl")
+    lines = STATE / "step5" / "agent" / "transcript.jsonl"
     if not lines.exists():
-        return
+        missing("step5/agent/transcript.jsonl not recorded yet")
     names, results = {}, []
     for ln in lines.read_text().splitlines():
         ev = json.loads(ln)

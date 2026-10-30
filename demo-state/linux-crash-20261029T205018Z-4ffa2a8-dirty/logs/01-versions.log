@@ -1,0 +1,15 @@
+$ python capture_versions.py
+{
+  "python": "3.12.16",
+  "platform": "Linux aarch64",
+  "okto_pulse": "0.4.2",
+  "okto_pulse_core": "0.4.2",
+  "okto_grafx": "0.0.8",
+  "sentence_transformers": "5.7.0",
+  "torch": "2.15.0+cpu",
+  "requires_dist_grafx_line": "Requires-Dist: okto-grafx[accel]==0.0.8",
+  "requires_dist_sentence_transformers_line": "Requires-Dist: sentence-transformers<6.0.0,>=2.5.0",
+  "okto_pulse_core_requires_grafx": [],
+  "pulse_requires_exact_installed_grafx": true,
+  "claude_code": null
+}

@@ -1,0 +1,10 @@
+$ python arm_pulse_retrieval.py
+<venv>/lib/python3.12/site-packages/fastmcp/server/auth/providers/jwt.py:10: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, JsonWebToken
+decisions on board 32, abstention threshold 0.3261 (chosen on dev)
+  dev       answerable 9/10 correct (1 wrong, 0 missed by abstaining); unanswerable 2/3 abstained (1 fabricated); graph-only 4/4; near-duplicate 8/9
+  held_out  answerable 6/11 correct (5 wrong, 0 missed by abstaining); unanswerable 2/3 abstained (1 fabricated); graph-only 2/5; near-duplicate 5/10
+  legacy    answerable 7/10 correct (3 wrong, 0 missed by abstaining); unanswerable 0/0 abstained (0 fabricated); graph-only 0/0; near-duplicate 0/0
+  model_authored answerable 11/12 correct (1 wrong, 0 missed by abstaining); unanswerable 3/4 abstained (1 fabricated); graph-only 7/7; near-duplicate 10/11
+conflict tasks: the conflicting decision was the top hit for 2 of 2

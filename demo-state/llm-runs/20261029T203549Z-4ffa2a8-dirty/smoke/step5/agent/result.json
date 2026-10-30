@@ -1,0 +1,157 @@
+{
+  "role": "reviewer",
+  "exit_code": 0,
+  "seconds": 30.8,
+  "model_requested": "claude-opus-5-5",
+  "model": "claude-opus-5-5",
+  "tool_call_count": 9,
+  "tool_calls": [
+    "Read",
+    "mcp__pulse__okto_pulse_kg_find_similar_decisions",
+    "mcp__pulse__okto_pulse_list_spec_entities_placeholder",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_query_cypher",
+    "mcp__pulse__okto_pulse_kg_get_decision_history",
+    "mcp__pulse__okto_pulse_kg_find_contradictions",
+    "mcp__pulse__okto_pulse_get_spec"
+  ],
+  "final": {
+    "duration_api_ms": 28581,
+    "stop_reason": "end_turn",
+    "session_id": "8c4a5e81-0fc9-49ee-86ed-2a2d5eaabf41",
+    "total_cost_usd": 0.8028992000000001,
+    "usage": {
+      "input_tokens": 14,
+      "cache_creation_input_tokens": 122741,
+      "cache_read_input_tokens": 702491,
+      "output_tokens": 2432,
+      "output_tokens_details": {
+        "thinking_tokens": 449
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 122741
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 937,
+          "cache_read_input_tokens": 121324,
+          "cache_creation_input_tokens": 1417,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 1417,
+            "ephemeral_1h_input_tokens": 0
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 14,
+        "outputTokens": 2432,
+        "cacheReadInputTokens": 702491,
+        "cacheCreationInputTokens": 122741,
+        "webSearchRequests": 0,
+        "costUSD": 0.8028992000000001,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 449,
+        "cacheCreationEphemeral5mInputTokens": 122741,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 10,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "```json\n{\"recorded\": false, \"reason_for_decision\": \"The public API is moving to a standard error format so client libraries can parse errors without custom code. (Invented for this demo.)\", \"old_decision_id\": null, \"new_decision_id\": null, \"what_i_did\": [], \"graph_after\": \"Nothing was written, so these are the reads from before any write. A Cypher search for Decision nodes whose source_artifact_ref contains 'error-response-shape' returned rows: [] (row_count 0). A Cypher search of all nodes in the canonical and working layers for 'error-response' or 'http_error' returned rows: [] (row_count 0). kg_get_decision_history(topic='error response shape errors detail http_error') returned {\\\"decisions\\\":[],\\\"count\\\":0}. kg_find_contradictions for the board returned {\\\"pairs\\\":[],\\\"count\\\":0}. The full list of 47 Decision nodes has no decision for the http_error {\\\"errors\\\": [detail]} shape. kg_find_similar_decisions returned only decision_192a98944a9d45567287e13f, 'Request validation failures return HTTP 422 with an errors list of the validator's error objects.' (slug validation-error-shape, similarity 0.4755). The anchor spec 9fb2483e-0076-4149-94e1-fd979d983c9d has decisions: [].\", \"problems\": [\"The note reverses slug 'error-response-shape', but that decision is not in the graph or on the anchor spec. I searched both the canonical and working layers. There is no old node to keep and mark as replaced, and nothing to link a contradiction to, so the goal cannot be met.\", \"Writing only the new decision would leave the history incomplete. Creating the old decision now from the note's old_choice text would add a node that was never consolidated. So I wrote nothing. The Maintainer needs to confirm which decision is being reversed, or get error-response-shape consolidated first.\", \"The nearest match is validation-error-shape (decision_192a98944a9d45567287e13f). It covers HTTP 422 validation errors, which is a different decision from http_error.py, so I did not treat it as the old one.\", \"I did not read the okto-pulse://workflows/kg resource because this session has no tool for reading MCP resources.\"]}\n```",
+    "ttft_ms": 2385,
+    "type": "result",
+    "duration_ms": 29200,
+    "uuid": "2dee8b72-0315-4b97-8b1a-47a2b1adc353",
+    "ttft_stream_ms": 2244,
+    "time_to_request_ms": 217,
+    "first_content_frame_ms": 2244,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 14,
+        "outputTokens": 2432,
+        "cacheReadInputTokens": 702491,
+        "cacheCreationInputTokens": 122741,
+        "webSearchRequests": 0,
+        "costUSD": 0.8028992000000001,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 449,
+        "cacheCreationEphemeral5mInputTokens": 122741,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "stderr_tail": "",
+  "run_stats": {
+    "role": "reviewer",
+    "model": "claude-opus-5-5",
+    "exit_code": 0,
+    "wall_seconds": 30.8,
+    "duration_ms": 29200,
+    "duration_api_ms": 28581,
+    "num_turns": 10,
+    "tool_calls": 9,
+    "input_tokens": 14,
+    "output_tokens": 2432,
+    "cache_creation_input_tokens": 122741,
+    "cache_read_input_tokens": 702491,
+    "total_cost_usd": 0.8028992000000001,
+    "is_error": false,
+    "stop_reason": "end_turn"
+  },
+  "finished_at": "2026-10-29T20:40:10Z"
+}

@@ -1,0 +1,31 @@
+{"ev": "start", "i": 1, "slug": "burst-w3-0001", "t": 1793302433.1861}
+{"ev": "ack", "i": 1, "slug": "burst-w3-0001", "committed_at": "2026-10-29T19:33:53.724769Z", "t": 1793302434.075739}
+{"ev": "retry", "i": 2, "slug": "burst-w3-0002", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793302434.3489652}
+{"ev": "retry", "i": 2, "slug": "burst-w3-0002", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 2, "t": 1793302435.1191769}
+{"ev": "start", "i": 2, "slug": "burst-w3-0002", "t": 1793302435.8945642}
+{"ev": "ack", "i": 2, "slug": "burst-w3-0002", "committed_at": "2026-10-29T19:33:56.098211Z", "t": 1793302436.436301}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 1, "t": 1793302436.701417}
+{"ev": "retry", "i": 3, "slug": "burst-w3-0003", "tool": "okto_pulse_kg_begin_consolidation", "attempt": 2, "t": 1793302437.4622731}
+{"ev": "start", "i": 3, "slug": "burst-w3-0003", "t": 1793302438.135696}
+{"ev": "ack", "i": 3, "slug": "burst-w3-0003", "committed_at": "2026-10-29T19:33:58.990196Z", "t": 1793302439.575202}
+{"ev": "start", "i": 4, "slug": "burst-w3-0004", "t": 1793302439.7516868}
+{"ev": "retry", "i": 4, "slug": "burst-w3-0004", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793302440.0077639}
+{"ev": "retry", "i": 4, "slug": "burst-w3-0004", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 2, "t": 1793302440.768833}
+{"ev": "ack", "i": 4, "slug": "burst-w3-0004", "committed_at": "2026-10-29T19:34:01.611558Z", "t": 1793302442.0502882}
+{"ev": "start", "i": 5, "slug": "burst-w3-0005", "t": 1793302442.279549}
+{"ev": "retry", "i": 5, "slug": "burst-w3-0005", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 1, "t": 1793302442.53441}
+{"ev": "retry", "i": 5, "slug": "burst-w3-0005", "tool": "okto_pulse_kg_commit_consolidation", "attempt": 2, "t": 1793302443.296044}
+{"ev": "ack", "i": 5, "slug": "burst-w3-0005", "committed_at": "2026-10-29T19:34:04.199509Z", "t": 1793302444.648427}
+{"ev": "retry", "i": 6, "slug": "burst-w3-0006", "tool": "okto_pulse_kg_add_node_candidate", "attempt": 1, "t": 1793302445.0333812}
+{"ev": "retry", "i": 6, "slug": "burst-w3-0006", "tool": "okto_pulse_kg_add_node_candidate", "attempt": 2, "t": 1793302445.790688}
+{"ev": "start", "i": 6, "slug": "burst-w3-0006", "t": 1793302446.65614}
+{"ev": "ack", "i": 6, "slug": "burst-w3-0006", "committed_at": "2026-10-29T19:34:06.903724Z", "t": 1793302447.315073}
+{"ev": "start", "i": 7, "slug": "burst-w3-0007", "t": 1793302447.371875}
+{"ev": "ack", "i": 7, "slug": "burst-w3-0007", "committed_at": "2026-10-29T19:34:07.573377Z", "t": 1793302447.914798}
+{"ev": "start", "i": 8, "slug": "burst-w3-0008", "t": 1793302447.969311}
+{"ev": "ack", "i": 8, "slug": "burst-w3-0008", "committed_at": "2026-10-29T19:34:08.164935Z", "t": 1793302448.498246}
+{"ev": "start", "i": 9, "slug": "burst-w3-0009", "t": 1793302448.5540428}
+{"ev": "ack", "i": 9, "slug": "burst-w3-0009", "committed_at": "2026-10-29T19:34:08.750470Z", "t": 1793302449.085126}
+{"ev": "retry", "i": 10, "slug": "burst-w3-0010", "tool": "okto_pulse_kg_add_node_candidate", "attempt": 1, "t": 1793302449.4267142}
+{"ev": "retry", "i": 10, "slug": "burst-w3-0010", "tool": "okto_pulse_kg_add_node_candidate", "attempt": 2, "t": 1793302450.184265}
+{"ev": "retry", "i": 10, "slug": "burst-w3-0010", "tool": "okto_pulse_kg_add_node_candidate", "attempt": 3, "t": 1793302450.950787}
